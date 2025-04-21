@@ -1,0 +1,95 @@
+/* src/components/Experience/Experience.module.css */
+.experience {
+    padding: 4rem 0;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 3rem;
+    border-bottom: var(--border-standard);
+    padding-bottom: 1rem;
+}
+
+.category {
+    margin-bottom: 3rem;
+}
+
+.category:last-of-type {
+    margin-bottom: 0;
+}
+
+.subHeading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    border-left: 5px solid var(--color-border);
+    padding-left: 1rem;
+}
+
+.job {
+    border: var(--border-standard);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, var(--color-background) 97%, var(--color-accent) 97%); /* Subtle corner accent */
+}
+
+.job:last-of-type {
+    margin-bottom: 0;
+}
+
+.company {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.role {
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #555; /* Slightly muted color */
+}
+
+.detailsList {
+    /* Simple key-value layout */
+}
+
+.detailItem {
+    display: flex;
+    flex-direction: column; /* Stack label and value on mobile */
+    margin-bottom: 0.75rem;
+    border-bottom: 1px dashed #ccc; /* Dashed separator */
+    padding-bottom: 0.75rem;
+}
+
+.detailItem:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+
+@media (min-width: 600px) {
+    .detailItem {
+        flex-direction: row; /* Side-by-side on larger screens */
+        gap: 0.5rem;
+    }
+}
+
+.detailTerm {
+    font-weight: 700;
+    flex-shrink: 0; /* Prevent label from shrinking */
+    width: 80px; /* Fixed width for alignment */
+}
+
+.detailDescription {
+    /* Takes remaining space */
+}
+
+.tech {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    background-color: var(--color-secondary-bg);
+    padding: 0.2rem 0.4rem;
+    border: var(--border-standard);
+    word-break: break-word; /* Break long tech lists */
+}

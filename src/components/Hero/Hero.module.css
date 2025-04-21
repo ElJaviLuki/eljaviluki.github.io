@@ -1,0 +1,73 @@
+/* src/components/Hero/Hero.module.css */
+.hero {
+    padding: 3rem 0;
+    /* border-bottom: var(--border-standard); */
+    text-align: center; /* Center content by default */
+}
+
+.heroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .heroContent {
+        flex-direction: row;
+        text-align: left;
+        justify-content: center; /* Adjust alignment as needed */
+    }
+}
+
+.imageContainer {
+    border: var(--border-standard);
+    padding: 0.5rem; /* Frame the image */
+    background-color: var(--color-secondary-bg); /* Subtle background */
+    display: inline-block; /* Keeps border tight */
+    box-shadow: 4px 4px 0px var(--color-border);
+}
+
+.portrait {
+    display: block; /* Remove extra space below image */
+    max-width: 100%;
+    height: auto;
+    filter: grayscale(100%); /* Optional: Grayscale for starkness */
+    border: var(--border-standard); /* Inner border */
+}
+
+.textContainer {
+    flex: 1; /* Allow text to take available space */
+}
+
+.name {
+    font-size: 3rem; /* Adjust as needed */
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+    letter-spacing: -1px; /* Tighten spacing */
+}
+
+.tagline {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--color-text); /* Ensure high contrast */
+    max-width: 600px; /* Prevent tagline from becoming too wide */
+    margin-left: auto; /* Center if needed on larger screens or keep left */
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    .name { font-size: 4rem; }
+    .tagline { font-size: 2rem; margin-left: 0; margin-right: 0; }
+}
+
+.cta {
+    /* Styles defined globally */
+}
+
+.heroBorder {
+    height: 5px; /* Thicker line for emphasis */
+    background-color: var(--color-border);
+    margin-top: 3rem;
+}

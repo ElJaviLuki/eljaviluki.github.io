@@ -1,0 +1,24 @@
+/* src/App.module.css */
+.appContainer {
+  max-width: 1200px; /* Or your preferred max width */
+  margin: 0 auto;
+  padding: 0 1rem; /* Gutters */
+  border-left: var(--border-standard);
+  border-right: var(--border-standard);
+  /* Add a subtle top/bottom border to frame the whole page */
+  border-top: var(--border-standard);
+  border-bottom: var(--border-standard);
+  margin-top: 1rem; /* Spacing from viewport edge */
+  margin-bottom: 1rem;
+  background-color: var(--color-background); /* Ensure background */
+}
+
+/* Add general spacing between main sections */
+main > section {
+  padding: 4rem 0;
+  border-bottom: var(--border-standard);
+}
+
+main > section:last-of-type {
+  border-bottom: none; /* No border after the last main section */
+}

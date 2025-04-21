@@ -1,68 +1,105 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;900&family=IBM+Plex+Mono:wght@400;700&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --color-background: #FFFFFF; /* White */
+  --color-text: #000000;       /* Black */
+  --color-border: #000000;     /* Black borders */
+  --color-accent: #FFFF00;     /* Stark Yellow Accent */
+  --color-accent-dark: #e6e600; /* Darker yellow for hover */
+  --color-secondary-bg: #F5F5F5; /* Light gray for subtle variation */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --font-primary: 'Work Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  --border-standard: 1px solid var(--color-border);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* Optional: smooth scroll for anchors */
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900; /* Very Bold */
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.75rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+a:hover, a:focus {
+  color: var(--color-background);
+  background-color: var(--color-text);
+  outline: 2px solid var(--color-text); /* Accessibility */
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+button, .button-link {
+  display: inline-block;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  padding: 0.8rem 1.8rem;
+  border: var(--border-standard);
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover, .button-link:hover,
+button:focus, .button-link:focus {
+  background-color: var(--color-accent-dark);
+  color: #000; /* Ensure contrast on yellow hover */
+  box-shadow: 4px 4px 0px var(--color-border); /* Brutalist shadow */
+  outline: none;
+}
+
+/* Basic accessibility */
+*:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Utility class for screen readers only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

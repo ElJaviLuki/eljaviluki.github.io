@@ -1,0 +1,58 @@
+/* src/components/Testimonials/Testimonials.module.css */
+.testimonials {
+    padding: 4rem 0; /* Standard section padding */
+    background-color: var(--color-secondary-bg); /* Subtle background change */
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid */
+    }
+}
+
+.card {
+    border: var(--border-standard);
+    padding: 2rem;
+    background-color: var(--color-background); /* White cards on gray bg */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push attribution down */
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.quote {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    font-style: italic;
+    quotes: none;
+    border: none; /* Remove default blockquote border */
+    padding: 0;
+}
+
+.quote p::before,
+.quote p::after {
+    content: ''; /* Remove default quote marks if any */
+}
+
+
+.attribution {
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-align: right; /* Align attribution to the right */
+    margin-top: auto; /* Push to bottom */
+}
+
+.attribution strong {
+    font-weight: 700;
+}

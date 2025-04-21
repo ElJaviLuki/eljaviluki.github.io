@@ -1,0 +1,40 @@
+/* src/components/About/About.module.css */
+.about {
+    text-align: center;
+    padding: 3rem 1rem; /* Section padding */
+    border-top: var(--border-standard); /* Separate from Hero */
+}
+
+.quote {
+    font-size: 2rem;
+    font-weight: 700;
+    border-left: 5px solid var(--color-accent); /* Accent border */
+    padding-left: 1.5rem;
+    margin: 0 auto 2rem auto; /* Center the blockquote */
+    max-width: 700px; /* Control width */
+    text-align: left; /* Keep text left-aligned within centered block */
+    quotes: none; /* Remove default browser quotes */
+    font-style: normal;
+}
+
+.highlight {
+    /* Optional: Style the question differently */
+    /* display: block; /* Put question on new line */
+    /* margin-top: 0.5rem; */
+    font-weight: 900; /* Bolder */
+}
+
+.detailsLink {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase; /* More emphasis */
+    /* Inherits global link styles, can override here */
+    display: inline-block; /* Allows margin */
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+    .quote {
+        font-size: 2.5rem;
+    }
+}
