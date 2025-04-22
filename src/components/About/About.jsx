@@ -10,17 +10,16 @@ function About() {
                 I work with people who want to win.
                 <span className={styles.highlight}> Is that you?</span>
             </blockquote>
-            {/* Link to a separate page or potentially an anchor link */}
-            <a href="/more-about-me" className={styles.detailsLink}>
-                Tell me more <span aria-hidden="true">→</span>
-                {/* Or: Mi Filosofía / Learn More */}
+            {/* Link to a relevant section like Experience or Skills as a next step */}
+            <a href="#experience" className={styles.detailsLink}>
+                See where I build wins <span aria-hidden="true">→</span>
+                {/* Or: Mi Experiencia / My Work */}
             </a>
-            {/* OR if you want a simple anchor link instead of a separate page:
-       <a href="#philosophy" className={styles.detailsLink}>
-         Mi Filosofía <span aria-hidden="true">↓</span>
-       </a>
-       Then add an id="philosophy" to a relevant section below or a new dedicated one.
-       */}
+            {/* Kept the original link commented out in case you build the page later
+             <a href="/more-about-me" className={styles.detailsLink}>
+                 Tell me more <span aria-hidden="true">→</span>
+             </a>
+             */}
         </section>
     );
 }
