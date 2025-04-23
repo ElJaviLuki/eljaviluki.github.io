@@ -1,9 +1,12 @@
+/* --- START OF FILE src/components/Footer/Footer.module.css --- */
+
 /* src/components/Footer/Footer.module.css */
 .footer {
     padding: 4rem 1rem 2rem 1rem; /* More top padding, less bottom */
     text-align: center;
     border-top: 5px solid var(--color-border); /* Thick separator */
     background-color: var(--color-secondary-bg); /* Match testimonials bg */
+    margin-top: 4rem; /* Ensure space above footer */
 }
 
 .ctaHeading {
@@ -30,19 +33,45 @@
     display: flex;
     justify-content: center;
     gap: 1.5rem;
+    flex-wrap: wrap; /* Allow wrapping */
 }
 
 .socialLinks a {
     text-decoration: none; /* Optional: remove underline for social links */
     font-weight: 700;
     /* Add specific hover effects if needed */
+    color: var(--color-text); /* Explicitly set color */
+    border-bottom: 2px solid var(--color-text);
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease; /* Smooth transition */
 }
-.socialLinks a:hover {
+.socialLinks a:hover,
+.socialLinks a:focus {
     background-color: transparent; /* Override default */
     color: var(--color-accent-dark);
-    text-decoration: underline;
+    text-decoration: none; /* Remove underline on hover */
+    border-bottom-color: var(--color-accent-dark);
+    outline: none; /* Remove focus outline if desired */
 }
 
+/* Languages Section - NEW */
+.languages {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: #444; /* Muted color */
+    padding: 0 1rem; /* Add padding */
+    max-width: 800px; /* Limit width */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6; /* Improve readability */
+}
+.languages strong {
+    font-weight: 700;
+    color: #000; /* Black for the label */
+}
+.languages span { /* Individual language span */
+    white-space: nowrap; /* Prevent breaking within language name/level */
+}
 
 .copyright {
     font-size: 0.9rem;
@@ -56,9 +85,16 @@
     font-size: 0.9rem;
     text-decoration: none;
     border-bottom: 1px solid var(--color-text);
+    color: var(--color-text); /* Explicitly set color */
+    transition: color 0.2s ease, border-color 0.2s ease; /* Smooth transition */
 }
-.backToTop:hover {
+.backToTop:hover,
+.backToTop:focus {
     background-color: transparent;
     color: var(--color-accent-dark);
     border-bottom-color: var(--color-accent-dark);
+    text-decoration: none;
+    outline: none;
 }
+
+/* --- END OF FILE src/components/Footer/Footer.module.css --- */

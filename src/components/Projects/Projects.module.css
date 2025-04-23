@@ -1,0 +1,183 @@
+/* --- START OF FILE src/components/Projects/Projects.module.css --- */
+
+/* src/components/Projects/Projects.module.css */
+/* Adapting styles from Experience.module.css for consistency */
+
+.projects {
+    padding: 4rem 0;
+    background-color: var(--color-secondary-bg); /* Alternate background */
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 3rem;
+    border-bottom: var(--border-standard);
+    padding-bottom: 1rem;
+}
+
+/* Styles for Summary View */
+.summaryGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .summaryGrid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+.projectSummary {
+    border: var(--border-standard);
+    padding: 1.5rem;
+    background-color: var(--color-background); /* White cards */
+    /* background: linear-gradient(135deg, var(--color-background) 97%, var(--color-accent) 97%); */ /* Removed corner accent */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Spacing between elements */
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+.summaryHeader {
+    display: flex;
+    align-items: center; /* Center vertically */
+    gap: 1rem;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo {
+    width: 40px; /* Slightly smaller logo */
+    height: 40px;
+    object-fit: contain; /* Use contain to prevent distortion */
+    flex-shrink: 0;
+    border: 1px solid #eee;
+    padding: 0.2rem;
+    background-color: white; /* Ensure visibility on dark logos */
+}
+
+.titleGroup {
+    flex-grow: 1;
+}
+
+.title { /* Renamed from company */
+    font-size: 1.2rem; /* Slightly smaller title */
+    font-weight: 700;
+    margin-bottom: 0; /* No margin below title */
+}
+
+.summaryText {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 0.5rem;
+    flex-grow: 1; /* Allow summary to take space */
+}
+
+.techPreview {
+    margin-top: 0.5rem; /* Space above tech tags */
+}
+
+.techTag {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background-color: var(--color-secondary-bg);
+    padding: 0.2rem 0.5rem;
+    border: var(--border-standard);
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    white-space: nowrap;
+}
+.techMore {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.detailsLink {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: auto; /* Push link to bottom */
+    align-self: flex-start; /* Align to left */
+    /* Use global link styles */
+    color: var(--color-text);
+    background-color: transparent;
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-text);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.detailsLink:hover,
+.detailsLink:focus {
+    color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+    background-color: transparent;
+    outline: none;
+    text-decoration: none;
+}
+
+
+/* Styles for Detail Page (within ProjectDetailPage.jsx) */
+.projectDetail {
+    /* Uses .detailPage class from Layout.module.css */
+}
+
+.detailHeader { /* Reusing class name, maybe make more specific if needed */
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: var(--border-standard);
+}
+
+.detailLogo { /* Reusing class name */
+    width: 60px; /* Adjust size */
+    height: 60px;
+    object-fit: contain;
+    border: var(--border-standard);
+    padding: 0.5rem;
+    background: white;
+    flex-shrink: 0;
+}
+
+.detailTitleGroup h1 { /* Reusing class name */
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+    border-bottom: none; /* Override layout style for H1 */
+    padding-bottom: 0;
+    text-align: left;
+    line-height: 1.2;
+}
+
+.detailSection { /* Reusing class name */
+    margin-bottom: 2.5rem;
+}
+
+.detailSection h2 { /* Reusing class name */
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.detailList { /* Reusing class name */
+    list-style: disc; /* Use bullets for details */
+    padding-left: 1.5rem; /* Indent list */
+    margin: 0;
+}
+
+.detailList li { /* Reusing class name */
+    margin-bottom: 0.85rem;
+    line-height: 1.7;
+    padding-left: 0.5rem;
+}
+
+/* --- END OF FILE src/components/Projects/Projects.module.css --- */

@@ -1,0 +1,176 @@
+/* --- START OF FILE src/components/Layout/Layout.module.css --- */
+
+/* src/components/Layout/Layout.module.css */
+/* Replaces the old App.module.css */
+
+.appContainer {
+  max-width: 1200px; /* Or your preferred max width */
+  margin: 0 auto;
+  padding: 0 1rem; /* Gutters */
+  border-left: var(--border-standard);
+  border-right: var(--border-standard);
+  /* Add a subtle top/bottom border to frame the whole page */
+  border-top: var(--border-standard);
+  /* border-bottom: var(--border-standard); Removed as Footer has top border */
+  margin-top: 1rem; /* Spacing from viewport edge */
+  margin-bottom: 1rem;
+  background-color: var(--color-background); /* Ensure background */
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 2rem); /* Ensure footer stays down, adjust based on margin */
+}
+
+main {
+  flex-grow: 1; /* Allows main content to push footer down */
+}
+
+/* Add general spacing between main sections ON THE HOMEPAGE */
+/* Use a more specific selector if needed, e.g., targeting sections within HomePage */
+/* This targets direct section children within the main div of HomePage */
+main > div > section {
+  padding: 4rem 0;
+  border-bottom: var(--border-standard);
+}
+
+main > div > section:last-of-type {
+  border-bottom: none; /* No border after the last main section */
+}
+
+/* Styling for Detail Pages (applied to the top-level div of detail pages) */
+.detailPage {
+    padding: 2rem 0 4rem 0; /* Adjust padding */
+}
+
+.detailPage > h1 { /* Direct H1 child of detail page */
+    text-align: center;
+    margin-bottom: 2.5rem;
+    border-bottom: var(--border-standard);
+    padding-bottom: 1rem;
+    font-size: 2.8rem;
+}
+
+.detailGrid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column by default */
+    gap: 2.5rem; /* Gap between main content and sidebar */
+    margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+    .detailGrid {
+       /* Two-column layout on larger screens */
+       grid-template-columns: 2.5fr 1fr; /* Main content wider */
+    }
+}
+
+.mainContent {
+    /* Styles for the main content area in a grid layout */
+}
+
+.sidebar {
+     border: var(--border-standard);
+     padding: 1.5rem;
+     background-color: var(--color-secondary-bg);
+     height: fit-content; /* Make sidebar only as tall as its content */
+     position: sticky; /* Make sidebar sticky */
+     top: 2rem; /* Adjust top spacing */
+}
+
+.sidebar h2, .sidebar h3 {
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0; /* Add bottom margin to lists */
+}
+.sidebar ul:last-child {
+    margin-bottom: 0;
+}
+
+
+.sidebar li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Tech list styling within sidebar */
+.techList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.techList li {
+    font-family: var(--font-mono);
+    background-color: var(--color-background);
+    padding: 0.2rem 0.4rem;
+    border: var(--border-standard);
+    white-space: nowrap;
+    margin-bottom: 0; /* Override default li margin */
+    font-size: 0.85rem;
+}
+
+/* Media Section Styling (within mainContent) */
+.mediaSection {
+    margin-top: 2.5rem;
+    border-top: var(--border-standard);
+    padding-top: 2rem;
+}
+
+.mediaSection h2 {
+     font-size: 1.4rem; /* Reuse detail section h2 style */
+     font-weight: 700;
+     margin-bottom: 1.5rem;
+     border-bottom: 1px solid #eee;
+     padding-bottom: 0.5rem;
+}
+
+.mediaItem img, .mediaItem video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1.5rem; /* Space below media */
+    border: var(--border-standard);
+}
+.mediaItem p { /* Caption styling */
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+    color: #555;
+    margin-top: -0.5rem; /* Pull caption closer to image */
+    margin-bottom: 1.5rem;
+}
+
+
+/* Back Link Styling */
+.backLink {
+    display: inline-block;
+    margin-bottom: 2rem; /* Space below back link */
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-text);
+    padding-bottom: 2px;
+}
+.backLink span { /* Arrow */
+    margin-right: 0.5rem;
+    font-weight: normal; /* Make arrow less bold */
+}
+
+.backLink:hover {
+    color: var(--color-accent-dark);
+    border-bottom-color: var(--color-accent-dark);
+    background-color: transparent; /* Override global hover */
+    outline: none;
+}
+
+/* --- END OF FILE src/components/Layout/Layout.module.css --- */

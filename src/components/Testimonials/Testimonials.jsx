@@ -1,38 +1,75 @@
+// --- START OF FILE src/components/Testimonials/Testimonials.jsx ---
+
 // src/components/Testimonials/Testimonials.js
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { portfolioData } from '../../data'; // Import data
 import styles from './Testimonials.module.css';
 
-const testimonialsData = [
-    {
-        id: 1,
-        name: 'Elena',
-        company: 'Ortoprodent, Laboratorio Dental',
-        quote: 'Estoy superorganizada desde que me han montado este programa, es superfácil y supercómodo, tengo todo cuanto necesito. Y encima me han dicho que todo lo que se me vaya ocurriendo me lo van metiendo en el programa, estoy supercontenta, lo recomiendo 100%.',
-        // linkedIn: 'https://linkedin.com/...' // Optional
-    },
-    {
-        id: 2,
-        name: 'Santiago',
-        company: 'Royal TikTok',
-        quote: 'Transformamos datos caóticos de TikTok en inteligencia de negocio accionable gracias a la arquitectura robusta y escalable que Javi diseñó e implementó.', // Example quote
-    },
-    // Add more testimonials here
-];
-
 function Testimonials() {
+    const { testimonials } = portfolioData;
+
+    if (!testimonials || testimonials.length === 0) {
+        return null; // Don't render if no testimonials
+    }
+
+    // Function to render author links
+    const renderAuthorLinks = (links, authorName) => {
+        if (!links) return null;
+        return Object.entries(links).map(([platform, url]) => {
+            // Simple check for common platforms for aria-label
+            let platformLabel = platform.charAt(0).toUpperCase() + platform.slice(1);
+            let ariaLabel = `${platformLabel} profile for ${authorName}`;
+            if (platform === 'web') {
+                ariaLabel = `Website for ${authorName}`;
+            }
+
+            return (
+                <a
+                    key={platform}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.authorLink}
+                    aria-label={ariaLabel}
+                >
+                    {platformLabel} {/* Capitalize */}
+                </a>
+            );
+        });
+    };
+
+
     return (
         <section className={styles.testimonials} id="testimonials">
             <h2 className={styles.heading}>Lo que dicen quienes ya ganan:</h2>
             <div className={styles.grid}>
-                {testimonialsData.map((testimonial) => (
+                {testimonials.map((testimonial) => (
                     <article key={testimonial.id} className={styles.card}>
+                        {testimonial.profilePic && (
+                            <img
+                                src={testimonial.profilePic}
+                                alt={`Profile of ${testimonial.authorName}`}
+                                className={styles.profilePic}
+                                loading="lazy"
+                            />
+                        )}
                         <blockquote className={styles.quote}>
                             <p>"{testimonial.quote}"</p>
                         </blockquote>
                         <footer className={styles.attribution}>
-                            <strong>{testimonial.name}</strong>, {testimonial.company}
-                            {/* Optional LinkedIn Link */}
-                            {/* {testimonial.linkedIn && <a href={testimonial.linkedIn} target="_blank" rel="noopener noreferrer"> (LinkedIn)</a>} */}
+                            <div className={styles.authorInfo}>
+                                <strong>{testimonial.authorName}</strong>
+                                <span>, {testimonial.authorTitle}</span>
+                            </div>
+                            <div className={styles.links}>
+                                {testimonial.associatedProjectId && (
+                                    <Link to={`/experience/${testimonial.associatedProjectId}`} className={styles.projectLink}>
+                                        View Project <span aria-hidden="true">→</span>
+                                    </Link>
+                                )}
+                                {testimonial.authorLinks && renderAuthorLinks(testimonial.authorLinks, testimonial.authorName)}
+                            </div>
                         </footer>
                     </article>
                 ))}
@@ -42,3 +79,5 @@ function Testimonials() {
 }
 
 export default Testimonials;
+
+// --- END OF FILE src/components/Testimonials/Testimonials.jsx ---

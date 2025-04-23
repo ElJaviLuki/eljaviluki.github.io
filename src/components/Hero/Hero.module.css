@@ -1,3 +1,5 @@
+/* --- START OF FILE src/components/Hero/Hero.module.css --- */
+
 /* src/components/Hero/Hero.module.css */
 .hero {
     padding: 3rem 0;
@@ -17,6 +19,7 @@
         flex-direction: row;
         text-align: left;
         justify-content: center; /* Adjust alignment as needed */
+        gap: 3rem; /* Increase gap on larger screens */
     }
 }
 
@@ -26,12 +29,15 @@
     background-color: var(--color-secondary-bg); /* Subtle background */
     display: inline-block; /* Keeps border tight */
     box-shadow: 4px 4px 0px var(--color-border);
+    flex-shrink: 0; /* Prevent image container from shrinking */
 }
 
 .portrait {
     display: block; /* Remove extra space below image */
     max-width: 100%;
-    height: auto;
+    width: 200px; /* Fixed width */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Ensure image covers the area */
     filter: grayscale(100%); /* Optional: Grayscale for starkness */
     border: var(--border-standard); /* Inner border */
 }
@@ -47,6 +53,16 @@
     letter-spacing: -1px; /* Tighten spacing */
 }
 
+/* New style for adjectives */
+.adjectives {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #555; /* Muted color */
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
 .tagline {
     font-size: 1.75rem;
     font-weight: 700;
@@ -59,6 +75,7 @@
 
 @media (min-width: 768px) {
     .name { font-size: 4rem; }
+    .adjectives { font-size: 1.1rem; }
     .tagline { font-size: 2rem; margin-left: 0; margin-right: 0; }
 }
 
@@ -71,3 +88,5 @@
     background-color: var(--color-border);
     margin-top: 3rem;
 }
+
+/* --- END OF FILE src/components/Hero/Hero.module.css --- */

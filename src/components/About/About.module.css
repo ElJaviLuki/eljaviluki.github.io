@@ -1,8 +1,10 @@
+/* --- START OF FILE src/components/About/About.module.css --- */
+
 /* src/components/About/About.module.css */
 .about {
     text-align: center;
     padding: 3rem 1rem; /* Section padding */
-    border-top: var(--border-standard); /* Separate from Hero */
+    /* border-top: var(--border-standard); */ /* Removed, handled by layout */
 }
 
 .quote {
@@ -15,14 +17,15 @@
     text-align: left; /* Keep text left-aligned within centered block */
     quotes: none; /* Remove default browser quotes */
     font-style: normal;
+    line-height: 1.4; /* Improve line height */
 }
 
-.highlight {
-    /* Optional: Style the question differently */
-    /* display: block; /* Put question on new line */
-    /* margin-top: 0.5rem; */
+.quote b { /* Style the bold tag from dangerouslySetInnerHTML */
     font-weight: 900; /* Bolder */
+    /* Add other styles if needed */
+    color: var(--color-text); /* Ensure color */
 }
+
 
 .detailsLink {
     font-size: 1.1rem;
@@ -31,10 +34,28 @@
     /* Inherits global link styles, can override here */
     display: inline-block; /* Allows margin */
     margin-top: 1rem;
+    /* Use global link styles by default, specific overrides below */
+    color: var(--color-text);
+    background-color: transparent;
+    border-bottom: 2px solid var(--color-text);
+    text-decoration: none;
+    padding-bottom: 2px;
 }
+
+.detailsLink:hover,
+.detailsLink:focus {
+    color: var(--color-accent-dark);
+    background-color: transparent;
+    border-bottom-color: var(--color-accent-dark);
+    outline: none;
+    text-decoration: none;
+}
+
 
 @media (min-width: 768px) {
     .quote {
         font-size: 2.5rem;
     }
 }
+
+/* --- END OF FILE src/components/About/About.module.css --- */

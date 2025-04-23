@@ -1,27 +1,29 @@
+// --- START OF FILE src/components/About/About.jsx ---
+
 // src/components/About/About.js
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link
+import { portfolioData } from '../../data'; // Import data
 import styles from './About.module.css';
 
 function About() {
+    const { hook, detailsLink } = portfolioData.aboutMe.short;
+
     return (
-        <section className={styles.about} id="about">
-            {/* <h2 className="sr-only">About Me</h2> Hidden H2 for semantics */}
+        <section className={styles.about} id="about-short"> {/* Changed ID */}
+            <h2 className="sr-only">About Me (Hook)</h2> {/* Hidden H2 for semantics */}
             <blockquote className={styles.quote}>
-                I work with people who want to win.
-                <span className={styles.highlight}> Is that you?</span>
+                {/* Use dangerouslySetInnerHTML for the bold tag, ensure data is trusted */}
+                <span dangerouslySetInnerHTML={{ __html: hook }} />
             </blockquote>
-            {/* Link to a relevant section like Experience or Skills as a next step */}
-            <a href="#experience" className={styles.detailsLink}>
-                See where I build wins <span aria-hidden="true">→</span>
-                {/* Or: Mi Experiencia / My Work */}
-            </a>
-            {/* Kept the original link commented out in case you build the page later
-             <a href="/more-about-me" className={styles.detailsLink}>
-                 Tell me more <span aria-hidden="true">→</span>
-             </a>
-             */}
+            {/* Use Link component for internal navigation */}
+            <Link to={detailsLink} className={styles.detailsLink}>
+                Tell me more <span aria-hidden="true">→</span>
+            </Link>
         </section>
     );
 }
 
 export default About;
+
+// --- END OF FILE src/components/About/About.jsx ---

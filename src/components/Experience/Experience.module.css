@@ -1,3 +1,5 @@
+/* --- START OF FILE src/components/Experience/Experience.module.css --- */
+
 /* src/components/Experience/Experience.module.css */
 .experience {
     padding: 4rem 0;
@@ -26,70 +28,249 @@
     padding-left: 1rem;
 }
 
-.job {
-    border: var(--border-standard);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    background: linear-gradient(135deg, var(--color-background) 97%, var(--color-accent) 97%); /* Subtle corner accent */
+/* Styles for Summary View */
+.summaryGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
 }
 
-.job:last-of-type {
-    margin-bottom: 0;
+@media (min-width: 768px) {
+    .summaryGrid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+
+.jobSummary {
+    border: var(--border-standard);
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--color-background) 97%, var(--color-accent) 97%); /* Subtle corner accent */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Spacing between elements */
+}
+
+.summaryHeader {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: 1rem;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem; /* Reduce margin */
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain; /* Use contain to prevent distortion */
+    flex-shrink: 0;
+    border: 1px solid #eee;
+    padding: 0.2rem;
+    background-color: white; /* Ensure visibility on dark logos */
+}
+
+.titleGroup {
+    flex-grow: 1;
 }
 
 .company {
     font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .role {
     font-style: italic;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     color: #555; /* Slightly muted color */
+    font-size: 1rem;
 }
 
-.detailsList {
-    /* Simple key-value layout */
-}
-
-.detailItem {
-    display: flex;
-    flex-direction: column; /* Stack label and value on mobile */
-    margin-bottom: 0.75rem;
-    border-bottom: 1px dashed #ccc; /* Dashed separator */
-    padding-bottom: 0.75rem;
-}
-
-.detailItem:last-child {
-    border-bottom: none;
+.dateLocation {
+    font-size: 0.85rem;
+    color: #666;
     margin-bottom: 0;
-    padding-bottom: 0;
 }
 
 
-@media (min-width: 600px) {
-    .detailItem {
-        flex-direction: row; /* Side-by-side on larger screens */
-        gap: 0.5rem;
-    }
+.summaryText {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 0.5rem; /* Add some space below summary */
+    flex-grow: 1; /* Allow summary text to take space */
 }
 
-.detailTerm {
-    font-weight: 700;
-    flex-shrink: 0; /* Prevent label from shrinking */
-    width: 80px; /* Fixed width for alignment */
+.techPreview {
+    margin-top: 0.5rem; /* Space above tech tags */
 }
 
-.detailDescription {
-    /* Takes remaining space */
-}
-
-.tech {
+.techTag {
     font-family: var(--font-mono);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     background-color: var(--color-secondary-bg);
-    padding: 0.2rem 0.4rem;
+    padding: 0.2rem 0.5rem;
     border: var(--border-standard);
-    word-break: break-word; /* Break long tech lists */
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    white-space: nowrap;
 }
+.techMore {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.detailsLink {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: auto; /* Push link to bottom */
+    align-self: flex-start; /* Align to left */
+    /* Use global link styles */
+    color: var(--color-text);
+    background-color: transparent;
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-text);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.detailsLink:hover,
+.detailsLink:focus {
+    color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+    background-color: transparent;
+    outline: none;
+    text-decoration: none;
+}
+
+
+/* Styles for Detail Page (within ExperienceDetailPage.jsx) */
+.jobDetail {
+    /* Uses .detailPage class from Layout.module.css */
+}
+
+.detailHeader {
+    display: flex;
+    align-items: center; /* Vertically center */
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: var(--border-standard);
+}
+
+.detailLogo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border: var(--border-standard);
+    padding: 0.5rem;
+    background: white;
+    flex-shrink: 0;
+}
+
+.detailTitleGroup h1 {
+    font-size: 2rem; /* Adjust size */
+    margin-bottom: 0.25rem;
+    border-bottom: none; /* Override layout style for H1 */
+    padding-bottom: 0;
+    text-align: left;
+    line-height: 1.2;
+}
+.detailTitleGroup p {
+    margin-bottom: 0.2rem; /* Tighten spacing */
+    color: #555;
+    font-size: 1rem;
+}
+.detailTitleGroup .role {
+    font-style: italic;
+    font-weight: 700;
+    color: #333;
+}
+
+
+.detailSection {
+    margin-bottom: 2.5rem; /* Increase spacing */
+}
+
+.detailSection h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem; /* Increase spacing */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.detailList {
+    list-style: disc; /* Use bullets for details */
+    padding-left: 1.5rem; /* Indent list */
+    margin: 0;
+}
+
+.detailList li {
+    margin-bottom: 0.85rem; /* Space between list items */
+    line-height: 1.7; /* Improve line height */
+    padding-left: 0.5rem; /* Add padding to list items */
+}
+
+/* Context specific styles */
+.projectContext {
+    background-color: var(--color-secondary-bg);
+    border: var(--border-standard);
+    padding: 1.5rem;
+    margin-bottom: 2.5rem; /* Match section spacing */
+    border-left: 4px solid var(--color-accent); /* Add accent */
+}
+.projectContext h2 { /* Target the H2 inside context */
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: 0.75rem;
+    border-left: none; /* Remove double border */
+    padding-left: 0;
+}
+
+.projectContext h3 { /* Subheadings within context */
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #333;
+}
+
+.projectContext p {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+.projectContext strong {
+    font-weight: 700;
+}
+
+.projectContext ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: #333;
+}
+.projectContext li {
+    margin-bottom: 0.35rem; /* Tighter spacing */
+    padding-left: 0; /* Reset padding */
+}
+
+/* Sidebar Section Styling (reused in Project/Recognition Detail) */
+.sidebarSection {
+    margin-bottom: 2rem;
+}
+.sidebarSection:last-child {
+    margin-bottom: 0;
+}
+
+/* --- END OF FILE src/components/Experience/Experience.module.css --- */

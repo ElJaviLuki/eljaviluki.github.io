@@ -1,9 +1,9 @@
+/* --- START OF FILE src/components/Skills/Skills.module.css --- */
+
 /* src/components/Skills/Skills.module.css */
 .skills {
     padding: 4rem 0;
-    border-top: var(--border-standard);
-    /* Optional: Add a different background or keep consistent */
-    /* background-color: var(--color-secondary-bg); */
+    /* border-top: var(--border-standard); */ /* Removed, handled by layout */
 }
 
 .heading {
@@ -14,7 +14,7 @@
 }
 
 .category {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem; /* Increased spacing */
 }
 
 .category:last-of-type {
@@ -23,10 +23,30 @@
 
 .categoryHeading {
     font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+    font-weight: 900; /* Bolder category heading */
+    margin-bottom: 2rem; /* Increased spacing */
     border-left: 5px solid var(--color-border);
     padding-left: 1rem;
+    text-transform: uppercase; /* Uppercase for emphasis */
+    letter-spacing: 0.5px;
+}
+
+/* Technical Skills Area Grouping */
+.areaGroup {
+    margin-bottom: 2rem; /* Space between skill areas */
+    border-left: 3px solid var(--color-secondary-bg); /* Subtle left border */
+    padding-left: 1.5rem;
+}
+.areaGroup:last-of-type {
+    margin-bottom: 0;
+}
+
+.areaHeading {
+    font-size: 1.1rem; /* Smaller than category heading */
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: var(--font-mono); /* Mono font for area titles */
+    color: #333;
 }
 
 .skillList {
@@ -46,6 +66,16 @@
     display: inline-block; /* Fit content */
     white-space: nowrap; /* Prevent breaking within a skill name */
     transition: background-color 0.2s ease, color 0.2s ease;
+    line-height: 1.4; /* Adjust line height for readability */
+}
+
+/* Soft skills visually distinct */
+.softSkillItem {
+    background-color: transparent; /* No background */
+    border: 1px dashed var(--color-border); /* Dashed border */
+    font-family: var(--font-primary); /* Use primary font */
+    font-weight: 700;
+    /* padding: 0.3rem 0.6rem; Slightly smaller padding */
 }
 
 /* Optional: Subtle hover effect for skills */
@@ -54,3 +84,58 @@
     color: var(--color-text);
     cursor: default; /* Indicate it's not clickable */
 }
+.softSkillItem:hover {
+    background-color: var(--color-secondary-bg); /* Light gray on hover */
+    color: var(--color-text);
+    border-style: solid;
+    cursor: default;
+}
+
+/* Language List Styles */
+.languageList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid; /* Use grid for alignment */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 1rem; /* Gap between columns/rows */
+}
+
+.languageItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 0.75rem;
+}
+/* Remove border for items in the last row if needed (complex selector) */
+
+
+.flagIcon {
+    width: 24px;
+    height: auto;
+    border: 1px solid #eee; /* Subtle border for flags */
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.langName {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.langLevel {
+    font-style: italic;
+    color: #333;
+    white-space: nowrap;
+}
+.langDetails {
+    font-size: 0.85rem;
+    color: #555;
+    margin-left: 0.25rem;
+    /* Allow details to wrap if needed */
+}
+
+
+/* --- END OF FILE src/components/Skills/Skills.module.css --- */

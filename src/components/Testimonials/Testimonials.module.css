@@ -1,3 +1,5 @@
+/* --- START OF FILE src/components/Testimonials/Testimonials.module.css --- */
+
 /* src/components/Testimonials/Testimonials.module.css */
 .testimonials {
     padding: 4rem 0; /* Standard section padding */
@@ -17,7 +19,7 @@
 
 @media (min-width: 768px) {
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid */
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Responsive grid, slightly larger min */
     }
 }
 
@@ -29,7 +31,25 @@
     flex-direction: column;
     justify-content: space-between; /* Push attribution down */
     box-shadow: 4px 4px 0px rgba(0,0,0,0.1); /* Subtle shadow */
+    position: relative; /* For profile pic positioning */
+    padding-top: 4rem; /* Make space for profile pic */
+    min-height: 250px; /* Ensure cards have some minimum height */
 }
+
+.profilePic {
+    position: absolute;
+    top: -30px; /* Position above the card */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; /* Size of profile pic */
+    height: 80px;
+    border-radius: 50%; /* Circular */
+    border: 3px solid var(--color-accent); /* Accent border */
+    background-color: var(--color-background); /* Ensure bg under image */
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 
 .quote {
     margin-bottom: 1.5rem;
@@ -38,6 +58,8 @@
     quotes: none;
     border: none; /* Remove default blockquote border */
     padding: 0;
+    line-height: 1.6; /* Ensure readability */
+    flex-grow: 1; /* Allow quote to take available space */
 }
 
 .quote p::before,
@@ -49,10 +71,59 @@
 .attribution {
     font-size: 0.9rem;
     font-weight: 400;
-    text-align: right; /* Align attribution to the right */
+    /* text-align: right; Align attribution to the right */
     margin-top: auto; /* Push to bottom */
+    padding-top: 1rem;
+    border-top: 1px dashed #ccc;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space out author info and links */
+    align-items: center; /* Vertically align items */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 0.5rem; /* Gap between info and links block */
 }
 
-.attribution strong {
-    font-weight: 700;
+.authorInfo {
+    text-align: left; /* Align text left */
 }
+
+.authorInfo strong {
+    font-weight: 700;
+    display: block; /* Name on its own line */
+}
+.authorInfo span {
+    color: #555;
+}
+
+
+.links {
+    display: flex;
+    gap: 1rem; /* Space between links */
+    align-items: center;
+    justify-content: flex-end; /* Align links to the right */
+    flex-wrap: wrap; /* Allow links to wrap */
+    margin-left: auto; /* Push links to the right if space allows */
+}
+
+.projectLink, .authorLink {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-text);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap; /* Prevent links breaking */
+}
+.projectLink:hover, .authorLink:hover {
+    color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+    background-color: transparent; /* Override global hover */
+    outline: none;
+    text-decoration: none;
+}
+
+.authorLink {
+    border-bottom-style: dashed; /* Dashed for author links? Optional */
+}
+
+
+/* --- END OF FILE src/components/Testimonials/Testimonials.module.css --- */

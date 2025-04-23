@@ -1,0 +1,137 @@
+/* --- START OF FILE src/components/Education/Education.module.css --- */
+
+/* src/components/Education/Education.module.css */
+.education {
+    padding: 4rem 0;
+    background-color: #ffffff; /* Keep white background */
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 3rem;
+    border-bottom: var(--border-standard);
+    padding-bottom: 1rem;
+}
+
+.timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    /* No explicit timeline line */
+}
+
+.timelineItem {
+    margin-bottom: 2.5rem;
+    border: var(--border-standard);
+    padding: 1.5rem;
+    background-color: var(--color-secondary-bg); /* Light gray background for items */
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+}
+.timelineItem:last-child {
+    margin-bottom: 0;
+}
+
+.itemHeader {
+    display: flex;
+    align-items: center; /* Vertically center */
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border: var(--border-standard);
+    background-color: white;
+    padding: 0.3rem;
+    flex-shrink: 0;
+}
+
+.titleGroup {
+    flex-grow: 1;
+}
+
+.institution {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.degree {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.dateStatus {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.itemBody {
+    /* Styles for content */
+}
+
+.itemBody p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.summary {
+    font-weight: 700;
+    color: #000;
+}
+
+.notes {
+    font-style: italic;
+    background-color: #fff; /* White background for notes */
+    padding: 0.8rem 1rem; /* Adjust padding */
+    border-left: 3px solid var(--color-accent);
+    font-size: 0.9rem;
+    color: #444;
+    margin-top: 1rem; /* Add space above notes */
+}
+.notes em {
+    font-weight: 700;
+    font-style: normal; /* Remove double italic */
+    color: #000; /* Darker label */
+    margin-right: 0.3rem;
+}
+
+.skillsSection {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ccc;
+}
+
+.skillsSection h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #333; /* Slightly muted heading */
+}
+
+.skillsList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skillTag { /* Reusing style */
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background-color: #fff; /* White background */
+    padding: 0.2rem 0.5rem;
+    border: var(--border-standard);
+    white-space: nowrap;
+}
+
+/* --- END OF FILE src/components/Education/Education.module.css --- */

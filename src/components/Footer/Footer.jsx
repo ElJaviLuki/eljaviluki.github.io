@@ -1,39 +1,82 @@
+// --- START OF FILE src/components/Footer/Footer.jsx ---
+
 // src/components/Footer/Footer.js
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom'; // Use Alias for Router Link
+import { portfolioData } from '../../data'; // Import data
 import styles from './Footer.module.css';
 
 function Footer() {
-    const currentYear = new Date().getFullYear();
+    const { socialLinks } = portfolioData.personalInfo; // Removed handle, not used
+    const { languages } = portfolioData.skills; // Get languages
+    const { cta, copyright } = portfolioData.footer;
 
-    // Replace with your actual links
-    const linkedInUrl = "https://linkedin.com/in/your-linkedin-profile"; // Example
-    const githubUrl = "https://github.com/your-github-username"; // Example
-    const email = "mailto:your.email@example.com"; // Example
+    const emailLink = socialLinks.find(link => link.platform === 'Email')?.url;
+    const linkedInLink = socialLinks.find(link => link.platform === 'LinkedIn')?.url;
+    const githubLink = socialLinks.find(link => link.platform === 'GitHub')?.url;
+
+    const handleBackToTop = (e) => {
+        // Check if the link is already at the top to prevent default
+        if (window.scrollY === 0 && window.location.hash === '#top') {
+            e.preventDefault(); // Prevent navigation if already at top
+        } else {
+            // Allow default behavior or smooth scroll
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Optionally update hash without page jump (if needed)
+            if (history.pushState) {
+                history.pushState(null, '', '#top');
+            } else {
+                window.location.hash = '#top';
+            }
+        }
+    };
 
     return (
         <footer className={styles.footer} id="contact">
-            <h2 className={styles.ctaHeading}>Ready to win — or just watching?</h2>
-            <a href={email} className={`button-link ${styles.ctaButton}`}>
-                Hablemos {/* Or: Empecemos / Contacta */}
-            </a>
+            <h2 className={styles.ctaHeading}>{cta}</h2>
+            {emailLink && (
+                <a href={emailLink} className={`button-link ${styles.ctaButton}`}>
+                    Hablemos {/* Or: Empecemos / Contacta */}
+                </a>
+            )}
 
             <div className={styles.socialLinks}>
-                <a href={linkedInUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
-                {/* Add other relevant links */}
+                {linkedInLink && <a href={linkedInLink} target="_blank" rel="noopener noreferrer">LinkedIn</a>}
+                {githubLink && <a href={githubLink} target="_blank" rel="noopener noreferrer">GitHub</a>}
+                {/* Add other relevant links from data if needed */}
+                {socialLinks.filter(link => !['Email', 'LinkedIn', 'GitHub'].includes(link.platform)).map(link => (
+                    <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer">{link.platform}</a>
+                ))}
             </div>
 
-            {/* Languages Section - NEW */}
-            <div className={styles.languages}>
-                <p>Languages: Español (Native), English (Advanced C1/C2), Català (Basic), Français (Intermediate B1), Deutsch (Learning A1), 中文 (Learning HSK1)</p>
-            </div>
+            {/* Languages Section */}
+            {languages && languages.length > 0 && (
+                <div className={styles.languages}>
+                    <p>
+                        <strong>Languages:</strong>{' '}
+                        {languages.map((lang, index) => (
+                            <span key={lang.language}>
+                                {lang.language} ({lang.level})
+                                {index < languages.length - 1 ? ', ' : ''}
+                            </span>
+                        ))}
+                    </p>
+                </div>
+            )}
+
 
             <p className={styles.copyright}>
-                © {currentYear} Javi López Cacenave. All rights reserved.
+                {copyright} {/* Use copyright text from data */}
             </p>
-            <a href="#top" className={styles.backToTop}>↑ Volver arriba</a>
+            {/* Use a regular anchor for #top, handled by JS/CSS */}
+            <a href="#top" className={styles.backToTop} onClick={handleBackToTop}>
+                ↑ Volver arriba
+            </a>
         </footer>
     );
 }
 
 export default Footer;
+
+// --- END OF FILE src/components/Footer/Footer.jsx ---

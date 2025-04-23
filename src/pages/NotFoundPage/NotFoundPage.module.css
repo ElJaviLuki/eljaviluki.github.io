@@ -1,0 +1,36 @@
+/* --- START OF FILE src/pages/NotFoundPage/NotFoundPage.module.css --- */
+
+/* src/pages/NotFoundPage/NotFoundPage.module.css */
+.notFoundContainer {
+    text-align: center;
+    padding: 4rem 1rem;
+    display: flex; /* Center content vertically */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh; /* Ensure it takes significant height */
+}
+
+.notFoundContainer h1 {
+    font-size: 3rem;
+    color: var(--color-accent); /* Use accent color for emphasis */
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 0 var(--color-border); /* Brutalist shadow */
+    border-bottom: none; /* Override default */
+    padding-bottom: 0;
+}
+
+.notFoundContainer p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    color: #333;
+    max-width: 500px; /* Limit width */
+}
+
+.homeButton {
+    /* Uses global button styles */
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+}
+
+/* --- END OF FILE src/pages/NotFoundPage/NotFoundPage.module.css --- */

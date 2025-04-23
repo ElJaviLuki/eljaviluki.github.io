@@ -1,9 +1,12 @@
+/* --- START OF FILE src/components/Recognition/Recognition.module.css --- */
+
 /* src/components/Recognition/Recognition.module.css */
+/* Adapting styles from Experience/Projects */
+
 .recognition {
     padding: 4rem 0;
-    border-top: var(--border-standard);
-    /* Optional: Add a different background or keep consistent */
-    background-color: var(--color-secondary-bg);
+    /* border-top: var(--border-standard); */ /* Handled by layout */
+    background-color: #ffffff; /* White background */
 }
 
 .heading {
@@ -13,72 +16,284 @@
     padding-bottom: 1rem;
 }
 
-.list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* Styles for Summary View */
+.summaryGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem; /* Space before philosophy note */
 }
 
-.item {
+@media (min-width: 768px) {
+    .summaryGrid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+.recognitionSummary {
     border: var(--border-standard);
-    background-color: var(--color-background); /* White cards on gray bg */
     padding: 1.5rem;
-    margin-bottom: 2rem;
+    background-color: var(--color-secondary-bg); /* Light gray cards */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Spacing between elements */
     box-shadow: 4px 4px 0px rgba(0,0,0,0.05); /* Lighter shadow */
 }
 
-.item:last-of-type {
-    margin-bottom: 0;
-}
-
-.item h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.75rem;
-    font-weight: 700;
-}
-
-.item p {
+.summaryHeader {
+    display: flex;
+    align-items: center; /* Center vertically */
+    gap: 1rem;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 1rem;
     margin-bottom: 0.5rem;
-    font-size: 0.95rem;
 }
-.item p:last-of-type {
+
+.logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border: 1px solid #eee;
+    padding: 0.2rem;
+    background-color: white;
+}
+
+.titleGroup {
+    flex-grow: 1;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.levelOrg {
+    font-size: 0.9rem;
+    color: #555;
     margin-bottom: 0;
 }
 
-.item strong {
+.summaryText {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 0.5rem;
+    flex-grow: 1; /* Allow text to take space */
+}
+
+.skillsPreview {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.skillsPreview strong {
     font-weight: 700;
+    margin-right: 0.5rem;
 }
 
-.sources {
-    font-size: 0.85rem;
-    margin-top: 1rem;
-    border-top: 1px dashed #ccc;
-    padding-top: 0.75rem;
-    word-break: break-word; /* Allow long source lists to wrap */
+.skillTag { /* Reuse tech tag style */
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background-color: #fff; /* White tags */
+    padding: 0.2rem 0.5rem;
+    border: var(--border-standard);
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    white-space: nowrap;
+}
+.skillMore {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #555;
 }
 
-.sourceLink {
-    /* Inherits global link styles but maybe slightly smaller */
-    font-size: inherit;
-    text-decoration: underline;
-    text-decoration-thickness: 1px; /* Thinner underline */
-    text-underline-offset: 2px;
-    margin: 0 0.2rem; /* Small spacing around links */
-}
-.sourceLink:hover {
-    /* Override default background perhaps */
+
+.detailsLink {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: auto; /* Push link to bottom */
+    align-self: flex-start;
+    color: var(--color-text);
     background-color: transparent;
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-text);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.detailsLink:hover,
+.detailsLink:focus {
     color: var(--color-accent-dark);
-    text-decoration-color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+    background-color: transparent;
+    outline: none;
+    text-decoration: none;
 }
 
 .philosophyNote {
     text-align: center;
     font-style: italic;
     margin-top: 3rem;
-    padding: 0 1rem;
+    padding: 1rem 1rem; /* Add padding */
     color: #333; /* Slightly muted */
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    border: var(--border-standard); /* Add border */
+    background-color: var(--color-secondary-bg); /* Light background */
+    line-height: 1.7;
 }
+
+.philosophyNote a {
+    /* Style link within the note */
+    font-style: normal; /* Remove italic */
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    color: var(--color-text);
+}
+.philosophyNote a:hover {
+    color: var(--color-accent-dark);
+    background-color: transparent; /* Override global */
+    text-decoration-thickness: 2px;
+}
+
+
+/* Detail Page Styles (within RecognitionDetailPage.jsx) */
+.recognitionDetail {
+    /* Uses .detailPage from layout */
+}
+
+.detailHeader { /* Reusing class name */
+    display: flex;
+    align-items: flex-start; /* Align top */
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: var(--border-standard);
+}
+
+.detailLogo { /* Reusing class name */
+    width: 80px; /* Larger logo */
+    height: 80px;
+    object-fit: contain;
+    border: var(--border-standard);
+    padding: 0.5rem;
+    background: white;
+    flex-shrink: 0;
+}
+
+.detailTitleGroup {
+    flex-grow: 1;
+}
+
+.detailTitleGroup h1 { /* Reusing class name */
+    font-size: 2rem;
+    margin-bottom: 0.5rem; /* Space below title */
+    border-bottom: none;
+    padding-bottom: 0;
+    text-align: left;
+    line-height: 1.2;
+}
+.detailTitleGroup p {
+    margin-bottom: 0.3rem; /* Tighten spacing */
+    color: #555;
+    font-size: 0.95rem; /* Slightly smaller */
+    line-height: 1.5;
+}
+.detailTitleGroup .level {
+    font-weight: 700;
+    color: #333;
+}
+.detailTitleGroup .orgs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detailTitleGroup .orgs strong {
+    margin-right: 0.5rem;
+}
+
+.detailTitleGroup .orgs span { /* Wrapper for each org */
+    display: inline-flex; /* Align logo and text */
+    align-items: center;
+    gap: 0.3rem;
+    background-color: var(--color-secondary-bg);
+    padding: 0.2rem 0.5rem;
+    border: var(--border-standard);
+    font-size: 0.9rem;
+}
+
+.detailTitleGroup .orgs img { /* Small logos for orgs */
+    height: 18px;
+    width: auto;
+    /* margin-right: 0.3rem; */
+    vertical-align: middle;
+    background-color: white; /* Ensure visibility */
+    padding: 1px;
+}
+
+.detailSection { /* Reusing class name */
+    margin-bottom: 2.5rem;
+}
+
+.detailSection h2 { /* Reusing class name */
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+/* Skills List specific for detail page */
+.skillsList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.skillsList li {
+    /* font-family: var(--font-mono); */ /* Use primary font */
+    font-weight: 500;
+    font-size: 0.95rem;
+    background-color: var(--color-secondary-bg);
+    padding: 0.4rem 0.8rem;
+    border: var(--border-standard);
+    white-space: nowrap;
+    margin-bottom: 0; /* Reset li margin */
+}
+
+/* Sources List specific for detail page sidebar */
+.sourcesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sourcesList li {
+    margin-bottom: 0.75rem;
+}
+.sourceLink {
+    font-size: 0.9rem;
+    /* Inherits global link styles */
+    text-decoration: underline;
+    border-bottom: none; /* Remove extra border */
+    display: inline; /* Ensure it behaves like a normal link */
+    background-color: transparent; /* Override global */
+}
+.sourceLink:hover {
+    background-color: var(--color-text); /* Restore global hover */
+    color: var(--color-background);
+}
+
+
+/* --- END OF FILE src/components/Recognition/Recognition.module.css --- */
