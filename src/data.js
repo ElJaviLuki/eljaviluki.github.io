@@ -8,7 +8,7 @@ export const portfolioData = {
         "name": "Javier López Cacenave",
         "handle": "ElJaviLuki",
         "subtitle": "Full-Stack Developer",
-        "portraitUrl": "/placeholder-portrait.png", // Ensure this exists in /public
+        "portraitUrl": "/portrait.jpeg", // Ensure this exists in /public
         "socialLinks": [
             {
                 "platform": "LinkedIn",
@@ -110,8 +110,8 @@ export const portfolioData = {
         "profilePic": "/santi-pic.png", // Ensure this exists in /public
         "associatedProjectId": "royal-tiktok",
         "authorLinks": {
-            "web": "<https://agenciaprincipito.com/>",
-            "tiktok": "<https://www.tiktok.com/@agencia.principito>"
+            "web": "https://agenciaprincipito.com/",
+            "tiktok": "https://www.tiktok.com/@agencia.principito"
         }
     },
     {
@@ -122,7 +122,7 @@ export const portfolioData = {
         "profilePic": "/elena-pic.png", // Ensure this exists in /public
         "associatedProjectId": "ortoprodent-erp",
         "authorLinks": {
-            "linkedin": "<https://www.linkedin.com/in/ecacenave>"
+            "linkedin": "https://www.linkedin.com/in/ecacenave"
         }
     }
 ],
@@ -700,7 +700,6 @@ export const portfolioData = {
             "language": "English",
             "level": "Advanced (C1/C2)",
             "flag": "/flags/gb.svg",
-            "details": "Proficient in complex technical and philosophical discussion/writing"
         },
         {
             "language": "Català",
@@ -728,7 +727,7 @@ export const portfolioData = {
     {
         "id": "hackaboss",
         "institution": "HACK A BOSS",
-        "logo": "/logo-placeholder.png", // Use specific if available
+        "logo": "/hackaboss.png", // Use specific if available
         "degree": "Bootcamp de Data Science & AI",
         "date": "2023/09 - 2024/02", // Changed duration to date
         "status": "Completed",

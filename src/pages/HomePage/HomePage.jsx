@@ -19,7 +19,7 @@ function HomePage() {
         <div>
             <Hero />
             <About /> {/* Renders the short about section */}
-            <Skills />
+            {/* <Skills /> */}
             <Experience /> {/* Renders summary Experience */}
             <Projects /> {/* Renders summary Projects */}
             <Testimonials />

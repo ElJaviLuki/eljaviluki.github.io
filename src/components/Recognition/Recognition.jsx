@@ -62,13 +62,6 @@ function Recognition() {
                     <RecognitionSummaryItem key={rec.id} recognition={rec} />
                 ))}
             </div>
-            {/* Optional: Add a paragraph about the value of diverse experiences */}
-            {/* Link philosophy note to IPO detail page if it exists */}
-            {ipoRecognition && (
-                <p className={styles.philosophyNote}>
-                    Experiencias como la <Link to={ipoRecognition.pagePath}>Olimpiada de Filosofía</Link> han desarrollado pensamiento crítico, comunicación y resiliencia – activos esenciales para afrontar desafíos técnicos y de negocio complejos.
-                </p>
-            )}
         </section>
     );
 }

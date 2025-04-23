@@ -135,36 +135,6 @@
     text-decoration: none;
 }
 
-.philosophyNote {
-    text-align: center;
-    font-style: italic;
-    margin-top: 3rem;
-    padding: 1rem 1rem; /* Add padding */
-    color: #333; /* Slightly muted */
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    border: var(--border-standard); /* Add border */
-    background-color: var(--color-secondary-bg); /* Light background */
-    line-height: 1.7;
-}
-
-.philosophyNote a {
-    /* Style link within the note */
-    font-style: normal; /* Remove italic */
-    font-weight: 700;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-    color: var(--color-text);
-}
-.philosophyNote a:hover {
-    color: var(--color-accent-dark);
-    background-color: transparent; /* Override global */
-    text-decoration-thickness: 2px;
-}
-
-
 /* Detail Page Styles (within RecognitionDetailPage.jsx) */
 .recognitionDetail {
     /* Uses .detailPage from layout */

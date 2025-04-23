@@ -15,7 +15,7 @@ function Skills() {
             {/* Technical Skills */}
             {technical && technical.length > 0 && (
                 <div className={styles.category}>
-                    <h3 className={styles.categoryHeading}>Technical Arsenal</h3>
+                    <h3 className={styles.categoryHeading}>Technical Toolkit</h3>
                     {technical.map(area => (
                         <div key={area.area} className={styles.areaGroup}>
                             <h4 className={styles.areaHeading}>{area.area}</h4>
@@ -31,7 +31,7 @@ function Skills() {
             {/* Soft Skills */}
             {soft && soft.length > 0 && (
                 <div className={styles.category}>
-                    <h3 className={styles.categoryHeading}>Strategic & Soft Skills</h3>
+                    <h3 className={styles.categoryHeading}>Human Toolkit</h3>
                     <ul className={styles.skillList}>
                         {soft.map(skill => <li key={skill} className={`${styles.skillItem} ${styles.softSkillItem}`}>{skill}</li>)}
                     </ul>

@@ -50,22 +50,6 @@ function Footer() {
                 ))}
             </div>
 
-            {/* Languages Section */}
-            {languages && languages.length > 0 && (
-                <div className={styles.languages}>
-                    <p>
-                        <strong>Languages:</strong>{' '}
-                        {languages.map((lang, index) => (
-                            <span key={lang.language}>
-                                {lang.language} ({lang.level})
-                                {index < languages.length - 1 ? ', ' : ''}
-                            </span>
-                        ))}
-                    </p>
-                </div>
-            )}
-
-
             <p className={styles.copyright}>
                 {copyright} {/* Use copyright text from data */}
             </p>
