@@ -1,3 +1,5 @@
+/* === Layout.module.css MODIFICADO === */
+
 @keyframes aurora-gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -13,44 +15,33 @@
 }
 
 .appContainer {
-    max-width: 1400px; /* Wider max width for premium feel */
-    margin: 2rem auto; /* More vertical margin */
-    padding: 0 1.5rem; /* Slightly more padding */
+    /* REMOVED: max-width, margin, padding, border-radius, border, box-shadow */
     position: relative; /* Needed for absolute positioning of background */
     background-color: var(--color-dark-bg-transparent); /* Semi-transparent dark base */
-    border-radius: 15px; /* Rounded corners for main container */
-    border: 1px solid var(--glass-border-color); /* Subtle border */
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3); /* Deeper shadow */
     overflow: hidden; /* Clip pseudo-elements */
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 4rem);
+    min-height: 100vh; /* CHANGED: Ensures full viewport height coverage */
     z-index: 1;
     backdrop-filter: blur(3px); /* Very subtle blur on main container */
-
-    /* Add perspective for potential 3D parallax effects */
     perspective: 1000px;
     transform-style: preserve-3d;
 }
 
-/* Aurora Background Layers */
+/* Aurora Background Layers (Now apply edge-to-edge) */
 .appContainer::before,
 .appContainer::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
     z-index: -1; /* Behind the content */
     opacity: 0.5; /* Control intensity */
     filter: blur(100px); /* Heavy blur for diffuse effect */
-    border-radius: 15px; /* Match container */
+    /* REMOVED border-radius */
 }
 
-/* Layer 1: Main Aurora Gradient - UPDATED: Added Subtle Green */
+/* Layer 1: Main Aurora Gradient */
 .appContainer::before {
     background: linear-gradient(
             135deg,
@@ -64,7 +55,7 @@
     animation: aurora-gradient 25s ease infinite;
 }
 
-/* Layer 2: Moving Cloud Shapes (Subtler) - UPDATED: Added Subtle Green Cloud */
+/* Layer 2: Moving Cloud Shapes */
 .appContainer::after {
     background: radial-gradient(ellipse at 70% 30%, rgba(0, 60, 140, 0.4) 0%, transparent 50%), /* Darker Blue Cloud */
     radial-gradient(ellipse at 30% 70%, rgba(0, 119, 255, 0.3) 0%, transparent 40%), /* Electric Blue Cloud */
@@ -75,35 +66,44 @@
     filter: blur(80px); /* Slightly less blur for cloud shapes */
 }
 
-main {
+/* Apply constraints and padding to the main content area */
+main { /* Or use a specific class if you prefer, like .mainContentArea */
     flex-grow: 1;
-    padding: 2rem 0; /* Padding inside the main area */
+    /* MOVED from appContainer */
+    max-width: 1400px; /* Or your desired max content width */
+    width: 100%; /* Ensure it takes space */
+    margin: 0 auto; /* Center the block horizontally */
+    padding: 2rem 1.5rem; /* Add padding INSIDE the main content area */
+    /* End MOVED */
     transform: translateZ(0); /* Promote to own layer for performance */
 }
 
-/* General section styling */
+/* General section styling within main */
+/* Adjusted selector slightly if using 'main' directly */
 main > div > section {
-    padding: 5rem 1rem; /* More padding */
-    position: relative; /* For potential pseudo-element effects */
-    border-bottom: 1px solid var(--glass-border-color); /* Subtle separator */
-    /* Add subtle 3D effect on scroll - enhance with JS for real parallax */
+    /* Padding vertical is fine, horizontal padding now comes from 'main' */
+    padding: 5rem 0;
+    position: relative;
+    border-bottom: 1px solid var(--glass-border-color);
     transform: translateZ(calc(var(--scroll-depth, 0) * 1px));
-    transition: transform 0.5s ease-out; /* Smooth transition for parallax */
+    transition: transform 0.5s ease-out;
 }
 
 main > div > section:last-of-type {
     border-bottom: none;
 }
 
-/* Styling for Detail Pages */
+/* Styling for Detail Pages within main */
 .detailPage {
+    /* Vertical padding okay, horizontal padding comes from parent 'main' */
     padding: 3rem 0 5rem 0;
 }
 
-.detailPage > h1 { /* Direct H1 child */
+/* Direct H1 child of detailPage might need centering adjustments if needed */
+.detailPage > h1 {
     text-align: center;
     margin-bottom: 3rem;
-    border-bottom: 1px solid var(--color-accent-electric-blue); /* Accent border */
+    border-bottom: 1px solid var(--color-accent-electric-blue);
     padding-bottom: 1.5rem;
     font-size: clamp(2.2rem, 5vw, 3.5rem);
     color: #fff;
@@ -112,18 +112,18 @@ main > div > section:last-of-type {
 .detailGrid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem; /* Increased gap */
+    gap: 3rem;
     margin-top: 3rem;
+    /* Max width is handled by the parent 'main' */
 }
 
-@media (min-width: 992px) { /* Adjust breakpoint */
+@media (min-width: 992px) {
     .detailGrid {
-        grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); /* Flexible columns */
+        grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
     }
 }
 
 .mainContent {
-    /* Add subtle entrance animation maybe */
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.6s ease-out forwards;
@@ -143,20 +143,20 @@ main > div > section:last-of-type {
     backdrop-filter: blur(var(--glass-blur));
     border-radius: 10px;
     border: var(--border-standard);
-    padding: 2rem; /* More padding */
+    padding: 2rem;
     box-shadow: var(--glass-shadow);
     height: fit-content;
     position: sticky;
-    top: 4rem; /* More space from top */
+    top: 2rem; /* Adjusted sticky top */
     transition: var(--transition-smooth);
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.6s ease-out forwards;
-    animation-delay: 0.4s; /* Delay sidebar animation */
+    animation-delay: 0.4s;
 }
 .sidebar:hover {
-    background: var(--glass-hover-bg); /* Use variable */
-    box-shadow: var(--glass-hover-shadow); /* Use variable */
+    background: var(--glass-hover-bg);
+    box-shadow: var(--glass-hover-shadow);
 }
 
 .sidebar h2, .sidebar h3 {
@@ -177,14 +177,13 @@ main > div > section:last-of-type {
     margin-bottom: 0;
 }
 
-
-.sidebar li:not(.techList li) { /* Style normal list items, excluding tech tags */
+.sidebar li:not(.techList li) {
     margin-bottom: 0.75rem;
     font-size: 0.95rem;
     line-height: 1.6;
     color: var(--color-text-secondary);
 }
-.sidebar li strong { /* Make strong elements stand out */
+.sidebar li strong {
     color: var(--color-text-primary);
     font-weight: 600;
 }
@@ -202,23 +201,22 @@ main > div > section:last-of-type {
 /* Consistent Tag Style for Tech/Skills in Sidebar */
 .techList li {
     font-family: var(--font-mono);
-    font-size: 0.8rem; /* Standardized size */
-    background-color: rgba(0, 119, 255, 0.1); /* Standardized blue bg */
-    color: var(--color-accent-electric-blue); /* Standardized blue text */
-    padding: 0.4rem 0.8rem; /* Standardized padding */
-    border: 1px solid rgba(0, 119, 255, 0.2); /* Standardized blue border */
+    font-size: 0.8rem;
+    background-color: rgba(0, 119, 255, 0.1);
+    color: var(--color-accent-electric-blue);
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba(0, 119, 255, 0.2);
     border-radius: 4px;
-    /* white-space: nowrap; */ /* REMOVED to allow wrapping */
     display: inline-block;
     line-height: 1.4;
     transition: var(--transition-smooth);
-    margin-bottom: 0; /* Remove extra margin */
+    margin-bottom: 0;
 }
 .techList li:hover {
-    background-color: rgba(0, 119, 255, 0.25); /* Standardized hover bg */
-    color: #fff; /* Standardized hover text */
-    border-color: var(--color-accent-electric-blue); /* Standardized hover border */
-    transform: scale(1.05); /* Standardized hover transform */
+    background-color: rgba(0, 119, 255, 0.25);
+    color: #fff;
+    border-color: var(--color-accent-electric-blue);
+    transform: scale(1.05);
     cursor: default;
 }
 
@@ -230,7 +228,7 @@ main > div > section:last-of-type {
 }
 
 .mediaSection h2 {
-    font-size: 1.6rem; /* Slightly larger */
+    font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 2rem;
     border-bottom: 1px solid var(--glass-border-color);
@@ -239,14 +237,14 @@ main > div > section:last-of-type {
 }
 
 .mediaItem {
-    margin-bottom: 2.5rem; /* More space between media items */
+    margin-bottom: 2.5rem;
 }
 
 .mediaItem img, .mediaItem video {
     max-width: 100%;
     height: auto;
     display: block;
-    border-radius: 8px; /* Rounded corners for media */
+    border-radius: 8px;
     border: var(--border-standard);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: var(--transition-smooth);
@@ -256,7 +254,7 @@ main > div > section:last-of-type {
     box-shadow: 0 10px 25px rgba(0, 119, 255, 0.15);
 }
 
-.mediaItem p { /* Caption styling */
+.mediaItem p {
     font-size: 0.9rem;
     font-style: italic;
     text-align: center;
@@ -268,7 +266,7 @@ main > div > section:last-of-type {
 
 /* Back Link Styling */
 .backLink {
-    display: inline-flex; /* Use flex for alignment */
+    display: inline-flex;
     align-items: center;
     margin-bottom: 2.5rem;
     font-weight: 600;
@@ -277,14 +275,14 @@ main > div > section:last-of-type {
     letter-spacing: 0.5px;
     color: var(--color-text-secondary);
     text-decoration: none;
-    border-bottom: none; /* Remove default link style */
-    padding: 0.5rem 1rem; /* Add padding */
+    border-bottom: none;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
     transition: var(--transition-smooth);
     background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid transparent; /* Placeholder for hover */
+    border: 1px solid transparent;
 }
-.backLink span { /* Arrow */
+.backLink span {
     margin-right: 0.6rem;
     font-size: 1.1em;
     transition: transform 0.3s ease;
@@ -299,6 +297,6 @@ main > div > section:last-of-type {
 .backLink:hover span {
     transform: translateX(-4px);
 }
-.backLink:hover::after { /* Remove underline effect */
+.backLink:hover::after {
     width: 0;
 }
