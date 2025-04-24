@@ -5,7 +5,7 @@ export const portfolioData = {
         "name": "Javier López Cacenave",
         "handle": "ElJaviLuki",
         "subtitle": "Full-Stack Developer",
-        "portraitUrl": "/portrait.jpeg",
+        "longPortraitUrl": "/long-portrait.png",
         "socialLinks": [
             {
                 "platform": "LinkedIn",
