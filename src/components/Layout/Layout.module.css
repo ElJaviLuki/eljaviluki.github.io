@@ -155,8 +155,8 @@ main > div > section:last-of-type {
     animation-delay: 0.4s; /* Delay sidebar animation */
 }
 .sidebar:hover {
-    background: rgba(30, 45, 60, 0.3); /* Consistent hover background */
-    box-shadow: 0 8px 40px 0 rgba(0, 119, 255, 0.18); /* Consistent subtle blue glow */
+    background: var(--glass-hover-bg); /* Use variable */
+    box-shadow: var(--glass-hover-shadow); /* Use variable */
 }
 
 .sidebar h2, .sidebar h3 {
@@ -208,7 +208,7 @@ main > div > section:last-of-type {
     padding: 0.4rem 0.8rem; /* Standardized padding */
     border: 1px solid rgba(0, 119, 255, 0.2); /* Standardized blue border */
     border-radius: 4px;
-    white-space: nowrap;
+    /* white-space: nowrap; */ /* REMOVED to allow wrapping */
     display: inline-block;
     line-height: 1.4;
     transition: var(--transition-smooth);

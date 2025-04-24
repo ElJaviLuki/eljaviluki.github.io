@@ -20,7 +20,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-accent-teal), var(--color-accent-electric-blue)); /* Reversed gradient */
+    background: linear-gradient(90deg, var(--color-accent-purple), var(--color-accent-electric-blue)); /* Reversed gradient */
     border-radius: 2px;
 }
 
@@ -54,7 +54,7 @@
     inset: 0;
     border-radius: 12px;
     padding: 1px;
-    background: linear-gradient(135deg, var(--color-accent-teal), var(--color-accent-electric-blue));
+    background: linear-gradient(135deg, var(--color-accent-purple), var(--color-accent-electric-blue));
     -webkit-mask:
             linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);
@@ -67,8 +67,8 @@
 
 .projectSummary:hover {
     transform: translateY(-8px) scale(1.01);
-    background: rgba(30, 45, 60, 0.3); /* Consistent hover background */
-    box-shadow: 0 12px 40px 0 rgba(0, 119, 255, 0.18); /* Consistent subtle blue glow */
+    background: var(--glass-hover-bg); /* Use variable */
+    box-shadow: var(--glass-hover-shadow); /* Use variable */
 }
 .projectSummary:hover::before {
     opacity: 1;
@@ -127,7 +127,7 @@
     padding: 0.4rem 0.8rem; /* Standardized padding */
     border: 1px solid rgba(0, 119, 255, 0.2); /* Standardized blue border */
     border-radius: 4px;
-    white-space: nowrap;
+    /* white-space: nowrap; */ /* REMOVED */
     display: inline-block;
     line-height: 1.4;
     transition: var(--transition-smooth);
@@ -172,7 +172,7 @@
     height: 1px;
     bottom: 0;
     left: 0;
-    background-color: var(--color-accent-teal); /* Use purple */
+    background-color: var(--color-accent-purple); /* Use purple */
     transition: width 0.3s ease-out;
 }
 .detailsLink span {
@@ -180,7 +180,7 @@
     transition: transform 0.3s ease;
 }
 .detailsLink:hover {
-    color: var(--color-accent-teal); /* Use purple */
+    color: var(--color-accent-purple); /* Use purple */
     background-color: transparent;
     outline: none;
 }
@@ -262,7 +262,7 @@
     position: absolute;
     left: 0;
     top: 0px;
-    color: var(--color-accent-teal); /* Use purple */
+    color: var(--color-accent-purple); /* Use purple */
     font-weight: 700;
     font-size: 1.4em;
 }
