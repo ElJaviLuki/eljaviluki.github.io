@@ -52,7 +52,7 @@
     min-height: 300px;
     padding-top: 4.5rem; /* More space for pic */
     transition: var(--transition-smooth);
-    overflow: hidden; /* Clip effects */
+    /* overflow: hidden; */ /* <-- REMOVED THIS LINE */
     z-index: 1;
 }
 .card:hover {
@@ -182,3 +182,5 @@
 .projectLink:hover::after, .authorLink:hover::after {
     width: 0;
 }
+
+/* --- END OF FILE src/components/Testimonials/Testimonials.module.css --- */
