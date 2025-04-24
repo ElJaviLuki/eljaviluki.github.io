@@ -52,12 +52,13 @@
     border-radius: 15px; /* Match container */
 }
 
-/* Layer 1: Main Aurora Gradient - UPDATED: Removed Purple */
+/* Layer 1: Main Aurora Gradient - UPDATED: Added Subtle Green */
 .appContainer::before {
     background: linear-gradient(
             135deg,
             rgba(0, 119, 255, 0.6),   /* Electric Blue */
-            rgba(0, 70, 180, 0.5),    /* Mid Blue (Replaced Purple) */
+            rgba(0, 70, 180, 0.5),    /* Mid Blue */
+            rgba(0, 128, 70, 0.35),   /* Subtle Teal/Green Hint */
             rgba(10, 10, 26, 0.7),    /* Dark Base Blue/Black */
             rgba(0, 119, 255, 0.4)    /* Lighter Electric Blue */
     );
@@ -65,11 +66,12 @@
     animation: aurora-gradient 25s ease infinite;
 }
 
-/* Layer 2: Moving Cloud Shapes (Subtler) - UPDATED: Removed Purple Cloud */
+/* Layer 2: Moving Cloud Shapes (Subtler) - UPDATED: Added Subtle Green Cloud */
 .appContainer::after {
-    background: radial-gradient(ellipse at 70% 30%, rgba(0, 60, 140, 0.4) 0%, transparent 50%), /* Darker Blue Cloud (Replaced Purple) */
+    background: radial-gradient(ellipse at 70% 30%, rgba(0, 60, 140, 0.4) 0%, transparent 50%), /* Darker Blue Cloud */
     radial-gradient(ellipse at 30% 70%, rgba(0, 119, 255, 0.3) 0%, transparent 40%), /* Electric Blue Cloud */
-    radial-gradient(ellipse at 50% 50%, rgba(180, 200, 255, 0.1) 0%, transparent 30%); /* Very Light Blue Cloud */
+    radial-gradient(ellipse at 50% 50%, rgba(0, 130, 90, 0.2) 0%, transparent 35%), /* Subtle Green Cloud */
+    radial-gradient(ellipse at 15% 15%, rgba(180, 200, 255, 0.1) 0%, transparent 30%); /* Very Light Blue Cloud */
     animation: move-clouds 40s linear infinite alternate;
     opacity: 0.6;
     filter: blur(80px); /* Slightly less blur for cloud shapes */
