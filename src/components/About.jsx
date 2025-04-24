@@ -3,7 +3,7 @@
 // src/components/About/About.js
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link
-import { portfolioData } from '../../data'; // Import data
+import { portfolioData } from '../data.js'; // Import data
 import styles from './About.module.css';
 
 function About() {

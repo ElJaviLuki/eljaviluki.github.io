@@ -2,7 +2,7 @@
 
 // src/components/Education/Education.jsx
 import React from 'react';
-import { portfolioData } from '../../data';
+import { portfolioData } from '../data.js';
 import styles from './Education.module.css'; // Use Education CSS Module
 
 function Education() {

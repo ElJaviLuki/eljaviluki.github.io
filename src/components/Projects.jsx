@@ -4,7 +4,7 @@
 // Summary list of personal projects
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { portfolioData } from '../../data';
+import { portfolioData } from '../data.js';
 import styles from './Projects.module.css'; // Use Projects CSS module
 
 function ProjectSummaryItem({ project }) {

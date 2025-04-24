@@ -4,7 +4,7 @@
 // Optional 404 Page
 import React from 'react';
 import { Link } from 'react-router-dom';
-import layoutStyles from '../../components/Layout/Layout.module.css'; // Reuse layout styles
+import layoutStyles from '../components/Layout.module.css'; // Reuse layout styles
 import styles from './NotFoundPage.module.css'; // Specific styles
 
 function NotFoundPage() {

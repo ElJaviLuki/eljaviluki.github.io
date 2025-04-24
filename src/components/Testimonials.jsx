@@ -3,7 +3,7 @@
 // src/components/Testimonials/Testimonials.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { portfolioData } from '../../data'; // Import data
+import { portfolioData } from '../data.js'; // Import data
 import styles from './Testimonials.module.css';
 
 function Testimonials() {

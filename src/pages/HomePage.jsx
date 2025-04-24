@@ -2,14 +2,14 @@
 
 // src/pages/HomePage/HomePage.jsx
 import React from 'react';
-import Hero from '../../components/Hero/Hero';
-import About from '../../components/About/About';
-import Skills from '../../components/Skills/Skills';
-import Experience from '../../components/Experience/Experience'; // Experience Summary
-import Projects from '../../components/Projects/Projects'; // Projects Summary
-import Testimonials from '../../components/Testimonials/Testimonials';
-import Recognition from '../../components/Recognition/Recognition'; // Recognition Summary
-import Education from '../../components/Education/Education'; // Education Component
+import Hero from '../components/Hero.jsx';
+import About from '../components/About.jsx';
+import Skills from '../components/Skills.jsx';
+import Experience from '../components/Experience.jsx'; // Experience Summary
+import Projects from '../components/Projects.jsx'; // Projects Summary
+import Testimonials from '../components/Testimonials.jsx';
+import Recognition from '../components/Recognition.jsx'; // Recognition Summary
+import Education from '../components/Education.jsx'; // Education Component
 
 // No specific HomePage styles needed for now, using Layout structure
 

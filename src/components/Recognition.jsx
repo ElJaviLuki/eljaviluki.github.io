@@ -4,7 +4,7 @@
 // Summary List Component
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { portfolioData } from '../../data';
+import { portfolioData } from '../data.js';
 import styles from './Recognition.module.css';
 
 function RecognitionSummaryItem({ recognition }) {

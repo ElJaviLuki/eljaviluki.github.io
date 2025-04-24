@@ -2,7 +2,7 @@
 
 // src/components/Skills/Skills.jsx
 import React from 'react';
-import { portfolioData } from '../../data'; // Import data
+import { portfolioData } from '../data.js'; // Import data
 import styles from './Skills.module.css';
 
 function Skills() {

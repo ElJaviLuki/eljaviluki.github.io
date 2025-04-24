@@ -3,8 +3,8 @@
 // src/pages/AboutMePage/AboutMePage.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { portfolioData } from '../../data';
-import layoutStyles from '../../components/Layout/Layout.module.css'; // Use layout styles for structure
+import { portfolioData } from '../data.js';
+import layoutStyles from '../components/Layout.module.css'; // Use layout styles for structure
 import styles from './AboutMePage.module.css';
 
 // Helper component to render different content types

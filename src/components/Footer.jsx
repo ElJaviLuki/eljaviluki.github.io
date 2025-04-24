@@ -3,7 +3,7 @@
 // src/components/Footer/Footer.js
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom'; // Use Alias for Router Link
-import { portfolioData } from '../../data'; // Import data
+import { portfolioData } from '../data.js'; // Import data
 import styles from './Footer.module.css';
 
 function Footer() {

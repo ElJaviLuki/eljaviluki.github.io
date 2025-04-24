@@ -3,13 +3,13 @@
 // src/App.js
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout/Layout';
-import HomePage from './pages/HomePage/HomePage';
-import AboutMePage from './pages/AboutMePage/AboutMePage';
-import ExperienceDetailPage from './pages/ExperienceDetailPage/ExperienceDetailPage';
-import ProjectDetailPage from './pages/ProjectDetailPage/ProjectDetailPage';
-import RecognitionDetailPage from './pages/RecognitionDetailPage/RecognitionDetailPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage'; // Optional: Add a 404 page
+import Layout from './components/Layout.jsx';
+import HomePage from './pages/HomePage.jsx';
+import AboutMePage from './pages/AboutMePage.jsx';
+import ExperienceDetailPage from './pages/ExperienceDetailPage.jsx';
+import ProjectDetailPage from './pages/ProjectDetailPage.jsx';
+import RecognitionDetailPage from './pages/RecognitionDetailPage.jsx';
+import NotFoundPage from './pages/NotFoundPage.jsx'; // Optional: Add a 404 page
 
 function App() {
     return (

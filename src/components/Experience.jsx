@@ -4,7 +4,7 @@
 // This component now acts as a SUMMARY LIST linking to detail pages.
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { portfolioData } from '../../data'; // Import data
+import { portfolioData } from '../data.js'; // Import data
 import styles from './Experience.module.css';
 
 function ExperienceSummaryItem({ job }) {

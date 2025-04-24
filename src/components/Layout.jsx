@@ -3,7 +3,7 @@
 // src/components/Layout/Layout.jsx
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import Footer from '../Footer/Footer';
+import Footer from './Footer.jsx';
 // Optional: Add a Header/Nav component here if needed later
 // import Header from '../Header/Header';
 import styles from './Layout.module.css';

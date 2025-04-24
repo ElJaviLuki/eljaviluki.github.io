@@ -3,9 +3,9 @@
 // src/pages/ExperienceDetailPage/ExperienceDetailPage.jsx
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { portfolioData } from '../../data';
-import layoutStyles from '../../components/Layout/Layout.module.css'; // Reuse layout styles
-import styles from '../../components/Experience/Experience.module.css'; // Reuse experience styles
+import { portfolioData } from '../data.js';
+import layoutStyles from '../components/Layout.module.css'; // Reuse layout styles
+import styles from '../components/Experience.module.css'; // Reuse experience styles
 
 function ExperienceDetailPage() {
     const { id } = useParams();

@@ -3,9 +3,9 @@
 // src/pages/ProjectDetailPage/ProjectDetailPage.jsx
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { portfolioData } from '../../data';
-import layoutStyles from '../../components/Layout/Layout.module.css'; // Reuse layout styles
-import styles from '../../components/Projects/Projects.module.css'; // Reuse project styles
+import { portfolioData } from '../data.js';
+import layoutStyles from '../components/Layout.module.css'; // Reuse layout styles
+import styles from '../components/Projects.module.css'; // Reuse project styles
 
 function ProjectDetailPage() {
     const { id } = useParams();

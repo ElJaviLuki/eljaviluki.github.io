@@ -3,9 +3,9 @@
 // src/pages/RecognitionDetailPage/RecognitionDetailPage.jsx
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { portfolioData } from '../../data';
-import layoutStyles from '../../components/Layout/Layout.module.css'; // Reuse layout styles
-import styles from '../../components/Recognition/Recognition.module.css'; // Reuse recognition styles
+import { portfolioData } from '../data.js';
+import layoutStyles from '../components/Layout.module.css'; // Reuse layout styles
+import styles from '../components/Recognition.module.css'; // Reuse recognition styles
 
 function RecognitionDetailPage() {
     const { id } = useParams();
