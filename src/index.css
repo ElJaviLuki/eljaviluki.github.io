@@ -19,6 +19,8 @@
   --glass-blur: 12px;
   --glass-border-color: rgba(224, 224, 255, 0.2); /* Subtle light border */
   --glass-shadow: 0 8px 32px 0 rgba(0, 119, 255, 0.1); /* Subtle blue glow shadow */
+  --glass-hover-bg: rgba(10, 67, 50, 0.3); /* Darker hover bg */
+  --glass-hover-border: rgba(10, 67, 50, 0.1); /* Lighter hover border */
 
   /* Fonts */
   --font-primary: 'Work Sans', sans-serif;
