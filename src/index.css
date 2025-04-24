@@ -13,6 +13,8 @@
   --color-accent-glow: rgba(0, 119, 255, 0.7); /* Glow effect for blue */
   --color-accent-purple: #8a2be2; /* Complementary purple */
   --color-accent-purple-glow: rgba(138, 43, 226, 0.6); /* Glow effect for purple */
+  --color-accent-teal: #20c997; /* Complementary teal */
+    --color-accent-teal-glow: rgba(32, 201, 151, 0.6); /* Glow effect for teal */
 
   /* Glassmorphism */
   --glass-bg-color: rgba(20, 20, 40, 0.5); /* Dark translucent bg for glass */
@@ -56,7 +58,7 @@ html {
   background-clip: content-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-accent-purple);
+  background-color: var(--color-accent-teal);
 }
 
 
@@ -108,12 +110,12 @@ a::after {
   height: 1px;
   bottom: 0;
   left: 0;
-  background-color: var(--color-accent-purple);
+  background-color: var(--color-accent-teal);
   transition: width 0.3s ease-out;
 }
 
 a:hover, a:focus {
-  color: var(--color-accent-purple);
+  color: var(--color-accent-teal);
   outline: none;
 }
 a:hover::after, a:focus::after {

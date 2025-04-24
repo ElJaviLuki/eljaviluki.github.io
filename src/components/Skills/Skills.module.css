@@ -19,7 +19,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-accent-electric-blue), var(--color-accent-purple));
+    background: linear-gradient(90deg, var(--color-accent-electric-blue), var(--color-accent-teal));
     border-radius: 2px;
 }
 
@@ -33,7 +33,7 @@
     font-weight: 600;
     margin-bottom: 2.5rem;
     color: var(--color-text-primary);
-    border-left: 4px solid var(--color-accent-purple); /* Use purple for skills section category */
+    border-left: 4px solid var(--color-accent-teal); /* Use purple for skills section category */
     padding-left: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;

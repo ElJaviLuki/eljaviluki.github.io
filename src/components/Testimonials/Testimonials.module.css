@@ -19,7 +19,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-accent-purple), var(--color-accent-electric-blue));
+    background: linear-gradient(90deg, var(--color-accent-teal), var(--color-accent-electric-blue));
     border-radius: 2px;
 }
 
@@ -77,7 +77,7 @@
 }
 .card:hover .profilePic {
     transform: translateX(-50%) scale(1.1);
-    border-color: var(--color-accent-purple);
+    border-color: var(--color-accent-teal);
 }
 
 
@@ -174,7 +174,7 @@
     border-bottom-style: none; /* Remove dash */
 }
 .authorLink:hover {
-    color: var(--color-accent-purple); /* Different hover for author links */
+    color: var(--color-accent-teal); /* Different hover for author links */
 }
 
 /* Remove hover underline from base link style */
