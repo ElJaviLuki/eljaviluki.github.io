@@ -26,8 +26,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* MODIFICADO: Ajustar la posición focal de la imagen */
-    object-position: center 30%; /* Centrado H, ligeramente más arriba V */
+    /* MODIFICADO: Asegurar que se vea el pelo en móvil */
+    object-position: center top; /* Alinear arriba en móvil también */
     max-width: 100%;
 }
 
@@ -85,27 +85,24 @@
     }
 
     .imageContainer {
-        /* MODIFICADO: Darle más espacio a la imagen */
-        width: 55%; /* Ligeramente más de la mitad */
+        /* Ancho mantenido */
+        width: 55%;
         height: 100vh;
         order: 2; /* Imagen a la derecha */
     }
 
     .portrait {
-        /* MODIFICADO: Asegurar que la parte interesante (cara) esté visible */
-        /* Puedes experimentar con 'right center', 'left center' o % específicos */
-        /* object-position: right 30%; */ /* Prueba: más hacia la derecha */
-        /* object-position: 65% 30%; */ /* Prueba: 65% desde la izquierda */
-        object-position: center 30%; /* Volver a centrado H, más arriba V */
+        /* MODIFICADO: Alinear la parte SUPERIOR de la imagen con la SUPERIOR del contenedor */
+        object-position: center top; /* 'top' o '0%' aseguran que no se corte arriba */
     }
 
     .textContainer {
-        /* MODIFICADO: Darle menos espacio al texto */
-        width: 45%; /* Ligeramente menos de la mitad */
+        /* Ancho mantenido */
+        width: 45%;
         order: 1; /* Texto a la izquierda */
         text-align: left;
-        /* MODIFICADO: Ajustar padding para que el texto no empiece pegado al borde */
-        padding: 4rem 8% 4rem 5%; /* Más padding derecho para compensar */
+        /* Padding mantenido */
+        padding: 4rem 8% 4rem 5%;
         align-items: flex-start;
         justify-content: center;
     }
