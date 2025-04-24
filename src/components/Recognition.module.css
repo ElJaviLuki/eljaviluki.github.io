@@ -1,6 +1,6 @@
 .recognition {
     padding: 5rem 0;
-    background-color: rgba(10, 10, 26, 0.3); /* Slightly different bg shade */
+    /* REMOVED background-color */
 }
 
 .heading {

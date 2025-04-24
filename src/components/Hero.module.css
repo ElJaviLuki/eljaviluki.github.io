@@ -1,24 +1,20 @@
 /* --- START OF FILE src/components/Hero/Hero.module.css --- */
 
 .hero {
-    /* === MODIFIED FOR VIEWPORT HEIGHT === */
+    /* === MODIFIED FOR VIEWPORT HEIGHT & REMOVED BACKGROUND === */
     min-height: 100vh; /* Asegura que ocupe al menos toda la altura del viewport */
     display: flex;       /* Habilita Flexbox */
     flex-direction: column; /* Apila los hijos directos verticalmente */
     align-items: center;    /* Centra el contenido horizontalmente */
     justify-content: center; /* Centra el contenido verticalmente */
     padding: 2rem 1rem;    /* Ajusta padding (menos vertical, añade horizontal) */
+    /* REMOVED: background-image, background-attachment, background-position, background-size */
     /* === END MODIFICATIONS === */
 
     text-align: center;
     position: relative;
     overflow: hidden; /* Clip potential effects */
-    /* Simple Parallax Background Effect */
-    background-image: url('/path/to/subtle-star-pattern.png'); /* Optional: Add a subtle pattern */
-    background-attachment: fixed; /* Creates parallax */
-    background-position: center center;
-    background-size: cover;
-    border-bottom: 1px solid var(--glass-border-color); /* Subtle separator */
+    border-bottom: 1px solid var(--glass-border-color); /* Subtle separator - Kept */
 }
 
 .heroContent {
@@ -142,5 +138,3 @@
         /* No specific margin needed if parent handles alignment */
     }
 }
-
-/* REMOVED .heroBorder div styling as border is on .hero */
