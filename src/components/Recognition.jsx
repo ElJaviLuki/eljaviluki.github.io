@@ -2,15 +2,17 @@
 
 // src/components/Recognition/Recognition.jsx
 // Summary List Component
-import React from 'react';
+import React from 'react'; // Import React
 import { Link } from 'react-router-dom';
 import { portfolioData } from '../data.js';
 import styles from './Recognition.module.css';
 
-function RecognitionSummaryItem({ recognition }) {
+// Memoize the RecognitionSummaryItem component
+const RecognitionSummaryItem = React.memo(({ recognition }) => {
     const logoSrc = recognition.recognitionLogo || '/logo-placeholder.png';
     const orgName = recognition.organizations?.[0]?.name || recognition.organization || 'Organization'; // Handle single or multiple orgs
     const displayDate = recognition.date ? recognition.date.split('/')[0] : ''; // Show only year
+    console.log(`Rendering RecognitionSummaryItem: ${recognition.title}`); // Optional: for debugging
 
     return (
         <article className={styles.recognitionSummary}>
@@ -41,8 +43,9 @@ function RecognitionSummaryItem({ recognition }) {
             </Link>
         </article>
     );
-}
+}); // End of React.memo HOC
 
+RecognitionSummaryItem.displayName = 'RecognitionSummaryItem';
 
 function Recognition() {
     const { recognitions } = portfolioData;

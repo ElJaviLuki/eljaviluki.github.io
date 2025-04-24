@@ -2,15 +2,18 @@
 
 // src/components/Experience/Experience.jsx
 // This component now acts as a SUMMARY LIST linking to detail pages.
-import React from 'react';
+import React from 'react'; // Import React
 import { Link } from 'react-router-dom';
 import { portfolioData } from '../data.js'; // Import data
 import styles from './Experience.module.css';
 
-function ExperienceSummaryItem({ job }) {
+// Memoize the ExperienceSummaryItem component
+const ExperienceSummaryItem = React.memo(({ job }) => {
     // Determine the title/client name to display
-    const displayTitle =  job.name || job.client || 'Experience Item';
+    const displayTitle = job.name || job.client || 'Experience Item';
     const logoSrc = job.logo || job.clientLogo || '/logo-placeholder.png'; // Fallback logo
+
+    console.log(`Rendering ExperienceSummaryItem: ${displayTitle}`); // Optional: for debugging re-renders
 
     return (
         <article className={styles.jobSummary}>
@@ -38,8 +41,10 @@ function ExperienceSummaryItem({ job }) {
             </Link>
         </article>
     );
-}
+}); // End of React.memo HOC
 
+// Add display name for better debugging
+ExperienceSummaryItem.displayName = 'ExperienceSummaryItem';
 
 function Experience() {
     const { freelanceConsulting, corporate } = portfolioData.experience;
