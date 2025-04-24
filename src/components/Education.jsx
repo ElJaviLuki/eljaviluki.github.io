@@ -32,7 +32,7 @@ function Education() {
                         <div className={styles.itemBody}>
                             {item.summary && <p className={styles.summary}>{item.summary}</p>}
                             {item.description && <p>{item.description}</p>}
-                            {item.notes && <p className={styles.notes}><em>Nota:</em> {item.notes}</p>}
+                            {item.notes && <p className={styles.notes}><em>Note:</em>{item.notes}</p>}
                             {item.skillsLearned && item.skillsLearned.length > 0 && (
                                 <div className={styles.skillsSection}>
                                     <h4>Key Skills:</h4>
