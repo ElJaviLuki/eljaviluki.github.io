@@ -1,7 +1,9 @@
+/* --- START OF FILE src/components/Testimonials/Testimonials.module.css --- */
+
 .testimonials {
-  padding: 5rem 0 6rem 0; /* More padding */
-  background: linear-gradient(0deg, rgba(10, 10, 26, 0) 0%, rgba(138, 43, 226, 0.05) 100%); /* Subtle gradient */
-  position: relative;
+    padding: 5rem 0 6rem 0; /* More padding */
+    background: linear-gradient(0deg, rgba(10, 10, 26, 0) 0%, rgba(138, 43, 226, 0.05) 100%); /* Subtle gradient */
+    position: relative;
 }
 
 .heading {
@@ -35,29 +37,59 @@
     }
 }
 
-/* Glassmorphic Card */
+/* === START: Standardized Glassmorphic Card Styles (Modified for Testimonials) === */
 .card {
+    /* Core Glassmorphism */
     background: var(--glass-bg-color);
     backdrop-filter: blur(var(--glass-blur));
-    border-radius: 12px;
+    border-radius: 12px; /* More rounded */
     border: var(--border-standard);
-    padding: 2.5rem 2rem 2rem 2rem; /* Adjust padding */
+    padding: 2rem; /* Standard padding */
     box-shadow: var(--glass-shadow);
+
+    /* Layout & Transition */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    min-height: 300px;
-    padding-top: 4.5rem; /* More space for pic */
+    /* gap: 1.25rem; */ /* Let internal elements control gap */
     transition: var(--transition-smooth);
-    /* overflow: hidden; */ /* <-- REMOVED THIS LINE */
+    position: relative;
+    /* overflow: hidden; */ /* <-- REMOVED THIS LINE to allow profile pic overflow */
     z-index: 1;
+
+    /* Testimonial Specific Adjustments */
+    min-height: 300px; /* Keep minimum height */
+    padding-top: 4.5rem; /* Override for profile pic space */
+    justify-content: space-between; /* Keep this */
 }
+
+/* Subtle gradient border effect on hover */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px; /* Match card radius */
+    padding: 1px; /* border width */
+    background: linear-gradient(135deg, var(--color-accent-electric-blue), var(--color-accent-teal));
+    -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
 .card:hover {
-    transform: translateY(-8px);
-    background: rgba(30, 45, 60, 0.3); /* Consistent hover background */
-    box-shadow: 0 12px 45px rgba(0, 119, 255, 0.18); /* Consistent subtle blue glow */
+    transform: translateY(-8px) scale(1.01); /* Standard hover transform */
+    background: var(--glass-hover-bg); /* Use variable */
+    box-shadow: var(--glass-hover-shadow); /* Use variable */
 }
+
+.card:hover::before {
+    opacity: 1; /* Show gradient border on hover */
+}
+/* === END: Standardized Glassmorphic Card Styles === */
 
 
 .profilePic {
@@ -72,7 +104,7 @@
     background-color: var(--color-dark-bg);
     object-fit: cover;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    z-index: 2; /* Ensure pic is above card bg */
+    z-index: 2; /* Ensure pic is above card bg and ::before pseudo-element */
     transition: var(--transition-smooth);
 }
 .card:hover .profilePic {
@@ -181,3 +213,4 @@
 .projectLink:hover::after, .authorLink:hover::after {
     width: 0;
 }
+/* --- END OF FILE src/components/Testimonials/Testimonials.module.css --- */
