@@ -9,8 +9,8 @@ import styles from './Experience.module.css';
 
 function ExperienceSummaryItem({ job }) {
     // Determine the title/client name to display
-    const displayTitle = job.company || job.client || job.name || 'Experience Item';
-    const logoSrc = job.companyLogo || job.clientLogo || job.logo || '/logo-placeholder.png'; // Fallback logo
+    const displayTitle =  job.name || job.client || 'Experience Item';
+    const logoSrc = job.logo || job.clientLogo || '/logo-placeholder.png'; // Fallback logo
 
     return (
         <article className={styles.jobSummary}>
@@ -34,7 +34,7 @@ function ExperienceSummaryItem({ job }) {
                 </div>
             )}
             <Link to={job.pagePath} className={styles.detailsLink}>
-                Ver Detalles <span aria-hidden="true">→</span>
+                See Details <span aria-hidden="true">→</span>
             </Link>
         </article>
     );
@@ -50,12 +50,12 @@ function Experience() {
 
     return (
         <section className={styles.experience} id="experience">
-            <h2 className={styles.heading}>Donde he construido victorias</h2>
+            <h2 className={styles.heading}>Where I've Built Meaningful Wins</h2>
 
             {/* Freelance Section */}
             {freelanceConsulting && freelanceConsulting.length > 0 && (
                 <div className={styles.category}>
-                    <h3 className={styles.subHeading}>Freelance & Consultoría</h3>
+                    <h3 className={styles.subHeading}>Freelance & Consulting</h3>
                     <div className={styles.summaryGrid}>
                         {freelanceConsulting.map(job => (
                             <ExperienceSummaryItem key={job.id} job={job} />

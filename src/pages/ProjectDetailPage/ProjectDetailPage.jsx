@@ -20,7 +20,7 @@ function ProjectDetailPage() {
     return (
         <div className={`${layoutStyles.detailPage} ${styles.projectDetail}`}>
             <Link to="/" className={layoutStyles.backLink}>
-                <span aria-hidden="true">←</span> Volver a Inicio
+                <span aria-hidden="true">←</span> Back to Main Page
             </Link>
 
             <div className={layoutStyles.detailGrid}>
@@ -35,13 +35,13 @@ function ProjectDetailPage() {
                     </header>
 
                     <section className={styles.detailSection}>
-                        <h2>Resumen</h2>
+                        <h2>In a few words</h2>
                         <p>{projectItem.summary}</p>
                     </section>
 
                     {projectItem.details && projectItem.details.length > 0 && (
                         <section className={styles.detailSection}>
-                            <h2>Detalles y Motivación</h2>
+                            <h2>See Details and Motivation</h2>
                             <ul className={styles.detailList}>
                                 {projectItem.details.map((detail, index) => (
                                     <li key={index}>{detail}</li>
@@ -74,7 +74,7 @@ function ProjectDetailPage() {
                 <aside className={layoutStyles.sidebar}>
                     {projectItem.technologies && projectItem.technologies.length > 0 && (
                         <div className={styles.sidebarSection}>
-                            <h3>Tecnologías Usadas</h3>
+                            <h3>Stack Involved</h3>
                             <ul className={layoutStyles.techList}>
                                 {projectItem.technologies.map(tech => <li key={tech}>{tech}</li>)}
                             </ul>

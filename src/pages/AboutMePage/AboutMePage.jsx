@@ -40,7 +40,7 @@ function AboutMePage() {
             <div className={layoutStyles.detailPage}>
                 <p>About Me section not found.</p>
                 <Link to="/" className={layoutStyles.backLink}>
-                    <span aria-hidden="true">←</span> Volver
+                    <span aria-hidden="true">←</span> Back
                 </Link>
             </div>
         );
@@ -49,13 +49,13 @@ function AboutMePage() {
     return (
         <div className={`${layoutStyles.detailPage} ${styles.aboutPageContainer}`}>
             <Link to="/" className={`${layoutStyles.backLink} ${styles.backLink}`}>
-                <span aria-hidden="true">←</span> Volver
+                <span aria-hidden="true">←</span> Back
             </Link>
             <h1>{aboutMe.headline}</h1>
             <p className={styles.subheadline}>{aboutMe.subheadline}</p>
 
             <section className={styles.section}>
-                <h2>Mi Filosofía</h2>
+                <h2>My Philosophy</h2>
                 {aboutMe.philosophy.map((item, index) => (
                     <ContentRenderer key={`philosophy-${index}`} item={item} />
                 ))}

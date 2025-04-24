@@ -37,7 +37,7 @@ function RecognitionSummaryItem({ recognition }) {
             )}
 
             <Link to={recognition.pagePath} className={styles.detailsLink}>
-                Ver Detalles y Fuentes <span aria-hidden="true">→</span>
+                See Details and Sources <span aria-hidden="true">→</span>
             </Link>
         </article>
     );
@@ -56,7 +56,7 @@ function Recognition() {
 
     return (
         <section className={styles.recognition} id="recognition">
-            <h2 className={styles.heading}>Reconocimientos y Habilidades Ampliadas</h2>
+            <h2 className={styles.heading}>Recognitions & Broader Skills</h2>
             <div className={styles.summaryGrid}>
                 {recognitions.map(rec => (
                     <RecognitionSummaryItem key={rec.id} recognition={rec} />

@@ -28,7 +28,7 @@ function ProjectSummaryItem({ project }) {
                 </div>
             )}
             <Link to={project.pagePath} className={styles.detailsLink}>
-                Ver Detalles <span aria-hidden="true">→</span>
+                See Details <span aria-hidden="true">→</span>
             </Link>
         </article>
     );
@@ -44,7 +44,7 @@ function Projects() {
 
     return (
         <section className={styles.projects} id="projects">
-            <h2 className={styles.heading}>Proyectos Personales & Exploración</h2>
+            <h2 className={styles.heading}>Personal Projects & Technical Exploration</h2>
             <div className={styles.summaryGrid}>
                 {personal.map(project => (
                     <ProjectSummaryItem key={project.id} project={project} />

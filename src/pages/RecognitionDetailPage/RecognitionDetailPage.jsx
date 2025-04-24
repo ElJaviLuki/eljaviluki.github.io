@@ -20,7 +20,7 @@ function RecognitionDetailPage() {
     return (
         <div className={`${layoutStyles.detailPage} ${styles.recognitionDetail}`}>
             <Link to="/" className={layoutStyles.backLink}>
-                <span aria-hidden="true">←</span> Volver a Inicio
+                <span aria-hidden="true">←</span> Back to Main Page
             </Link>
 
             <div className={layoutStyles.detailGrid}>
@@ -50,13 +50,13 @@ function RecognitionDetailPage() {
                     </header>
 
                     <section className={styles.detailSection}>
-                        <h2>Resumen</h2>
+                        <h2>In a few words</h2>
                         <p>{recognitionItem.summary}</p>
                     </section>
 
                     {recognitionItem.skillsDemonstrated && recognitionItem.skillsDemonstrated.length > 0 && (
                         <section className={styles.detailSection}>
-                            <h2>Habilidades Demostradas</h2>
+                            <h2>Showcased Skills</h2>
                             <ul className={styles.skillsList}>
                                 {recognitionItem.skillsDemonstrated.map((skill, index) => (
                                     <li key={index}>{skill}</li>
@@ -89,7 +89,7 @@ function RecognitionDetailPage() {
                 <aside className={layoutStyles.sidebar}>
                     {recognitionItem.sources && recognitionItem.sources.length > 0 && (
                         <div className={styles.sidebarSection}>
-                            <h3>Fuentes y Referencias</h3>
+                            <h3>Sources and References</h3>
                             <ul className={styles.sourcesList}>
                                 {recognitionItem.sources.map((source, index) => (
                                     <li key={index}>

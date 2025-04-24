@@ -23,13 +23,13 @@ function ExperienceDetailPage() {
         // return <div className={layoutStyles.detailPage}><p>Experience not found.</p> <Link to="/" className={layoutStyles.backLink}>Back to Home</Link></div>;
     }
 
-    const displayTitle = experienceItem.company || experienceItem.client || experienceItem.name || 'Experience Detail';
-    const logoSrc = experienceItem.companyLogo || experienceItem.clientLogo || experienceItem.logo || '/logo-placeholder.png';
+    const displayTitle = experienceItem.name || experienceItem.company || 'Experience Detail';
+    const logoSrc =  experienceItem.logo || experienceItem.companyLogo || '/logo-placeholder.png';
 
     return (
         <div className={`${layoutStyles.detailPage} ${styles.jobDetail}`}>
             <Link to="/" className={layoutStyles.backLink}>
-                <span aria-hidden="true">←</span> Volver a Inicio
+                <span aria-hidden="true">←</span> Back to Main Page
             </Link>
 
             <div className={layoutStyles.detailGrid}>
@@ -64,13 +64,13 @@ function ExperienceDetailPage() {
 
 
                     <section className={styles.detailSection}>
-                        <h2>Resumen</h2>
+                        <h2>In a few words</h2>
                         <p>{experienceItem.summary}</p>
                     </section>
 
                     {experienceItem.details && experienceItem.details.length > 0 && (
                         <section className={styles.detailSection}>
-                            <h2>Detalles y Logros Clave</h2>
+                            <h2>See Details and Key Achievements</h2>
                             <ul className={styles.detailList}>
                                 {experienceItem.details.map((detail, index) => (
                                     <li key={index}>{detail}</li>
@@ -104,7 +104,7 @@ function ExperienceDetailPage() {
                 <aside className={layoutStyles.sidebar}>
                     {experienceItem.technologies && experienceItem.technologies.length > 0 && (
                         <div className={styles.sidebarSection}>
-                            <h3>Tecnologías Usadas</h3>
+                            <h3>Stack Involved</h3>
                             <ul className={layoutStyles.techList}>
                                 {experienceItem.technologies.map(tech => <li key={tech}>{tech}</li>)}
                             </ul>
@@ -112,7 +112,7 @@ function ExperienceDetailPage() {
                     )}
                     {experienceItem.softSkills && experienceItem.softSkills.length > 0 && (
                         <div className={styles.sidebarSection}>
-                            <h3>Habilidades Clave</h3>
+                            <h3>Key Skills</h3>
                             <ul>
                                 {experienceItem.softSkills.map(skill => <li key={skill}>{skill}</li>)}
                             </ul>
@@ -120,7 +120,7 @@ function ExperienceDetailPage() {
                     )}
                     {experienceItem.client && (
                         <div className={styles.sidebarSection}>
-                            <h3>Cliente</h3>
+                            <h3>Client</h3>
                             <p>{experienceItem.client}</p>
                         </div>
                     )}

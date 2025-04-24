@@ -8,7 +8,8 @@ import styles from './Footer.module.css';
 
 function Footer() {
     const { socialLinks } = portfolioData.personalInfo; // Removed handle, not used
-    const { languages } = portfolioData.skills; // Get languages
+    // Correctly destructure languages directly from portfolioData
+    const { languages } = portfolioData; // Get languages from the correct location
     const { cta, copyright } = portfolioData.footer;
 
     const emailLink = socialLinks.find(link => link.platform === 'Email')?.url;
@@ -37,7 +38,7 @@ function Footer() {
             <h2 className={styles.ctaHeading}>{cta}</h2>
             {emailLink && (
                 <a href={emailLink} className={`button-link ${styles.ctaButton}`}>
-                    Hablemos {/* Or: Empecemos / Contacta */}
+                    Let's make it!
                 </a>
             )}
 
@@ -50,12 +51,13 @@ function Footer() {
                 ))}
             </div>
 
+
             <p className={styles.copyright}>
                 {copyright} {/* Use copyright text from data */}
             </p>
             {/* Use a regular anchor for #top, handled by JS/CSS */}
             <a href="#top" className={styles.backToTop} onClick={handleBackToTop}>
-                ↑ Volver arriba
+                ↑ Back to Top
             </a>
         </footer>
     );

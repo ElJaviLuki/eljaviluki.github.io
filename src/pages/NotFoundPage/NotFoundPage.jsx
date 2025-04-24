@@ -13,7 +13,7 @@ function NotFoundPage() {
             <h1>404 - Página no encontrada</h1>
             <p>Parece que te has perdido. El camino que buscas no existe aquí.</p>
             <Link to="/" className={`button-link ${styles.homeButton}`}>
-                Volver al Inicio
+                Back to Main Page
             </Link>
         </div>
     );

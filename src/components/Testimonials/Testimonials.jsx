@@ -42,7 +42,7 @@ function Testimonials() {
 
     return (
         <section className={styles.testimonials} id="testimonials">
-            <h2 className={styles.heading}>Lo que dicen quienes ya ganan:</h2>
+            <h2 className={styles.heading}>What they say</h2>
             <div className={styles.grid}>
                 {testimonials.map((testimonial) => (
                     <article key={testimonial.id} className={styles.card}>
@@ -60,7 +60,7 @@ function Testimonials() {
                         <footer className={styles.attribution}>
                             <div className={styles.authorInfo}>
                                 <strong>{testimonial.authorName}</strong>
-                                <span>, {testimonial.authorTitle}</span>
+                                <span>{testimonial.authorTitle}</span>
                             </div>
                             <div className={styles.links}>
                                 {testimonial.associatedProjectId && (
