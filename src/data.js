@@ -128,6 +128,7 @@ export const portfolioData = {
             {
                 "id": "royal-tiktok",
                 "name": "Royal TikTok",
+                "web": null, // Puede ser null si no hay web
                 "logo": "/tiktok.png",
                 "client": "Agencia Principito",
                 "role": "Data Architect & Automation Lead",
@@ -175,6 +176,7 @@ export const portfolioData = {
             {
                 "id": "ortoprodent-erp",
                 "name": "Ortoprodent ERP",
+                "web": null, // Puede ser null si no hay web
                 "logo": "/ortoprodent.png",
                 "client": "Ortoprodent (Dental Lab)",
                 "role": "Software Developer",
@@ -217,6 +219,7 @@ export const portfolioData = {
                 "id": "teldat",
                 "client": "Teldat",
                 "clientLogo": "/teldat.png",
+                "web": "https://www.teldat.com/", // Puede ser null si no hay web
                 "role": "Full-Stack Developer",
                 "date": "2024/07 - 2025/03",
                 "locationMode": "Hybrid",
@@ -285,6 +288,7 @@ export const portfolioData = {
                 "id": "drive-me-group",
                 "client": "Drive Me Group",
                 "clientLogo": "/drive-me-group.jpeg",
+                "web": "https://www.drivemegroup.com/", // Puede ser null si no hay web
                 "role": "Data Engineer",
                 "date": "2024/03 - 2024/06",
                 "locationMode": "Remote",
@@ -333,6 +337,7 @@ export const portfolioData = {
             {
                 "id": "grindr-plus",
                 "title": "Grindr Plus",
+                "web": "https://github.com/ElJaviLuki/GrindrPlus", // Puede ser null si no hay web
                 "logo": "/grindr-plus.png",
                 "summary": "An Android Xposed Module mod exploring premium features of the Grindr dating app.",
                 "details": [
@@ -348,7 +353,7 @@ export const portfolioData = {
                     "Java",
                     "Android Internals",
                     "Xposed Framework",
-                    "Frida (similar concept)",
+                    "Frida",
                     "Reverse Engineering",
                     "Network Analysis",
                     "Static Analysis",
@@ -367,6 +372,7 @@ export const portfolioData = {
             {
                 "id": "csos-beacon",
                 "title": "Cobalt Strike Open Source Beacon",
+                "web": "https://github.com/ElJaviLuki/CobaltStrike_OpenBeacon",
                 "logo": "/cobalt-strike.jpeg",
                 "summary": "Developed a functional open-source C2 beacon inspired by Cobalt Strike, built from scratch in C.",
                 "details": [
@@ -380,14 +386,14 @@ export const portfolioData = {
                 "technologies": [
                     "C",
                     "Win32 API",
-                    "Windows Sockets (Winsock)",
+                    "Windows Sockets",
                     "HTTP Protocol",
                     "TCP/IP",
                     "SMB",
                     "Named Pipes",
                     "Powershell",
-                    "Reverse Engineering (Concepts)",
-                    "Cybersecurity Concepts",
+                    "Reverse Engineering",
+                    "Cybersecurity",
                     "Systems Programming"
                 ],
                 "pagePath": "/projects/csos-beacon",
@@ -402,6 +408,7 @@ export const portfolioData = {
             {
                 "id": "idealistillo",
                 "title": "Idealistillo",
+                "web": "https://github.com/ElJaviLuki/idealistillo",
                 "logo": "/idealistillo.png",
                 "summary": "Developed 'Idealistillo', a Python client library wrapping the Idealista API for property data.",
                 "details": [
@@ -425,6 +432,7 @@ export const portfolioData = {
         {
             "id": "ipo-2019",
             "title": "International Philosophy Olympiad (IPO)",
+            "web": "https://ipo2019.sfi.it/",
             "recognitionLogo": "/ipo-2019.png",
             "organizations": [
                 {
@@ -448,10 +456,6 @@ export const portfolioData = {
                 "Advanced English (Oral & Written defense of complex philosophical arguments)"
             ],
             "sources": [
-                {
-                    "label": "Official IPO 2019 Site",
-                    "url": "https://ipo2019.sfi.it/"
-                },
                 {
                     "label": "Todo en la vida es filosofía (Hoy)",
                     "url": "https://lazarza.hoy.es/vida-filosofia-20190411215651-nt.html"
@@ -481,11 +485,12 @@ export const portfolioData = {
         {
             "id": "oif-2019",
             "title": "Iberoamerican Philosophy Olympiad",
+            "web": "https://olimpiadafilosofia.jimdofree.com/",
             "recognitionLogo": "/oif-2019.png",
             "organizations": [
                 {
-                    "name": "Red Española de Filosofía & OIF",
-                    "logo": "/logo-placeholder.png"
+                    "name": "Red Española de Filosofía",
+                    "logo": "/ref.png"
                 }
             ],
             "date": "2019/10",
@@ -502,10 +507,6 @@ export const portfolioData = {
                 {
                     "label": "Filosofía Extremadura Announcement",
                     "url": "https://filosofiaextremadura.es/medalla-de-bronce-para-francisco-javier-lopez-cacenave-alumno-del-ies-tierrablanca/"
-                },
-                {
-                    "label": "Olimpiadas de Filosofía General Info",
-                    "url": "https://olimpiadafilosofia.jimdofree.com/"
                 }
             ],
             "pagePath": "/recognitions/oif-2019",
@@ -514,6 +515,7 @@ export const portfolioData = {
         {
             "id": "ncl-2021",
             "title": "III National Cyberleague",
+            "web": "https://www.nationalcyberleague.es/",
             "recognitionLogo": "/ncl-2021.png",
             "organizations": [
                 {
@@ -583,6 +585,7 @@ export const portfolioData = {
         {
             "id": "hackaboss",
             "institution": "HACK A BOSS",
+            "web": "https://www.hackaboss.com/",
             "logo": "/hackaboss.png",
             "degree": "Data Science & AI Bootcamp",
             "date": "2023/09 - 2024/02",
@@ -643,6 +646,7 @@ export const portfolioData = {
         {
             "id": "unex",
             "institution": "Universidad de Extremadura",
+            "web": "https://www.unex.es/",
             "logo": "/unex.png",
             "degree": "Software Engineering Degree Program",
             "date": "2020 - 2023",
