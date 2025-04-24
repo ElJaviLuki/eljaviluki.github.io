@@ -1,7 +1,7 @@
 .recognition {
-     padding: 5rem 0;
-     background-color: rgba(10, 10, 26, 0.3); /* Slightly different bg shade */
- }
+    padding: 5rem 0;
+    background-color: rgba(10, 10, 26, 0.3); /* Slightly different bg shade */
+}
 
 .heading {
     text-align: center;
@@ -67,8 +67,8 @@
 
 .recognitionSummary:hover {
     transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 12px 40px 0 rgba(0, 119, 255, 0.2); /* Blue glow */
-    background: rgba(30, 30, 60, 0.6);
+    background: rgba(30, 45, 60, 0.3); /* Consistent hover background */
+    box-shadow: 0 12px 40px 0 rgba(0, 119, 255, 0.18); /* Consistent subtle blue glow */
 }
 .recognitionSummary:hover::before {
     opacity: 1;
@@ -368,3 +368,5 @@
 .sourceLink:hover::after { /* Remove default link hover pseudo */
     width: 0;
 }
+/* Sidebar Section (already styled via .sidebar in Layout.module.css) */
+/* Styles for tags within sidebar are inherited from Layout.module.css .techList li */

@@ -81,8 +81,8 @@
 
 .jobSummary:hover {
     transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 12px 40px 0 rgba(0, 119, 255, 0.25);
-    background: rgba(30, 30, 60, 0.6); /* Slightly lighter on hover */
+    background: rgba(30, 45, 60, 0.3); /* Consistent hover background */
+    box-shadow: 0 12px 40px 0 rgba(0, 119, 255, 0.18); /* Consistent subtle blue glow */
 }
 .jobSummary:hover::before {
     opacity: 1;

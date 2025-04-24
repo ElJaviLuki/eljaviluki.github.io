@@ -1,9 +1,7 @@
-/* --- START OF FILE src/components/Testimonials/Testimonials.module.css --- */
-
 .testimonials {
-    padding: 5rem 0 6rem 0; /* More padding */
-    background: linear-gradient(0deg, rgba(10, 10, 26, 0) 0%, rgba(138, 43, 226, 0.05) 100%); /* Subtle gradient */
-    position: relative;
+  padding: 5rem 0 6rem 0; /* More padding */
+  background: linear-gradient(0deg, rgba(10, 10, 26, 0) 0%, rgba(138, 43, 226, 0.05) 100%); /* Subtle gradient */
+  position: relative;
 }
 
 .heading {
@@ -57,7 +55,8 @@
 }
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 45px rgba(0, 119, 255, 0.2); /* Enhanced glow */
+    background: rgba(30, 45, 60, 0.3); /* Consistent hover background */
+    box-shadow: 0 12px 45px rgba(0, 119, 255, 0.18); /* Consistent subtle blue glow */
 }
 
 
@@ -182,5 +181,3 @@
 .projectLink:hover::after, .authorLink:hover::after {
     width: 0;
 }
-
-/* --- END OF FILE src/components/Testimonials/Testimonials.module.css --- */

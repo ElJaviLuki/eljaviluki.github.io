@@ -1,4 +1,3 @@
-
 @keyframes aurora-gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -156,7 +155,8 @@ main > div > section:last-of-type {
     animation-delay: 0.4s; /* Delay sidebar animation */
 }
 .sidebar:hover {
-    box-shadow: 0 8px 40px 0 rgba(0, 119, 255, 0.2); /* Enhance glow on hover */
+    background: rgba(30, 45, 60, 0.3); /* Consistent hover background */
+    box-shadow: 0 8px 40px 0 rgba(0, 119, 255, 0.18); /* Consistent subtle blue glow */
 }
 
 .sidebar h2, .sidebar h3 {

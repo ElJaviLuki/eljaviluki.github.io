@@ -1,6 +1,6 @@
 .education {
-   padding: 5rem 0;
-   background-color: transparent; /* Transparent background */
+    padding: 5rem 0;
+    background-color: transparent; /* Transparent background */
 }
 
 .heading {
@@ -49,8 +49,9 @@
 .timelineItem:last-child { margin-bottom: 0; }
 
 .timelineItem:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 35px 0 rgba(138, 43, 226, 0.15); /* Purple glow */
+    transform: translateY(-8px); /* Standardized transform */
+    background: rgba(30, 45, 60, 0.3); /* Consistent hover background */
+    box-shadow: 0 12px 40px 0 rgba(0, 119, 255, 0.18); /* Consistent subtle blue glow */
 }
 
 .itemHeader {
