@@ -20,7 +20,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-accent-purple), var(--color-accent-electric-blue)); /* Reversed gradient */
+    background: linear-gradient(90deg, var(--color-accent-teal), var(--color-accent-electric-blue)); /* Reversed gradient */
     border-radius: 2px;
 }
 
@@ -54,7 +54,7 @@
     inset: 0;
     border-radius: 12px;
     padding: 1px;
-    background: linear-gradient(135deg, var(--color-accent-purple), var(--color-accent-electric-blue));
+    background: linear-gradient(135deg, var(--color-accent-teal), var(--color-accent-electric-blue));
     -webkit-mask:
             linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);
@@ -172,7 +172,7 @@
     height: 1px;
     bottom: 0;
     left: 0;
-    background-color: var(--color-accent-purple); /* Use purple */
+    background-color: var(--color-accent-teal); /* Use purple */
     transition: width 0.3s ease-out;
 }
 .detailsLink span {
@@ -180,7 +180,7 @@
     transition: transform 0.3s ease;
 }
 .detailsLink:hover {
-    color: var(--color-accent-purple); /* Use purple */
+    color: var(--color-accent-teal); /* Use purple */
     background-color: transparent;
     outline: none;
 }
@@ -262,7 +262,7 @@
     position: absolute;
     left: 0;
     top: 0px;
-    color: var(--color-accent-purple); /* Use purple */
+    color: var(--color-accent-teal); /* Use purple */
     font-weight: 700;
     font-size: 1.4em;
 }

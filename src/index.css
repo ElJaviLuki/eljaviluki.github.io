@@ -11,10 +11,8 @@
   --color-text-secondary: #a0a0cc; /* Muted lavender/gray */
   --color-accent-electric-blue: #0077ff; /* Bright Electric Blue */
   --color-accent-glow: rgba(0, 119, 255, 0.7); /* Glow effect for blue */
-  --color-accent-purple: #8a2be2; /* Complementary purple */
-  --color-accent-purple-glow: rgba(138, 43, 226, 0.6); /* Glow effect for purple */
   --color-accent-teal: #20c997; /* Complementary teal */
-    --color-accent-teal-glow: rgba(32, 201, 151, 0.6); /* Glow effect for teal */
+  --color-accent-teal-glow: rgba(32, 201, 151, 0.6); /* Glow effect for teal */
 
   /* Glassmorphism */
   --glass-bg-color: rgba(20, 20, 40, 0.5); /* Dark translucent bg for glass */
