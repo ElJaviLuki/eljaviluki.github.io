@@ -1,8 +1,6 @@
-/* --- START OF FILE src/components/Education/Education.module.css --- */
-
 .education {
-    padding: 5rem 0;
-    background-color: transparent; /* Transparent background */
+   padding: 5rem 0;
+   background-color: transparent; /* Transparent background */
 }
 
 .heading {
@@ -149,22 +147,28 @@
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem; /* Slightly more gap */
+    gap: 0.6rem; /* Consistent gap */
 }
 
+/* Consistent Tag Style */
 .skillTag {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    background-color: rgba(138, 43, 226, 0.1); /* Purple bg */
-    color: var(--color-accent-purple);
-    padding: 0.35rem 0.7rem; /* Adjust padding */
-    border: 1px solid rgba(138, 43, 226, 0.2);
+    font-family: var(--font-mono); /* Use mono font */
+    font-size: 0.8rem; /* Standardized size */
+    background-color: rgba(0, 119, 255, 0.1); /* Standardized blue bg */
+    color: var(--color-accent-electric-blue); /* Standardized blue text */
+    padding: 0.4rem 0.8rem; /* Standardized padding */
+    border: 1px solid rgba(0, 119, 255, 0.2); /* Standardized blue border */
     border-radius: 4px;
     white-space: nowrap;
+    display: inline-block;
+    line-height: 1.4;
     transition: var(--transition-smooth);
+    margin: 0; /* Reset margin */
 }
 .skillTag:hover {
-    background-color: rgba(138, 43, 226, 0.2);
-    color: #fff;
-    transform: scale(1.05);
+    background-color: rgba(0, 119, 255, 0.25); /* Standardized hover bg */
+    color: #fff; /* Standardized hover text */
+    border-color: var(--color-accent-electric-blue); /* Standardized hover border */
+    transform: scale(1.05); /* Standardized hover transform */
+    cursor: default;
 }

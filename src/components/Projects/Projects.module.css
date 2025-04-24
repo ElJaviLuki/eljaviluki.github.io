@@ -1,9 +1,7 @@
-/* --- START OF FILE src/components/Projects/Projects.module.css --- */
-
 .projects {
-    padding: 5rem 0;
-    /* Optional: Add a subtle pattern or gradient variation */
-    /* background: linear-gradient(180deg, rgba(10, 10, 26, 0) 0%, rgba(0, 119, 255, 0.03) 100%); */
+  padding: 5rem 0;
+  /* Optional: Add a subtle pattern or gradient variation */
+  /* background: linear-gradient(180deg, rgba(10, 10, 26, 0) 0%, rgba(0, 119, 255, 0.03) 100%); */
 }
 
 .heading {
@@ -113,31 +111,42 @@
     flex-grow: 1;
 }
 
-.techPreview { margin-top: 0.5rem; }
+.techPreview {
+    margin-top: 0.5rem;
+    display: flex; /* Use flexbox for tags */
+    flex-wrap: wrap;
+    gap: 0.6rem; /* Gap between tags */
+}
 
+/* Consistent Tag Style */
 .techTag {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    background-color: rgba(138, 43, 226, 0.1); /* Purpleish bg */
-    color: var(--color-accent-purple);
-    padding: 0.3rem 0.6rem;
-    border: 1px solid rgba(138, 43, 226, 0.3);
+    font-size: 0.8rem; /* Standardized size */
+    background-color: rgba(0, 119, 255, 0.1); /* Standardized blue bg */
+    color: var(--color-accent-electric-blue); /* Standardized blue text */
+    padding: 0.4rem 0.8rem; /* Standardized padding */
+    border: 1px solid rgba(0, 119, 255, 0.2); /* Standardized blue border */
     border-radius: 4px;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-    display: inline-block;
     white-space: nowrap;
+    display: inline-block;
+    line-height: 1.4;
     transition: var(--transition-smooth);
+    margin: 0; /* Reset margin */
 }
 .techTag:hover {
-    background-color: rgba(138, 43, 226, 0.3);
-    color: #fff;
-    transform: scale(1.05);
+    background-color: rgba(0, 119, 255, 0.25); /* Standardized hover bg */
+    color: #fff; /* Standardized hover text */
+    border-color: var(--color-accent-electric-blue); /* Standardized hover border */
+    transform: scale(1.05); /* Standardized hover transform */
+    cursor: default;
 }
+
 .techMore {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.8rem; /* Match tag size */
     color: var(--color-text-secondary);
+    align-self: center; /* Align vertically */
+    margin-left: 0.2rem;
 }
 
 .detailsLink { /* Style inherited from Experience.module.css, using same class */
@@ -156,7 +165,7 @@
     border-bottom: none;
     position: relative;
 }
-.detailsLink::after { /* Underline effect */
+.detailsLink::after { /* Underline effect - Use PURPLE for Projects */
     content: '';
     position: absolute;
     width: 0;
@@ -171,7 +180,7 @@
     transition: transform 0.3s ease;
 }
 .detailsLink:hover {
-    color: var(--color-accent-purple);
+    color: var(--color-accent-purple); /* Use purple */
     background-color: transparent;
     outline: none;
 }
@@ -248,7 +257,7 @@
     position: relative;
     color: var(--color-text-secondary);
 }
-.detailList li::before { /* Custom bullet */
+.detailList li::before { /* Custom bullet - Use PURPLE for Projects */
     content: '›';
     position: absolute;
     left: 0;
@@ -257,3 +266,5 @@
     font-weight: 700;
     font-size: 1.4em;
 }
+/* Sidebar Section (already styled via .sidebar in Layout.module.css) */
+/* Styles for tags within sidebar are inherited from Layout.module.css .techList li */
