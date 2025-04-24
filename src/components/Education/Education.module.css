@@ -1,120 +1,147 @@
 /* --- START OF FILE src/components/Education/Education.module.css --- */
 
-/* src/components/Education/Education.module.css */
 .education {
-    padding: 4rem 0;
-    background-color: #ffffff; /* Keep white background */
+    padding: 5rem 0;
+    background-color: transparent; /* Transparent background */
 }
 
 .heading {
     text-align: center;
-    margin-bottom: 3rem;
-    border-bottom: var(--border-standard);
-    padding-bottom: 1rem;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    color: #fff;
+    position: relative;
+}
+/* Underline effect */
+.heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent-electric-blue), var(--color-accent-purple));
+    border-radius: 2px;
 }
 
 .timeline {
-    max-width: 900px;
+    max-width: 950px;
     margin: 0 auto;
     position: relative;
-    /* No explicit timeline line */
+    /* Optional: Add a subtle vertical line */
+    /* padding-left: 2rem; */
+    /* border-left: 2px solid var(--glass-border-color); */
 }
+/* .timeline::before { ... } */
 
 .timelineItem {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
+    background: var(--glass-bg-color);
+    backdrop-filter: blur(var(--glass-blur));
+    border-radius: 12px;
     border: var(--border-standard);
-    padding: 1.5rem;
-    background-color: var(--color-secondary-bg); /* Light gray background for items */
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+    padding: 2.5rem 2rem; /* More padding */
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
-.timelineItem:last-child {
-    margin-bottom: 0;
+.timelineItem:last-child { margin-bottom: 0; }
+
+.timelineItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 35px 0 rgba(138, 43, 226, 0.15); /* Purple glow */
 }
 
 .itemHeader {
     display: flex;
-    align-items: center; /* Vertically center */
+    align-items: center;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--glass-border-color);
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
-    border: var(--border-standard);
-    background-color: white;
-    padding: 0.3rem;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 0.5rem;
     flex-shrink: 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
-.titleGroup {
-    flex-grow: 1;
-}
+.titleGroup { flex-grow: 1; }
 
 .institution {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 0.25rem;
+    color: #fff;
 }
 
 .degree {
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: var(--color-text-primary);
 }
 
 .dateStatus {
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
     margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.itemBody {
-    /* Styles for content */
-}
+.itemBody { /* Styles for content */ }
 
 .itemBody p {
     font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    color: var(--color-text-secondary);
 }
 
 .summary {
-    font-weight: 700;
-    color: #000;
+    font-weight: 600; /* Bolder summary */
+    color: var(--color-text-primary); /* Brighter summary */
 }
 
 .notes {
-    font-style: italic;
-    background-color: #fff; /* White background for notes */
-    padding: 0.8rem 1rem; /* Adjust padding */
-    border-left: 3px solid var(--color-accent);
+    font-style: normal; /* Remove italic */
+    background-color: rgba(0, 119, 255, 0.05); /* Subtle blue bg */
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--color-accent-electric-blue);
     font-size: 0.9rem;
-    color: #444;
-    margin-top: 1rem; /* Add space above notes */
+    color: var(--color-text-secondary);
+    margin-top: 1.5rem;
+    border-radius: 0 5px 5px 0; /* Rounded corners */
 }
-.notes em {
+.notes em { /* The "Nota:" part */
     font-weight: 700;
-    font-style: normal; /* Remove double italic */
-    color: #000; /* Darker label */
-    margin-right: 0.3rem;
+    font-style: normal;
+    color: var(--color-accent-electric-blue); /* Blue label */
+    margin-right: 0.5rem;
 }
 
 .skillsSection {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid #ccc;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--glass-border-color);
 }
 
 .skillsSection h4 {
     font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: #333; /* Slightly muted heading */
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--color-text-primary);
 }
 
 .skillsList {
@@ -122,16 +149,22 @@
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.6rem; /* Slightly more gap */
 }
 
-.skillTag { /* Reusing style */
+.skillTag {
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    background-color: #fff; /* White background */
-    padding: 0.2rem 0.5rem;
-    border: var(--border-standard);
+    background-color: rgba(138, 43, 226, 0.1); /* Purple bg */
+    color: var(--color-accent-purple);
+    padding: 0.35rem 0.7rem; /* Adjust padding */
+    border: 1px solid rgba(138, 43, 226, 0.2);
+    border-radius: 4px;
     white-space: nowrap;
+    transition: var(--transition-smooth);
 }
-
-/* --- END OF FILE src/components/Education/Education.module.css --- */
+.skillTag:hover {
+    background-color: rgba(138, 43, 226, 0.2);
+    color: #fff;
+    transform: scale(1.05);
+}

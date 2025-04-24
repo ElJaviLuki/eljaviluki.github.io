@@ -1,183 +1,259 @@
 /* --- START OF FILE src/components/Projects/Projects.module.css --- */
 
-/* src/components/Projects/Projects.module.css */
-/* Adapting styles from Experience.module.css for consistency */
-
 .projects {
-    padding: 4rem 0;
-    background-color: var(--color-secondary-bg); /* Alternate background */
+    padding: 5rem 0;
+    /* Optional: Add a subtle pattern or gradient variation */
+    /* background: linear-gradient(180deg, rgba(10, 10, 26, 0) 0%, rgba(0, 119, 255, 0.03) 100%); */
 }
 
 .heading {
     text-align: center;
-    margin-bottom: 3rem;
-    border-bottom: var(--border-standard);
-    padding-bottom: 1rem;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    color: #fff;
+    position: relative;
+}
+/* Underline effect */
+.heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent-purple), var(--color-accent-electric-blue)); /* Reversed gradient */
+    border-radius: 2px;
 }
 
-/* Styles for Summary View */
+/* Summary Grid */
 .summaryGrid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); /* Slightly smaller min */
+    gap: 2.5rem;
 }
 
-@media (min-width: 768px) {
-    .summaryGrid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    }
-}
-
+/* Glassmorphism Card */
 .projectSummary {
+    background: var(--glass-bg-color);
+    backdrop-filter: blur(var(--glass-blur));
+    border-radius: 12px;
     border: var(--border-standard);
-    padding: 1.5rem;
-    background-color: var(--color-background); /* White cards */
-    /* background: linear-gradient(135deg, var(--color-background) 97%, var(--color-accent) 97%); */ /* Removed corner accent */
+    padding: 2rem;
+    box-shadow: var(--glass-shadow);
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Spacing between elements */
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.05); /* Subtle shadow */
+    gap: 1.25rem;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+/* Gradient border hover effect */
+.projectSummary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--color-accent-purple), var(--color-accent-electric-blue));
+    -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.projectSummary:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 12px 40px 0 rgba(138, 43, 226, 0.2); /* Purple glow */
+    background: rgba(40, 20, 60, 0.6); /* Purplish hover bg */
+}
+.projectSummary:hover::before {
+    opacity: 1;
 }
 
 .summaryHeader {
     display: flex;
-    align-items: center; /* Center vertically */
+    align-items: center;
     gap: 1rem;
-    border-bottom: 1px dashed #ccc;
     padding-bottom: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--glass-border-color);
 }
 
 .logo {
-    width: 40px; /* Slightly smaller logo */
-    height: 40px;
-    object-fit: contain; /* Use contain to prevent distortion */
+    width: 45px; /* Slightly smaller logo */
+    height: 45px;
+    object-fit: contain;
     flex-shrink: 0;
-    border: 1px solid #eee;
-    padding: 0.2rem;
-    background-color: white; /* Ensure visibility on dark logos */
+    border-radius: 6px;
+    padding: 0.3rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
 }
 
-.titleGroup {
-    flex-grow: 1;
-}
+.titleGroup { flex-grow: 1; }
 
-.title { /* Renamed from company */
-    font-size: 1.2rem; /* Slightly smaller title */
+.title {
+    font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 0; /* No margin below title */
+    margin-bottom: 0;
+    color: #fff;
 }
 
 .summaryText {
     font-size: 0.95rem;
-    line-height: 1.6;
-    color: #333;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
     margin-bottom: 0.5rem;
-    flex-grow: 1; /* Allow summary to take space */
+    flex-grow: 1;
 }
 
-.techPreview {
-    margin-top: 0.5rem; /* Space above tech tags */
-}
+.techPreview { margin-top: 0.5rem; }
 
 .techTag {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    background-color: var(--color-secondary-bg);
-    padding: 0.2rem 0.5rem;
-    border: var(--border-standard);
+    font-size: 0.75rem;
+    background-color: rgba(138, 43, 226, 0.1); /* Purpleish bg */
+    color: var(--color-accent-purple);
+    padding: 0.3rem 0.6rem;
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    border-radius: 4px;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
     display: inline-block;
     white-space: nowrap;
+    transition: var(--transition-smooth);
+}
+.techTag:hover {
+    background-color: rgba(138, 43, 226, 0.3);
+    color: #fff;
+    transform: scale(1.05);
 }
 .techMore {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: #555;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
 }
 
-.detailsLink {
-    font-size: 0.9rem;
-    font-weight: 700;
+.detailsLink { /* Style inherited from Experience.module.css, using same class */
+    font-size: 0.85rem;
+    font-weight: 600;
     text-transform: uppercase;
-    display: inline-block;
-    margin-top: auto; /* Push link to bottom */
-    align-self: flex-start; /* Align to left */
-    /* Use global link styles */
-    color: var(--color-text);
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: auto;
+    align-self: flex-start;
+    color: var(--color-text-primary);
     background-color: transparent;
     text-decoration: none;
-    border-bottom: 2px solid var(--color-text);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
+    padding: 0.4rem 0;
+    border-bottom: none;
+    position: relative;
 }
-
-.detailsLink:hover,
-.detailsLink:focus {
-    color: var(--color-accent-dark);
-    border-color: var(--color-accent-dark);
+.detailsLink::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-accent-purple); /* Use purple */
+    transition: width 0.3s ease-out;
+}
+.detailsLink span {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+.detailsLink:hover {
+    color: var(--color-accent-purple);
     background-color: transparent;
     outline: none;
-    text-decoration: none;
 }
+.detailsLink:hover::after { width: 100%; }
+.detailsLink:hover span { transform: translateX(4px); }
 
+/* --- Detail Page Styles --- */
+.projectDetail { /* Uses .detailPage */ }
 
-/* Styles for Detail Page (within ProjectDetailPage.jsx) */
-.projectDetail {
-    /* Uses .detailPage class from Layout.module.css */
-}
-
-.detailHeader { /* Reusing class name, maybe make more specific if needed */
+.detailHeader { /* Reusing style from Experience */
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1.5rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: var(--border-standard);
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--glass-border-color);
+}
+@media (min-width: 576px) {
+    .detailHeader {
+        flex-direction: row;
+        align-items: center;
+    }
 }
 
-.detailLogo { /* Reusing class name */
-    width: 60px; /* Adjust size */
-    height: 60px;
+
+.detailLogo { /* Reusing style from Experience */
+    width: 70px; /* Adjust size */
+    height: 70px;
     object-fit: contain;
-    border: var(--border-standard);
+    border-radius: 8px;
     padding: 0.5rem;
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
     flex-shrink: 0;
 }
 
-.detailTitleGroup h1 { /* Reusing class name */
-    font-size: 2rem;
+.detailTitleGroup h1 { /* Reusing style */
+    font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 0.25rem;
-    border-bottom: none; /* Override layout style for H1 */
+    border-bottom: none;
     padding-bottom: 0;
     text-align: left;
     line-height: 1.2;
+    color: #fff;
+}
+.detailTitleGroup p { /* Subtitle/category */
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
 }
 
-.detailSection { /* Reusing class name */
-    margin-bottom: 2.5rem;
-}
+.detailSection { margin-bottom: 3rem; }
 
-.detailSection h2 { /* Reusing class name */
-    font-size: 1.4rem;
-    font-weight: 700;
+.detailSection h2 { /* Reusing style */
+    font-size: 1.6rem;
+    font-weight: 600;
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--glass-border-color);
+    padding-bottom: 0.8rem;
+    color: #fff;
 }
 
-.detailList { /* Reusing class name */
-    list-style: disc; /* Use bullets for details */
-    padding-left: 1.5rem; /* Indent list */
+.detailList { /* Reusing style */
+    list-style: none;
+    padding-left: 0;
     margin: 0;
 }
 
-.detailList li { /* Reusing class name */
-    margin-bottom: 0.85rem;
-    line-height: 1.7;
-    padding-left: 0.5rem;
+.detailList li { /* Reusing style */
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    padding-left: 1.8rem;
+    position: relative;
+    color: var(--color-text-secondary);
 }
-
-/* --- END OF FILE src/components/Projects/Projects.module.css --- */
+.detailList li::before { /* Custom bullet */
+    content: '›';
+    position: absolute;
+    left: 0;
+    top: 0px;
+    color: var(--color-accent-purple); /* Use purple */
+    font-weight: 700;
+    font-size: 1.4em;
+}

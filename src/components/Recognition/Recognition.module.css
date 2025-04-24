@@ -1,226 +1,296 @@
 /* --- START OF FILE src/components/Recognition/Recognition.module.css --- */
 
-/* src/components/Recognition/Recognition.module.css */
-/* Adapting styles from Experience/Projects */
-
 .recognition {
-    padding: 4rem 0;
-    /* border-top: var(--border-standard); */ /* Handled by layout */
-    background-color: #ffffff; /* White background */
+    padding: 5rem 0;
+    background-color: rgba(10, 10, 26, 0.3); /* Slightly different bg shade */
 }
 
 .heading {
     text-align: center;
-    margin-bottom: 3rem;
-    border-bottom: var(--border-standard);
-    padding-bottom: 1rem;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    color: #fff;
+    position: relative;
+}
+/* Underline effect */
+.heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent-electric-blue), var(--color-accent-purple));
+    border-radius: 2px;
 }
 
-/* Styles for Summary View */
+/* Summary Grid */
 .summaryGrid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-bottom: 3rem; /* Space before philosophy note */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    gap: 2.5rem;
+    margin-bottom: 0; /* Remove bottom margin if philosophy note is removed */
 }
 
-@media (min-width: 768px) {
-    .summaryGrid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    }
-}
-
+/* Glassmorphism Card */
 .recognitionSummary {
+    background: var(--glass-bg-color);
+    backdrop-filter: blur(var(--glass-blur));
+    border-radius: 12px;
     border: var(--border-standard);
-    padding: 1.5rem;
-    background-color: var(--color-secondary-bg); /* Light gray cards */
+    padding: 2rem;
+    box-shadow: var(--glass-shadow);
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Spacing between elements */
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.05); /* Lighter shadow */
+    gap: 1.25rem;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+/* Gradient border hover effect */
+.recognitionSummary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--color-accent-electric-blue), var(--color-accent-purple));
+    -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.recognitionSummary:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 12px 40px 0 rgba(0, 119, 255, 0.2); /* Blue glow */
+    background: rgba(30, 30, 60, 0.6);
+}
+.recognitionSummary:hover::before {
+    opacity: 1;
 }
 
 .summaryHeader {
     display: flex;
-    align-items: center; /* Center vertically */
+    align-items: center;
     gap: 1rem;
-    border-bottom: 1px dashed #ccc;
     padding-bottom: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--glass-border-color);
 }
 
 .logo {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     object-fit: contain;
     flex-shrink: 0;
-    border: 1px solid #eee;
-    padding: 0.2rem;
-    background-color: white;
+    border-radius: 6px;
+    padding: 0.3rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
 }
 
-.titleGroup {
-    flex-grow: 1;
-}
+.titleGroup { flex-grow: 1; }
 
 .title {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Slightly smaller */
     font-weight: 700;
     margin-bottom: 0.25rem;
+    color: #fff;
 }
 
 .levelOrg {
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
     margin-bottom: 0;
+    font-weight: 500;
 }
 
 .summaryText {
     font-size: 0.95rem;
-    line-height: 1.6;
-    color: #333;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
     margin-bottom: 0.5rem;
-    flex-grow: 1; /* Allow text to take space */
+    flex-grow: 1;
 }
 
 .skillsPreview {
     margin-top: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Smaller preview text */
 }
 
 .skillsPreview strong {
-    font-weight: 700;
+    font-weight: 600;
     margin-right: 0.5rem;
+    color: var(--color-text-primary);
 }
 
-.skillTag { /* Reuse tech tag style */
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    background-color: #fff; /* White tags */
-    padding: 0.2rem 0.5rem;
-    border: var(--border-standard);
+.skillTag { /* Use similar style to tech tags */
+    font-family: var(--font-primary); /* Use primary font for skills */
+    font-weight: 500;
+    font-size: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-secondary);
+    padding: 0.3rem 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
     display: inline-block;
     white-space: nowrap;
+    transition: var(--transition-smooth);
+}
+.skillTag:hover {
+    background-color: rgba(0, 119, 255, 0.1);
+    color: var(--color-accent-electric-blue);
+    transform: scale(1.05);
 }
 .skillMore {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: #555;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
 }
 
 
-.detailsLink {
-    font-size: 0.9rem;
-    font-weight: 700;
+.detailsLink { /* Style inherited from Experience.module.css */
+    font-size: 0.85rem;
+    font-weight: 600;
     text-transform: uppercase;
-    display: inline-block;
-    margin-top: auto; /* Push link to bottom */
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: auto;
     align-self: flex-start;
-    color: var(--color-text);
+    color: var(--color-text-primary);
     background-color: transparent;
     text-decoration: none;
-    border-bottom: 2px solid var(--color-text);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
+    padding: 0.4rem 0;
+    border-bottom: none;
+    position: relative;
 }
-
-.detailsLink:hover,
-.detailsLink:focus {
-    color: var(--color-accent-dark);
-    border-color: var(--color-accent-dark);
+.detailsLink::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-accent-electric-blue);
+    transition: width 0.3s ease-out;
+}
+.detailsLink span {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+.detailsLink:hover {
+    color: var(--color-accent-electric-blue);
     background-color: transparent;
     outline: none;
-    text-decoration: none;
 }
+.detailsLink:hover::after { width: 100%; }
+.detailsLink:hover span { transform: translateX(4px); }
 
-/* Detail Page Styles (within RecognitionDetailPage.jsx) */
-.recognitionDetail {
-    /* Uses .detailPage from layout */
-}
 
-.detailHeader { /* Reusing class name */
+/* --- Detail Page Styles --- */
+.recognitionDetail { /* Uses .detailPage */ }
+
+.detailHeader { /* Reusing style */
     display: flex;
-    align-items: flex-start; /* Align top */
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1.5rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: var(--border-standard);
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--glass-border-color);
+}
+@media (min-width: 576px) {
+    .detailHeader {
+        flex-direction: row;
+        align-items: center; /* Center vertically */
+    }
 }
 
-.detailLogo { /* Reusing class name */
-    width: 80px; /* Larger logo */
+.detailLogo { /* Reusing style */
+    width: 80px;
     height: 80px;
     object-fit: contain;
-    border: var(--border-standard);
+    border-radius: 10px;
     padding: 0.5rem;
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
     flex-shrink: 0;
 }
 
-.detailTitleGroup {
-    flex-grow: 1;
-}
+.detailTitleGroup { flex-grow: 1; }
 
-.detailTitleGroup h1 { /* Reusing class name */
-    font-size: 2rem;
-    margin-bottom: 0.5rem; /* Space below title */
+.detailTitleGroup h1 { /* Reusing style */
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 0.5rem;
     border-bottom: none;
     padding-bottom: 0;
     text-align: left;
     line-height: 1.2;
+    color: #fff;
 }
 .detailTitleGroup p {
-    margin-bottom: 0.3rem; /* Tighten spacing */
-    color: #555;
-    font-size: 0.95rem; /* Slightly smaller */
+    margin-bottom: 0.4rem;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
     line-height: 1.5;
 }
-.detailTitleGroup .level {
-    font-weight: 700;
-    color: #333;
+.detailTitleGroup .level,
+.detailTitleGroup p strong {
+    font-weight: 600;
+    color: var(--color-text-primary); /* Brighter labels */
 }
 .detailTitleGroup .orgs {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem; /* More gap */
+    margin-top: 0.5rem;
 }
 
 .detailTitleGroup .orgs strong {
-    margin-right: 0.5rem;
+    margin-right: 0; /* Remove extra margin */
 }
 
 .detailTitleGroup .orgs span { /* Wrapper for each org */
-    display: inline-flex; /* Align logo and text */
+    display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    background-color: var(--color-secondary-bg);
-    padding: 0.2rem 0.5rem;
-    border: var(--border-standard);
+    gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 0.3rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
     font-size: 0.9rem;
+    color: var(--color-text-secondary);
 }
 
-.detailTitleGroup .orgs img { /* Small logos for orgs */
-    height: 18px;
+.detailTitleGroup .orgs img {
+    height: 20px;
     width: auto;
-    /* margin-right: 0.3rem; */
     vertical-align: middle;
-    background-color: white; /* Ensure visibility */
-    padding: 1px;
+    background-color: transparent; /* Remove white bg */
+    padding: 0;
+    filter: brightness(1.2); /* Slightly brighten logos */
 }
 
-.detailSection { /* Reusing class name */
-    margin-bottom: 2.5rem;
-}
+.detailSection { margin-bottom: 3rem; }
 
-.detailSection h2 { /* Reusing class name */
-    font-size: 1.4rem;
-    font-weight: 700;
+.detailSection h2 { /* Reusing style */
+    font-size: 1.6rem;
+    font-weight: 600;
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--glass-border-color);
+    padding-bottom: 0.8rem;
+    color: #fff;
 }
 
 /* Skills List specific for detail page */
@@ -233,14 +303,22 @@
 }
 
 .skillsList li {
-    /* font-family: var(--font-mono); */ /* Use primary font */
+    font-family: var(--font-primary);
     font-weight: 500;
-    font-size: 0.95rem;
-    background-color: var(--color-secondary-bg);
-    padding: 0.4rem 0.8rem;
-    border: var(--border-standard);
+    font-size: 0.9rem;
+    background-color: rgba(0, 119, 255, 0.1); /* Blueish bg */
+    color: var(--color-accent-electric-blue);
+    padding: 0.4rem 0.9rem; /* More padding */
+    border: 1px solid rgba(0, 119, 255, 0.2);
+    border-radius: 5px;
     white-space: nowrap;
-    margin-bottom: 0; /* Reset li margin */
+    margin-bottom: 0;
+    transition: var(--transition-smooth);
+}
+.skillsList li:hover {
+    background-color: rgba(0, 119, 255, 0.2);
+    color: #fff;
+    transform: scale(1.03);
 }
 
 /* Sources List specific for detail page sidebar */
@@ -249,21 +327,33 @@
     padding: 0;
     margin: 0;
 }
-.sourcesList li {
-    margin-bottom: 0.75rem;
-}
+.sourcesList li { margin-bottom: 0.75rem; }
+
 .sourceLink {
     font-size: 0.9rem;
-    /* Inherits global link styles */
-    text-decoration: underline;
-    border-bottom: none; /* Remove extra border */
-    display: inline; /* Ensure it behaves like a normal link */
-    background-color: transparent; /* Override global */
+    color: var(--color-accent-electric-blue); /* Use accent color */
+    text-decoration: none; /* Remove default link style */
+    border-bottom: 1px dashed var(--color-accent-electric-blue); /* Dashed underline */
+    padding-bottom: 1px;
+    display: inline;
+    background-color: transparent;
+    transition: var(--transition-smooth);
 }
+.sourceLink span { /* External link icon */
+    margin-left: 0.25rem;
+    font-size: 0.9em;
+    display: inline-block; /* Allow transform */
+    transition: transform 0.3s ease;
+}
+
 .sourceLink:hover {
-    background-color: var(--color-text); /* Restore global hover */
-    color: var(--color-background);
+    color: var(--color-accent-purple); /* Change color on hover */
+    border-bottom-color: var(--color-accent-purple);
+    background-color: transparent;
 }
-
-
-/* --- END OF FILE src/components/Recognition/Recognition.module.css --- */
+.sourceLink:hover span {
+    transform: translate(2px, -2px);
+}
+.sourceLink:hover::after { /* Remove default link hover pseudo */
+    width: 0;
+}

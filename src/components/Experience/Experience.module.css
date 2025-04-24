@@ -1,276 +1,356 @@
 /* --- START OF FILE src/components/Experience/Experience.module.css --- */
 
-/* src/components/Experience/Experience.module.css */
 .experience {
-    padding: 4rem 0;
+    padding: 5rem 0;
 }
 
 .heading {
     text-align: center;
-    margin-bottom: 3rem;
-    border-bottom: var(--border-standard);
-    padding-bottom: 1rem;
+    margin-bottom: 4rem; /* More space */
+    padding-bottom: 1.5rem;
+    color: #fff;
+    position: relative;
 }
+/* Underline effect for heading */
+.heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent-electric-blue), var(--color-accent-purple));
+    border-radius: 2px;
+}
+
 
 .category {
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
-
-.category:last-of-type {
-    margin-bottom: 0;
-}
+.category:last-of-type { margin-bottom: 0; }
 
 .subHeading {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    border-left: 5px solid var(--color-border);
-    padding-left: 1rem;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    color: var(--color-text-primary);
+    border-left: 4px solid var(--color-accent-electric-blue);
+    padding-left: 1.5rem;
 }
 
-/* Styles for Summary View */
+/* Summary Grid */
 .summaryGrid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); /* Responsive grid */
+    gap: 2.5rem; /* Increased gap */
 }
 
-@media (min-width: 768px) {
-    .summaryGrid {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    }
-}
-
-
+/* Glassmorphism Card */
 .jobSummary {
+    background: var(--glass-bg-color);
+    backdrop-filter: blur(var(--glass-blur));
+    border-radius: 12px; /* More rounded */
     border: var(--border-standard);
-    padding: 1.5rem;
-    background: linear-gradient(135deg, var(--color-background) 97%, var(--color-accent) 97%); /* Subtle corner accent */
+    padding: 2rem; /* More padding */
+    box-shadow: var(--glass-shadow);
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Spacing between elements */
+    gap: 1.25rem;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden; /* Clip hover effects */
+    z-index: 1;
+}
+/* Subtle gradient border effect on hover */
+.jobSummary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px; /* border width */
+    background: linear-gradient(135deg, var(--color-accent-electric-blue), var(--color-accent-purple));
+    -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+
+.jobSummary:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 12px 40px 0 rgba(0, 119, 255, 0.25);
+    background: rgba(30, 30, 60, 0.6); /* Slightly lighter on hover */
+}
+.jobSummary:hover::before {
+    opacity: 1;
 }
 
 .summaryHeader {
     display: flex;
-    align-items: flex-start; /* Align items to the top */
-    gap: 1rem;
-    border-bottom: 1px dashed #ccc;
+    align-items: center; /* Center items vertically */
+    gap: 1.25rem;
     padding-bottom: 1rem;
-    margin-bottom: 0.5rem; /* Reduce margin */
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--glass-border-color);
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
-    object-fit: contain; /* Use contain to prevent distortion */
+    width: 55px; /* Slightly larger */
+    height: 55px;
+    object-fit: contain;
     flex-shrink: 0;
-    border: 1px solid #eee;
-    padding: 0.2rem;
-    background-color: white; /* Ensure visibility on dark logos */
+    border-radius: 8px; /* Rounded logo bg */
+    padding: 0.4rem;
+    background-color: rgba(255, 255, 255, 0.8); /* White background for logo */
+    border: none; /* Remove inner border */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.titleGroup {
-    flex-grow: 1;
-}
+.titleGroup { flex-grow: 1; }
 
 .company {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 0.25rem;
+    color: #fff; /* White company name */
 }
 
 .role {
-    font-style: italic;
+    font-style: normal; /* Remove italic */
+    font-weight: 500; /* Medium weight */
     margin-bottom: 0.5rem;
-    color: #555; /* Slightly muted color */
+    color: var(--color-text-secondary);
     font-size: 1rem;
 }
 
 .dateLocation {
-    font-size: 0.85rem;
-    color: #666;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
     margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
-
 
 .summaryText {
     font-size: 0.95rem;
-    line-height: 1.6;
-    color: #333;
-    margin-bottom: 0.5rem; /* Add some space below summary */
-    flex-grow: 1; /* Allow summary text to take space */
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+    flex-grow: 1;
 }
 
-.techPreview {
-    margin-top: 0.5rem; /* Space above tech tags */
-}
+.techPreview { margin-top: 0.5rem; }
 
 .techTag {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    background-color: var(--color-secondary-bg);
-    padding: 0.2rem 0.5rem;
-    border: var(--border-standard);
+    font-size: 0.75rem; /* Smaller tech tags */
+    background-color: rgba(0, 119, 255, 0.1); /* Blueish bg */
+    color: var(--color-accent-electric-blue);
+    padding: 0.3rem 0.6rem;
+    border: 1px solid rgba(0, 119, 255, 0.3);
+    border-radius: 4px;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
     display: inline-block;
     white-space: nowrap;
+    transition: var(--transition-smooth);
 }
+.techTag:hover {
+    background-color: rgba(0, 119, 255, 0.3);
+    color: #fff;
+    transform: scale(1.05);
+}
+
 .techMore {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: #555;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
 }
 
 .detailsLink {
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: 0.85rem;
+    font-weight: 600;
     text-transform: uppercase;
-    display: inline-block;
-    margin-top: auto; /* Push link to bottom */
-    align-self: flex-start; /* Align to left */
-    /* Use global link styles */
-    color: var(--color-text);
+    letter-spacing: 0.5px;
+    display: inline-flex; /* Align icon */
+    align-items: center;
+    margin-top: auto;
+    align-self: flex-start;
+    color: var(--color-text-primary); /* Brighter link */
     background-color: transparent;
     text-decoration: none;
-    border-bottom: 2px solid var(--color-text);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
+    padding: 0.4rem 0; /* Adjust padding */
+    border-bottom: none; /* Use pseudo element */
+    position: relative; /* For pseudo element */
 }
-
-.detailsLink:hover,
-.detailsLink:focus {
-    color: var(--color-accent-dark);
-    border-color: var(--color-accent-dark);
+.detailsLink::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-accent-electric-blue);
+    transition: width 0.3s ease-out;
+}
+.detailsLink span { /* Arrow */
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+.detailsLink:hover {
+    color: var(--color-accent-electric-blue);
     background-color: transparent;
     outline: none;
-    text-decoration: none;
 }
+.detailsLink:hover::after { width: 100%; }
+.detailsLink:hover span { transform: translateX(4px); }
 
-
-/* Styles for Detail Page (within ExperienceDetailPage.jsx) */
-.jobDetail {
-    /* Uses .detailPage class from Layout.module.css */
-}
+/* --- Detail Page Specific Styles --- */
+.jobDetail { /* Uses .detailPage */ }
 
 .detailHeader {
     display: flex;
-    align-items: center; /* Vertically center */
+    flex-direction: column; /* Stack on small screens */
+    align-items: flex-start;
     gap: 1.5rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: var(--border-standard);
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--glass-border-color);
+}
+@media (min-width: 576px) {
+    .detailHeader {
+        flex-direction: row;
+        align-items: center;
+    }
 }
 
+
 .detailLogo {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
-    border: var(--border-standard);
-    padding: 0.5rem;
-    background: white;
+    border-radius: 10px;
+    padding: 0.6rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
     flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .detailTitleGroup h1 {
-    font-size: 2rem; /* Adjust size */
-    margin-bottom: 0.25rem;
-    border-bottom: none; /* Override layout style for H1 */
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 0.5rem;
+    border-bottom: none;
     padding-bottom: 0;
     text-align: left;
     line-height: 1.2;
+    color: #fff;
 }
 .detailTitleGroup p {
-    margin-bottom: 0.2rem; /* Tighten spacing */
-    color: #555;
+    margin-bottom: 0.3rem;
+    color: var(--color-text-secondary);
     font-size: 1rem;
 }
 .detailTitleGroup .role {
-    font-style: italic;
-    font-weight: 700;
-    color: #333;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: 1.2rem; /* Larger role */
 }
 
-
-.detailSection {
-    margin-bottom: 2.5rem; /* Increase spacing */
-}
+.detailSection { margin-bottom: 3rem; }
 
 .detailSection h2 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem; /* Increase spacing */
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--glass-border-color);
+    padding-bottom: 0.8rem;
+    color: #fff;
 }
 
 .detailList {
-    list-style: disc; /* Use bullets for details */
-    padding-left: 1.5rem; /* Indent list */
+    list-style: none; /* Remove default bullets */
+    padding-left: 0;
     margin: 0;
 }
 
 .detailList li {
-    margin-bottom: 0.85rem; /* Space between list items */
-    line-height: 1.7; /* Improve line height */
-    padding-left: 0.5rem; /* Add padding to list items */
+    margin-bottom: 1rem;
+    line-height: 1.8; /* More line height */
+    padding-left: 1.8rem; /* Indent */
+    position: relative; /* For custom bullet */
+    color: var(--color-text-secondary);
 }
+.detailList li::before { /* Custom bullet */
+    content: '›';
+    position: absolute;
+    left: 0;
+    top: 0px;
+    color: var(--color-accent-electric-blue);
+    font-weight: 700;
+    font-size: 1.4em;
+}
+
 
 /* Context specific styles */
 .projectContext {
-    background-color: var(--color-secondary-bg);
-    border: var(--border-standard);
-    padding: 1.5rem;
-    margin-bottom: 2.5rem; /* Match section spacing */
-    border-left: 4px solid var(--color-accent); /* Add accent */
+    background: rgba(0, 119, 255, 0.05); /* Subtle blue bg */
+    border: 1px solid rgba(0, 119, 255, 0.1);
+    border-left: 4px solid var(--color-accent-electric-blue);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-radius: 8px;
 }
-.projectContext h2 { /* Target the H2 inside context */
-    font-size: 1.3rem;
+.projectContext h2 {
+    font-size: 1.4rem;
     margin-bottom: 1rem;
-    color: var(--color-text);
-    border-bottom: 1px dashed var(--color-border);
+    color: var(--color-text-primary);
+    border-bottom: 1px dashed var(--glass-border-color);
     padding-bottom: 0.75rem;
-    border-left: none; /* Remove double border */
-    padding-left: 0;
 }
-
-.projectContext h3 { /* Subheadings within context */
+.projectContext h3 {
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: 600;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
-    color: #333;
+    color: var(--color-text-primary);
 }
-
 .projectContext p {
     font-size: 0.95rem;
-    color: #333;
+    color: var(--color-text-secondary);
     margin-bottom: 1rem;
-    line-height: 1.6;
+    line-height: 1.7;
 }
-.projectContext strong {
-    font-weight: 700;
-}
-
+.projectContext strong { font-weight: 600; color: var(--color-text-primary); }
 .projectContext ul {
-    list-style: disc;
-    padding-left: 1.5rem;
+    list-style: none; /* Use custom bullets */
+    padding-left: 0;
     margin-top: 0.5rem;
     font-size: 0.95rem;
-    color: #333;
+    color: var(--color-text-secondary);
 }
 .projectContext li {
-    margin-bottom: 0.35rem; /* Tighter spacing */
-    padding-left: 0; /* Reset padding */
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem; /* Indent */
+    position: relative;
+}
+.projectContext li::before { /* Custom bullet */
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: var(--color-accent-purple); /* Use purple */
+    font-weight: 700;
+    font-size: 1.2em;
 }
 
-/* Sidebar Section Styling (reused in Project/Recognition Detail) */
-.sidebarSection {
-    margin-bottom: 2rem;
-}
-.sidebarSection:last-child {
-    margin-bottom: 0;
-}
 
-/* --- END OF FILE src/components/Experience/Experience.module.css --- */
+/* Sidebar Section (already styled via .sidebar in Layout.module.css) */
+.sidebarSection { margin-bottom: 2rem; }
+.sidebarSection:last-child { margin-bottom: 0; }

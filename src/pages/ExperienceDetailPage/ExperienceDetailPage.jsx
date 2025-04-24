@@ -23,8 +23,8 @@ function ExperienceDetailPage() {
         // return <div className={layoutStyles.detailPage}><p>Experience not found.</p> <Link to="/" className={layoutStyles.backLink}>Back to Home</Link></div>;
     }
 
-    const displayTitle = experienceItem.name || experienceItem.company || 'Experience Detail';
-    const logoSrc =  experienceItem.logo || experienceItem.companyLogo || '/logo-placeholder.png';
+    const displayTitle = experienceItem.name || experienceItem.client || 'Experience Detail';
+    const logoSrc =  experienceItem.logo || experienceItem.clientLogo || '/logo-placeholder.png';
 
     return (
         <div className={`${layoutStyles.detailPage} ${styles.jobDetail}`}>
@@ -46,12 +46,12 @@ function ExperienceDetailPage() {
                     {/* Project Context (Specific for Teldat) */}
                     {experienceItem.projectContext && (
                         <section className={`${styles.detailSection} ${styles.projectContext}`}>
-                            <h2>Contexto del Proyecto: {experienceItem.projectContext.projectName}</h2>
-                            <p><strong>Propósito:</strong> {experienceItem.projectContext.purpose}</p>
-                            <p><strong>Arquitectura:</strong> {experienceItem.projectContext.architecture}</p>
+                            <h2>Project: {experienceItem.projectContext.projectName}</h2>
+                            <p><strong>Purpose:</strong> {experienceItem.projectContext.purpose}</p>
+                            <p><strong>Architecture:</strong> {experienceItem.projectContext.architecture}</p>
                             {experienceItem.projectContext.keyModules && experienceItem.projectContext.keyModules.length > 0 && (
                                 <>
-                                    <h3>Módulos Clave:</h3>
+                                    <h3>Key Modules:</h3>
                                     <ul>
                                         {experienceItem.projectContext.keyModules.map((mod, index) => (
                                             <li key={index}>{mod}</li>

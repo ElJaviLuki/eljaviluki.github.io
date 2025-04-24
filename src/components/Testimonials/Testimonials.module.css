@@ -1,129 +1,184 @@
 /* --- START OF FILE src/components/Testimonials/Testimonials.module.css --- */
 
-/* src/components/Testimonials/Testimonials.module.css */
 .testimonials {
-    padding: 4rem 0; /* Standard section padding */
-    background-color: var(--color-secondary-bg); /* Subtle background change */
+    padding: 5rem 0 6rem 0; /* More padding */
+    background: linear-gradient(0deg, rgba(10, 10, 26, 0) 0%, rgba(138, 43, 226, 0.05) 100%); /* Subtle gradient */
+    position: relative;
 }
 
 .heading {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
+    color: #fff;
+    position: relative;
+}
+/* Underline effect */
+.heading::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Position below text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent-purple), var(--color-accent-electric-blue));
+    border-radius: 2px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: 1fr; /* Single column on mobile */
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 3rem; /* Increased gap */
 }
 
 @media (min-width: 768px) {
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Responsive grid, slightly larger min */
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     }
 }
 
+/* Glassmorphic Card */
 .card {
+    background: var(--glass-bg-color);
+    backdrop-filter: blur(var(--glass-blur));
+    border-radius: 12px;
     border: var(--border-standard);
-    padding: 2rem;
-    background-color: var(--color-background); /* White cards on gray bg */
+    padding: 2.5rem 2rem 2rem 2rem; /* Adjust padding */
+    box-shadow: var(--glass-shadow);
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Push attribution down */
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.1); /* Subtle shadow */
-    position: relative; /* For profile pic positioning */
-    padding-top: 4rem; /* Make space for profile pic */
-    min-height: 250px; /* Ensure cards have some minimum height */
+    justify-content: space-between;
+    position: relative;
+    min-height: 300px;
+    padding-top: 4.5rem; /* More space for pic */
+    transition: var(--transition-smooth);
+    overflow: hidden; /* Clip effects */
+    z-index: 1;
 }
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 45px rgba(0, 119, 255, 0.2); /* Enhanced glow */
+}
+
 
 .profilePic {
     position: absolute;
-    top: -30px; /* Position above the card */
+    top: -40px; /* Position higher */
     left: 50%;
     transform: translateX(-50%);
-    width: 80px; /* Size of profile pic */
-    height: 80px;
-    border-radius: 50%; /* Circular */
-    border: 3px solid var(--color-accent); /* Accent border */
-    background-color: var(--color-background); /* Ensure bg under image */
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 4px solid var(--color-accent-electric-blue); /* Accent border */
+    background-color: var(--color-dark-bg);
     object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    z-index: 2; /* Ensure pic is above card bg */
+    transition: var(--transition-smooth);
+}
+.card:hover .profilePic {
+    transform: translateX(-50%) scale(1.1);
+    border-color: var(--color-accent-purple);
 }
 
 
 .quote {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     font-size: 1.1rem;
-    font-style: italic;
+    font-style: normal; /* Remove default italic */
+    font-weight: 400; /* Regular weight */
     quotes: none;
-    border: none; /* Remove default blockquote border */
+    border: none;
     padding: 0;
-    line-height: 1.6; /* Ensure readability */
-    flex-grow: 1; /* Allow quote to take available space */
+    line-height: 1.8; /* More line height */
+    flex-grow: 1;
+    color: var(--color-text-primary); /* Brighter text */
+    position: relative;
 }
-
-.quote p::before,
-.quote p::after {
-    content: ''; /* Remove default quote marks if any */
+.quote p::before { /* Subtle opening quote mark */
+    content: '“';
+    position: absolute;
+    left: -1.5rem;
+    top: -0.5rem;
+    font-size: 3em;
+    color: var(--color-accent-electric-blue);
+    opacity: 0.15;
+    font-family: serif;
+    line-height: 1;
 }
 
 
 .attribution {
     font-size: 0.9rem;
     font-weight: 400;
-    /* text-align: right; Align attribution to the right */
-    margin-top: auto; /* Push to bottom */
-    padding-top: 1rem;
-    border-top: 1px dashed #ccc;
-    display: flex; /* Use flexbox for alignment */
-    justify-content: space-between; /* Space out author info and links */
-    align-items: center; /* Vertically align items */
-    flex-wrap: wrap; /* Allow wrapping on small screens */
-    gap: 0.5rem; /* Gap between info and links block */
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--glass-border-color); /* Use glass border */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem; /* More gap */
 }
 
-.authorInfo {
-    text-align: left; /* Align text left */
-}
+.authorInfo { text-align: left; }
 
 .authorInfo strong {
-    font-weight: 700;
-    display: block; /* Name on its own line */
+    font-weight: 600; /* Bolder name */
+    display: block;
+    color: #fff; /* White name */
+    margin-bottom: 0.2rem;
 }
-.authorInfo span {
-    color: #555;
-}
+.authorInfo span { color: var(--color-text-secondary); }
 
 
 .links {
     display: flex;
-    gap: 1rem; /* Space between links */
+    gap: 1.25rem; /* More space */
     align-items: center;
-    justify-content: flex-end; /* Align links to the right */
-    flex-wrap: wrap; /* Allow links to wrap */
-    margin-left: auto; /* Push links to the right if space allows */
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin-left: auto;
 }
 
 .projectLink, .authorLink {
-    font-size: 0.85rem;
-    font-weight: 700;
+    font-size: 0.8rem;
+    font-weight: 600;
     text-decoration: none;
-    border-bottom: 1px solid var(--color-text);
-    padding-bottom: 1px;
-    transition: color 0.2s, border-color 0.2s;
-    white-space: nowrap; /* Prevent links breaking */
+    border-bottom: 1px solid transparent; /* Hide default border */
+    padding-bottom: 2px;
+    transition: var(--transition-smooth);
+    white-space: nowrap;
+    color: var(--color-text-secondary); /* Muted link color */
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
+.projectLink span { /* Arrow */
+    margin-left: 0.3rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
 .projectLink:hover, .authorLink:hover {
-    color: var(--color-accent-dark);
-    border-color: var(--color-accent-dark);
-    background-color: transparent; /* Override global hover */
+    color: var(--color-accent-electric-blue); /* Brighten on hover */
+    border-color: transparent; /* Ensure no border conflict */
+    background-color: transparent;
     outline: none;
     text-decoration: none;
+    transform: translateY(-2px);
 }
-
+.projectLink:hover span {
+    transform: translateX(3px);
+}
 .authorLink {
-    border-bottom-style: dashed; /* Dashed for author links? Optional */
+    border-bottom-style: none; /* Remove dash */
+}
+.authorLink:hover {
+    color: var(--color-accent-purple); /* Different hover for author links */
 }
 
-
-/* --- END OF FILE src/components/Testimonials/Testimonials.module.css --- */
+/* Remove hover underline from base link style */
+.projectLink:hover::after, .authorLink:hover::after {
+    width: 0;
+}

@@ -36,67 +36,65 @@ export const portfolioData = {
             "detailsLink": "/about-me"
         },
         "long": {
-            "aboutMe": {
-                "headline": "Vision + Pragmatism to craft real-world, tailor-made solutions",
-                "intro": "Driven by innate curiosity and a hands-on approach, I transform complex needs into simple yet effective full-stack software solutions that deliver tangible results.",
-                "storytelling": [
-                    {
-                        "type": "paragraph",
-                        "content": "Ever since I was young, I've been fascinated by technology and the 'how' of things. But my interest doesn't just stop at understanding; I constantly ask, 'How could this be *better*?'. This duality shapes my work: I possess an intuitive ability—reminiscent of my father's own intuition—that allows me to perceive underlying needs and envision creative solutions, almost like a sixth sense for potential."
-                    },
-                    {
-                        "type": "media",
-                        "src": "/placeholder-media-1.jpg",
-                        "alt": "Intuition or potential visualized"
-                    },
-                    {
-                        "type": "paragraph",
-                        "content": "However, I understand that even the most brilliant ideas are worthless if they aren't practical and communicable—a crucial lesson inherited from my mother's hard pragmatism. That's why I always anchor that vision in practicality: seeking tangible outcomes, defining clear steps, and building solutions people can actually use, right here, right now. This knack for balancing forward-thinking vision with immediate, real-world utility is central to how I operate."
-                    },
-                    {
-                        "type": "media",
-                        "src": "/placeholder-media-2.mp4",
-                        "alt": "Pragmatism or practical application visualized"
-                    },
-                    {
-                        "type": "paragraph",
-                        "content": "My goal is to merge these two facets: envision and pragmatism."
-                    } //... add as many as needed
-                ],
-                "caseStudy": {
-                    "title": "A Case in Point:",
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": "A prime example is the custom ERP I developed for my aunt's dental laboratory. While she's exceptionally skilled in her craft, producing top-tier prosthetic work, administrative management was her Achilles' heel – a constant source of frustration with chaotic files and invoices consuming valuable time. My intuition told me standard software, with its complex features and steps, would only overwhelm her. So, applying pragmatism, I didn't adapt an off-the-shelf tool. Instead, I designed a solution from the ground up, focusing obsessively on an ultra-low cognitive load UX. This meant a hyper-simplified, almost guided workflow and a minimalist, distraction-free interface. The objective wasn't merely to organize, but to eliminate the friction and stress associated with management entirely, freeing her energy for her creative work."
-                        },
-                        {
-                            "type": "media",
-                            "src": "/placeholder-media-3.jpg",
-                            "alt": "Dental lab ERP project visualization"
-                        } //... add as many as needed
-                    ]
+            "headline": "Vision + Pragmatism to craft real-world, tailor-made solutions",
+            "intro": "Driven by innate curiosity and a hands-on approach, I transform complex needs into simple yet effective full-stack software solutions that deliver tangible results.",
+            "storytelling": [
+                {
+                    "type": "paragraph",
+                    "content": "Ever since I was young, I've been fascinated by technology and the 'how' of things. But my interest doesn't just stop at understanding; I constantly ask, 'How could this be *better*?'. This duality shapes my work: I possess an intuitive ability—reminiscent of my father's own intuition—that allows me to perceive underlying needs and envision creative solutions, almost like a sixth sense for potential."
                 },
-                "approach": {
-                    "title": "My Approach: From Need to Solution",
-                    "steps": [
-                        {
-                            "id": "01",
-                            "title": "360° Diagnosis",
-                            "description": "Deep dive into the core challenge, connecting human needs and business goals with technical feasibility to define the fundamental 'what' and 'why'."
-                        },
-                        {
-                            "id": "02",
-                            "title": "Vision & Design",
-                            "description": "Merge creative vision with pragmatic design: architect the solution and define the optimal user experience, charting a clear path to the desired outcome."
-                        },
-                        {
-                            "id": "03",
-                            "title": "Real-World Impact",
-                            "description": "Bring the solution to life: build functional, robust software that solves the identified challenge, delivering measurable value and enhancing the experience for everyone involved."
-                        }
-                    ]
-                }
+                {
+                    "type": "media",
+                    "src": "/placeholder-media-1.jpg",
+                    "alt": "Intuition or potential visualized"
+                },
+                {
+                    "type": "paragraph",
+                    "content": "However, I understand that even the most brilliant ideas are worthless if they aren't practical and communicable—a crucial lesson inherited from my mother's hard pragmatism. That's why I always anchor that vision in practicality: seeking tangible outcomes, defining clear steps, and building solutions people can actually use, right here, right now. This knack for balancing forward-thinking vision with immediate, real-world utility is central to how I operate."
+                },
+                {
+                    "type": "media",
+                    "src": "/placeholder-media-2.mp4",
+                    "alt": "Pragmatism or practical application visualized"
+                },
+                {
+                    "type": "paragraph",
+                    "content": "My goal is to merge these two facets: envision and pragmatism."
+                } //... add as many as needed
+            ],
+            "caseStudy": {
+                "title": "A Case in Point:",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": "A prime example is the custom ERP I developed for my aunt's dental laboratory. While she's exceptionally skilled in her craft, producing top-tier prosthetic work, administrative management was her Achilles' heel – a constant source of frustration with chaotic files and invoices consuming valuable time. My intuition told me standard software, with its complex features and steps, would only overwhelm her. So, applying pragmatism, I didn't adapt an off-the-shelf tool. Instead, I designed a solution from the ground up, focusing obsessively on an ultra-low cognitive load UX. This meant a hyper-simplified, almost guided workflow and a minimalist, distraction-free interface. The objective wasn't merely to organize, but to eliminate the friction and stress associated with management entirely, freeing her energy for her creative work."
+                    },
+                    {
+                        "type": "media",
+                        "src": "/placeholder-media-3.jpg",
+                        "alt": "Dental lab ERP project visualization"
+                    } //... add as many as needed
+                ]
+            },
+            "approach": {
+                "title": "My Approach: From Need to Solution",
+                "steps": [
+                    {
+                        "id": "01",
+                        "title": "360° Diagnosis",
+                        "description": "Deep dive into the core challenge, connecting human needs and business goals with technical feasibility to define the fundamental 'what' and 'why'."
+                    },
+                    {
+                        "id": "02",
+                        "title": "Vision & Design",
+                        "description": "Merge creative vision with pragmatic design: architect the solution and define the optimal user experience, charting a clear path to the desired outcome."
+                    },
+                    {
+                        "id": "03",
+                        "title": "Real-World Impact",
+                        "description": "Bring the solution to life: build functional, robust software that solves the identified challenge, delivering measurable value and enhancing the experience for everyone involved."
+                    }
+                ]
             }
         }
     },
@@ -133,7 +131,7 @@ export const portfolioData = {
                 "logo": "/tiktok.png",
                 "client": "Agencia Principito",
                 "role": "Data Architect & Automation Lead",
-                "date": "2024 - Present",
+                "date": "Since 2024",
                 "locationMode": "Remote",
                 "location": "Madrid, Spain",
                 "summary": "Designed and implemented a data platform for extracting, transforming, and exposing unstructured data from TikTok LIVE for talent recruitment.",
@@ -180,7 +178,7 @@ export const portfolioData = {
                 "logo": "/ortoprodent.png",
                 "client": "Ortoprodent (Dental Lab)",
                 "role": "Software Developer",
-                "date": "2025",
+                "date": "Since 2025",
                 "locationMode": "Remote",
                 "location": "Mérida, Spain",
                 "summary": "Developed a custom ERP software solution for a dental laboratory, significantly improving their organization and workflow.",
@@ -649,7 +647,7 @@ export const portfolioData = {
             "degree": "Software Engineering Degree Program",
             "date": "2020 - 2023",
             "status": "Discontinued",
-            "location": "Mérida, Spain",
+            "location": "Cáceres, Spain",
             "summary": "Completed ~3 years of coursework in Software Engineering before discontinuing.",
             "notes": "Decided to pursue a more practical, passion-driven path outside the traditional academic environment which felt misaligned with a deep intellectual curiosity and focus on cutting-edge practices."
         }

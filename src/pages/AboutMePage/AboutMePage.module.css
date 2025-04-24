@@ -1,128 +1,143 @@
 /* --- START OF FILE src/pages/AboutMePage/AboutMePage.module.css --- */
 
-/* src/pages/AboutMePage/AboutMePage.module.css */
-
 .aboutPageContainer {
-    max-width: 900px; /* Control content width */
-    margin: 0 auto; /* Center the content */
-    padding: 0 1rem; /* Add horizontal padding */
+    max-width: 950px; /* Slightly wider */
+    margin: 0 auto;
+    padding: 0 1.5rem; /* More padding */
 }
 
-.backLink { /* Specific style if needed */
-    /* Inherits from Layout.module.css */
+.backLink { /* Style inherited from Layout.module.css */
+    margin-bottom: 3rem; /* More space below */
 }
 
-.aboutPageContainer > h1 { /* Target direct H1 */
-    /* Inherits from Layout.module.css */
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
-}
-
-.subheadline {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #333;
+.aboutPageContainer > h1 { /* Direct H1 */
     text-align: center;
-    margin-bottom: 3.5rem; /* Increased spacing */
-    max-width: 750px; /* Slightly wider */
+    margin-bottom: 1.5rem;
+    font-size: clamp(2.5rem, 6vw, 3.8rem); /* Responsive H1 */
+    color: #fff;
+    border-bottom: none; /* Remove layout border */
+    padding-bottom: 0;
+}
+
+.subheadline { /* This class wasn't in the original JSX, assuming it's added or applies to the first p */
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-weight: 500; /* Medium weight */
+    color: var(--color-text-primary); /* Brighter subheadline */
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .section {
-    margin-bottom: 3.5rem;
-    padding-bottom: 2.5rem; /* Increased spacing */
-    border-bottom: 1px dashed var(--color-border);
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--glass-border-color); /* Subtle separator */
 }
-
 .section:last-of-type {
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
 }
 
-
 .section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem; /* Increased spacing */
-    border-left: 4px solid var(--color-accent);
-    padding-left: 1rem;
-    font-weight: 700; /* Ensure bold */
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    margin-bottom: 2.5rem;
+    border-left: 4px solid var(--color-accent-electric-blue);
+    padding-left: 1.5rem;
+    font-weight: 600;
+    color: #fff;
 }
 
 .section p {
-    line-height: 1.7;
-    margin-bottom: 1.5rem; /* Space between paragraphs */
-    font-size: 1.05rem; /* Slightly larger text */
-    color: #222; /* Darker text */
+    line-height: 1.8; /* More line height */
+    margin-bottom: 1.5rem;
+    font-size: clamp(1rem, 1.8vw, 1.1rem);
+    color: var(--color-text-secondary); /* Standard text color */
+}
+.section p strong { /* Highlight strong text */
+    color: var(--color-text-primary);
+    font-weight: 600;
 }
 
 .mediaFigure {
-    margin: 2.5rem 0; /* Increased margin */
-    text-align: center; /* Center media */
+    margin: 3rem 0;
+    text-align: center;
 }
 
 .mediaFigure img,
 .mediaFigure video {
     max-width: 100%;
     height: auto;
+    border-radius: 10px; /* Rounded media */
     border: var(--border-standard);
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    transition: var(--transition-smooth);
+}
+.mediaFigure img:hover,
+.mediaFigure video:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 35px rgba(0, 119, 255, 0.15);
 }
 
 /* Approach Section Specific Styles */
 .approachGrid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-@media (min-width: 768px) {
-    .approachGrid {
-        grid-template-columns: repeat(3, 1fr); /* Three columns on larger screens */
-    }
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); /* Responsive grid */
+    gap: 2.5rem; /* More gap */
+    margin-top: 3rem;
 }
 
 .approachStep {
     border: var(--border-standard);
-    padding: 2rem 1.5rem 1.5rem 1.5rem; /* Adjust padding */
-    background-color: var(--color-secondary-bg);
+    border-radius: 10px;
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+    background: rgba(255, 255, 255, 0.02); /* Very subtle bg */
     text-align: center;
-    position: relative; /* For step ID positioning */
-    padding-top: 3rem; /* Space for ID */
-    display: flex; /* Use flex */
-    flex-direction: column; /* Stack content */
-    justify-content: flex-start; /* Align content top */
+    position: relative;
+    padding-top: 3.5rem; /* Space for ID */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: var(--transition-smooth);
+    overflow: hidden;
+}
+.approachStep:hover {
+    background: rgba(0, 119, 255, 0.05); /* Blue tint on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 119, 255, 0.1);
+    border-color: rgba(0, 119, 255, 0.3);
 }
 
 .stepId {
     position: absolute;
-    top: -15px; /* Position above the border */
+    top: -1px; /* Align with top border */
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--color-accent);
-    color: var(--color-text);
+    background: linear-gradient(45deg, var(--color-accent-electric-blue), var(--color-accent-purple)); /* Gradient ID */
+    color: #ffffff;
     font-family: var(--font-mono);
     font-weight: 700;
     font-size: 1.5rem;
-    padding: 0.3rem 0.8rem;
-    border: var(--border-standard);
+    padding: 0.5rem 1rem; /* More padding */
+    border-radius: 0 0 8px 8px; /* Rounded bottom corners */
     line-height: 1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .stepTitle {
-    font-size: 1.3rem;
+    font-size: 1.4rem; /* Larger title */
     font-weight: 700;
     margin-bottom: 1rem;
+    color: var(--color-text-primary);
 }
 
 .stepDescription {
     font-size: 0.95rem;
-    color: #333;
-    margin-bottom: 0; /* Remove default p margin */
-    flex-grow: 1; /* Allow description to take space */
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+    flex-grow: 1;
+    line-height: 1.7;
 }
-
-/* --- END OF FILE src/pages/AboutMePage/AboutMePage.module.css --- */

@@ -1,94 +1,105 @@
 /* --- START OF FILE src/components/Skills/Skills.module.css --- */
 
-/* src/components/Skills/Skills.module.css */
+/* Note: Skills section was commented out in HomePage.jsx, styles provided if re-enabled */
 .skills {
-    padding: 4rem 0;
-    /* border-top: var(--border-standard); */ /* Removed, handled by layout */
+    padding: 5rem 0;
+    position: relative;
 }
 
 .heading {
     text-align: center;
-    margin-bottom: 3rem;
-    border-bottom: var(--border-standard);
-    padding-bottom: 1rem;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    color: #fff;
+    position: relative;
+}
+.heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent-electric-blue), var(--color-accent-purple));
+    border-radius: 2px;
 }
 
 .category {
-    margin-bottom: 3rem; /* Increased spacing */
+    margin-bottom: 4rem;
 }
-
-.category:last-of-type {
-    margin-bottom: 0;
-}
+.category:last-of-type { margin-bottom: 0; }
 
 .categoryHeading {
-    font-size: 1.5rem;
-    font-weight: 900; /* Bolder category heading */
-    margin-bottom: 2rem; /* Increased spacing */
-    border-left: 5px solid var(--color-border);
-    padding-left: 1rem;
-    text-transform: uppercase; /* Uppercase for emphasis */
-    letter-spacing: 0.5px;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    color: var(--color-text-primary);
+    border-left: 4px solid var(--color-accent-purple); /* Use purple */
+    padding-left: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Technical Skills Area Grouping */
 .areaGroup {
-    margin-bottom: 2rem; /* Space between skill areas */
-    border-left: 3px solid var(--color-secondary-bg); /* Subtle left border */
-    padding-left: 1.5rem;
+    margin-bottom: 2.5rem;
+    padding-left: 1rem; /* Indent */
 }
-.areaGroup:last-of-type {
-    margin-bottom: 0;
-}
+.areaGroup:last-of-type { margin-bottom: 0; }
 
 .areaHeading {
-    font-size: 1.1rem; /* Smaller than category heading */
-    font-weight: 700;
-    margin-bottom: 1rem;
-    font-family: var(--font-mono); /* Mono font for area titles */
-    color: #333;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-mono);
+    color: var(--color-text-primary); /* Brighter area heading */
 }
 
 .skillList {
-    list-style: none; /* Remove default bullets */
-    padding-left: 0; /* Remove default padding */
+    list-style: none;
+    padding-left: 0;
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap */
-    gap: 0.75rem; /* Spacing between items */
+    flex-wrap: wrap;
+    gap: 0.8rem; /* More gap */
 }
 
 .skillItem {
     font-family: var(--font-mono);
-    font-size: 0.9rem;
-    background-color: var(--color-secondary-bg);
-    padding: 0.4rem 0.8rem;
-    border: var(--border-standard);
-    display: inline-block; /* Fit content */
-    white-space: nowrap; /* Prevent breaking within a skill name */
-    transition: background-color 0.2s ease, color 0.2s ease;
-    line-height: 1.4; /* Adjust line height for readability */
+    font-size: 0.85rem;
+    background-color: rgba(0, 119, 255, 0.1); /* Blue bg */
+    color: var(--color-accent-electric-blue);
+    padding: 0.5rem 1rem; /* More padding */
+    border: 1px solid rgba(0, 119, 255, 0.2);
+    border-radius: 5px;
+    display: inline-block;
+    white-space: nowrap;
+    transition: var(--transition-smooth);
+    line-height: 1.4;
 }
 
 /* Soft skills visually distinct */
 .softSkillItem {
-    background-color: transparent; /* No background */
-    border: 1px dashed var(--color-border); /* Dashed border */
+    background-color: rgba(138, 43, 226, 0.1); /* Purple bg */
+    color: var(--color-accent-purple);
+    border-color: rgba(138, 43, 226, 0.2);
     font-family: var(--font-primary); /* Use primary font */
-    font-weight: 700;
-    /* padding: 0.3rem 0.6rem; Slightly smaller padding */
+    font-weight: 500;
+    font-size: 0.9rem; /* Slightly larger */
+    border-style: solid; /* Solid border */
 }
 
-/* Optional: Subtle hover effect for skills */
 .skillItem:hover {
-    background-color: var(--color-accent);
-    color: var(--color-text);
-    cursor: default; /* Indicate it's not clickable */
+    background-color: rgba(0, 119, 255, 0.2);
+    color: #fff;
+    transform: scale(1.05);
+    cursor: default;
+    border-color: var(--color-accent-electric-blue);
 }
 .softSkillItem:hover {
-    background-color: var(--color-secondary-bg); /* Light gray on hover */
-    color: var(--color-text);
-    border-style: solid;
-    cursor: default;
+    background-color: rgba(138, 43, 226, 0.2);
+    color: #fff;
+    border-color: var(--color-accent-purple);
 }
 
 /* Language List Styles */
@@ -96,46 +107,57 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    display: grid; /* Use grid for alignment */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
-    gap: 1rem; /* Gap between columns/rows */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; /* More gap */
 }
 
 .languageItem {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem; /* More gap */
     font-size: 1rem;
-    border-bottom: 1px dashed #ccc;
-    padding-bottom: 0.75rem;
+    border: 1px solid var(--glass-border-color); /* Border */
+    padding: 1rem 1.25rem; /* Padding */
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.03); /* Very subtle bg */
+    transition: var(--transition-smooth);
 }
-/* Remove border for items in the last row if needed (complex selector) */
-
+.languageItem:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-color: var(--color-accent-electric-blue);
+    transform: scale(1.02);
+}
 
 .flagIcon {
-    width: 24px;
+    width: 28px; /* Larger flag */
     height: auto;
-    border: 1px solid #eee; /* Subtle border for flags */
+    border: none;
     object-fit: contain;
     flex-shrink: 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .langName {
-    font-weight: 700;
+    font-weight: 600; /* Bolder lang name */
     white-space: nowrap;
+    color: var(--color-text-primary);
 }
 
 .langLevel {
-    font-style: italic;
-    color: #333;
+    font-style: normal; /* No italic */
+    color: var(--color-text-secondary);
     white-space: nowrap;
+    margin-left: auto; /* Push level to the right */
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
 }
 .langDetails {
-    font-size: 0.85rem;
-    color: #555;
-    margin-left: 0.25rem;
-    /* Allow details to wrap if needed */
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    opacity: 0.8;
+    margin-left: 0.5rem;
 }
-
-
-/* --- END OF FILE src/components/Skills/Skills.module.css --- */

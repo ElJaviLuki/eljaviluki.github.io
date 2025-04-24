@@ -1,100 +1,99 @@
 /* --- START OF FILE src/components/Footer/Footer.module.css --- */
 
-/* src/components/Footer/Footer.module.css */
 .footer {
-    padding: 4rem 1rem 2rem 1rem; /* More top padding, less bottom */
+    padding: 5rem 1.5rem 3rem 1.5rem;
     text-align: center;
-    border-top: 5px solid var(--color-border); /* Thick separator */
-    background-color: var(--color-secondary-bg); /* Match testimonials bg */
-    margin-top: 4rem; /* Ensure space above footer */
+    border-top: 1px solid var(--glass-border-color);
+    background: linear-gradient(180deg, rgba(10, 10, 26, 0) 0%, rgba(10, 10, 26, 0.8) 100%); /* Fade in dark bg */
+    margin-top: 4rem;
+    position: relative;
+    z-index: 2; /* Above main background */
 }
 
 .ctaHeading {
-    font-size: 2.5rem;
-    font-weight: 900;
-    margin-bottom: 2rem;
-}
-
-@media (min-width: 768px) {
-    .ctaHeading {
-        font-size: 3rem;
-    }
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive size */
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    color: #fff;
+    line-height: 1.3;
 }
 
 .ctaButton {
     /* Uses global button styles */
-    padding: 1rem 2.5rem; /* Make footer CTA larger */
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
+    padding: 1rem 3rem; /* Larger padding */
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 4rem; /* More space below */
 }
 
 .socialLinks {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem; /* More space */
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap; /* Allow wrapping */
+    gap: 2rem; /* Wider gap */
+    flex-wrap: wrap;
 }
 
 .socialLinks a {
-    text-decoration: none; /* Optional: remove underline for social links */
-    font-weight: 700;
-    /* Add specific hover effects if needed */
-    color: var(--color-text); /* Explicitly set color */
-    border-bottom: 2px solid var(--color-text);
-    padding-bottom: 2px;
-    transition: color 0.2s ease, border-color 0.2s ease; /* Smooth transition */
+    text-decoration: none;
+    font-weight: 600; /* Bolder links */
+    color: var(--color-text-secondary); /* Muted color */
+    font-size: 1.1rem; /* Larger icons/text */
+    transition: var(--transition-smooth);
+    padding-bottom: 0; /* Remove padding for hover effect */
+    position: relative;
 }
+/* Remove underline effect from base link style */
+.socialLinks a::after {
+    display: none;
+}
+
 .socialLinks a:hover,
 .socialLinks a:focus {
-    background-color: transparent; /* Override default */
-    color: var(--color-accent-dark);
-    text-decoration: none; /* Remove underline on hover */
-    border-bottom-color: var(--color-accent-dark);
-    outline: none; /* Remove focus outline if desired */
-}
-
-/* Languages Section - NEW */
-.languages {
-    margin-bottom: 2rem;
-    font-size: 0.9rem;
-    color: #444; /* Muted color */
-    padding: 0 1rem; /* Add padding */
-    max-width: 800px; /* Limit width */
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6; /* Improve readability */
-}
-.languages strong {
-    font-weight: 700;
-    color: #000; /* Black for the label */
-}
-.languages span { /* Individual language span */
-    white-space: nowrap; /* Prevent breaking within language name/level */
-}
-
-.copyright {
-    font-size: 0.9rem;
-    color: #555; /* Muted color */
-    margin-bottom: 1rem;
-}
-
-.backToTop {
-    display: inline-block;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    text-decoration: none;
-    border-bottom: 1px solid var(--color-text);
-    color: var(--color-text); /* Explicitly set color */
-    transition: color 0.2s ease, border-color 0.2s ease; /* Smooth transition */
-}
-.backToTop:hover,
-.backToTop:focus {
+    color: var(--color-accent-electric-blue); /* Brighten on hover */
+    transform: scale(1.1);
     background-color: transparent;
-    color: var(--color-accent-dark);
-    border-bottom-color: var(--color-accent-dark);
-    text-decoration: none;
     outline: none;
 }
 
-/* --- END OF FILE src/components/Footer/Footer.module.css --- */
+/* Removed languages section for brevity - can be added back if needed */
+
+.copyright {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+
+.backToTop {
+    display: inline-flex; /* Align icon */
+    align-items: center;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    transition: var(--transition-smooth);
+    opacity: 0.8;
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle background */
+    padding: 0.4rem 0.8rem; /* Padding */
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+.backToTop span { /* Arrow */
+    margin-right: 0.4rem;
+    font-size: 1.1em;
+}
+
+.backToTop:hover,
+.backToTop:focus {
+    color: var(--color-accent-electric-blue);
+    opacity: 1;
+    transform: translateY(-3px);
+    background-color: rgba(0, 119, 255, 0.1);
+    border-color: rgba(0, 119, 255, 0.3);
+    text-decoration: none;
+    outline: none;
+}
+/* Remove underline effect from base link style */
+.backToTop:hover::after {
+    display: none;
+}

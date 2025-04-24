@@ -10,10 +10,17 @@ import styles from './AboutMePage.module.css';
 // Helper component to render different content types
 function ContentRenderer({ item }) {
     if (item.type === 'paragraph') {
+        // Use dangerouslySetInnerHTML only if you explicitly need to render HTML tags from the content
+        // For standard paragraphs, just rendering the content is safer.
+        // If item.content might contain HTML like <b>:
+        // return <p dangerouslySetInnerHTML={{ __html: item.content }} />;
+        // If item.content is just plain text:
         return <p>{item.content}</p>;
     }
     if (item.type === 'media') {
-        const isVideo = item.src.endsWith('.mp4'); // Simple check
+        // Enhanced check for video types (add more extensions if needed)
+        const videoExtensions = ['.mp4', '.webm', '.ogv'];
+        const isVideo = videoExtensions.some(ext => item.src.toLowerCase().endsWith(ext));
         return (
             <figure className={styles.mediaFigure}>
                 {isVideo ? (
@@ -32,13 +39,15 @@ function ContentRenderer({ item }) {
 }
 
 function AboutMePage() {
-    const { aboutMe } = portfolioData.aboutMe.long;
+    // Access the 'long' version of aboutMe data
+    const aboutMeData = portfolioData.aboutMe?.long;
 
-    if (!aboutMe) {
+    // Check if aboutMeData itself exists
+    if (!aboutMeData) {
         // Basic error handling or redirect
         return (
             <div className={layoutStyles.detailPage}>
-                <p>About Me section not found.</p>
+                <p>About Me section data not found.</p>
                 <Link to="/" className={layoutStyles.backLink}>
                     <span aria-hidden="true">←</span> Back
                 </Link>
@@ -46,40 +55,66 @@ function AboutMePage() {
         );
     }
 
+    // Destructure the properties we need from aboutMeData
+    const { headline, intro, storytelling, caseStudy, approach } = aboutMeData;
+
+    // Further checks for required nested data
+    if (!headline || !intro || !storytelling || !caseStudy || !approach) {
+        return (
+            <div className={layoutStyles.detailPage}>
+                <p>About Me section data is incomplete.</p>
+                <Link to="/" className={layoutStyles.backLink}>
+                    <span aria-hidden="true">←</span> Back
+                </Link>
+            </div>
+        );
+    }
+
+
     return (
         <div className={`${layoutStyles.detailPage} ${styles.aboutPageContainer}`}>
             <Link to="/" className={`${layoutStyles.backLink} ${styles.backLink}`}>
                 <span aria-hidden="true">←</span> Back
             </Link>
-            <h1>{aboutMe.headline}</h1>
-            <p className={styles.subheadline}>{aboutMe.subheadline}</p>
 
+            {/* Render Headline */}
+            <h1>{headline}</h1>
+            {/* Render Intro (use a specific class or just a standard paragraph) */}
+            <p className={styles.introParagraph}>{intro}</p>
+
+            {/* Render Storytelling Section (Previously "Philosophy") */}
             <section className={styles.section}>
-                <h2>My Philosophy</h2>
-                {aboutMe.philosophy.map((item, index) => (
-                    <ContentRenderer key={`philosophy-${index}`} item={item} />
+                <h2>My Story & Philosophy</h2> {/* Updated heading */}
+                {storytelling.map((item, index) => (
+                    <ContentRenderer key={`storytelling-${index}`} item={item} />
                 ))}
             </section>
 
-            <section className={styles.section}>
-                <h2>{aboutMe.caseStudy.title}</h2>
-                {aboutMe.caseStudy.content.map((item, index) => (
-                    <ContentRenderer key={`casestudy-${index}`} item={item} />
-                ))}
-            </section>
-
-            <section className={styles.section}>
-                <h2>{aboutMe.approach.title}</h2>
-                <div className={styles.approachGrid}>
-                    {aboutMe.approach.steps.map((step) => (
-                        <div key={step.id} className={styles.approachStep}>
-                            <span className={styles.stepId}>{step.id}</span>
-                            <h3 className={styles.stepTitle}>{step.title}</h3>
-                            <p className={styles.stepDescription}>{step.description}</p>
-                        </div>
+            {/* Render Case Study Section (Check if caseStudy and its content exist) */}
+            {caseStudy.title && caseStudy.content && caseStudy.content.length > 0 && (
+                <section className={styles.section}>
+                    <h2>{caseStudy.title}</h2>
+                    {caseStudy.content.map((item, index) => (
+                        <ContentRenderer key={`casestudy-${index}`} item={item} />
                     ))}
-                </div>
-            </section>
+                </section>
+            )}
+
+            {/* Render Approach Section (Check if approach and its steps exist) */}
+            {approach.title && approach.steps && approach.steps.length > 0 && (
+                <section className={styles.section}>
+                    <h2>{approach.title}</h2>
+                    <div className={styles.approachGrid}>
+                        {approach.steps.map((step) => (
+                            <div key={step.id} className={styles.approachStep}>
+                                <span className={styles.stepId}>{step.id}</span>
+                                <h3 className={styles.stepTitle}>{step.title}</h3>
+                                <p className={styles.stepDescription}>{step.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            )}
         </div>
     );
 }

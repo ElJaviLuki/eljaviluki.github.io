@@ -1,61 +1,77 @@
 /* --- START OF FILE src/components/About/About.module.css --- */
 
-/* src/components/About/About.module.css */
 .about {
     text-align: center;
-    padding: 3rem 1rem; /* Section padding */
-    /* border-top: var(--border-standard); */ /* Removed, handled by layout */
+    padding: 5rem 1rem; /* Increased padding */
+    position: relative;
+    overflow: hidden; /* Clip potential effects */
+}
+.about::before { /* Subtle background effect */
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 119, 255, 0.05) 0%, transparent 40%);
+    opacity: 0.5;
+    animation: rotateBackground 60s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotateBackground {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .quote {
-    font-size: 2rem;
-    font-weight: 700;
-    border-left: 5px solid var(--color-accent); /* Accent border */
-    padding-left: 1.5rem;
-    margin: 0 auto 2rem auto; /* Center the blockquote */
-    max-width: 700px; /* Control width */
-    text-align: left; /* Keep text left-aligned within centered block */
-    quotes: none; /* Remove default browser quotes */
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600; /* Slightly less bold */
+    border-left: 5px solid var(--color-accent-electric-blue);
+    padding-left: 2rem;
+    margin: 0 auto 3rem auto;
+    max-width: 800px;
+    text-align: left;
     font-style: normal;
-    line-height: 1.4; /* Improve line height */
+    line-height: 1.5;
+    color: var(--color-text-primary); /* Brighter quote text */
+    position: relative; /* For potential quote marks */
+    quotes: none;
 }
+/* Optional: styled quote marks */
+/* .quote::before {
+    content: '“';
+    position: absolute;
+    left: -1rem;
+    top: -1rem;
+    font-size: 4em;
+    color: var(--color-accent-electric-blue);
+    opacity: 0.1;
+    font-family: serif;
+} */
 
-.quote b { /* Style the bold tag from dangerouslySetInnerHTML */
-    font-weight: 900; /* Bolder */
-    /* Add other styles if needed */
-    color: var(--color-text); /* Ensure color */
+.quote b {
+    font-weight: 700; /* Bold emphasis */
+    color: var(--color-accent-electric-blue); /* Highlight the keyword */
+    text-shadow: 0 0 8px var(--color-accent-glow);
 }
 
 
 .detailsLink {
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase; /* More emphasis */
-    /* Inherits global link styles, can override here */
-    display: inline-block; /* Allows margin */
+    /* Inherits global .button-link style now for consistency */
+    /* Specific overrides if needed: */
+    font-size: clamp(1rem, 1.8vw, 1.1rem);
     margin-top: 1rem;
-    /* Use global link styles by default, specific overrides below */
-    color: var(--color-text);
-    background-color: transparent;
-    border-bottom: 2px solid var(--color-text);
-    text-decoration: none;
-    padding-bottom: 2px;
 }
-
-.detailsLink:hover,
-.detailsLink:focus {
-    color: var(--color-accent-dark);
-    background-color: transparent;
-    border-bottom-color: var(--color-accent-dark);
-    outline: none;
-    text-decoration: none;
+.detailsLink span {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    display: inline-block; /* Needed for transform */
 }
-
-
-@media (min-width: 768px) {
-    .quote {
-        font-size: 2.5rem;
-    }
+.detailsLink:hover span {
+    transform: translateX(5px);
 }
-
-/* --- END OF FILE src/components/About/About.module.css --- */
+/* Remove default link hover pseudo element */
+.detailsLink:hover::after {
+    width: 0;
+}
