@@ -1,7 +1,15 @@
 /* --- START OF FILE src/components/Hero/Hero.module.css --- */
 
 .hero {
-    padding: 6rem 0 4rem 0; /* More top padding */
+    /* === MODIFIED FOR VIEWPORT HEIGHT === */
+    min-height: 100vh; /* Asegura que ocupe al menos toda la altura del viewport */
+    display: flex;       /* Habilita Flexbox */
+    flex-direction: column; /* Apila los hijos directos verticalmente */
+    align-items: center;    /* Centra el contenido horizontalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+    padding: 2rem 1rem;    /* Ajusta padding (menos vertical, añade horizontal) */
+    /* === END MODIFICATIONS === */
+
     text-align: center;
     position: relative;
     overflow: hidden; /* Clip potential effects */
@@ -21,8 +29,9 @@
     position: relative; /* For stacking context */
     z-index: 2;
     max-width: 1100px; /* Control content width */
-    margin: 0 auto;
-    padding: 0 1rem;
+    width: 100%; /* Asegura que use el ancho disponible */
+    margin: 0 auto; /* Mantiene el centrado horizontal dentro del max-width */
+    padding: 0 1rem; /* Padding interno si es necesario */
 }
 
 @media (min-width: 900px) {
@@ -30,6 +39,7 @@
         flex-direction: row;
         text-align: left;
         gap: 4rem;
+        align-items: center; /* Asegura alineación vertical también en modo fila */
     }
 }
 
@@ -40,6 +50,8 @@
     position: relative; /* For glow effect */
     flex-shrink: 0;
     box-shadow: none; /* Remove default shadow */
+    /* Ensure it doesn't cause overflow issues */
+    max-width: 100%;
 }
 .imageContainer::before { /* Glow effect */
     content: '';
@@ -66,6 +78,9 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     filter: grayscale(50%) contrast(1.1); /* Subtle filter */
     transition: var(--transition-smooth);
+    /* Ensure image scales down if needed */
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio if width scales */
 }
 .imageContainer:hover .portrait {
     transform: scale(1.05);
@@ -78,6 +93,7 @@
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease-out 0.2s forwards; /* Delay animation */
+    width: 100%; /* Ensure it takes space on smaller screens */
 }
 
 @keyframes fadeInUp {
@@ -116,16 +132,15 @@
     margin-bottom: 2rem;
     color: var(--color-text-primary);
     max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
+    /* Removed margin-left/right auto here, handled by parent flex */
     line-height: 1.4;
 }
 
+/* Media query for tagline alignment already exists and is fine */
 @media (min-width: 900px) {
     .tagline {
-        margin-left: 0;
-        margin-right: 0;
+        /* No specific margin needed if parent handles alignment */
     }
 }
 
-/* Removed Hero Border div, border added to section */
+/* REMOVED .heroBorder div styling as border is on .hero */
