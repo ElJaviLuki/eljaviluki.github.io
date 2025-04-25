@@ -83,11 +83,21 @@
 }
 
 /* Approach Section Specific Styles */
+/* Approach Section Specific Styles */
 .approachGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); /* Responsive grid */
+    /* Default: Stack vertically (single column) on small screens */
+    grid-template-columns: 1fr;
     gap: 2.5rem; /* More gap */
     margin-top: 3rem;
+}
+
+/* On larger screens (e.g., tablets and desktops), display as 3 columns */
+@media (min-width: 768px) { /* Adjust breakpoint as needed */
+    .approachGrid {
+        /* Explicitly create 3 equal columns */
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .approachStep {
