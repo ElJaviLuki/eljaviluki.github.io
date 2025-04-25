@@ -64,15 +64,16 @@
     letter-spacing: -1px;
     color: #ffffff;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    /* Opcional: Forzar una sola línea por defecto si hay espacio */
-    /* white-space: nowrap; */
+    /* MODIFICADO: Forzar una sola línea por defecto */
+    white-space: nowrap;
 }
 
 /* Estilo para los spans dentro del nombre */
 .name span {
     display: inline-block; /* Permite margen/padding y se comporta como inline */
     margin-right: 0.25em; /* Espacio entre palabras cuando están en línea */
-    /* white-space: normal; */ /* Asegura que los spans puedan romperse si nowrap está en .name */
+    /* MODIFICADO: Asegurar que los spans puedan romperse si nowrap está en .name, aunque nowrap en padre lo impide */
+    white-space: normal;
 }
 .name span:last-child {
     margin-right: 0; /* Sin espacio después de la última palabra */
@@ -102,10 +103,10 @@
 
 /* --- Media Query para forzar el salto en 3 líneas --- */
 /* Ajusta el valor de max-width según el punto donde quieras que ocurra el salto */
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* <<< AJUSTA ESTE VALOR SI ES NECESARIO */
     .name {
-        /* Opcional: Quitar nowrap si se aplicó antes */
-        /* white-space: normal; */
+        /* MODIFICADO: Permitir saltos de línea aquí */
+        white-space: normal;
         text-align: center; /* Centrar cuando está en bloque */
     }
     .name span {
@@ -159,7 +160,11 @@
         justify-content: center;
     }
 
-    /* Asegurar que en desktop los spans vuelvan a ser inline si se sobreescribió */
+    /* Asegurar que en desktop los spans vuelvan a ser inline y el H1 no fuerce nowrap innecesariamente */
+    .name {
+        /* MODIFICADO: Resetear white-space en desktop */
+        white-space: normal;
+    }
     .name span {
         display: inline-block; /* O inline, según prefieras */
         margin-right: 0.25em;

@@ -653,7 +653,7 @@ export const portfolioData = {
             "status": "Discontinued",
             "location": "Cáceres, Spain",
             "summary": "Completed ~3 years of coursework in Software Engineering before discontinuing.",
-            "notes": "Decided to pursue a more practical, passion-driven path outside the traditional academic environment which felt misaligned with a deep intellectual curiosity and focus on cutting-edge practices."
+            "notes": "Driven by a deep intellectual curiosity and a focus on innovative practices, I have opted for a professional path that allows me to develop my potential and generate value in a more agile and direct manner. This decision stems from my desire to overcome the limitations often found within traditional academia, seeking an environment where I can foster my growth and contribute more effectively."
         }
     ],
     "footer": {
