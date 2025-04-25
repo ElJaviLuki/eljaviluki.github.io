@@ -9,6 +9,10 @@ function Hero() {
     const { name, subtitle, longPortraitUrl } = portfolioData.personalInfo;
     const { adjectives } = portfolioData.aboutMe.short; // Get adjectives
 
+    // Split the name for individual span wrapping - assumes name format is consistent
+    // A more robust approach might involve passing parts separately from data.js
+    // const nameParts = name.split(' '); // Simple split by space
+
     return (
         // El contenedor principal ahora usa Flexbox directamente para imagen y texto
         <header className={styles.hero} id="top">
@@ -16,7 +20,7 @@ function Hero() {
             <div className={styles.imageContainer}>
                 <img
                     src={longPortraitUrl}
-                    alt={`Retrato de ${name}`}
+                    alt={`Retrato de ${name}`} // Keep full name for alt text
                     className={styles.portrait}
                     loading="eager" // Cargar la imagen principal de inmediato
                 />
@@ -24,7 +28,10 @@ function Hero() {
 
             {/* Contenedor del Texto */}
             <div className={styles.textContainer}>
-                <h1 className={styles.name}>{name}</h1>
+                {/* Wrap each part of the name in a span */}
+                <h1 className={styles.name}>
+                    <span>Javier</span> <span>López</span> <span>Cacenave</span>
+                </h1>
                 {/* Display adjectives dynamically */}
                 {adjectives && adjectives.length > 0 && (
                     <p className={styles.adjectives}>
