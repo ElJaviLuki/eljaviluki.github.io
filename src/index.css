@@ -1,7 +1,80 @@
 /* --- START OF FILE src/index.css --- */
 
 /* src/index.css */
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@400;700&display=swap');
+/* REMOVED: @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@400;700&display=swap'); */
+
+/* --- NEW Font Definitions --- */
+@font-face {
+  font-family: 'GT America Extended'; /* Consistent naming convention */
+  font-style: normal;
+  font-weight: 900;
+  /* UPDATED PATH */
+  src: url(/fonts/GT-America-Extended-Black.woff2) format("woff2"),
+  url(/fonts/GT-America-Extended-Black.woff) format("woff");
+  font-display: swap; /* Add font-display */
+}
+
+@font-face {
+  font-family: 'GT America Extended'; /* Consistent naming convention */
+  font-style: normal;
+  font-weight: 300;
+  /* UPDATED PATH */
+  src: url(/fonts/GT-America-Extended-Light.woff2) format("woff2"),
+  url(/fonts/GT-America-Extended-Light.woff) format("woff");
+  font-display: swap; /* Add font-display */
+}
+
+/* NOTE: Assuming a regular weight might be needed, consider adding GT America Extended Regular if available */
+/* @font-face {
+font-family: 'GT America Extended';
+font-style: normal;
+font-weight: 400;
+src: url(/fonts/GT-America-Extended-Regular.woff2) format("woff2"),
+     url(/fonts/GT-America-Extended-Regular.woff) format("woff");
+font-display: swap;
+} */
+
+@font-face {
+  font-family: 'GT America Expanded'; /* Consistent naming convention */
+  font-style: normal;
+  font-weight: 900;
+  /* UPDATED PATH */
+  src: url(/fonts/GT-America-Expanded-Black.woff2) format("woff2"),
+  url(/fonts/GT-America-Expanded-Black.woff) format("woff");
+  font-display: swap; /* Add font-display */
+}
+
+@font-face {
+  font-family: 'GT America Mono'; /* Simplified family name */
+  font-style: normal;
+  font-weight: 700; /* Corresponds to Bold */
+  /* UPDATED PATH */
+  src: url(/fonts/GT-America-Mono-Bold.woff2) format("woff2"),
+  url(/fonts/GT-America-Mono-Bold.woff) format("woff");
+  font-display: swap; /* Add font-display */
+}
+
+@font-face {
+  font-family: 'GT America Mono'; /* Simplified family name */
+  font-style: normal;
+  font-weight: 400; /* Corresponds to Regular */
+  /* UPDATED PATH */
+  src: url(/fonts/GT-America-Mono-Regular.woff2) format("woff2"),
+  url(/fonts/GT-America-Mono-Regular.woff) format("woff");
+  font-display: swap; /* Add font-display */
+}
+
+@font-face {
+  font-family: 'Sectra'; /* Keep original name */
+  font-style: normal;
+  font-weight: 700; /* Corresponds to Fine Bold */
+  /* UPDATED PATH */
+  src: url(/fonts/GT-Sectra-Fine-Bold.woff2) format("woff2"),
+  url(/fonts/GT-Sectra-Fine-Bold.woff) format("woff");
+  font-display: swap; /* Add font-display */
+}
+/* --- END NEW Font Definitions --- */
+
 
 :root {
   /* Core Palette */
@@ -22,9 +95,16 @@
   --glass-hover-bg: rgba(10, 67, 50, 0.3); /* Darker hover bg */
   --glass-hover-border: rgba(10, 67, 50, 0.1); /* Lighter hover border */
 
-  /* Fonts */
-  --font-primary: 'Work Sans', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  /* Fonts - UPDATED */
+  /* Using 'GT America Extended' as primary, fallback to 'Work Sans' */
+  --font-primary: 'GT America Extended', 'Work Sans', sans-serif;
+  /* Using 'GT America Mono', fallback to 'IBM Plex Mono' */
+  --font-mono: 'GT America Mono', 'IBM Plex Mono', monospace;
+  /* Optional: Define a variable for Sectra if needed specifically */
+  /* --font-serif: 'Sectra', serif; */
+  /* Optional: Define a variable for Expanded if needed specifically */
+  /* --font-expanded: 'GT America Expanded', 'Work Sans', sans-serif; */
+
 
   /* Borders & Transitions */
   --border-standard: 1px solid var(--glass-border-color);
@@ -63,7 +143,7 @@ html {
 
 
 body {
-  font-family: var(--font-primary);
+  font-family: var(--font-primary); /* UPDATED: Uses new primary font variable */
   background-color: var(--color-dark-bg); /* Base dark background for the whole page */
   color: var(--color-text-primary);
   line-height: 1.7;
@@ -73,7 +153,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700; /* Slightly less heavy default */
+  /* Consider using GT America Extended/Expanded for headings */
+  /* font-family: 'GT America Expanded', var(--font-primary); */ /* Example: Use Expanded for headings */
+  font-weight: 700; /* Adjust weight based on available font weights */
   line-height: 1.3;
   margin-bottom: 1.5rem;
   color: #ffffff; /* Brighter white for headings */
@@ -125,8 +207,8 @@ a:hover::after, a:focus::after {
 /* Button Styles (Glassmorphic) */
 button, .button-link {
   display: inline-block;
-  font-family: var(--font-primary);
-  font-weight: 600;
+  font-family: var(--font-primary); /* UPDATED: Uses new primary font variable */
+  font-weight: 600; /* Adjust weight if needed for the new font */
   font-size: clamp(0.9rem, 1.5vw, 1rem);
   text-decoration: none;
   cursor: pointer;
@@ -192,3 +274,5 @@ button:active, .button-link:active {
   white-space: nowrap;
   border: 0;
 }
+
+/* --- END OF FILE src/index.css --- */
