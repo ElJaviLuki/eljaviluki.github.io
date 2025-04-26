@@ -3,22 +3,17 @@
 // src/pages/AboutMePage/AboutMePage.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+// REMOVE: import { Helmet } from 'react-helmet-async';
 import { portfolioData } from '../data.js';
-import layoutStyles from '../components/Layout.module.css'; // Use layout styles for structure
+import layoutStyles from '../components/Layout.module.css';
 import styles from './AboutMePage.module.css';
 
-// Helper component to render different content types
+// Helper component (no changes needed)
 function ContentRenderer({ item }) {
     if (item.type === 'paragraph') {
-        // Use dangerouslySetInnerHTML only if you explicitly need to render HTML tags from the content
-        // For standard paragraphs, just rendering the content is safer.
-        // If item.content might contain HTML like <b>:
-        // return <p dangerouslySetInnerHTML={{ __html: item.content }} />;
-        // If item.content is just plain text:
         return <p>{item.content}</p>;
     }
     if (item.type === 'media') {
-        // Enhanced check for video types (add more extensions if needed)
         const videoExtensions = ['.mp4', '.webm', '.ogv'];
         const isVideo = videoExtensions.some(ext => item.src.toLowerCase().endsWith(ext));
         return (
@@ -28,10 +23,8 @@ function ContentRenderer({ item }) {
                         Your browser does not support the video tag.
                     </video>
                 ) : (
-                    <img src={item.src} alt={item.alt} loading="lazy" />
+                    <img src={item.src} alt={item.alt || 'Visual representation related to the text'} loading="lazy" />
                 )}
-                {/* Optional: Add figcaption if needed */}
-                {/* <figcaption>{item.alt}</figcaption> */}
             </figure>
         );
     }
@@ -39,14 +32,18 @@ function ContentRenderer({ item }) {
 }
 
 function AboutMePage() {
-    // Access the 'long' version of aboutMe data
     const aboutMeData = portfolioData.aboutMe?.long;
+    const { name } = portfolioData.personalInfo;
+    const siteUrl = window.location.origin;
+    const pageUrl = `${siteUrl}/about-me`;
+    const pageTitle = `About ${name} | Vision & Pragmatism`;
 
-    // Check if aboutMeData itself exists
     if (!aboutMeData) {
-        // Basic error handling or redirect
         return (
             <div className={layoutStyles.detailPage}>
+                {/* Render title directly for error state */}
+                <title>About Me Data Not Found</title>
+                <meta name="robots" content="noindex" />
                 <p>About Me section data not found.</p>
                 <Link to="/" className={layoutStyles.backLink}>
                     <span aria-hidden="true">←</span> Back
@@ -55,13 +52,14 @@ function AboutMePage() {
         );
     }
 
-    // Destructure the properties we need from aboutMeData
     const { headline, intro, storytelling, caseStudy, approach } = aboutMeData;
+    const pageDescription = `${intro} Learn about the story, philosophy, approach, and a case study demonstrating the blend of vision and pragmatism.`;
 
-    // Further checks for required nested data
     if (!headline || !intro || !storytelling || !caseStudy || !approach) {
         return (
             <div className={layoutStyles.detailPage}>
+                <title>About Me Data Incomplete</title>
+                <meta name="robots" content="noindex" />
                 <p>About Me section data is incomplete.</p>
                 <Link to="/" className={layoutStyles.backLink}>
                     <span aria-hidden="true">←</span> Back
@@ -70,27 +68,36 @@ function AboutMePage() {
         );
     }
 
-
     return (
         <div className={`${layoutStyles.detailPage} ${styles.aboutPageContainer}`}>
+            {/* Render head tags directly */}
+            <title>{pageTitle}</title>
+            <meta name="description" content={pageDescription} />
+            <link rel="canonical" href={pageUrl} />
+            {/* Open Graph / Facebook specific */}
+            <meta property="og:title" content={pageTitle} />
+            <meta property="og:description" content={pageDescription} />
+            <meta property="og:url" content={pageUrl} />
+            {/* Twitter specific */}
+            <meta property="twitter:title" content={pageTitle} />
+            <meta property="twitter:description" content={pageDescription} />
+            <meta property="twitter:url" content={pageUrl} />
+            {/* Potential Article Schema can be added here as a script tag if desired */}
+
             <Link to="/" className={`${layoutStyles.backLink} ${styles.backLink}`}>
                 <span aria-hidden="true">←</span> Back
             </Link>
 
-            {/* Render Headline */}
             <h1>{headline}</h1>
-            {/* Render Intro (use a specific class or just a standard paragraph) */}
-            <p className={styles.introParagraph}>{intro}</p>
+            <p className={styles.subheadline}>{intro}</p>
 
-            {/* Render Storytelling Section (Previously "Philosophy") */}
             <section className={styles.section}>
-                <h2>My Story & Philosophy</h2> {/* Updated heading */}
+                <h2>My Story & Philosophy</h2>
                 {storytelling.map((item, index) => (
                     <ContentRenderer key={`storytelling-${index}`} item={item} />
                 ))}
             </section>
 
-            {/* Render Case Study Section (Check if caseStudy and its content exist) */}
             {caseStudy.title && caseStudy.content && caseStudy.content.length > 0 && (
                 <section className={styles.section}>
                     <h2>{caseStudy.title}</h2>
@@ -100,7 +107,6 @@ function AboutMePage() {
                 </section>
             )}
 
-            {/* Render Approach Section (Check if approach and its steps exist) */}
             {approach.title && approach.steps && approach.steps.length > 0 && (
                 <section className={styles.section}>
                     <h2>{approach.title}</h2>

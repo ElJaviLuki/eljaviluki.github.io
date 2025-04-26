@@ -4,14 +4,19 @@
 // Optional 404 Page
 import React from 'react';
 import { Link } from 'react-router-dom';
-import layoutStyles from '../components/Layout.module.css'; // Reuse layout styles
-import styles from './NotFoundPage.module.css'; // Specific styles
+// REMOVE: import { Helmet } from 'react-helmet-async';
+import layoutStyles from '../components/Layout.module.css';
+import styles from './NotFoundPage.module.css';
 
 function NotFoundPage() {
     return (
         <div className={`${layoutStyles.detailPage} ${styles.notFoundContainer}`}>
-            <h1>404 - Página no encontrada</h1>
-            <p>Parece que te has perdido. El camino que buscas no existe aquí.</p>
+            {/* Render head tags directly */}
+            <title>404 - Page Not Found</title>
+            <meta name="robots" content="noindex" />
+
+            <h1>404 - Page Not Found</h1>
+            <p>Oops! It seems the page you were looking for doesn't exist or has been moved.</p>
             <Link to="/" className={`button-link ${styles.homeButton}`}>
                 Back to Main Page
             </Link>

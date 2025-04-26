@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Main Pages -->
+    <url>
+        <loc>https://YOUR_DOMAIN.com/</loc> <!-- IMPORTANT: Replace with your actual domain -->
+        <lastmod>2024-07-30</lastmod> <!-- Optional: Update with build date -->
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://YOUR_DOMAIN.com/about-me</loc> <!-- IMPORTANT: Replace -->
+        <lastmod>2024-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Experience Pages -->
+    <url>
+        <loc>https://YOUR_DOMAIN.com/experience/royal-tiktok</loc> <!-- IMPORTANT: Replace -->
+        <lastmod>2024-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://YOUR_DOMAIN.com/experience/ortoprodent-erp</loc> <!-- IMPORTANT: Replace -->
+        <lastmod>2024-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://YOUR_DOMAIN.com/experience/teldat</loc> <!-- IMPORTANT: Replace -->
+        <lastmod>2024-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://YOUR_DOMAIN.com/experience/drive-me-group</loc> <!-- IMPORTANT: Replace -->
+        <lastmod>2024-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Project Pages -->
+    <url>
+        <loc>https://YOUR_DOMAIN.com/projects/grindr-plus</loc> <!-- IMPORTANT: Replace -->
+        <lastmod>2024-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://YOUR_DOMAIN.com/projects/csos-beacon</loc> <!-- IMPORTANT: Replace -->
+        <lastmod>2024-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://YOUR_DOMAIN.com/projects/idealistillo</loc> <!-- IMPORTANT: Replace -->
+        <lastmod>2024-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Recognition Pages -->
+    <url>
+        <loc>https://YOUR_DOMAIN.com/recognitions/ipo-2019</loc> <!-- IMPORTANT: Replace -->
+        <lastmod>2024-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://YOUR_DOMAIN.com/recognitions/oif-2019</loc> <!-- IMPORTANT: Replace -->
+        <lastmod>2024-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://YOUR_DOMAIN.com/recognitions/ncl-2021</loc> <!-- IMPORTANT: Replace -->
+        <lastmod>2024-07-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+</urlset>

@@ -3,31 +3,79 @@
 // src/pages/ExperienceDetailPage/ExperienceDetailPage.jsx
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
+// REMOVE: import { Helmet } from 'react-helmet-async';
 import { portfolioData } from '../data.js';
-import layoutStyles from '../components/Layout.module.css'; // Reuse layout styles
-import styles from '../components/Experience.module.css'; // Reuse experience styles
+import layoutStyles from '../components/Layout.module.css';
+import styles from '../components/Experience.module.css';
 
 function ExperienceDetailPage() {
     const { id } = useParams();
+    const { name: portfolioName } = portfolioData.personalInfo;
+    const siteUrl = window.location.origin;
 
-    // Find the experience item (checking both freelance and corporate)
     const experienceItem =
         portfolioData.experience.freelanceConsulting.find(job => job.id === id) ||
         portfolioData.experience.corporate.find(job => job.id === id);
 
-    // If not found, redirect or show not found message
     if (!experienceItem) {
-        // Option 1: Redirect to home or a 404 page
-        return <Navigate to="/404" replace />; // Redirect to a dedicated 404 page
-        // Option 2: Show a message
-        // return <div className={layoutStyles.detailPage}><p>Experience not found.</p> <Link to="/" className={layoutStyles.backLink}>Back to Home</Link></div>;
+        // No need to render specific meta tags here, just navigate
+        return <Navigate to="/404" replace />;
     }
 
     const displayTitle = experienceItem.name || experienceItem.client || 'Experience Detail';
     const logoSrc =  experienceItem.logo || experienceItem.clientLogo || '/logo-placeholder.png';
+    const pageUrl = `${siteUrl}/experience/${id}`;
+    const pageTitle = `${experienceItem.role || 'Role'} at ${displayTitle} | ${portfolioName} Experience`;
+    const pageDescription = `${experienceItem.summary.substring(0, 160)}${experienceItem.summary.length > 160 ? '...' : ''}`;
+    const ogImage = logoSrc !== '/logo-placeholder.png' ? siteUrl + logoSrc : undefined; // Use logo if available
+
+    // Structured Data (JobPosting or Organization Role)
+    const jobSchema = {
+        "@context": "https://schema.org",
+        "@type": "JobPosting", // Or OrganizationRole
+        "title": experienceItem.role,
+        "description": experienceItem.summary + "\n\n" + experienceItem.details.join("\n"),
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": experienceItem.client || displayTitle,
+            "logo": experienceItem.clientLogo ? `${siteUrl}${experienceItem.clientLogo}` : undefined,
+            "url": experienceItem.web || undefined
+        },
+        // Simplified date handling - adjust logic as needed
+        "datePosted": experienceItem.date?.split(' - ')[0]?.replace('/', '-') + '-01' || undefined,
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": experienceItem.location?.split(', ')[0],
+                "addressRegion": experienceItem.location?.split(', ')[1],
+            }
+        },
+        "skills": experienceItem.technologies?.join(", ") || undefined,
+        "identifier": { "@type": "PropertyValue", "name": "Experience ID", "value": experienceItem.id }
+    };
+
 
     return (
         <div className={`${layoutStyles.detailPage} ${styles.jobDetail}`}>
+            {/* Render head tags directly */}
+            <title>{pageTitle}</title>
+            <meta name="description" content={pageDescription} />
+            <link rel="canonical" href={pageUrl} />
+            {/* OG/Twitter Tags */}
+            <meta property="og:title" content={pageTitle} />
+            <meta property="og:description" content={pageDescription} />
+            <meta property="og:url" content={pageUrl} />
+            {ogImage && <meta property="og:image" content={ogImage} />}
+            <meta property="twitter:title" content={pageTitle} />
+            <meta property="twitter:description" content={pageDescription} />
+            <meta property="twitter:url" content={pageUrl} />
+            {ogImage && <meta property="twitter:image" content={ogImage} />}
+            {/* JSON-LD Structured Data */}
+            <script type="application/ld+json">
+                {JSON.stringify(jobSchema)}
+            </script>
+
             <Link to="/" className={layoutStyles.backLink}>
                 <span aria-hidden="true">←</span> Back to Main Page
             </Link>
@@ -43,7 +91,6 @@ function ExperienceDetailPage() {
                         </div>
                     </header>
 
-                    {/* Project Context (Specific for Teldat) */}
                     {experienceItem.projectContext && (
                         <section className={`${styles.detailSection} ${styles.projectContext}`}>
                             <h2>Project: {experienceItem.projectContext.projectName}</h2>
@@ -62,7 +109,6 @@ function ExperienceDetailPage() {
                         </section>
                     )}
 
-
                     <section className={styles.detailSection}>
                         <h2>In a few words</h2>
                         <p>{experienceItem.summary}</p>
@@ -79,8 +125,6 @@ function ExperienceDetailPage() {
                         </section>
                     )}
 
-
-                    {/* Media Section */}
                     {experienceItem.media && experienceItem.media.length > 0 && (
                         <section className={`${layoutStyles.mediaSection} ${styles.detailSection}`}>
                             <h2>Media</h2>
@@ -98,8 +142,7 @@ function ExperienceDetailPage() {
                             ))}
                         </section>
                     )}
-
-                </div> {/* End Main Content */}
+                </div>
 
                 <aside className={layoutStyles.sidebar}>
                     {experienceItem.technologies && experienceItem.technologies.length > 0 && (
@@ -122,14 +165,13 @@ function ExperienceDetailPage() {
                         <div className={styles.sidebarSection}>
                             <h3>Client</h3>
                             <p>{experienceItem.client}</p>
+                            {experienceItem.web && (
+                                <p><a href={experienceItem.web} target="_blank" rel="noopener noreferrer">Visit Website ↗</a></p>
+                            )}
                         </div>
                     )}
-                    {/* Add link back to specific section if desired */}
-                    {/* <Link to="/#experience">Ver más Experiencia</Link> */}
-
-                </aside> {/* End Sidebar */}
-
-            </div> {/* End Grid */}
+                </aside>
+            </div>
         </div>
     );
 }

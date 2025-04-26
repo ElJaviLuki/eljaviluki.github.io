@@ -3,12 +3,16 @@
 // src/pages/ProjectDetailPage/ProjectDetailPage.jsx
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
+// REMOVE: import { Helmet } from 'react-helmet-async';
 import { portfolioData } from '../data.js';
-import layoutStyles from '../components/Layout.module.css'; // Reuse layout styles
-import styles from '../components/Projects.module.css'; // Reuse project styles
+import layoutStyles from '../components/Layout.module.css';
+import styles from '../components/Projects.module.css';
 
 function ProjectDetailPage() {
     const { id } = useParams();
+    const { name: portfolioName } = portfolioData.personalInfo;
+    const siteUrl = window.location.origin;
+
     const projectItem = portfolioData.projects.personal.find(proj => proj.id === id);
 
     if (!projectItem) {
@@ -16,9 +20,45 @@ function ProjectDetailPage() {
     }
 
     const logoSrc = projectItem.logo || '/logo-placeholder.png';
+    const pageUrl = `${siteUrl}/projects/${id}`;
+    const pageTitle = `${projectItem.title} | Personal Project by ${portfolioName}`;
+    const pageDescription = `${projectItem.summary.substring(0, 160)}${projectItem.summary.length > 160 ? '...' : ''}`;
+    const ogImage = logoSrc !== '/logo-placeholder.png' ? siteUrl + logoSrc : undefined;
+
+    // Structured Data
+    const projectSchema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": projectItem.title,
+        "applicationCategory": "Utility", // Adjust if needed
+        "description": projectItem.summary + "\n\n" + projectItem.details.join("\n"),
+        "author": { "@type": "Person", "name": portfolioName },
+        "url": projectItem.web || undefined,
+        "image": ogImage,
+        "keywords": projectItem.technologies?.join(", ") || undefined,
+        "identifier": { "@type": "PropertyValue", "name": "Project ID", "value": projectItem.id }
+    };
 
     return (
         <div className={`${layoutStyles.detailPage} ${styles.projectDetail}`}>
+            {/* Render head tags directly */}
+            <title>{pageTitle}</title>
+            <meta name="description" content={pageDescription} />
+            <link rel="canonical" href={pageUrl} />
+            {/* OG/Twitter Tags */}
+            <meta property="og:title" content={pageTitle} />
+            <meta property="og:description" content={pageDescription} />
+            <meta property="og:url" content={pageUrl} />
+            {ogImage && <meta property="og:image" content={ogImage} />}
+            <meta property="twitter:title" content={pageTitle} />
+            <meta property="twitter:description" content={pageDescription} />
+            <meta property="twitter:url" content={pageUrl} />
+            {ogImage && <meta property="twitter:image" content={ogImage} />}
+            {/* JSON-LD Structured Data */}
+            <script type="application/ld+json">
+                {JSON.stringify(projectSchema)}
+            </script>
+
             <Link to="/" className={layoutStyles.backLink}>
                 <span aria-hidden="true">←</span> Back to Main Page
             </Link>
@@ -29,8 +69,7 @@ function ProjectDetailPage() {
                         <img src={logoSrc} alt={`${projectItem.title} logo`} className={styles.detailLogo} loading="lazy" />
                         <div className={styles.detailTitleGroup}>
                             <h1>{projectItem.title}</h1>
-                            {/* Add subtitle or category if available */}
-                            <p>Proyecto Personal / Exploración</p>
+                            <p>Personal Project / Exploration</p>
                         </div>
                     </header>
 
@@ -50,7 +89,6 @@ function ProjectDetailPage() {
                         </section>
                     )}
 
-                    {/* Media Section */}
                     {projectItem.media && projectItem.media.length > 0 && (
                         <section className={`${layoutStyles.mediaSection} ${styles.detailSection}`}>
                             <h2>Media</h2>
@@ -68,8 +106,7 @@ function ProjectDetailPage() {
                             ))}
                         </section>
                     )}
-
-                </div> {/* End Main Content */}
+                </div>
 
                 <aside className={layoutStyles.sidebar}>
                     {projectItem.technologies && projectItem.technologies.length > 0 && (
@@ -80,17 +117,24 @@ function ProjectDetailPage() {
                             </ul>
                         </div>
                     )}
-                    {/* Add other relevant sidebar info if available */}
-                    {/* Example: Link to GitHub Repo if available */}
-                    {/*
-                    <div className={styles.sidebarSection}>
-                        <h3>Repositorio</h3>
-                        <a href="REPO_URL" target="_blank" rel="noopener noreferrer">Ver en GitHub</a>
-                    </div>
-                    */}
-                </aside> {/* End Sidebar */}
-
-            </div> {/* End Grid */}
+                    {projectItem.web && projectItem.web.includes('github.com') && (
+                        <div className={styles.sidebarSection}>
+                            <h3>Repository</h3>
+                            <a href={projectItem.web} target="_blank" rel="noopener noreferrer">
+                                View on GitHub <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    )}
+                    {projectItem.web && !projectItem.web.includes('github.com') && (
+                        <div className={styles.sidebarSection}>
+                            <h3>Website / Demo</h3>
+                            <a href={projectItem.web} target="_blank" rel="noopener noreferrer">
+                                Visit Site <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    )}
+                </aside>
+            </div>
         </div>
     );
 }
