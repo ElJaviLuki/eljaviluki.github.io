@@ -1,3 +1,5 @@
+/* --- START OF FILE src/components/Experience/Experience.module.css --- */
+
 .experience {
     padding: 5rem 0;
 }
@@ -51,7 +53,11 @@
     border-radius: 12px; /* More rounded */
     border: var(--border-standard);
     padding: 2rem; /* More padding */
-    box-shadow: var(--glass-shadow);
+    /* MODIFIED: Added subtle inset/outer shadow for embossing, combined with original glow */
+    box-shadow:
+            inset 1px 1px 2px rgba(255, 255, 255, 0.15), /* Subtle light inset top-left */
+            1px 1px 3px rgba(0, 0, 0, 0.3),             /* Subtle dark outer bottom-right */
+            var(--glass-shadow);                         /* Original diffuse glow */
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -82,7 +88,11 @@
 .jobSummary:hover {
     transform: translateY(-8px) scale(1.01);
     background: var(--glass-hover-bg); /* Use variable */
-    box-shadow: var(--glass-hover-shadow); /* Use variable */
+    /* MODIFIED: Keep embossing shadows on hover, combined with hover glow */
+    box-shadow:
+            inset 1px 1px 2px rgba(255, 255, 255, 0.15),
+            1px 1px 3px rgba(0, 0, 0, 0.3),
+            var(--glass-hover-shadow); /* Use variable for hover glow */
 }
 .jobSummary:hover::before {
     opacity: 1;
@@ -364,3 +374,4 @@
 .sidebarSection { margin-bottom: 2rem; }
 .sidebarSection:last-child { margin-bottom: 0; }
 /* Styles for tags within sidebar are inherited from Layout.module.css .techList li */
+/* --- END OF FILE src/components/Experience/Experience.module.css --- */
