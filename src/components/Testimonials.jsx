@@ -1,12 +1,10 @@
-// --- START OF FILE src/components/Testimonials/Testimonials.jsx ---
-
 // src/components/Testimonials/Testimonials.js
 import React from 'react'; // Import React
 import { Link } from 'react-router-dom';
 import { portfolioData } from '../data.js'; // Import data
 import styles from './Testimonials.module.css';
 
-// Function to render author links (kept outside memoized component)
+// Function to render author links (kept outside component)
 const renderAuthorLinks = (links, authorName) => {
     if (!links) return null;
     return Object.entries(links).map(([platform, url]) => {
@@ -32,9 +30,9 @@ const renderAuthorLinks = (links, authorName) => {
     });
 };
 
-// Memoize the Testimonial Card component
-const TestimonialCard = React.memo(({ testimonial }) => {
-    console.log(`Rendering TestimonialCard: ${testimonial.authorName}`); // Optional: for debugging
+// REMOVED React.memo
+const TestimonialCard = ({ testimonial }) => {
+    // REMOVED console.log
 
     return (
         <article key={testimonial.id} className={styles.card}>
@@ -65,9 +63,9 @@ const TestimonialCard = React.memo(({ testimonial }) => {
             </footer>
         </article>
     );
-}); // End of React.memo HOC
+}; // End of component definition
 
-TestimonialCard.displayName = 'TestimonialCard';
+// REMOVED displayName assignment
 
 function Testimonials() {
     const { testimonials } = portfolioData;
@@ -81,7 +79,7 @@ function Testimonials() {
             <h2 className={styles.heading}>What they say</h2>
             <div className={styles.grid}>
                 {testimonials.map((testimonial) => (
-                    // Use the memoized component
+                    // Use the regular component
                     <TestimonialCard key={testimonial.id} testimonial={testimonial} />
                 ))}
             </div>
@@ -90,5 +88,3 @@ function Testimonials() {
 }
 
 export default Testimonials;
-
-// --- END OF FILE src/components/Testimonials/Testimonials.jsx ---

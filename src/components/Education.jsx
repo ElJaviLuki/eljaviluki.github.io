@@ -1,13 +1,11 @@
-// --- START OF FILE src/components/Education/Education.jsx ---
-
 // src/components/Education/Education.jsx
 import React from 'react'; // Import React
 import { portfolioData } from '../data.js';
 import styles from './Education.module.css'; // Use Education CSS Module
 
-// Memoize the Education Item component
-const EducationItem = React.memo(({ item }) => {
-    console.log(`Rendering EducationItem: ${item.institution}`); // Optional: for debugging
+// REMOVED React.memo
+const EducationItem = ({ item }) => {
+    // REMOVED console.log
 
     return (
         <article key={item.id} className={styles.timelineItem}>
@@ -58,9 +56,9 @@ const EducationItem = React.memo(({ item }) => {
             </div>
         </article>
     );
-}); // End of React.memo HOC
+}; // End of component definition
 
-EducationItem.displayName = 'EducationItem';
+// REMOVED displayName assignment
 
 function Education() {
     const { education } = portfolioData;
@@ -74,7 +72,7 @@ function Education() {
             <h2 className={styles.heading}>Education</h2>
             <div className={styles.timeline}>
                 {education.map((item) => (
-                    // Use the memoized component
+                    // Use the regular component
                     <EducationItem key={item.id} item={item} />
                 ))}
             </div>
@@ -83,5 +81,3 @@ function Education() {
 }
 
 export default Education;
-
-// --- END OF FILE src/components/Education/Education.jsx ---

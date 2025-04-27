@@ -1,5 +1,3 @@
-// --- START OF FILE src/components/Projects/Projects.jsx ---
-
 // src/components/Projects/Projects.jsx
 // Summary list of personal projects
 import React from 'react'; // Import React
@@ -7,10 +5,10 @@ import { Link } from 'react-router-dom';
 import { portfolioData } from '../data.js';
 import styles from './Projects.module.css'; // Use Projects CSS module
 
-// Memoize the ProjectSummaryItem component
-const ProjectSummaryItem = React.memo(({ project }) => {
+// REMOVED React.memo
+const ProjectSummaryItem = ({ project }) => {
     const logoSrc = project.logo || '/logo-placeholder.png'; // Fallback logo
-    console.log(`Rendering ProjectSummaryItem: ${project.title}`); // Optional: for debugging
+    // REMOVED console.log
 
     return (
         <article className={styles.projectSummary}>
@@ -34,9 +32,9 @@ const ProjectSummaryItem = React.memo(({ project }) => {
             </Link>
         </article>
     );
-}); // End of React.memo HOC
+}; // End of component definition
 
-ProjectSummaryItem.displayName = 'ProjectSummaryItem';
+// REMOVED displayName assignment
 
 function Projects() {
     const { personal } = portfolioData.projects;
@@ -58,5 +56,3 @@ function Projects() {
 }
 
 export default Projects;
-
-// --- END OF FILE src/components/Projects/Projects.jsx ---
