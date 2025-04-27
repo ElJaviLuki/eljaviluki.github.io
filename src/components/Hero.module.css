@@ -6,20 +6,18 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* === NEW: Center content vertically as a group === */
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: 1rem 1.5rem; /* Reduced top/bottom padding slightly */
+    padding: 1rem 1.5rem;
 }
 
 /* Contenedor de la Imagen - General Styles (Mobile First) */
 .imageContainer {
-    /* Mobile size */
-    max-width: 300px; /* Slightly reduced max-width */
-    width: 70%;      /* Slightly reduced width */
-    /* === MODIFIED: Reduced top margin, kept centering === */
-    margin: 0 auto; /* Centered horizontally, no extra top margin */
+    /* === MODIFIED: Further reduce size for mobile === */
+    max-width: 240px; /* Further reduced max-width */
+    width: 65%;      /* Further reduced width */
+    margin: 0 auto; /* Keep centering */
     /* End Mobile size */
     height: auto;
     flex-shrink: 0;
@@ -35,7 +33,7 @@
             inset 1px 1px 2px rgba(255, 255, 255, 0.15),
             1px 1px 3px rgba(0, 0, 0, 0.3),
             var(--glass-shadow);
-    padding: 0.6rem;
+    padding: 0.5rem; /* Adjusted padding slightly */
     transition: var(--transition-smooth);
     z-index: 1;
     /* === END Card Styling === */
@@ -85,22 +83,18 @@
 
 /* Contenedor del Texto - General Styles (Mobile First) */
 .textContainer {
-    /* === REMOVED: flex-grow and internal justify-content === */
-    /* flex-grow: 1; */
-    /* justify-content: center; */
     display: flex;
     flex-direction: column;
-    /* === MODIFIED: Reduced top padding significantly === */
-    padding: 1.5rem 0 1rem 0; /* Control space below image, allow bottom space */
+    padding: 1.8rem 0 1rem 0; /* Adjusted padding slightly */
     text-align: center;
     position: relative;
     z-index: 2;
     width: 100%;
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0;
 
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out 0.4s forwards; /* Adjusted delay */
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
 }
 
 /* Estilos de texto (Mobile First - Reduced Sizes) */
@@ -132,6 +126,11 @@
     letter-spacing: 0.8px;
     word-spacing: 3px;
     line-height: 1.4;
+    /* === NEW: Limit width and center === */
+    max-width: 90%; /* Adjust percentage as needed */
+    margin-left: auto;
+    margin-right: auto;
+    /* === END NEW === */
 }
 
 .tagline {
@@ -163,20 +162,21 @@
 @media (min-width: 900px) {
     .hero {
         flex-direction: row;
-        /* === MODIFIED: Restore align-items, remove justify-content === */
         align-items: center;
-        justify-content: space-between; /* Keep space-between for desktop */
-        padding: 0 5%; /* Restore desktop padding */
+        justify-content: space-between;
+        padding: 0 5%;
         gap: 5%;
     }
 
     .imageContainer {
         order: 2;
+        /* === Reset mobile sizes === */
         width: auto;
         max-width: none;
-        margin: 0; /* Keep margin reset */
+        margin: 0;
+        padding: 1rem; /* Restore desktop padding */
+        /* === End Reset === */
         height: auto;
-        padding: 1rem;
         overflow: hidden;
         flex-grow: 0;
         flex-shrink: 0;
@@ -192,15 +192,13 @@
     .textContainer {
         order: 1;
         width: auto;
-        /* === MODIFIED: Restore desktop padding and alignment === */
         padding: 4rem 0;
         text-align: left;
-        align-items: flex-start; /* Added back */
-        justify-content: center; /* Added back */
+        align-items: flex-start;
+        justify-content: center;
         flex-grow: 1;
         flex-shrink: 1;
         flex-basis: auto;
-        /* === END MODIFIED === */
     }
 
     /* === Reset text styles for Desktop === */
@@ -227,6 +225,11 @@
         letter-spacing: 1px;
         word-spacing: 4px;
         line-height: 1.5;
+        /* === Reset mobile width constraints === */
+        max-width: none;
+        margin-left: 0; /* Reset centering */
+        margin-right: 0;
+        /* === End Reset === */
     }
 
     .tagline {
