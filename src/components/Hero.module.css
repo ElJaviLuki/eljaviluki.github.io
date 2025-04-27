@@ -13,13 +13,13 @@
 /* Contenedor de la Imagen - General Styles (Mobile First) */
 .imageContainer {
     width: 100%;
-    height: 45vh; /* MODIFIED: Slightly smaller height on mobile */
+    height: auto; /* MODIFIED: Container height adapts to content */
     flex-shrink: 0;
     position: relative;
-    overflow: hidden; /* Clip image to rounded corners */
+    overflow: hidden; /* Clip children to rounded corners */
 
     /* === NEW: Apply Card Styling Globally === */
-    border-radius: 15px; /* Rounded corners */
+    border-radius: 15px; /* Rounded corners for the container */
     background: var(--glass-bg-color); /* Glass background */
     backdrop-filter: blur(var(--glass-blur)); /* Glass blur */
     border: var(--border-standard); /* Glass border */
@@ -27,16 +27,11 @@
             inset 1px 1px 2px rgba(255, 255, 255, 0.15), /* Subtle light inset top-left */
             1px 1px 3px rgba(0, 0, 0, 0.3),             /* Subtle dark outer bottom-right */
             var(--glass-shadow);                         /* Original diffuse glow */
-    padding: 0.75rem; /* Optional: Small padding inside the card */
+    padding: 0.75rem; /* Padding inside the card */
     transition: var(--transition-smooth); /* === NEW: Added for hover === */
     z-index: 1; /* Ensure it's above potential pseudo-elements */
     /* === END NEW === */
-
-    /* === NEW: Center content for object-fit: contain === */
-    display: flex; /* Use flexbox to center the img */
-    justify-content: center;
-    align-items: center;
-    /* === END NEW === */
+    /* REMOVED flex centering */
 }
 
 /* === NEW: Gradient Border Hover Effect === */
@@ -75,16 +70,14 @@
 
 
 .portrait {
-    display: block;
-    /* MODIFIED: Max width/height to prevent stretching beyond container */
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;  /* Let height control */
-    height: auto; /* Let width control */
-    object-fit: contain; /* MODIFIED: Ensure full image is visible */
-    object-position: center center; /* MODIFIED: Center the contained image */
-    /* === NEW: Rounded corners for the image itself === */
-    border-radius: 10px; /* Slightly smaller radius than container */
+    display: block; /* Behaves like a block, crucial for width/height auto */
+    width: 100%;   /* Takes full width available within the container's padding */
+    height: auto;  /* Height adjusts based on intrinsic aspect ratio */
+    /* === Rounded corners for the image itself === */
+    border-radius: 10px;
+    /* === REMOVED: object-fit not needed when height is auto === */
+    /* === ADDED: Max height constraint DIRECTLY on the image for desktop === */
+    /* max-height applied in media query */
 }
 
 /* Contenedor del Texto - General Styles (Mobile First) */
@@ -170,27 +163,23 @@
     .imageContainer {
         /* === MODIFIED: Adjustments for Desktop Card === */
         order: 2; /* Image on the right */
-        width: 45%; /* MODIFIED: Reduced width */
-        height: auto; /* MODIFIED: Height based on content/max-height */
-        max-height: 70vh; /* MODIFIED: Limit max height */
-        /* align-self: center; */ /* No longer needed if hero has align-items: center */
+        width: 45%; /* Keep percentage width */
+        height: auto; /* Keep auto height */
+        /* REMOVED max-height from container */
         margin: 0; /* Reset margins if any */
         /* Keep card styles applied globally */
         padding: 1rem; /* Slightly more padding on desktop */
-        /* Keep flexbox centering */
+        overflow: hidden; /* Keep overflow hidden */
         /* === END MODIFIED === */
     }
 
     .portrait {
-        /* === MODIFIED: Ensure image respects container === */
-        position: static; /* MODIFIED: No longer absolute */
-        transform: none; /* Reset transform */
-        /* max-width/max-height already set globally */
-        /* Keep width/height auto */
-        /* Keep object-fit/object-position */
-        max-height: calc(70vh - 2rem); /* Respect container padding and max-height */
-        /* Keep border-radius */
-        /* === END MODIFIED === */
+        /* Apply max-height directly to the image in desktop view */
+        /* Adjust value accounting for container padding (1rem top + 1rem bottom) */
+        max-height: calc(75vh - 2rem);
+        /* Inherits width: 100%, height: auto, border-radius: 10px */
+        position: static;
+        transform: none;
     }
 
     .textContainer {
