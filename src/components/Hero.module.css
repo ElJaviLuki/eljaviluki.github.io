@@ -31,6 +31,12 @@
     transition: var(--transition-smooth); /* === NEW: Added for hover === */
     z-index: 1; /* Ensure it's above potential pseudo-elements */
     /* === END NEW === */
+
+    /* === NEW: Center content for object-fit: contain === */
+    display: flex; /* Use flexbox to center the img */
+    justify-content: center;
+    align-items: center;
+    /* === END NEW === */
 }
 
 /* === NEW: Gradient Border Hover Effect === */
@@ -70,11 +76,13 @@
 
 .portrait {
     display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cover the container, maintain aspect ratio */
-    /* Adjusted default object position slightly */
-    object-position: center 35%;
+    /* MODIFIED: Max width/height to prevent stretching beyond container */
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;  /* Let height control */
+    height: auto; /* Let width control */
+    object-fit: contain; /* MODIFIED: Ensure full image is visible */
+    object-position: center center; /* MODIFIED: Center the contained image */
     /* === NEW: Rounded corners for the image itself === */
     border-radius: 10px; /* Slightly smaller radius than container */
 }
@@ -169,6 +177,7 @@
         margin: 0; /* Reset margins if any */
         /* Keep card styles applied globally */
         padding: 1rem; /* Slightly more padding on desktop */
+        /* Keep flexbox centering */
         /* === END MODIFIED === */
     }
 
@@ -176,13 +185,11 @@
         /* === MODIFIED: Ensure image respects container === */
         position: static; /* MODIFIED: No longer absolute */
         transform: none; /* Reset transform */
-        width: 100%; /* Fill container width */
-        height: 100%; /* Fill container height */
-        max-width: 100%; /* Ensure it doesn't overflow container */
+        /* max-width/max-height already set globally */
+        /* Keep width/height auto */
+        /* Keep object-fit/object-position */
         max-height: calc(70vh - 2rem); /* Respect container padding and max-height */
-        object-position: center 25%; /* MODIFIED: Adjust focus slightly higher for desktop */
         /* Keep border-radius */
-        /* Keep object-fit */
         /* === END MODIFIED === */
     }
 
