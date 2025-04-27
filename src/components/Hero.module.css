@@ -1,46 +1,45 @@
 /* --- START OF FILE src/components/Hero/Hero.module.css --- */
 
+/* === MODIFIED: Styles for Hero Section Redesign === */
+
 .hero {
-    /* === MODIFIED FOR CONSISTENT IMAGE SIZE === */
-    min-height: 100vh;
+    min-height: 100vh; /* Keep full viewport height for the section */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Mobile: Image top, Text bottom */
     position: relative;
-    /* MODIFICADO: Volver a ocultar overflow para evitar scrollbars */
-    overflow: hidden;
-    /* === END MODIFICATIONS === */
+    overflow: hidden; /* Clip potential overflows */
 }
 
-/* Contenedor de la Imagen */
+/* Contenedor de la Imagen - General Styles (Mobile First) */
 .imageContainer {
     width: 100%;
-    height: 50vh; /* Altura en móvil */
+    height: 45vh; /* MODIFIED: Slightly smaller height on mobile */
     flex-shrink: 0;
-    /* MODIFICADO: Añadir position relative y overflow hidden */
     position: relative;
-    overflow: hidden; /* Asegura que object-fit funcione como se espera */
+    overflow: hidden; /* Clip image to rounded corners */
+
+    /* === NEW: Apply Card Styling Globally === */
+    border-radius: 15px; /* Rounded corners */
+    background: var(--glass-bg-color); /* Glass background */
+    backdrop-filter: blur(var(--glass-blur)); /* Glass blur */
+    border: var(--border-standard); /* Glass border */
+    box-shadow: var(--glass-shadow); /* Glass shadow */
+    padding: 0.75rem; /* Optional: Small padding inside the card */
+    /* === END NEW === */
 }
 
 .portrait {
     display: block;
-    /* MODIFICADO: Usar object-fit y object-position en lugar de absolute positioning */
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    height: 100%; /* Ocupa toda la altura del contenedor */
-    object-fit: cover; /* Cubre el contenedor, mantiene aspect ratio, recorta si es necesario */
-    /* Ajusta object-position según sea necesario para centrar la figura principal */
-    /* Ejemplos: 'center top', '50% 20%', 'center center' */
-    /* Probemos con centrado horizontal y ligeramente hacia arriba */
-    object-position: center 30%; /* Ajusta este valor (e.g., 30% desde arriba) para enfocar mejor el cuerpo */
-    /* === REMOVED absolute positioning styles for mobile ===
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: none;
-    */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container, maintain aspect ratio */
+    /* Adjusted default object position slightly */
+    object-position: center 35%;
+    /* === NEW: Rounded corners for the image itself === */
+    border-radius: 10px; /* Slightly smaller radius than container */
 }
 
-/* Contenedor del Texto */
+/* Contenedor del Texto - General Styles (Mobile First) */
 .textContainer {
     flex-grow: 1;
     display: flex;
@@ -49,14 +48,14 @@
     padding: 2rem 1.5rem; /* Padding móvil */
     text-align: center;
     position: relative;
-    z-index: 2; /* Asegura que el texto esté sobre la imagen si hubiera superposición accidental */
+    z-index: 2; /* Text above potential background elements */
 
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease-out 0.2s forwards;
 }
 
-/* Estilos de texto (MODIFICADO para controlar saltos) */
+/* Estilos de texto (sin cambios significativos en estructura) */
 .name {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     margin-bottom: 0.75rem;
@@ -64,21 +63,17 @@
     letter-spacing: -1px;
     color: #ffffff;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    /* MODIFICADO: Forzar una sola línea por defecto */
     white-space: nowrap;
 }
 
-/* Estilo para los spans dentro del nombre */
 .name span {
-    display: inline-block; /* Permite margen/padding y se comporta como inline */
-    margin-right: 0.25em; /* Espacio entre palabras cuando están en línea */
-    /* MODIFICADO: Asegurar que los spans puedan romperse si nowrap está en .name, aunque nowrap en padre lo impide */
+    display: inline-block;
+    margin-right: 0.25em;
     white-space: normal;
 }
 .name span:last-child {
-    margin-right: 0; /* Sin espacio después de la última palabra */
+    margin-right: 0;
 }
-
 
 .adjectives {
     font-family: var(--font-mono);
@@ -101,79 +96,79 @@
     line-height: 1.4;
 }
 
-/* --- Media Query para forzar el salto en 3 líneas --- */
-/* Ajusta el valor de max-width según el punto donde quieras que ocurra el salto */
-@media (max-width: 480px) { /* <<< AJUSTA ESTE VALOR SI ES NECESARIO */
+/* Media Query para salto de línea en nombre (sin cambios) */
+@media (max-width: 480px) {
     .name {
-        /* MODIFICADO: Permitir saltos de línea aquí */
         white-space: normal;
-        text-align: center; /* Centrar cuando está en bloque */
+        text-align: center;
     }
     .name span {
-        display: block; /* Hace que cada span ocupe una línea */
-        margin-right: 0; /* Quitar el espacio entre spans */
-        line-height: 1.1; /* Ajustar el interlineado si es necesario */
+        display: block;
+        margin-right: 0;
+        line-height: 1.1;
     }
 }
 
 
-/* Desktop Styles */
+/* === MODIFIED: Desktop Styles for Redesign === */
 @media (min-width: 900px) {
     .hero {
         flex-direction: row; /* Lado a lado */
+        align-items: center; /* Vertically center items */
+        padding: 0 5%; /* Add some horizontal padding to the overall hero section */
+        gap: 4%; /* Add gap between text and image containers */
     }
 
     .imageContainer {
-        /* Ancho mantenido */
-        width: 55%;
-        height: 100vh;
-        order: 2; /* Imagen a la derecha */
-        /* position: relative; ya estaba */
-        overflow: visible; /* Importante para evitar que me ampute los brazos :D */
+        /* === MODIFIED: Adjustments for Desktop Card === */
+        order: 2; /* Image on the right */
+        width: 45%; /* MODIFIED: Reduced width */
+        height: auto; /* MODIFIED: Height based on content/max-height */
+        max-height: 70vh; /* MODIFIED: Limit max height */
+        /* align-self: center; */ /* No longer needed if hero has align-items: center */
+        margin: 0; /* Reset margins if any */
+        /* Keep card styles applied globally */
+        padding: 1rem; /* Slightly more padding on desktop */
+        /* === END MODIFIED === */
     }
 
     .portrait {
-        /* MODIFICADO: Vuelve a posicionamiento absoluto en desktop para permitir overflow visual */
-        position: absolute;
-        top: 0;
-        /* Alinear borde DERECHO de la imagen con borde DERECHO del contenedor */
-        right: 0;
-        left: auto; /* Sobreescribir left: 50% de móvil */
-        transform: none; /* Sobreescribir transform de móvil */
-        height: 100%; /* 100% de 100vh */
-        width: auto;   /* Ancho basado en proporción y altura */
-        max-width: none; /* Permitir que desborde el 55% del contenedor */
-        /* Ya no se necesita object-fit/object-position aquí, ya que el tamaño se basa en la altura y puede desbordar */
-        object-fit: initial;
-        object-position: initial;
-        overflow: visible; /* Asegurar que mis codos no mueran amputados :D */
+        /* === MODIFIED: Ensure image respects container === */
+        position: static; /* MODIFIED: No longer absolute */
+        transform: none; /* Reset transform */
+        width: 100%; /* Fill container width */
+        height: 100%; /* Fill container height */
+        max-width: 100%; /* Ensure it doesn't overflow container */
+        max-height: calc(70vh - 2rem); /* Respect container padding and max-height */
+        object-position: center 25%; /* MODIFIED: Adjust focus slightly higher for desktop */
+        /* Keep border-radius */
+        /* Keep object-fit */
+        /* === END MODIFIED === */
     }
 
     .textContainer {
-        /* Ancho mantenido */
-        width: 45%;
-        order: 1; /* Texto a la izquierda */
+        /* === MODIFIED: Adjust text container === */
+        order: 1; /* Text on the left */
+        width: 51%; /* MODIFIED: Adjusted width (100% - 45% - 4% gap) */
         text-align: left;
-        /* Padding mantenido */
-        padding: 4rem 8% 4rem 5%;
+        padding: 4rem 0; /* Adjust padding as needed, remove horizontal */
         align-items: flex-start;
         justify-content: center;
+        /* === END MODIFIED === */
     }
 
-    /* Asegurar que en desktop los spans vuelvan a ser inline y el H1 no fuerce nowrap innecesariamente */
+    /* Reset mobile-specific name wrapping */
     .name {
-        /* MODIFICADO: Resetear white-space en desktop */
         white-space: normal;
     }
     .name span {
-        display: inline-block; /* O inline, según prefieras */
+        display: inline-block;
         margin-right: 0.25em;
-        line-height: initial; /* Resetear line-height */
+        line-height: initial;
     }
     .name span:last-child {
         margin-right: 0;
     }
-
 
     .tagline {
         margin-left: 0;
