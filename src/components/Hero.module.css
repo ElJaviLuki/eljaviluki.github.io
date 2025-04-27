@@ -13,7 +13,7 @@
 /* Contenedor de la Imagen - General Styles (Mobile First) */
 .imageContainer {
     width: 100%;
-    height: auto; /* MODIFIED: Container height adapts to content */
+    height: auto; /* Container height adapts to content */
     flex-shrink: 0;
     position: relative;
     overflow: hidden; /* Clip children to rounded corners */
@@ -31,7 +31,6 @@
     transition: var(--transition-smooth); /* === NEW: Added for hover === */
     z-index: 1; /* Ensure it's above potential pseudo-elements */
     /* === END NEW === */
-    /* REMOVED flex centering */
 }
 
 /* === NEW: Gradient Border Hover Effect === */
@@ -70,13 +69,11 @@
 
 
 .portrait {
-    display: block; /* Behaves like a block, crucial for width/height auto */
-    width: 100%;   /* Takes full width available within the container's padding */
-    height: auto;  /* Height adjusts based on intrinsic aspect ratio */
+    display: block;
+    width: 100%;
+    height: auto;
     /* === Rounded corners for the image itself === */
     border-radius: 10px;
-    /* === REMOVED: object-fit not needed when height is auto === */
-    /* === ADDED: Max height constraint DIRECTLY on the image for desktop === */
     /* max-height applied in media query */
 }
 
@@ -157,39 +154,47 @@
         flex-direction: row; /* Lado a lado */
         align-items: center; /* Vertically center items */
         padding: 0 5%; /* Add some horizontal padding to the overall hero section */
-        gap: 4%; /* Add gap between text and image containers */
+        gap: 5%; /* Increased gap slightly */
+        justify-content: space-between; /* Distribute space */
     }
 
     .imageContainer {
-        /* === MODIFIED: Adjustments for Desktop Card === */
+        /* === MODIFIED: Width is auto, determined by content === */
         order: 2; /* Image on the right */
-        width: 45%; /* Keep percentage width */
+        width: auto; /* CRITICAL: Let content dictate width */
         height: auto; /* Keep auto height */
-        /* REMOVED max-height from container */
         margin: 0; /* Reset margins if any */
-        /* Keep card styles applied globally */
         padding: 1rem; /* Slightly more padding on desktop */
         overflow: hidden; /* Keep overflow hidden */
+        flex-grow: 0; /* Do not grow */
+        flex-shrink: 0; /* Do not shrink */
+        /* REMOVED max-width from here */
         /* === END MODIFIED === */
     }
 
     .portrait {
         /* Apply max-height directly to the image in desktop view */
-        /* Adjust value accounting for container padding (1rem top + 1rem bottom) */
-        max-height: calc(75vh - 2rem);
+        max-height: calc(75vh - 2rem); /* Adjust value accounting for padding */
         /* Inherits width: 100%, height: auto, border-radius: 10px */
+        /* === ADDED: Also add max-width to prevent image itself from causing container grow === */
+        /* This max-width should ideally be related to the desired column split */
+        /* It acts ON the image, which then defines the container width */
+        max-width: 45vw; /* Limit image width, adjust value as needed */
         position: static;
         transform: none;
     }
 
     .textContainer {
-        /* === MODIFIED: Adjust text container === */
+        /* === MODIFIED: Adjust text container based on image size === */
         order: 1; /* Text on the left */
-        width: 51%; /* MODIFIED: Adjusted width (100% - 45% - 4% gap) */
         text-align: left;
         padding: 4rem 0; /* Adjust padding as needed, remove horizontal */
         align-items: flex-start;
         justify-content: center;
+        flex-grow: 1; /* Allow text to take up available space */
+        flex-shrink: 1; /* Allow text container to shrink if needed */
+        flex-basis: auto; /* Let it naturally take space */
+        /* REMOVED max-width from here, let flex handle it */
         /* === END MODIFIED === */
     }
 
