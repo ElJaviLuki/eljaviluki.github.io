@@ -5,7 +5,7 @@ export const portfolioData = {
         "name": "Javier López Cacenave",
         "handle": "ElJaviLuki",
         "subtitle": "Full-Stack Developer",
-        "longPortraitUrl": "/long-portrait.png",
+        "longPortraitUrl": "/portrait.png",
         "socialLinks": [
             {
                 "platform": "LinkedIn",
@@ -36,7 +36,7 @@ export const portfolioData = {
             "detailsLink": "/about-me"
         },
         "long": {
-            "headline": "Vision + Pragmatism to craft real-world, tailor-made solutions",
+            "headline": "Vision + Pragmatism",
             "intro": "Driven by innate curiosity and a hands-on approach, I transform complex needs into simple yet effective full-stack software solutions that deliver tangible results.",
             "storytelling": [
                 {
