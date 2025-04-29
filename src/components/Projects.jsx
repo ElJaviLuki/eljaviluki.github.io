@@ -1,24 +1,26 @@
 // src/components/Projects/Projects.jsx
 // Summary list of personal projects
-import React from 'react'; // Import React
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { portfolioData } from '../data.js';
-import styles from './Projects.module.css'; // Use Projects CSS module
+import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { portfolioData } from '../data.js'; // Corrected import path
+import styles from './Projects.module.css';
 
-// REMOVED React.memo
 const ProjectSummaryItem = ({ project }) => {
-    const logoSrc = project.logo || '/logo-placeholder.png'; // Fallback logo
-    // REMOVED console.log
+    const { t } = useTranslation(); // Use translation hook
+    const logoSrc = project.logo || '/logo-placeholder.png';
+    const title = t(project.titleKey);
+    const summary = t(project.summaryKey);
 
     return (
         <article className={styles.projectSummary}>
             <div className={styles.summaryHeader}>
-                <img src={logoSrc} alt={`${project.title} logo`} className={styles.logo} loading="lazy" />
+                <img src={logoSrc} alt={`${title} logo`} className={styles.logo} loading="lazy" />
                 <div className={styles.titleGroup}>
-                    <h4 className={styles.title}>{project.title}</h4>
+                    <h4 className={styles.title}>{title}</h4>
                 </div>
             </div>
-            <p className={styles.summaryText}>{project.summary}</p>
+            <p className={styles.summaryText}>{summary}</p>
             {project.technologies && project.technologies.length > 0 && (
                 <div className={styles.techPreview}>
                     {project.technologies.slice(0, 5).map(tech => (
@@ -28,24 +30,23 @@ const ProjectSummaryItem = ({ project }) => {
                 </div>
             )}
             <Link to={project.pagePath} className={styles.detailsLink}>
-                See Details <span aria-hidden="true">→</span>
+                {t('viewDetails')} <span aria-hidden="true">{t('forwardArrow')}</span>
             </Link>
         </article>
     );
-}; // End of component definition
-
-// REMOVED displayName assignment
+};
 
 function Projects() {
+    const { t } = useTranslation(); // Use translation hook
     const { personal } = portfolioData.projects;
 
     if (!personal || personal.length === 0) {
-        return null; // Don't render section if no personal projects
+        return null;
     }
 
     return (
         <section className={styles.projects} id="projects">
-            <h2 className={styles.heading}>Personal Projects & Technical Exploration</h2>
+            <h2 className={styles.heading}>{t('projects.sectionHeading')}</h2>
             <div className={styles.summaryGrid}>
                 {personal.map(project => (
                     <ProjectSummaryItem key={project.id} project={project} />

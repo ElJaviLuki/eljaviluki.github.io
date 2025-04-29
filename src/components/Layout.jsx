@@ -1,47 +1,61 @@
 // --- START OF FILE src/components/Layout/Layout.jsx ---
 
 // src/components/Layout/Layout.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-// REMOVE: import { Helmet } from 'react-helmet-async';
-import Footer from './Footer.jsx';
-import Hero from './Hero.jsx'; // Import Hero
+import { useTranslation } from 'react-i18next'; // Import useTranslation
+import Footer from './Footer.jsx'; // Corrected import path
+import Hero from './Hero.jsx'; // Corrected import path
+import LanguageSwitcher from './LanguageSwitcher.jsx'; // Import LanguageSwitcher
 import styles from './Layout.module.css';
-import { portfolioData } from '../data.js'; // Import data for default title
+import { portfolioData } from '../data.js'; // Corrected import path for data
 
 function Layout() {
     const location = useLocation();
-    const { name, subtitle } = portfolioData.personalInfo;
+    const { i18n, t } = useTranslation(); // Use translation hook
+    const { name } = portfolioData.personalInfo; // Keep name for potential interpolation
 
     const outletKey = location.pathname;
     const isHomePage = location.pathname === '/';
 
-    React.useEffect(() => {
+    useEffect(() => {
         window.scrollTo(0, 0);
     }, [location.pathname]);
 
-    const siteUrl = window.location.origin;
-    const defaultTitle = `${name} | ${subtitle}`;
-    const defaultDescription = `Portfolio of ${name}, a ${subtitle} specializing in crafting real-world, tailor-made software solutions. Explore projects, experience, and skills.`;
-    const defaultOgImage = `${siteUrl}/og-image.png`; // Define default OG image URL
+    // Update html lang attribute when language changes
+    useEffect(() => {
+        document.documentElement.lang = i18n.language;
+    }, [i18n.language]);
 
-    // Note: Default tags rendered here might be overridden by specific page components
-    // React 19 automatically handles tag deduplication based on key or tag type precedence.
+    const siteUrl = window.location.origin;
+    // Get default title/desc from translations
+    const defaultTitle = t('homePage.title', { name: name, subtitle: t('subtitle') });
+    const defaultDescription = t('homePage.description', { name: name, subtitle: t('subtitle'), headline: t('aboutLong.headline') });
+    const defaultOgImage = `${siteUrl}/og-image.png`;
 
     return (
         <div className={styles.appContainer}>
-            {/* Default Meta Tags Rendered Directly */}
+            {/* Meta Tags Rendered Directly - Now using translated defaults */}
+            {/* Note: React 19 handles deduplication better. These act as fallbacks. */}
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="author" content={name} />
-            {/* Default OG / Twitter - Can be overridden by pages */}
             <meta property="og:type" content="website" />
             <meta property="og:site_name" content={name} />
             <meta property="og:image" content={defaultOgImage} />
             <meta property="twitter:card" content="summary_large_image" />
             <meta property="twitter:image" content={defaultOgImage} />
-            {/* Add language attribute to html tag in public/index.html directly */}
-            {/* <html lang="en"> in index.html is preferred */}
+            {/* Default title/description as fallback */}
+            <title>{defaultTitle}</title>
+            <meta name="description" content={defaultDescription} />
+
+            {/* Header Area with Language Switcher */}
+            <header className={styles.pageHeader}>
+                {/* You might want a more structured header later */}
+                <div className={styles.languageSwitcherContainer}>
+                    <LanguageSwitcher />
+                </div>
+            </header>
 
             {isHomePage && <Hero />}
 

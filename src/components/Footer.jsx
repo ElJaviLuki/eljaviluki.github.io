@@ -2,62 +2,70 @@
 
 // src/components/Footer/Footer.js
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom'; // Use Alias for Router Link
-import { portfolioData } from '../data.js'; // Import data
+// Remove RouterLink if not used for internal links here
+// import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { portfolioData } from '../data.js'; // Corrected import path
 import styles from './Footer.module.css';
 
 function Footer() {
-    const { socialLinks } = portfolioData.personalInfo; // Removed handle, not used
-    // Correctly destructure languages directly from portfolioData
-    const { languages } = portfolioData; // Get languages from the correct location
-    const { cta, copyright } = portfolioData.footer;
+    const { t } = useTranslation(); // Use translation hook
+    const { socialLinks } = portfolioData.personalInfo;
+    // Get keys from data structure
+    const { ctaKey, copyrightKey } = portfolioData.footer;
 
-    const emailLink = socialLinks.find(link => link.platform === 'Email')?.url;
-    const linkedInLink = socialLinks.find(link => link.platform === 'LinkedIn')?.url;
-    const githubLink = socialLinks.find(link => link.platform === 'GitHub')?.url;
+    // Find specific social links by platform name (platform name is identifier)
+    const emailLink = socialLinks.find(link => link.platform === 'Email');
+    const linkedInLink = socialLinks.find(link => link.platform === 'LinkedIn');
+    const githubLink = socialLinks.find(link => link.platform === 'GitHub');
 
     const handleBackToTop = (e) => {
-        // Check if the link is already at the top to prevent default
         if (window.scrollY === 0 && window.location.hash === '#top') {
-            e.preventDefault(); // Prevent navigation if already at top
+            e.preventDefault();
         } else {
-            // Allow default behavior or smooth scroll
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            // Optionally update hash without page jump (if needed)
             if (history.pushState) {
-                history.pushState(null, '', '#top');
+                history.pushState(null, null, '#top'); // Use null instead of ''
             } else {
                 window.location.hash = '#top';
             }
         }
     };
 
+    // Get current year for copyright
+    const currentYear = new Date().getFullYear();
+
     return (
         <footer className={styles.footer} id="contact">
-            <h2 className={styles.ctaHeading}>{cta}</h2>
+            {/* Translate CTA Heading */}
+            <h2 className={styles.ctaHeading}>{t(ctaKey)}</h2>
             {emailLink && (
-                <a href={emailLink} className={`button-link ${styles.ctaButton}`}>
-                    Let's make it!
+                // Translate CTA Button text
+                <a href={emailLink.url} className={`button-link ${styles.ctaButton}`}>
+                    {t('footer.ctaButton')}
                 </a>
             )}
 
             <div className={styles.socialLinks}>
-                {linkedInLink && <a href={linkedInLink} target="_blank" rel="noopener noreferrer">LinkedIn</a>}
-                {githubLink && <a href={githubLink} target="_blank" rel="noopener noreferrer">GitHub</a>}
-                {/* Add other relevant links from data if needed */}
+                {/* Render links dynamically using translated labels */}
+                {linkedInLink && <a href={linkedInLink.url} target="_blank" rel="noopener noreferrer">{t(linkedInLink.labelKey)}</a>}
+                {githubLink && <a href={githubLink.url} target="_blank" rel="noopener noreferrer">{t(githubLink.labelKey)}</a>}
                 {socialLinks.filter(link => !['Email', 'LinkedIn', 'GitHub'].includes(link.platform)).map(link => (
-                    <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer">{link.platform}</a>
+                    <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer">
+                        {t(link.labelKey) || link.platform} {/* Fallback to platform name if key missing */}
+                    </a>
                 ))}
             </div>
 
 
             <p className={styles.copyright}>
-                {copyright} {/* Use copyright text from data */}
+                {/* Translate copyright text, interpolate year */}
+                {t(copyrightKey, { year: currentYear })}
             </p>
-            {/* Use a regular anchor for #top, handled by JS/CSS */}
             <a href="#top" className={styles.backToTop} onClick={handleBackToTop}>
-                ↑ Back to Top
+                {/* Translate Back to Top text */}
+                {t('backToTop')}
             </a>
         </footer>
     );

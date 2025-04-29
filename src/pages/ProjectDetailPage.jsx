@@ -3,13 +3,14 @@
 // src/pages/ProjectDetailPage/ProjectDetailPage.jsx
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-// REMOVE: import { Helmet } from 'react-helmet-async';
-import { portfolioData } from '../data.js';
-import layoutStyles from '../components/Layout.module.css';
-import styles from '../components/Projects.module.css';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { portfolioData } from '../data.js'; // Corrected path
+import layoutStyles from '../components/Layout.module.css'; // Corrected path
+import styles from '../components/Projects.module.css'; // Corrected path
 
 function ProjectDetailPage() {
     const { id } = useParams();
+    const { t } = useTranslation(); // Use translation hook
     const { name: portfolioName } = portfolioData.personalInfo;
     const siteUrl = window.location.origin;
 
@@ -19,19 +20,25 @@ function ProjectDetailPage() {
         return <Navigate to="/404" replace />;
     }
 
+    // Translate fields
+    const title = t(projectItem.titleKey);
+    const summary = t(projectItem.summaryKey);
+    const details = t(projectItem.detailsKeys, { returnObjects: true }) || [];
+
     const logoSrc = projectItem.logo || '/logo-placeholder.png';
     const pageUrl = `${siteUrl}/projects/${id}`;
-    const pageTitle = `${projectItem.title} | Personal Project by ${portfolioName}`;
-    const pageDescription = `${projectItem.summary.substring(0, 160)}${projectItem.summary.length > 160 ? '...' : ''}`;
+    // Translate page title and description
+    const pageTitle = t('projects.detailPageTitle', { title, portfolioName });
+    const pageDescription = `${summary.substring(0, 160)}${summary.length > 160 ? '...' : ''}`;
     const ogImage = logoSrc !== '/logo-placeholder.png' ? siteUrl + logoSrc : undefined;
 
-    // Structured Data
+    // Structured Data (remains mostly the same, uses translated values)
     const projectSchema = {
-        "@context": "https://schema.org",
+        "@context": "<https://schema.org>",
         "@type": "SoftwareApplication",
-        "name": projectItem.title,
+        "name": title,
         "applicationCategory": "Utility", // Adjust if needed
-        "description": projectItem.summary + "\n\n" + projectItem.details.join("\n"),
+        "description": summary + "\\n\\n" + details.join("\\n"),
         "author": { "@type": "Person", "name": portfolioName },
         "url": projectItem.web || undefined,
         "image": ogImage,
@@ -45,7 +52,6 @@ function ProjectDetailPage() {
             <title>{pageTitle}</title>
             <meta name="description" content={pageDescription} />
             <link rel="canonical" href={pageUrl} />
-            {/* OG/Twitter Tags */}
             <meta property="og:title" content={pageTitle} />
             <meta property="og:description" content={pageDescription} />
             <meta property="og:url" content={pageUrl} />
@@ -54,35 +60,37 @@ function ProjectDetailPage() {
             <meta property="twitter:description" content={pageDescription} />
             <meta property="twitter:url" content={pageUrl} />
             {ogImage && <meta property="twitter:image" content={ogImage} />}
-            {/* JSON-LD Structured Data */}
             <script type="application/ld+json">
                 {JSON.stringify(projectSchema)}
             </script>
 
             <Link to="/" className={layoutStyles.backLink}>
-                <span aria-hidden="true">←</span> Back to Main Page
+                <span aria-hidden="true">{t('backArrow')}</span> {t('backToMain')}
             </Link>
 
             <div className={layoutStyles.detailGrid}>
                 <div className={layoutStyles.mainContent}>
                     <header className={styles.detailHeader}>
-                        <img src={logoSrc} alt={`${projectItem.title} logo`} className={styles.detailLogo} loading="lazy" />
+                        <img src={logoSrc} alt={`${title} logo`} className={styles.detailLogo} loading="lazy" />
                         <div className={styles.detailTitleGroup}>
-                            <h1>{projectItem.title}</h1>
-                            <p>Personal Project / Exploration</p>
+                            <h1>{title}</h1>
+                            {/* Translate project type */}
+                            <p>{t('projects.projectType')}</p>
                         </div>
                     </header>
 
                     <section className={styles.detailSection}>
-                        <h2>In a few words</h2>
-                        <p>{projectItem.summary}</p>
+                        {/* Translate summary heading */}
+                        <h2>{t('experience.summaryHeading')}</h2>
+                        <p>{summary}</p>
                     </section>
 
-                    {projectItem.details && projectItem.details.length > 0 && (
+                    {details && details.length > 0 && (
                         <section className={styles.detailSection}>
-                            <h2>See Details and Motivation</h2>
+                            {/* Translate details heading */}
+                            <h2>{t('projects.detailsHeading')}</h2>
                             <ul className={styles.detailList}>
-                                {projectItem.details.map((detail, index) => (
+                                {details.map((detail, index) => (
                                     <li key={index}>{detail}</li>
                                 ))}
                             </ul>
@@ -91,17 +99,19 @@ function ProjectDetailPage() {
 
                     {projectItem.media && projectItem.media.length > 0 && (
                         <section className={`${layoutStyles.mediaSection} ${styles.detailSection}`}>
-                            <h2>Media</h2>
+                            {/* Translate media heading */}
+                            <h2>{t('projects.mediaHeading')}</h2>
                             {projectItem.media.map((mediaItem, index) => (
                                 <div key={index} className={layoutStyles.mediaItem}>
                                     {mediaItem.type === 'image' ? (
-                                        <img src={mediaItem.src} alt={mediaItem.alt || `${projectItem.title} media ${index + 1}`} loading="lazy" />
+                                        <img src={mediaItem.src} alt={t(mediaItem.altKey) || `${title} media ${index + 1}`} loading="lazy" />
                                     ) : mediaItem.type === 'video' ? (
-                                        <video controls muted loop playsInline src={mediaItem.src} aria-label={mediaItem.alt || `${projectItem.title} video ${index + 1}`}>
+                                        <video controls muted loop playsInline src={mediaItem.src} aria-label={t(mediaItem.altKey) || `${title} video ${index + 1}`}>
                                             Your browser does not support the video tag.
                                         </video>
                                     ) : null}
-                                    {mediaItem.caption && <p>{mediaItem.caption}</p>}
+                                    {/* Translate caption if key exists */}
+                                    {mediaItem.captionKey && <p>{t(mediaItem.captionKey)}</p>}
                                 </div>
                             ))}
                         </section>
@@ -111,7 +121,8 @@ function ProjectDetailPage() {
                 <aside className={layoutStyles.sidebar}>
                     {projectItem.technologies && projectItem.technologies.length > 0 && (
                         <div className={styles.sidebarSection}>
-                            <h3>Stack Involved</h3>
+                            {/* Translate stack heading */}
+                            <h3>{t('projects.sidebarStack')}</h3>
                             <ul className={layoutStyles.techList}>
                                 {projectItem.technologies.map(tech => <li key={tech}>{tech}</li>)}
                             </ul>
@@ -119,17 +130,19 @@ function ProjectDetailPage() {
                     )}
                     {projectItem.web && projectItem.web.includes('github.com') && (
                         <div className={styles.sidebarSection}>
-                            <h3>Repository</h3>
+                            {/* Translate repo heading */}
+                            <h3>{t('projects.sidebarRepo')}</h3>
                             <a href={projectItem.web} target="_blank" rel="noopener noreferrer">
-                                View on GitHub <span aria-hidden="true">↗</span>
+                                {t('repoLink')} <span aria-hidden="true">{t('externalLinkArrow')}</span>
                             </a>
                         </div>
                     )}
                     {projectItem.web && !projectItem.web.includes('github.com') && (
                         <div className={styles.sidebarSection}>
-                            <h3>Website / Demo</h3>
+                            {/* Translate website heading */}
+                            <h3>{t('projects.sidebarWebsite')}</h3>
                             <a href={projectItem.web} target="_blank" rel="noopener noreferrer">
-                                Visit Site <span aria-hidden="true">↗</span>
+                                {t('websiteLink')} <span aria-hidden="true">{t('externalLinkArrow')}</span>
                             </a>
                         </div>
                     )}

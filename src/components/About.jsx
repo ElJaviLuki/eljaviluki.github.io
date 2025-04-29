@@ -2,23 +2,24 @@
 
 // src/components/About/About.js
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link
-import { portfolioData } from '../data.js'; // Import data
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { portfolioData } from '../data.js'; // Corrected import path
 import styles from './About.module.css';
 
 function About() {
-    const { hook, detailsLink } = portfolioData.aboutMe.short;
+    const { t } = useTranslation(); // Use translation hook
+    const { hookKey, detailsLink } = portfolioData.aboutMe.short;
 
     return (
-        <section className={styles.about} id="about-short"> {/* Changed ID */}
-            <h2 className="sr-only">About Me (Hook)</h2> {/* Hidden H2 for semantics */}
+        <section className={styles.about} id="about-short">
+            <h2 className="sr-only">{t('srOnlyAboutHook')}</h2> {/* Translate screen reader text */}
             <blockquote className={styles.quote}>
-                {/* Use dangerouslySetInnerHTML for the bold tag, ensure data is trusted */}
-                <span dangerouslySetInnerHTML={{ __html: hook }} />
+                {/* Translate hook, allow HTML */}
+                <span dangerouslySetInnerHTML={{ __html: t(hookKey) }} />
             </blockquote>
-            {/* Use Link component for internal navigation */}
-            <Link to={detailsLink} className={styles.detailsLink}>
-                Tell me more <span aria-hidden="true">→</span>
+            <Link to={detailsLink} className={`button-link ${styles.detailsLink}`}> {/* Added button-link class */}
+                {t('seeMore')} <span aria-hidden="true">{t('forwardArrow')}</span> {/* Translate link text and arrow */}
             </Link>
         </section>
     );

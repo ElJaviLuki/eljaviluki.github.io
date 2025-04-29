@@ -1,0 +1,357 @@
+{
+  "appName": "Portfolio Javier López Cacenave",
+  "name": "Javier López Cacenave",
+  "subtitle": "Desarrollador Full-Stack",
+  "backToMain": "Volver a la página principal",
+  "backToTop": "↑ Volver Arriba",
+  "loading": "Cargando...",
+  "pageNotFound": "404 - Página no encontrada",
+  "pageNotFoundMsg": "¡Ups! Parece que la página que buscabas no existe o ha sido movida.",
+  "viewProject": "Ver Proyecto",
+  "viewDetails": "Ver Detalles",
+  "viewDetailsSources": "Ver Detalles y Fuentes",
+  "seeMore": "Cuéntame más",
+  "repoLink": "Ver en GitHub",
+  "websiteLink": "Visitar Sitio",
+  "websiteLinkLabel": "Web",
+  "linkedInLinkLabel": "LinkedIn",
+  "githubLinkLabel": "GitHub",
+  "emailLinkLabel": "Email",
+  "tiktokLinkLabel": "TikTok",
+  "backArrow": "←",
+  "forwardArrow": "→",
+  "externalLinkArrow": "↗",
+  "srOnlyAboutHook": "Sobre Mí (Gancho)",
+  "hero": {
+    "namePart1": "Javier",
+    "namePart2": "López",
+    "namePart3": "Cacenave",
+    "portraitAlt": "Retrato de {{name}}"
+  },
+  "aboutShort": {
+    "adjectives": [
+      "Pragmático",
+      "Visionario",
+      "Analítico",
+      "Resolutivo",
+      "Curioso",
+      "Full-Stack",
+      "Orientado a resultados"
+    ],
+    "hook": "Trabajo con gente que quiere ganar. ¿Eres <b>tú</b>?"
+  },
+  "aboutLong": {
+    "pageTitle": "Sobre {{name}} | Visión y Pragmatismo",
+    "headline": "Visión + Pragmatismo",
+    "intro": "Impulsado por una curiosidad innata y un enfoque práctico, transformo necesidades complejas en soluciones de software full-stack simples pero efectivas que entregan resultados tangibles.",
+    "storyTitle": "Mi Historia y Filosofía",
+    "storyParagraph1": "Desde niño me ha fascinado la tecnología y el 'cómo' de las cosas. Pero mi interés no se detiene en comprender; constantemente me pregunto: '¿Cómo podría ser esto *mejor*?'. Esta dualidad define mi trabajo: poseo una habilidad intuitiva —influida por la intuición de mi padre— que me permite percibir necesidades subyacentes y visualizar soluciones creativas, casi como un sexto sentido para el potencial.",
+    "storyMediaAlt1": "Visualización de la intuición o potencial",
+    "storyParagraph2": "Sin embargo, entiendo que incluso las ideas más brillantes no valen nada si no son prácticas y comunicables —una lección crucial heredada del característico pragmatismo de mi madre. Por eso siempre anclo esa visión en la practicidad: buscando resultados tangibles, definiendo pasos claros y construyendo soluciones que la gente pueda usar realmente, aquí y ahora. Esta habilidad para equilibrar la visión de futuro con la utilidad inmediata y real es central en mi forma de operar.",
+    "storyMediaAlt2": "Visualización del pragmatismo o aplicación práctica",
+    "storyParagraph3": "Mi meta es fusionar estas dos facetas: visión y pragmatismo.",
+    "caseStudyTitle": "Un Caso Real:",
+    "caseStudyParagraph1": "Un ejemplo es el ERP personalizado construido para Ortoprodent. Este laboratorio dental es reconocido por la calidad de sus prótesis y la habilidad de su equipo. Sin embargo, como muchas empresas especializadas, su gestión administrativa presentaba desafíos significativos, consumiendo tiempo y energía valiosos. Anticipando que el software comercial sería demasiado complejo para sus necesidades específicas, opté por un enfoque pragmático, construido desde cero. La prioridad fue una experiencia de usuario excepcionalmente amigable (mínima carga cognitiva), con flujos de trabajo muy optimizados y una interfaz limpia. ¿El resultado? Una herramienta que no solo organiza, sino que realmente suaviza la fricción de la gestión, permitiendo al equipo dedicar todo su talento a lo que mejor saben hacer: crear trabajos protésicos excepcionales.",
+    "caseStudyMediaAlt": "Visualización del proyecto ERP del laboratorio dental",
+    "approachTitle": "Mi Enfoque: De la Necesidad a la Solución",
+    "approachStep1Title": "Diagnóstico 360°",
+    "approachStep1Desc": "Profundizar en el desafío central, conectando necesidades humanas y objetivos de negocio con la viabilidad técnica para definir el 'qué' y el 'por qué' fundamentales.",
+    "approachStep2Title": "Visión y Diseño",
+    "approachStep2Desc": "Fusionar visión creativa con diseño pragmático: arquitectar la solución y definir la experiencia de usuario óptima, trazando un camino claro hacia el resultado deseado.",
+    "approachStep3Title": "Impacto Real",
+    "approachStep3Desc": "Dar vida a la solución: construir software funcional y robusto que resuelva el desafío identificado, entregando valor medible y mejorando la experiencia para todos los involucrados."
+  },
+  "experience": {
+    "sectionHeading": "Donde ya he construido victorias",
+    "categoryFreelance": "Por cuenta propia",
+    "categoryCorporate": "Por cuenta ajena",
+    "since": "Desde",
+    "present": "Actualidad",
+    "dateLocationSeparator": "|",
+    "locationModeRemote": "Remoto",
+    "locationModeHybrid": "Híbrido",
+    "locationModeOnsite": "Presencial",
+    "detailPageTitle": "{{role}} en {{displayTitle}} | Experiencia de {{portfolioName}}",
+    "projectContextHeading": "Proyecto: {{projectName}}",
+    "projectContextPurpose": "Propósito:",
+    "projectContextArchitecture": "Arquitectura:",
+    "projectContextKeyModules": "Módulos Clave:",
+    "detailsHeading": "Ver Detalles y Logros Clave",
+    "summaryHeading": "En pocas palabras",
+    "mediaHeading": "Multimedia",
+    "sidebarStack": "Stack Involucrado",
+    "sidebarSkills": "Habilidades Clave",
+    "sidebarClient": "Cliente",
+    "royalTikTok": {
+      "name": "Royal TikTok",
+      "client": "Agencia Principito",
+      "role": "Arquitecto de Datos y Líder de Automatización",
+      "date": "Desde 2024",
+      "location": "Madrid, España",
+      "summary": "Diseñé e implementé una plataforma de datos para extraer, transformar y exponer datos no estructurados de TikTok LIVE para reclutamiento de talentos.",
+      "details": [
+        "Desarrollé soluciones avanzadas de scraping (Playwright, BeautifulSoup) e integré APIs oficiales/privadas para la adquisición de datos.",
+        "Construí un pipeline ETL usando Pandas para limpieza de datos, normalización y filtrado dinámico.",
+        "Orquesté todo el proceso usando APScheduler para ejecución automatizada.",
+        "Expuse datos curados a través de una API RESTful construida con FastAPI, permitiendo escenarios multi-salida (ej., integración con Notion API para listas orientadas al usuario).",
+        "Me enfoqué en un diseño modular y reutilizable aplicable a otros dominios con datos caóticos.",
+        "Los resultados clave incluyeron un aumento del 20-30% en los ingresos mensuales del cliente y una adquisición de talento significativamente más rápida."
+      ],
+      "softSkills": [
+        "Pensamiento Sistémico",
+        "Comunicación Inter-perfil",
+        "Resiliencia Técnica",
+        "Resolución de Problemas",
+        "Mentalidad de Automatización"
+      ],
+      "mediaAlt1": "Representación visual del pipeline de datos o resultados de Royal TikTok"
+    },
+    "ortoprodent": {
+      "name": "ERP Ortoprodent",
+      "client": "Ortoprodent (Laboratorio Dental)",
+      "role": "Desarrollador de Software",
+      "date": "Desde 2025",
+      "location": "Mérida, España",
+      "summary": "Desarrollé una solución de software ERP personalizada para un laboratorio dental, mejorando significativamente su organización y flujo de trabajo.",
+      "details": [
+        "Construí una aplicación de software a medida desde cero para gestionar todos los procesos del laboratorio.",
+        "Me enfoqué obsesivamente en la facilidad de uso (UX de mínima carga cognitiva) y la conveniencia para un usuario no técnico.",
+        "Cumplí todos los requisitos especificados y diseñé para extensibilidad futura.",
+        "Resultó en ganancias radicales de eficiencia y alta satisfacción del usuario (ver testimonio)."
+      ],
+      "softSkills": [
+        "Comunicación con el Cliente",
+        "Recopilación de Requisitos",
+        "Empatía con el Usuario",
+        "Diseño de Soluciones",
+        "Pragmatismo"
+      ],
+      "mediaAlt1": "Captura de pantalla o maqueta de la interfaz del ERP Ortoprodent"
+    },
+    "teldat": {
+      "client": "Teldat",
+      "role": "Desarrollador Full-Stack",
+      "date": "2024/07 - 2025/03",
+      "location": "Tres Cantos, Madrid, España",
+      "summary": "Contribuí como Desarrollador Full-Stack a 'be.Analyzer', una compleja plataforma multi-tenant de monitorización y análisis de redes. Participé en el desarrollo de servicios backend (Python/Django), mantenimiento de un frontend React legacy con alta deuda técnica, e integración de varios componentes incluyendo bases de datos (PostgreSQL), colas de mensajes (Redis/Kafka), procesamiento de tareas (Celery) y motores de análisis en tiempo real (Druid).",
+      "projectContextName": "be.Analyzer (Plataforma de Monitorización y Análisis de Red)",
+      "projectContextPurposeDesc": "Una plataforma completa y multi-tenant diseñada para la gestión de dispositivos de red, análisis de tráfico en tiempo real (manejando NetFlow, sFlow, etc.), visualización de telemetría mediante dashboards personalizables, gestión de activos de red y gestión jerárquica de usuarios/permisos. Las características incluían controles de licencias y potencial detección de anomalías impulsada por IA.",
+      "projectContextArchDesc": "Arquitectura multi-capa con un backend API REST Django/DRF, PostgreSQL para metadatos relacionales (usuarios, dispositivos, configs), Apache Druid para almacenamiento y consulta de datos de telemetría de series temporales, Redis para caché y como broker de mensajes de Celery, y Celery para ejecución de tareas asíncronas. Diseñada para despliegue en contenedores (Docker), probablemente orientada a entornos cloud (GCP).",
+      "projectContextModules": [
+        "Gestión de Usuarios y Jerarquía (Multi-tenant, Roles, Permisos)",
+        "Aprovisionamiento del Sistema (Gestión de Dispositivos, Licencias)",
+        "Análisis de Tráfico (Integración Druid, Definiciones de Analíticas)",
+        "Dashboards e Informes (Widgets Personalizables, Exportación PDF, Alarmas)",
+        "Gestión de Inventario (Descubrimiento y Seguimiento de Activos)",
+        "Potenciales Módulos de IA/Detección de Anomalías y Ciberseguridad"
+      ],
+      "details": [
+        "Desarrollé y mantuve servicios API REST backend usando Python, Django y Django Rest Framework (DRF) con PostgreSQL para funcionalidades centrales de la plataforma como gestión de usuarios, configuración de dispositivos y recuperación de datos dentro del sistema 'be.Analyzer'.",
+        "Utilicé Celery para manejar tareas asíncronas en segundo plano como generación periódica de informes, procesamiento de alarmas y validación de licencias.",
+        "Aproveché Redis para caché de respuestas API y como broker de mensajes para Celery.",
+        "Integré con Kafka para consumir o producir flujos de eventos relacionados con datos de red o eventos del sistema.",
+        "Trabajé con Apache Druid, enfocándome en consultar y recuperar grandes volúmenes de datos de telemetría de red de series temporales para soportar las características de análisis de tráfico de la plataforma.",
+        "Implementé y mantuve documentación API usando SwaggerUI (vía drf-yasg) para claridad y facilidad de integración.",
+        "Configuré y utilicé Honeybadger para monitorización de errores en tiempo real y alertas en los servicios backend.",
+        "Escribí tests unitarios y de integración usando Pytest y librerías relacionadas (ej., factory-boy) para asegurar la calidad y fiabilidad del código.",
+        "Gestioné entornos de desarrollo y despliegue de aplicaciones usando contenedores Docker.",
+        "Contribuí significativamente a reducir la deuda técnica y mejorar la mantenibilidad del sistema frontend React legacy, que fue heredado de esfuerzos de desarrollo externos previos."
+      ],
+      "softSkills": [
+        "Trabajo en Equipo",
+        "Resolución de Problemas",
+        "Adaptabilidad",
+        "Trabajo con Código Heredado",
+        "Pensamiento a Nivel de Sistema",
+        "Comunicación Técnica"
+      ]
+    },
+    "driveMeGroup": {
+      "client": "Drive Me Group",
+      "role": "Ingeniero de Datos",
+      "date": "2024/03 - 2024/06",
+      "location": "Barcelona, España",
+      "summary": "Mejoré un proceso ETL y un sistema de reporting para consolidar leads, comparar precios de vehículos y habilitar precios dinámicos para un grupo de alquiler de coches usados.",
+      "details": [
+        "Integré datos de diversas fuentes: webs de coches de terceros (vía scraping/RE de API), leads del Call Center y consultas de vehículos del sitio web.",
+        "Integré la API de Twilio para habilitar funcionalidades del Call Center.",
+        "Utilicé Zoho Dataprep para transformación y limpieza de datos.",
+        "Aproveché Zoho Analytics para crear dashboards, generar insights y presentar data storytelling para la dirección.",
+        "Implementé integraciones API y realicé ingeniería inversa de APIs donde fue necesario.",
+        "Mejoré la lógica para la externalización dinámica de vehículos: verificando costo/disponibilidad de terceros y aplicando un algoritmo de precios basado en margen y costos si un vehículo solicitado no estaba en la flota."
+      ],
+      "softSkills": [
+        "Análisis de Datos",
+        "Automatización de Procesos",
+        "Resolución de Problemas",
+        "Visión de Negocio",
+        "Narrativa de Datos"
+      ],
+      "mediaAlt1": "Ejemplo de dashboard de Zoho Analytics o diagrama de flujo de datos para Drive Me Group"
+    }
+  },
+  "projects": {
+    "sectionHeading": "Proyectos Personales y Exploración Técnica",
+    "categoryPersonal": "Proyectos Personales",
+    "detailPageTitle": "{{title}} | Proyecto Personal de {{portfolioName}}",
+    "projectType": "Proyecto Personal / Exploración",
+    "detailsHeading": "Ver Detalles y Motivación",
+    "mediaHeading": "Multimedia",
+    "sidebarStack": "Stack Involucrado",
+    "sidebarRepo": "Repositorio",
+    "sidebarWebsite": "Sitio Web / Demo",
+    "grindrPlus": {
+      "title": "Grindr Plus",
+      "summary": "Un módulo Xposed para Android que explora funciones premium de la app de citas Grindr.",
+      "details": [
+        "Realicé análisis estático y dinámico de la aplicación Android ofuscada (Kotlin/Java).",
+        "Utilicé Xposed Framework para hooking y modificación en tiempo de ejecución.",
+        "Intercepté y analicé tráfico de red (usando herramientas como Burp Suite) para entender interacciones de API privada.",
+        "Habilité con éxito ciertas funciones premium localmente con fines educativos.",
+        "Demuestra aplicación práctica de técnicas de ingeniería inversa en plataformas móviles.",
+        "Impulsado por la curiosidad y el desafío de entender sistemas de código cerrado."
+      ],
+      "mediaAlt1": "Imagen conceptual relacionada con modding/RE de Grindr Plus"
+    },
+    "csosBeacon": {
+      "title": "Beacon Open Source Cobalt Strike",
+      "summary": "Desarrollé un beacon C2 funcional de código abierto inspirado en Cobalt Strike, construido desde cero en C.",
+      "details": [
+        "Investigué patrones y técnicas de comunicación Command and Control (C2).",
+        "Implementé funcionalidad central del beacon, incluyendo check-ins y recuperación de tareas.",
+        "Desarrollé canales de comunicación sobre HTTP, TCP y SMB (vía Named Pipes).",
+        "Interactué directamente con la API Win32 para operaciones a nivel de sistema.",
+        "Incluí capacidades básicas de ejecución de Powershell para tareas simuladas post-explotación.",
+        "Motivado por un profundo interés en ciberseguridad, análisis de malware y programación de sistemas de bajo nivel."
+      ],
+      "mediaAlt1": "Diagrama o fragmento de código relacionado con el proyecto CSOS Beacon"
+    },
+    "idealistillo": {
+      "title": "Idealistillo",
+      "summary": "Desarrollé 'Idealistillo', una librería cliente Python que envuelve la API de Idealista para datos de propiedades.",
+      "details": [
+        "Proporciona una interfaz Python simple e intuitiva para interactuar con la API de datos de propiedades de Idealista (oficial o no).",
+        "Maneja autenticación, paginación y abstracción de endpoints.",
+        "Simplifica la recuperación de datos para análisis personal o integración en otros proyectos."
+      ]
+    }
+  },
+  "testimonials": {
+    "sectionHeading": "Lo que dicen",
+    "santiago": {
+      "quote": "Trabajar con Javier fue un antes y un después para nuestra agencia. Desde el primer día entendió nuestras necesidades y transformó por completo nuestro sistema de reclutamiento en TikTok LIVE, automatizando procesos manuales y mejorando significativamente nuestra eficiencia. En pocos meses, logramos un aumento del 20-30% en la facturación mensual gracias a una captación de talento más rápida y precisa.",
+      "authorName": "Santiago",
+      "authorTitle": "Royal TikTok"
+    },
+    "elena": {
+      "quote": "Estoy súper organizada desde que me pusieron este programa, es súper fácil y súper cómodo, tengo todo lo que necesito. Y encima, me dijeron que cualquier cosa que se me ocurra, me la ponen en el programa. Estoy súper contenta, lo recomiendo 100%.",
+      "authorName": "Elena",
+      "authorTitle": "Ortoprodent (Laboratorio Dental)"
+    }
+  },
+  "recognitions": {
+    "sectionHeading": "Reconocimientos y Otras Habilidades",
+    "detailPageTitle": "{{title}} ({{level}}) | Reconocimiento de {{portfolioName}}",
+    "levelLabel": "Nivel:",
+    "dateLabel": "Fecha:",
+    "locationLabel": "Lugar:",
+    "orgLabel": "Organización(es):",
+    "summaryHeading": "En pocas palabras",
+    "skillsHeading": "Habilidades Demostradas",
+    "mediaHeading": "Multimedia",
+    "sidebarSources": "Fuentes y Referencias",
+    "sidebarOfficialLink": "Enlace Oficial",
+    "ipo": {
+      "title": "Olimpiada Internacional de Filosofía (IPO)",
+      "level": "Representante Español y Semifinalista",
+      "date": "2019/05",
+      "location": "Roma, Italia",
+      "summary": "Representé a España en la XXVII Competición Internacional celebrada en RIoma, alcanzando las semifinales tras la selección nacional.",
+      "skills": [
+        "Pensamiento Crítico",
+        "Razonamiento Abstracto",
+        "Argumentación",
+        "Comunicación Interlingüe e Intercultural (+50 países)",
+        "Inglés Avanzado (Defensa oral y escrita de argumentos filosóficos complejos)"
+      ],
+      "sourceLabel1": "Todo en la vida es filosofía (Hoy)",
+      "sourceLabel2": "Entrevista Cadena SER",
+      "sourceLabel3": "Entrevista Radio Alange (Spotify)",
+      "sourceLabel4": "Info General Olimpiadas de Filosofía",
+      "mediaAlt1": "Foto del evento IPO 2019 o materiales relacionados"
+    },
+    "oif": {
+      "title": "Olimpiada Iberoamericana de Filosofía",
+      "level": "Medalla de Bronce",
+      "date": "2019/10",
+      "location": "España (Online)",
+      "summary": "Logré Medalla de Bronce en la fase clasificatoria nacional de la competición Iberoamericana.",
+      "skills": [
+        "Pensamiento Crítico",
+        "Razonamiento Abstracto",
+        "Argumentación (Español)",
+        "Expresión Escrita"
+      ],
+      "sourceLabel1": "Anuncio Filosofía Extremadura"
+    },
+    "ncl": {
+      "title": "III National Cyberleague",
+      "level": "Semifinalista en la Categoría Técnica",
+      "date": "2021/10",
+      "location": "España (Online)",
+      "summary": "Alcancé las semifinales en la categoría técnica de la III National Cyberleague como parte de un equipo multidisciplinar.",
+      "skills": [
+        "Fundamentos de Ciberseguridad",
+        "Resolución de Problemas (bajo presión)",
+        "Trabajo en Equipo (colaboración Técnica/Legal)",
+        "Comunicación Interfuncional"
+      ],
+      "sourceLabel1": "PDF Clasificación Oficial (buscar ElJaviLuki)",
+      "mediaAlt1": "Imagen relacionada con el evento o equipo de la Liga Nacional de Ciberseguridad"
+    }
+  },
+  "education": {
+    "sectionHeading": "Educación",
+    "statusCompleted": "Completado",
+    "statusDiscontinued": "",
+    "keySkills": "Habilidades Clave:",
+    "noteLabel": "Nota:",
+    "hackaboss": {
+      "institution": "HACK A BOSS",
+      "degree": "Bootcamp Data Science & IA",
+      "date": "2023/09 - 2024/02",
+      "location": "Remoto",
+      "summary": "Bootcamp intensivo centrado en habilidades prácticas de Data Science e IA, proporcionando una base sólida para roles posteriores centrados en datos.",
+      "description": "Cubrió el ciclo de vida completo de la ciencia de datos, desde la adquisición y procesamiento de datos hasta el modelado de aprendizaje automático y los fundamentos del despliegue."
+    },
+    "unex": {
+      "institution": "Universidad de Extremadura",
+      "degree": "Grado en Ingeniería de Software",
+      "date": "2020 - 2023",
+      "location": "Cáceres, España",
+      "summary": "Completé ~3 años en Ingeniería de Software.",
+      "notes": "Impulsado por una fuerte curiosidad intelectual y un enfoque en la aplicación práctica, decidí orientar mi carrera hacia el ámbito profesional. Busco un entorno que me permita desarrollar mi potencial y generar valor de manera más ágil y directa. Esta decisión surge de mi deseo de complementar la teoría con experiencia real y encontrar un espacio donde pueda acelerar mi crecimiento y contribuir de forma más inmediata y efectiva a proyectos tangibles."
+    }
+  },
+  "skills": {
+    "sectionHeading": "Herramientas para la Victoria",
+    "categoryTechnical": "Kit Técnico",
+    "categorySoft": "Kit Humano",
+    "categoryLanguages": "Idiomas",
+    "spanishLevel": "Nativo",
+    "englishLevel": "Avanzado (C1/C2)",
+    "catalanLevel": "Nativo",
+    "frenchLevel": "Intermedio (B1)",
+    "germanLevel": "Principiante (A1)",
+    "chineseLevel": "Principiante (HSK1)"
+  },
+  "footer": {
+    "cta": "¿Listo para ganar — o solo explorando?",
+    "ctaButton": "¡Hagámoslo!",
+    "copyright": "© {{year}} Javier López Cacenave. Todos los derechos reservados."
+  },
+  "homePage": {
+    "title": "{{name}} | {{subtitle}}",
+    "description": "Bienvenido al portfolio de {{name}}, un {{subtitle}}. Descubre soluciones de software full-stack pragmáticas y visionarias. {{headline}}"
+  }
+}

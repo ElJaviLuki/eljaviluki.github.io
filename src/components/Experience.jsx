@@ -1,17 +1,37 @@
 // src/components/Experience/Experience.jsx
 // This component now acts as a SUMMARY LIST linking to detail pages.
-import React from 'react'; // Import React
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { portfolioData } from '../data.js'; // Import data
+import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { portfolioData } from '../data.js'; // Corrected import path
 import styles from './Experience.module.css';
 
-// REMOVED React.memo
 const ExperienceSummaryItem = ({ job }) => {
-    // Determine the title/client name to display
-    const displayTitle = job.name || job.client || 'Experience Item';
-    const logoSrc = job.logo || job.clientLogo || '/logo-placeholder.png'; // Fallback logo
+    const { t } = useTranslation(); // Use translation hook
 
-    // REMOVED console.log
+    // Get translated title/client name
+    const displayTitle = t(job.nameKey || job.clientKey || 'Experience Item');
+    const logoSrc = job.logo || job.clientLogo || '/logo-placeholder.png';
+    const role = t(job.roleKey);
+    const date = t(job.dateKey); // Assuming dates might need formatting or translation context
+    const location = t(job.locationKey);
+    const summary = t(job.summaryKey);
+
+    // Translate location mode
+    let locationModeTranslated = '';
+    switch (job.locationMode?.toLowerCase()) {
+        case 'remote':
+            locationModeTranslated = t('experience.locationModeRemote');
+            break;
+        case 'hybrid':
+            locationModeTranslated = t('experience.locationModeHybrid');
+            break;
+        case 'onsite':
+            locationModeTranslated = t('experience.locationModeOnsite');
+            break;
+        default:
+            locationModeTranslated = job.locationMode || '';
+    }
 
     return (
         <article className={styles.jobSummary}>
@@ -19,45 +39,40 @@ const ExperienceSummaryItem = ({ job }) => {
                 <img src={logoSrc} alt={`${displayTitle} logo`} className={styles.logo} loading="lazy" />
                 <div className={styles.titleGroup}>
                     <h4 className={styles.company}>{displayTitle}</h4>
-                    {job.role && <p className={styles.role}>{job.role}</p>}
+                    {role && <p className={styles.role}>{role}</p>}
                     <p className={styles.dateLocation}>
-                        {job.date} {job.location && `| ${job.locationMode} - ${job.location}`}
+                        {date} {location && `${t('experience.dateLocationSeparator')} ${locationModeTranslated} - ${location}`}
                     </p>
                 </div>
             </div>
-            <p className={styles.summaryText}>{job.summary}</p>
+            <p className={styles.summaryText}>{summary}</p>
             {job.technologies && job.technologies.length > 0 && (
                 <div className={styles.techPreview}>
-                    {job.technologies.slice(0, 5).map(tech => ( // Show first 5 techs
+                    {job.technologies.slice(0, 5).map(tech => (
                         <span key={tech} className={styles.techTag}>{tech}</span>
                     ))}
                     {job.technologies.length > 5 && <span className={styles.techMore}>...</span>}
                 </div>
             )}
             <Link to={job.pagePath} className={styles.detailsLink}>
-                See Details <span aria-hidden="true">→</span>
+                {t('viewDetails')} <span aria-hidden="true">{t('forwardArrow')}</span>
             </Link>
         </article>
     );
-}; // End of component definition
-
-// REMOVED displayName assignment
+};
 
 function Experience() {
+    const { t } = useTranslation(); // Use translation hook
     const { freelanceConsulting, corporate } = portfolioData.experience;
-
-    // Combine and potentially sort experiences if needed, or keep separate
-    // const allExperiences = [...(freelanceConsulting || []), ...(corporate || [])];
-    // Sort logic could go here, e.g., by date
 
     return (
         <section className={styles.experience} id="experience">
-            <h2 className={styles.heading}>Where I've Built Meaningful Wins</h2>
+            <h2 className={styles.heading}>{t('experience.sectionHeading')}</h2>
 
             {/* Freelance Section */}
             {freelanceConsulting && freelanceConsulting.length > 0 && (
                 <div className={styles.category}>
-                    <h3 className={styles.subHeading}>Freelance & Consulting</h3>
+                    <h3 className={styles.subHeading}>{t('experience.categoryFreelance')}</h3>
                     <div className={styles.summaryGrid}>
                         {freelanceConsulting.map(job => (
                             <ExperienceSummaryItem key={job.id} job={job} />
@@ -69,7 +84,7 @@ function Experience() {
             {/* Corporate Section */}
             {corporate && corporate.length > 0 && (
                 <div className={styles.category}>
-                    <h3 className={styles.subHeading}>Corporate</h3>
+                    <h3 className={styles.subHeading}>{t('experience.categoryCorporate')}</h3>
                     <div className={styles.summaryGrid}>
                         {corporate.map(job => (
                             <ExperienceSummaryItem key={job.id} job={job} />

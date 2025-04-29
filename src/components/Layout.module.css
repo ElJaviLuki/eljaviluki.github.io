@@ -15,72 +15,85 @@
 }
 
 .appContainer {
-    /* REMOVED: max-width, margin, padding, border-radius, border, box-shadow */
-    position: relative; /* Needed for absolute positioning of background */
-    background-color: var(--color-dark-bg-transparent); /* Semi-transparent dark base */
-    overflow: hidden; /* Clip pseudo-elements */
+    position: relative;
+    background-color: var(--color-dark-bg-transparent);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* CHANGED: Ensures full viewport height coverage */
+    min-height: 100vh;
     z-index: 1;
-    backdrop-filter: blur(3px); /* Very subtle blur on main container */
+    backdrop-filter: blur(3px);
     perspective: 1000px;
     transform-style: preserve-3d;
 }
 
-/* Aurora Background Layers (Now apply edge-to-edge) */
 .appContainer::before,
 .appContainer::after {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     width: 100%; height: 100%;
-    z-index: -1; /* Behind the content */
-    opacity: 0.5; /* Control intensity */
-    /* REMOVED border-radius */
+    z-index: -1;
+    opacity: 0.5;
 }
 
-/* Layer 1: Main Aurora Gradient */
 .appContainer::before {
     background: linear-gradient(
             135deg,
-            rgba(0, 119, 255, 0.6),   /* Electric Blue */
-            rgba(0, 70, 180, 0.5),    /* Mid Blue */
-            rgba(0, 128, 70, 0.35),   /* Subtle Teal/Green Hint */
-            rgba(10, 10, 26, 0.7),    /* Dark Base Blue/Black */
-            rgba(0, 119, 255, 0.4)    /* Lighter Electric Blue */
+            rgba(0, 119, 255, 0.6),
+            rgba(0, 70, 180, 0.5),
+            rgba(0, 128, 70, 0.35),
+            rgba(10, 10, 26, 0.7),
+            rgba(0, 119, 255, 0.4)
     );
-    background-size: 300% 300%; /* Larger size for smooth animation */
+    background-size: 300% 300%;
     animation: aurora-gradient 25s ease infinite;
 }
 
-/* Layer 2: Moving Cloud Shapes */
 .appContainer::after {
-    background: radial-gradient(ellipse at 70% 30%, rgba(0, 60, 140, 0.4) 0%, transparent 50%), /* Darker Blue Cloud */
-    radial-gradient(ellipse at 30% 70%, rgba(0, 119, 255, 0.3) 0%, transparent 40%), /* Electric Blue Cloud */
-    radial-gradient(ellipse at 50% 50%, rgba(0, 130, 90, 0.2) 0%, transparent 35%), /* Subtle Green Cloud */
-    radial-gradient(ellipse at 15% 15%, rgba(180, 200, 255, 0.1) 0%, transparent 30%); /* Very Light Blue Cloud */
+    background: radial-gradient(ellipse at 70% 30%, rgba(0, 60, 140, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 70%, rgba(0, 119, 255, 0.3) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 130, 90, 0.2) 0%, transparent 35%),
+    radial-gradient(ellipse at 15% 15%, rgba(180, 200, 255, 0.1) 0%, transparent 30%);
     animation: move-clouds 40s linear infinite alternate;
     opacity: 0.6;
-    filter: blur(80px); /* Slightly less blur for cloud shapes */
+    filter: blur(80px);
 }
 
-/* Apply constraints and padding to the main content area */
-main { /* Or use a specific class if you prefer, like .mainContentArea */
+/* --- NEW: Page Header --- */
+.pageHeader {
+    position: absolute; /* Position relative to appContainer */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10; /* Above content */
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: flex-end; /* Position switcher to the right */
+}
+
+.languageSwitcherContainer {
+    /* Styles for the container of the switcher if needed */
+}
+/* --- END NEW: Page Header --- */
+
+
+main {
     flex-grow: 1;
-    /* MOVED from appContainer */
-    max-width: 1400px; /* Or your desired max content width */
-    width: 100%; /* Ensure it takes space */
-    margin: 0 auto; /* Center the block horizontally */
-    padding: 2rem 1.5rem; /* Add padding INSIDE the main content area */
-    /* End MOVED */
-    transform: translateZ(0); /* Promote to own layer for performance */
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    /* MODIFIED: Increased top padding to avoid overlap with absolute header */
+    padding: 4rem 1.5rem 2rem 1.5rem;
+    transform: translateZ(0);
+}
+/* Adjust main content padding if hero is present */
+main.mainAdjustForHero {
+    padding-top: 0; /* Remove top padding if Hero covers the top area */
 }
 
-/* General section styling within main */
-/* Adjusted selector slightly if using 'main' directly */
+
 main > div > section {
-    /* Padding vertical is fine, horizontal padding now comes from 'main' */
     padding: 5rem 0;
     position: relative;
     border-bottom: 1px solid var(--glass-border-color);
@@ -92,13 +105,12 @@ main > div > section:last-of-type {
     border-bottom: none;
 }
 
-/* Styling for Detail Pages within main */
 .detailPage {
-    /* Vertical padding okay, horizontal padding comes from parent 'main' */
-    padding: 3rem 0 5rem 0;
+    /* MODIFIED: Adjust top padding if needed, consider header */
+    padding: 3rem 0 5rem 0; /* Keep existing vertical, horizontal from main */
 }
 
-/* Direct H1 child of detailPage might need centering adjustments if needed */
+
 .detailPage > h1 {
     text-align: center;
     margin-bottom: 3rem;
@@ -113,7 +125,6 @@ main > div > section:last-of-type {
     grid-template-columns: 1fr;
     gap: 3rem;
     margin-top: 3rem;
-    /* Max width is handled by the parent 'main' */
 }
 
 @media (min-width: 992px) {
@@ -136,7 +147,6 @@ main > div > section:last-of-type {
     }
 }
 
-/* Sidebar with Glassmorphism */
 .sidebar {
     background: var(--glass-bg-color);
     backdrop-filter: blur(var(--glass-blur));
@@ -146,7 +156,8 @@ main > div > section:last-of-type {
     box-shadow: var(--glass-shadow);
     height: fit-content;
     position: sticky;
-    top: 2rem; /* Adjusted sticky top */
+    /* MODIFIED: Adjust sticky top to account for header height */
+    top: 5rem; /* Example: Adjust based on header height + desired gap */
     transition: var(--transition-smooth);
     opacity: 0;
     transform: translateY(20px);
@@ -187,7 +198,6 @@ main > div > section:last-of-type {
     font-weight: 600;
 }
 
-/* Consistent Tech/Skill Tag list styling within sidebar */
 .techList {
     list-style: none;
     padding: 0;
@@ -197,7 +207,6 @@ main > div > section:last-of-type {
     gap: 0.6rem;
 }
 
-/* Consistent Tag Style for Tech/Skills in Sidebar */
 .techList li {
     font-family: var(--font-mono);
     font-size: 0.8rem;
@@ -219,7 +228,6 @@ main > div > section:last-of-type {
     cursor: default;
 }
 
-/* Media Section Styling */
 .mediaSection {
     margin-top: 3rem;
     border-top: var(--border-standard);
@@ -263,7 +271,6 @@ main > div > section:last-of-type {
 }
 
 
-/* Back Link Styling */
 .backLink {
     display: inline-flex;
     align-items: center;
