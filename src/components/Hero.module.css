@@ -79,6 +79,9 @@
     height: auto;
     border-radius: 10px;
     /* max-height applied in media query */
+    /* === ADDED: Apply fade effect at the bottom === */
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%); /* Safari/Webkit */
 }
 
 /* Contenedor del Texto - General Styles (Mobile First) */
@@ -185,6 +188,9 @@
         max-width: 45vw;
         position: static;
         transform: none;
+        /* === ADJUSTED: Tweak fade percentage for desktop view if needed === */
+        mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%); /* Safari/Webkit */
     }
 
     .textContainer {
