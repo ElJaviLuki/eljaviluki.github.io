@@ -4,6 +4,7 @@
 import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
+import ReactGA from 'react-ga4'; // Import react-ga4
 import Footer from './Footer.jsx'; // Corrected import path
 import Hero from './Hero.jsx'; // Corrected import path
 import LanguageSwitcher from './LanguageSwitcher.jsx'; // Import LanguageSwitcher
@@ -15,17 +16,34 @@ function Layout() {
     const { i18n, t } = useTranslation(); // Use translation hook
     const { name } = portfolioData.personalInfo; // Keep name for potential interpolation
 
-    const outletKey = location.pathname;
+    const outletKey = location.pathname + location.search; // Include search params in key if needed
     const isHomePage = location.pathname === '/';
 
+    // Effect for scrolling to top on navigation
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [location.pathname]);
+    }, [location.pathname]); // Only trigger scroll on pathname change
 
     // Update html lang attribute when language changes
     useEffect(() => {
         document.documentElement.lang = i18n.language;
     }, [i18n.language]);
+
+    // Effect for tracking page views with react-ga4
+    useEffect(() => {
+        // Check if GA was initialized (check ID existence is handled in App.jsx)
+        const GA_MEASUREMENT_ID = "G-MZ59NT1G50";
+        if (GA_MEASUREMENT_ID) {
+            const pagePath = location.pathname + location.search;
+            ReactGA.send({
+                hitType: "pageview",
+                page: pagePath,
+                title: document.title // Send page title as well
+            });
+            console.log(`GA Pageview tracked: ${pagePath} (Title: ${document.title})`); // For debugging
+        }
+    }, [location.pathname, location.search]); // Trigger on path or search param changes
+
 
     const siteUrl = window.location.origin;
     // Get default title/desc from translations
@@ -60,6 +78,7 @@ function Layout() {
             {isHomePage && <Hero />}
 
             <main id="main-content" className={isHomePage ? styles.mainAdjustForHero : ''}>
+                {/* Use outletKey derived from location to force re-render on nav */}
                 <Outlet key={outletKey}/>
             </main>
             <Footer />

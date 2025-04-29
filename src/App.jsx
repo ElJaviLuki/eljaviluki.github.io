@@ -1,8 +1,9 @@
 // --- START OF FILE src/App.jsx ---
 
 // src/App.js
-import React, { Suspense, lazy } from 'react'; // Import Suspense and lazy
+import React, { Suspense, lazy, useEffect } from 'react'; // Import useEffect
 import { Routes, Route } from 'react-router-dom';
+import ReactGA from "react-ga4"; // Import react-ga4
 import Layout from './components/Layout.jsx';
 import HomePage from './pages/HomePage.jsx';
 // Removed direct imports of page components that will be lazy-loaded
@@ -20,7 +21,20 @@ function LoadingFallback() {
     return <div style={{ padding: '5rem', textAlign: 'center', minHeight: '50vh' }}>Loading...</div>;
 }
 
+// Initialize GA4
+const GA_MEASUREMENT_ID = "G-MZ59NT1G50"; // Your Measurement ID
+// Basic check if ID exists, prevent initialization if not (e.g., during development without ID)
+if (GA_MEASUREMENT_ID) {
+    ReactGA.initialize(GA_MEASUREMENT_ID);
+    console.log("GA Initialized with ID:", GA_MEASUREMENT_ID); // For debugging
+} else {
+    console.warn("GA Measurement ID not found. Analytics disabled.");
+}
+
+
 function App() {
+    // Note: Page view tracking will be handled in Layout using useLocation
+
     return (
         <Routes>
             <Route path="/" element={<Layout />}>
@@ -76,3 +90,4 @@ function App() {
 }
 
 export default App;
+// --- END OF FILE src/App.jsx ---
