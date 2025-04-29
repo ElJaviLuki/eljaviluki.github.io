@@ -165,25 +165,26 @@
 /* REMOVED: .summaryText styles as it's no longer rendered here */
 /* .summaryText { ... } */
 
-/* --- NEW: Metrics Styles --- */
+/* --- MODIFIED: Metrics Styles --- */
 .metricsContainer {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping if too many metrics */
-    justify-content: flex-start; /* Align to start */
-    gap: 1rem; /* Space between metric cards */
-    margin-bottom: 1.5rem; /* Space below metrics */
-    flex-grow: 1; /* Allow metrics to take available space */
-    align-content: flex-start; /* Align wrapped items to the top */
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); */ /* REMOVED auto-fit */
+    grid-template-columns: repeat(3, 1fr); /* ALWAYS create 3 equal columns */
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    /* Removed flex properties */
+    /* Ensure grid takes up space if needed, but flex-grow on card is handling height better */
+    /* min-height: 120px; */ /* Optional: Ensure minimum height for the grid area */
 }
 
 .metricCard {
-    background: rgba(0, 119, 255, 0.08); /* Subtle blue glass bg */
+    background: rgba(0, 119, 255, 0.08);
     border: 1px solid rgba(0, 119, 255, 0.15);
     border-radius: 8px;
     padding: 1rem;
-    width: calc(33.333% - 0.66rem); /* Aim for 3 per row, adjusting for gap */
-    min-width: 90px; /* Minimum size */
-    aspect-ratio: 1 / 1; /* Make it square */
+    /* width: auto; */ /* Width is now controlled by grid column (1fr) */
+    /* min-width: 90px; */ /* Can be kept or removed, 1fr might suffice */
+    aspect-ratio: 1 / 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -191,6 +192,8 @@
     text-align: center;
     transition: var(--transition-smooth);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* Add min-height if aspect-ratio isn't enough */
+    /* min-height: 90px; */
 }
 .metricCard:hover {
     background: rgba(0, 119, 255, 0.15);
@@ -199,7 +202,7 @@
 }
 
 .metricValue {
-    font-size: clamp(1.3rem, 3vw, 1.8rem); /* Responsive font size */
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
     font-weight: 700;
     color: #fff;
     line-height: 1.1;
@@ -212,7 +215,7 @@
     color: var(--color-text-secondary);
     line-height: 1.2;
 }
-/* --- END: Metrics Styles --- */
+/* --- END: Metrics Styles Modification --- */
 
 
 .techPreview {
