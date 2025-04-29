@@ -174,7 +174,6 @@ export const portfolioData = {
                 "impactMetrics": [ // NEW FIELD
                     { "valueKey": "experience.teldat.metric1Value", "labelKey": "experience.teldat.metric1Label" },
                     { "valueKey": "experience.teldat.metric2Value", "labelKey": "experience.teldat.metric2Label" },
-                    { "valueKey": "experience.teldat.metric3Value", "labelKey": "experience.teldat.metric3Label" }
                 ],
                 "projectContext": {
                     "projectNameKey": "experience.teldat.projectContextName",
