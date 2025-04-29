@@ -162,8 +162,20 @@
     letter-spacing: 0.5px;
 }
 
-/* REMOVED: .summaryText styles as it's no longer rendered here */
-/* .summaryText { ... } */
+/* ADDED: .summaryText styles */
+.summaryText {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.75rem; /* MODIFIED: Reduced space before metrics */
+    /* Clamp text to a few lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Show max 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: calc(1.6em * 3); /* Approximate height for 3 lines */
+}
 
 /* --- MODIFIED: Metrics Styles --- */
 .metricsContainer {

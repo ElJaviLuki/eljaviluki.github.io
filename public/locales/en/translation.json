@@ -143,7 +143,7 @@
       "role": "Full-Stack Developer",
       "date": "2024/07 - 2025/03",
       "location": "Tres Cantos, Madrid, Spain",
-      "summary": "Contributed as a Full-Stack Developer to 'be.Analyzer', a complex, multi-tenant network monitoring and analysis platform. Involved in developing backend services (Python/Django), maintaining a high-technical-debt legacy React frontend, and integrating various components including databases (PostgreSQL), message queues (Redis/Kafka), task processing (Celery), and real-time analytics engines (Druid).",
+      "summary": "Contributed as a Full-Stack Developer to 'XDR/be.Analyzer', a complex, multi-tenant network monitoring and analysis platform.",
       "metric1Value": "New",
       "metric1Label": "Event Prediction Feature",
       "metric2Value": "-30%",

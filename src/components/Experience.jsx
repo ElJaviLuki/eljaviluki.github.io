@@ -25,7 +25,7 @@ const ExperienceSummaryItem = ({ job }) => {
     const role = t(job.roleKey);
     const date = t(job.dateKey); // Assuming dates might need formatting or translation context
     const location = t(job.locationKey);
-    // const summary = t(job.summaryKey); // Summary removed from this component view
+    const summary = t(job.summaryKey); // Summary IS NOW needed for this component view
 
     // Translate location mode
     let locationModeTranslated = '';
@@ -64,6 +64,9 @@ const ExperienceSummaryItem = ({ job }) => {
                 </div>
             </div>
 
+            {/* Added summary text */}
+            <p className={styles.summaryText}>{summary}</p>
+
             {/* Impact Metrics Section */}
             {metrics.length > 0 && (
                 <div className={styles.metricsContainer}>
@@ -72,8 +75,6 @@ const ExperienceSummaryItem = ({ job }) => {
                     ))}
                 </div>
             )}
-
-            {/* Removed summary text: <p className={styles.summaryText}>{summary}</p> */}
 
             {/* Technologies Preview */}
             {job.technologies && job.technologies.length > 0 && (
