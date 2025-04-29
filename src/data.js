@@ -118,7 +118,12 @@ export const portfolioData = {
                 "dateKey": "experience.royalTikTok.date",
                 "locationMode": "Remote", // Keep mode as identifier
                 "locationKey": "experience.royalTikTok.location",
-                "summaryKey": "experience.royalTikTok.summary",
+                "summaryKey": "experience.royalTikTok.summary", // Still needed for detail page
+                "impactMetrics": [ // NEW FIELD
+                    { "valueKey": "experience.royalTikTok.metric1Value", "labelKey": "experience.royalTikTok.metric1Label" },
+                    { "valueKey": "experience.royalTikTok.metric2Value", "labelKey": "experience.royalTikTok.metric2Label" },
+                    { "valueKey": "experience.royalTikTok.metric3Value", "labelKey": "experience.royalTikTok.metric3Label" }
+                ],
                 "detailsKeys": "experience.royalTikTok.details", // Key to array of detail keys
                 "technologies": [ // Technologies usually don't need translation
                     "Python", "Pandas", "FastAPI", "APScheduler", "Playwright",
@@ -141,7 +146,11 @@ export const portfolioData = {
                 "dateKey": "experience.ortoprodent.date",
                 "locationMode": "Remote",
                 "locationKey": "experience.ortoprodent.location",
-                "summaryKey": "experience.ortoprodent.summary",
+                "summaryKey": "experience.ortoprodent.summary", // Still needed for detail page
+                "impactMetrics": [ // NEW FIELD
+                    { "valueKey": "experience.ortoprodent.metric1Value", "labelKey": "experience.ortoprodent.metric1Label" },
+                    { "valueKey": "experience.ortoprodent.metric2Value", "labelKey": "experience.ortoprodent.metric2Label" }
+                ],
                 "detailsKeys": "experience.ortoprodent.details",
                 "technologies": [ "Java", "PostgreSQL", "Swing (UI)", "Software Design", "UX Design Principles" ],
                 "softSkillsKeys": "experience.ortoprodent.softSkills",
@@ -161,7 +170,12 @@ export const portfolioData = {
                 "dateKey": "experience.teldat.date",
                 "locationMode": "Hybrid",
                 "locationKey": "experience.teldat.location",
-                "summaryKey": "experience.teldat.summary",
+                "summaryKey": "experience.teldat.summary", // Still needed for detail page
+                "impactMetrics": [ // NEW FIELD
+                    { "valueKey": "experience.teldat.metric1Value", "labelKey": "experience.teldat.metric1Label" },
+                    { "valueKey": "experience.teldat.metric2Value", "labelKey": "experience.teldat.metric2Label" },
+                    { "valueKey": "experience.teldat.metric3Value", "labelKey": "experience.teldat.metric3Label" }
+                ],
                 "projectContext": {
                     "projectNameKey": "experience.teldat.projectContextName",
                     "purposeKey": "experience.teldat.projectContextPurposeDesc",
@@ -188,7 +202,11 @@ export const portfolioData = {
                 "dateKey": "experience.driveMeGroup.date",
                 "locationMode": "Remote",
                 "locationKey": "experience.driveMeGroup.location",
-                "summaryKey": "experience.driveMeGroup.summary",
+                "summaryKey": "experience.driveMeGroup.summary", // Still needed for detail page
+                "impactMetrics": [ // NEW FIELD
+                    { "valueKey": "experience.driveMeGroup.metric1Value", "labelKey": "experience.driveMeGroup.metric1Label" },
+                    { "valueKey": "experience.driveMeGroup.metric2Value", "labelKey": "experience.driveMeGroup.metric2Label" }
+                ],
                 "detailsKeys": "experience.driveMeGroup.details",
                 "technologies": [
                     "Zoho Dataprep", "Zoho Analytics", "Python", "API Integration",

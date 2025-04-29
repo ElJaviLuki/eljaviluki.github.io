@@ -6,6 +6,16 @@ import { useTranslation } from 'react-i18next'; // Import useTranslation
 import { portfolioData } from '../data.js'; // Corrected import path
 import styles from './Experience.module.css';
 
+const ImpactMetric = ({ value, label }) => {
+    if (!value || !label) return null; // Don't render if data is missing
+    return (
+        <div className={styles.metricCard}>
+            <div className={styles.metricValue}>{value}</div>
+            <div className={styles.metricLabel}>{label}</div>
+        </div>
+    );
+};
+
 const ExperienceSummaryItem = ({ job }) => {
     const { t } = useTranslation(); // Use translation hook
 
@@ -15,7 +25,7 @@ const ExperienceSummaryItem = ({ job }) => {
     const role = t(job.roleKey);
     const date = t(job.dateKey); // Assuming dates might need formatting or translation context
     const location = t(job.locationKey);
-    const summary = t(job.summaryKey);
+    // const summary = t(job.summaryKey); // Summary removed from this component view
 
     // Translate location mode
     let locationModeTranslated = '';
@@ -33,6 +43,13 @@ const ExperienceSummaryItem = ({ job }) => {
             locationModeTranslated = job.locationMode || '';
     }
 
+    // Prepare metrics
+    const metrics = job.impactMetrics?.map((metric, index) => ({
+        id: `${job.id}-metric-${index}`,
+        value: t(metric.valueKey),
+        label: t(metric.labelKey),
+    })) || [];
+
     return (
         // Use Link as the root element for the card
         <Link to={job.pagePath} className={`${styles.jobSummary} ${styles.cardAsLink}`}>
@@ -46,7 +63,19 @@ const ExperienceSummaryItem = ({ job }) => {
                     </p>
                 </div>
             </div>
-            <p className={styles.summaryText}>{summary}</p>
+
+            {/* Impact Metrics Section */}
+            {metrics.length > 0 && (
+                <div className={styles.metricsContainer}>
+                    {metrics.map(metric => (
+                        <ImpactMetric key={metric.id} value={metric.value} label={metric.label} />
+                    ))}
+                </div>
+            )}
+
+            {/* Removed summary text: <p className={styles.summaryText}>{summary}</p> */}
+
+            {/* Technologies Preview */}
             {job.technologies && job.technologies.length > 0 && (
                 <div className={styles.techPreview}>
                     {job.technologies.slice(0, 5).map(tech => (

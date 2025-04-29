@@ -60,11 +60,12 @@
             var(--glass-shadow);                         /* Original diffuse glow */
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    /* gap: 1.25rem; */ /* Let elements inside control gap */
     transition: var(--transition-smooth);
     position: relative;
     overflow: hidden; /* Clip hover effects */
     z-index: 1;
+    min-height: 350px; /* Ensure minimum height for content */
 }
 /* Subtle gradient border effect on hover */
 .jobSummary::before {
@@ -120,7 +121,7 @@
     align-items: center; /* Center items vertically */
     gap: 1.25rem;
     padding-bottom: 1rem;
-    margin-bottom: 0;
+    margin-bottom: 1.5rem; /* Add space below header */
     border-bottom: 1px solid var(--glass-border-color);
 }
 
@@ -161,16 +162,62 @@
     letter-spacing: 0.5px;
 }
 
-.summaryText {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--color-text-secondary);
-    margin-bottom: 0.5rem;
-    flex-grow: 1;
+/* REMOVED: .summaryText styles as it's no longer rendered here */
+/* .summaryText { ... } */
+
+/* --- NEW: Metrics Styles --- */
+.metricsContainer {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping if too many metrics */
+    justify-content: flex-start; /* Align to start */
+    gap: 1rem; /* Space between metric cards */
+    margin-bottom: 1.5rem; /* Space below metrics */
+    flex-grow: 1; /* Allow metrics to take available space */
+    align-content: flex-start; /* Align wrapped items to the top */
 }
 
+.metricCard {
+    background: rgba(0, 119, 255, 0.08); /* Subtle blue glass bg */
+    border: 1px solid rgba(0, 119, 255, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    width: calc(33.333% - 0.66rem); /* Aim for 3 per row, adjusting for gap */
+    min-width: 90px; /* Minimum size */
+    aspect-ratio: 1 / 1; /* Make it square */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.metricCard:hover {
+    background: rgba(0, 119, 255, 0.15);
+    border-color: var(--color-accent-electric-blue);
+    transform: scale(1.03);
+}
+
+.metricValue {
+    font-size: clamp(1.3rem, 3vw, 1.8rem); /* Responsive font size */
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+}
+
+.metricLabel {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    line-height: 1.2;
+}
+/* --- END: Metrics Styles --- */
+
+
 .techPreview {
-    margin-top: 0.5rem;
+    margin-top: auto; /* Push tech preview down */
+    padding-top: 1rem; /* Add padding above tech */
     display: flex; /* Use flexbox for tags */
     flex-wrap: wrap;
     gap: 0.6rem; /* Gap between tags */
@@ -216,7 +263,7 @@
     letter-spacing: 0.5px;
     display: inline-flex; /* Align icon */
     align-items: center;
-    margin-top: auto; /* Push to bottom */
+    margin-top: 1rem; /* Ensure space from tech preview */
     align-self: flex-start; /* Align left */
     color: var(--color-text-primary); /* Brighter link */
     padding: 0.4rem 0; /* Adjust padding */
