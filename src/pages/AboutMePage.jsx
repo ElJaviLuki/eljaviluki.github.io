@@ -93,16 +93,16 @@ function AboutMePage() {
             <h1>{t(headlineKey)}</h1>
             <p className={styles.subheadline}>{t(introKey)}</p>
 
-            <section className={styles.section}>
-                <h2>{t('aboutLong.storyTitle')}</h2>
+            <section className={styles.section} aria-labelledby="story-heading">
+                <h2 id="story-heading">{t('aboutLong.storyTitle')}</h2>
                 {storytelling.map((item, index) => (
                     <ContentRenderer key={`storytelling-${index}`} item={item} t={t} /> // Pass t
                 ))}
             </section>
 
             {caseStudy.titleKey && caseStudy.content && caseStudy.content.length > 0 && (
-                <section className={styles.section}>
-                    <h2>{t(caseStudy.titleKey)}</h2>
+                <section className={styles.section} aria-labelledby="case-study-heading">
+                    <h2 id="case-study-heading">{t(caseStudy.titleKey)}</h2>
                     {caseStudy.content.map((item, index) => (
                         <ContentRenderer key={`casestudy-${index}`} item={item} t={t} /> // Pass t
                     ))}
@@ -110,12 +110,12 @@ function AboutMePage() {
             )}
 
             {approach.titleKey && approach.steps && approach.steps.length > 0 && (
-                <section className={styles.section}>
-                    <h2>{t(approach.titleKey)}</h2>
+                <section className={styles.section} aria-labelledby="approach-heading">
+                    <h2 id="approach-heading">{t(approach.titleKey)}</h2>
                     <div className={styles.approachGrid}>
                         {approach.steps.map((step) => (
                             <div key={step.id} className={styles.approachStep}>
-                                <span className={styles.stepId}>{step.id}</span>
+                                <span className={styles.stepId} aria-hidden="true">{step.id}</span>
                                 <h3 className={styles.stepTitle}>{t(step.titleKey)}</h3>
                                 <p className={styles.stepDescription}>{t(step.descriptionKey)}</p>
                             </div>

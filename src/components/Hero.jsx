@@ -34,6 +34,8 @@ function Hero() {
                     {/* Use translated name parts */}
                     <span>{t('hero.namePart1')}</span> <span>{t('hero.namePart2')}</span> <span>{t('hero.namePart3')}</span>
                 </h1>
+                {/* NEW: Nickname */}
+                <p className={styles.nickname}>{t('hero.nickname')}</p>
                 {adjectives && adjectives.length > 0 && (
                     <p className={styles.adjectives}>
                         {adjectives.join(' · ')}

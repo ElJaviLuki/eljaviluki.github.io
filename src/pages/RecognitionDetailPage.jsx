@@ -102,14 +102,14 @@ function RecognitionDetailPage() {
                         </div>
                     </header>
 
-                    <section className={styles.detailSection}>
-                        <h2>{t('recognitions.summaryHeading')}</h2>
+                    <section className={styles.detailSection} aria-labelledby="summary-heading">
+                        <h2 id="summary-heading">{t('recognitions.summaryHeading')}</h2>
                         <p>{summary}</p>
                     </section>
 
                     {skillsDemonstrated && skillsDemonstrated.length > 0 && (
-                        <section className={styles.detailSection}>
-                            <h2>{t('recognitions.skillsHeading')}</h2>
+                        <section className={styles.detailSection} aria-labelledby="skills-heading">
+                            <h2 id="skills-heading">{t('recognitions.skillsHeading')}</h2>
                             <ul className={styles.skillsList}>
                                 {skillsDemonstrated.map((skill, index) => (
                                     <li key={index}>{skill}</li>
@@ -119,8 +119,8 @@ function RecognitionDetailPage() {
                     )}
 
                     {recognitionItem.media && recognitionItem.media.length > 0 && (
-                        <section className={`${layoutStyles.mediaSection} ${styles.detailSection}`}>
-                            <h2>{t('recognitions.mediaHeading')}</h2>
+                        <section className={`${layoutStyles.mediaSection} ${styles.detailSection}`} aria-labelledby="media-heading">
+                            <h2 id="media-heading">{t('recognitions.mediaHeading')}</h2>
                             {recognitionItem.media.map((mediaItem, index) => (
                                 <div key={index} className={layoutStyles.mediaItem}>
                                     {mediaItem.type === 'image' ? (
@@ -138,7 +138,8 @@ function RecognitionDetailPage() {
                     )}
                 </div>
 
-                <aside className={layoutStyles.sidebar}>
+                <aside className={layoutStyles.sidebar} aria-labelledby="sidebar-heading">
+                    <h2 id="sidebar-heading" className="sr-only">Recognition Details Sidebar</h2> {/* Hidden heading for context */}
                     {recognitionItem.sources && recognitionItem.sources.length > 0 && (
                         <div className={styles.sidebarSection}>
                             <h3>{t('recognitions.sidebarSources')}</h3>

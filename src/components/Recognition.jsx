@@ -21,7 +21,7 @@ const RecognitionSummaryItem = ({ recognition }) => {
 
     return (
         // Use Link as the root element for the card
-        <Link to={recognition.pagePath} className={`${styles.recognitionSummary} ${styles.cardAsLink}`}>
+        <Link to={recognition.pagePath} className={`${styles.recognitionSummary} ${styles.cardAsLink}`} aria-label={`View details for recognition: ${title}`}>
             <div className={styles.summaryHeader}>
                 <img src={logoSrc} alt={`${title} logo`} className={styles.logo} loading="lazy" />
                 <div className={styles.titleGroup}>
@@ -35,7 +35,7 @@ const RecognitionSummaryItem = ({ recognition }) => {
             <p className={styles.summaryText}>{summary}</p>
 
             {skills && skills.length > 0 && (
-                <div className={styles.skillsPreview}>
+                <div className={styles.skillsPreview} aria-label="Skills Demonstrated Preview">
                     {/* Translate "Skills:" label */}
                     <strong>{t('recognitions.skillsHeading')}: </strong>
                     {skills.slice(0, 4).map((skill, index) => ( // Assuming skills array contains strings
@@ -46,7 +46,7 @@ const RecognitionSummaryItem = ({ recognition }) => {
             )}
 
             {/* Keep the visual element, but it's not a Link itself anymore */}
-            <div className={styles.detailsLinkVisual}>
+            <div className={styles.detailsLinkVisual} aria-hidden="true"> {/* Hide from screen readers as card is link */}
                 {t('viewDetailsSources')} <span aria-hidden="true">{t('forwardArrow')}</span> {/* Translate link */}
             </div>
         </Link>
@@ -65,8 +65,8 @@ function Recognition() {
     const ipoRecognition = recognitions.find(r => r.id === 'ipo-2019');
 
     return (
-        <section className={styles.recognition} id="recognition">
-            <h2 className={styles.heading}>{t('recognitions.sectionHeading')}</h2> {/* Translate heading */}
+        <section className={styles.recognition} id="recognition" aria-labelledby="recognition-heading">
+            <h2 id="recognition-heading" className={styles.heading}>{t('recognitions.sectionHeading')}</h2> {/* Translate heading */}
             <div className={styles.summaryGrid}>
                 {recognitions.map(rec => (
                     <RecognitionSummaryItem key={rec.id} recognition={rec} />

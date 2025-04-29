@@ -38,7 +38,7 @@ function ProjectDetailPage() {
         "@type": "SoftwareApplication",
         "name": title,
         "applicationCategory": "Utility", // Adjust if needed
-        "description": summary + "\\n\\n" + details.join("\\n"),
+        "description": summary + "\\\\n\\\\n" + details.join("\\\\n"),
         "author": { "@type": "Person", "name": portfolioName },
         "url": projectItem.web || undefined,
         "image": ogImage,
@@ -79,16 +79,16 @@ function ProjectDetailPage() {
                         </div>
                     </header>
 
-                    <section className={styles.detailSection}>
+                    <section className={styles.detailSection} aria-labelledby="summary-heading">
                         {/* Translate summary heading */}
-                        <h2>{t('experience.summaryHeading')}</h2>
+                        <h2 id="summary-heading">{t('experience.summaryHeading')}</h2> {/* Re-use translation key */}
                         <p>{summary}</p>
                     </section>
 
                     {details && details.length > 0 && (
-                        <section className={styles.detailSection}>
+                        <section className={styles.detailSection} aria-labelledby="details-heading">
                             {/* Translate details heading */}
-                            <h2>{t('projects.detailsHeading')}</h2>
+                            <h2 id="details-heading">{t('projects.detailsHeading')}</h2>
                             <ul className={styles.detailList}>
                                 {details.map((detail, index) => (
                                     <li key={index}>{detail}</li>
@@ -98,9 +98,9 @@ function ProjectDetailPage() {
                     )}
 
                     {projectItem.media && projectItem.media.length > 0 && (
-                        <section className={`${layoutStyles.mediaSection} ${styles.detailSection}`}>
+                        <section className={`${layoutStyles.mediaSection} ${styles.detailSection}`} aria-labelledby="media-heading">
                             {/* Translate media heading */}
-                            <h2>{t('projects.mediaHeading')}</h2>
+                            <h2 id="media-heading">{t('projects.mediaHeading')}</h2>
                             {projectItem.media.map((mediaItem, index) => (
                                 <div key={index} className={layoutStyles.mediaItem}>
                                     {mediaItem.type === 'image' ? (
@@ -118,7 +118,8 @@ function ProjectDetailPage() {
                     )}
                 </div>
 
-                <aside className={layoutStyles.sidebar}>
+                <aside className={layoutStyles.sidebar} aria-labelledby="sidebar-heading">
+                    <h2 id="sidebar-heading" className="sr-only">Project Details Sidebar</h2> {/* Hidden heading for context */}
                     {projectItem.technologies && projectItem.technologies.length > 0 && (
                         <div className={styles.sidebarSection}>
                             {/* Translate stack heading */}

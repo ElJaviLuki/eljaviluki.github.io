@@ -26,7 +26,7 @@ const renderAuthorLinks = (links, authorName, t) => {
                 className={styles.authorLink}
                 aria-label={ariaLabel}
             >
-                {platformLabel}
+                {platformLabel} <span aria-hidden="true">{t('externalLinkArrow')}</span>
             </a>
         );
     });
@@ -59,7 +59,7 @@ const TestimonialCard = ({ testimonial }) => {
                 </div>
                 <div className={styles.links}>
                     {testimonial.associatedProjectId && (
-                        <Link to={`/experience/${testimonial.associatedProjectId}`} className={styles.projectLink}>
+                        <Link to={`/experience/${testimonial.associatedProjectId}`} className={styles.projectLink} aria-label={`View project related to ${authorName}'s testimonial`}>
                             {t('viewProject')} <span aria-hidden="true">{t('forwardArrow')}</span> {/* Translate link */}
                         </Link>
                     )}
@@ -80,8 +80,8 @@ function Testimonials() {
     }
 
     return (
-        <section className={styles.testimonials} id="testimonials">
-            <h2 className={styles.heading}>{t('testimonials.sectionHeading')}</h2> {/* Translate heading */}
+        <section className={styles.testimonials} id="testimonials" aria-labelledby="testimonials-heading">
+            <h2 id="testimonials-heading" className={styles.heading}>{t('testimonials.sectionHeading')}</h2> {/* Translate heading */}
             <div className={styles.grid}>
                 {testimonials.map((testimonial) => (
                     <TestimonialCard key={testimonial.id} testimonial={testimonial} />

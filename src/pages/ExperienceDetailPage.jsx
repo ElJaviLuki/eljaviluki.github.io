@@ -62,7 +62,7 @@ function ExperienceDetailPage() {
         "@context": "<https://schema.org>",
         "@type": "JobPosting",
         "title": role,
-        "description": summary + "\\n\\n" + details.join("\\n"),
+        "description": summary + "\\\\n\\\\n" + details.join("\\\\n"),
         "hiringOrganization": {
             "@type": "Organization",
             "name": client || displayTitle,
@@ -118,8 +118,8 @@ function ExperienceDetailPage() {
                     </header>
 
                     {experienceItem.projectContext && (
-                        <section className={`${styles.detailSection} ${styles.projectContext}`}>
-                            <h2>{t('experience.projectContextHeading', { projectName: projectContextName })}</h2>
+                        <section className={`${styles.detailSection} ${styles.projectContext}`} aria-labelledby="project-context-heading">
+                            <h2 id="project-context-heading">{t('experience.projectContextHeading', { projectName: projectContextName })}</h2>
                             <p><strong>{t('experience.projectContextPurpose')}</strong> {projectContextPurpose}</p>
                             <p><strong>{t('experience.projectContextArchitecture')}</strong> {projectContextArchitecture}</p>
                             {projectContextModules && projectContextModules.length > 0 && (
@@ -135,14 +135,14 @@ function ExperienceDetailPage() {
                         </section>
                     )}
 
-                    <section className={styles.detailSection}>
-                        <h2>{t('experience.summaryHeading')}</h2>
+                    <section className={styles.detailSection} aria-labelledby="summary-heading">
+                        <h2 id="summary-heading">{t('experience.summaryHeading')}</h2>
                         <p>{summary}</p>
                     </section>
 
                     {details && details.length > 0 && (
-                        <section className={styles.detailSection}>
-                            <h2>{t('experience.detailsHeading')}</h2>
+                        <section className={styles.detailSection} aria-labelledby="details-heading">
+                            <h2 id="details-heading">{t('experience.detailsHeading')}</h2>
                             <ul className={styles.detailList}>
                                 {details.map((detail, index) => (
                                     <li key={index}>{detail}</li>
@@ -152,8 +152,8 @@ function ExperienceDetailPage() {
                     )}
 
                     {experienceItem.media && experienceItem.media.length > 0 && (
-                        <section className={`${layoutStyles.mediaSection} ${styles.detailSection}`}>
-                            <h2>{t('experience.mediaHeading')}</h2>
+                        <section className={`${layoutStyles.mediaSection} ${styles.detailSection}`} aria-labelledby="media-heading">
+                            <h2 id="media-heading">{t('experience.mediaHeading')}</h2>
                             {experienceItem.media.map((mediaItem, index) => (
                                 <div key={index} className={layoutStyles.mediaItem}>
                                     {mediaItem.type === 'image' ? (
@@ -171,7 +171,8 @@ function ExperienceDetailPage() {
                     )}
                 </div>
 
-                <aside className={layoutStyles.sidebar}>
+                <aside className={layoutStyles.sidebar} aria-labelledby="sidebar-heading">
+                    <h2 id="sidebar-heading" className="sr-only">Experience Details Sidebar</h2> {/* Hidden heading for context */}
                     {experienceItem.technologies && experienceItem.technologies.length > 0 && (
                         <div className={styles.sidebarSection}>
                             <h3>{t('experience.sidebarStack')}</h3>
@@ -193,7 +194,7 @@ function ExperienceDetailPage() {
                             <h3>{t('experience.sidebarClient')}</h3>
                             <p>{client}</p>
                             {experienceItem.web && (
-                                <p><a href={experienceItem.web} target="_blank" rel="noopener noreferrer">{t('websiteLink')} {t('externalLinkArrow')}</a></p>
+                                <p><a href={experienceItem.web} target="_blank" rel="noopener noreferrer">{t('websiteLink')} <span aria-hidden="true">{t('externalLinkArrow')}</span></a></p>
                             )}
                         </div>
                     )}

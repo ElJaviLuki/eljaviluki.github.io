@@ -52,7 +52,7 @@ const ExperienceSummaryItem = ({ job }) => {
 
     return (
         // Use Link as the root element for the card
-        <Link to={job.pagePath} className={`${styles.jobSummary} ${styles.cardAsLink}`}>
+        <Link to={job.pagePath} className={`${styles.jobSummary} ${styles.cardAsLink}`} aria-label={`View details for ${role} at ${displayTitle}`}>
             <div className={styles.summaryHeader}>
                 <img src={logoSrc} alt={`${displayTitle} logo`} className={styles.logo} loading="lazy" />
                 <div className={styles.titleGroup}>
@@ -69,7 +69,7 @@ const ExperienceSummaryItem = ({ job }) => {
 
             {/* Impact Metrics Section */}
             {metrics.length > 0 && (
-                <div className={styles.metricsContainer}>
+                <div className={styles.metricsContainer} aria-label="Key Impact Metrics">
                     {metrics.map(metric => (
                         <ImpactMetric key={metric.id} value={metric.value} label={metric.label} />
                     ))}
@@ -78,7 +78,7 @@ const ExperienceSummaryItem = ({ job }) => {
 
             {/* Technologies Preview */}
             {job.technologies && job.technologies.length > 0 && (
-                <div className={styles.techPreview}>
+                <div className={styles.techPreview} aria-label="Technologies Used Preview">
                     {job.technologies.slice(0, 5).map(tech => (
                         <span key={tech} className={styles.techTag}>{tech}</span>
                     ))}
@@ -86,7 +86,7 @@ const ExperienceSummaryItem = ({ job }) => {
                 </div>
             )}
             {/* Keep the visual element, but it's not a Link itself anymore */}
-            <div className={styles.detailsLinkVisual}>
+            <div className={styles.detailsLinkVisual} aria-hidden="true"> {/* Hide from screen readers as card is link */}
                 {t('viewDetails')} <span aria-hidden="true">{t('forwardArrow')}</span>
             </div>
         </Link>
@@ -98,8 +98,8 @@ function Experience() {
     const { freelanceConsulting, corporate } = portfolioData.experience;
 
     return (
-        <section className={styles.experience} id="experience">
-            <h2 className={styles.heading}>{t('experience.sectionHeading')}</h2>
+        <section className={styles.experience} id="experience" aria-labelledby="experience-heading">
+            <h2 id="experience-heading" className={styles.heading}>{t('experience.sectionHeading')}</h2>
 
             {/* Freelance Section */}
             {freelanceConsulting && freelanceConsulting.length > 0 && (

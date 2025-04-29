@@ -103,7 +103,7 @@
 /* Estilos de texto (Mobile First - Reduced Sizes) */
 .name {
     font-size: clamp(1.9rem, 6.5vw, 2.8rem);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem; /* Reduced margin */
     font-weight: 900;
     letter-spacing: -0.5px;
     color: #ffffff;
@@ -118,6 +118,16 @@
 }
 .name span:last-child {
     margin-right: 0;
+}
+
+/* NEW: Nickname Style */
+.nickname {
+    font-family: var(--font-mono);
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem; /* Space below nickname */
+    letter-spacing: 0.5px;
+    line-height: 1.2;
 }
 
 .adjectives {
@@ -186,6 +196,9 @@
         margin-right: 0;
         line-height: 1.0;
     }
+    .nickname { /* Ensure nickname is centered */
+        text-align: center;
+    }
 }
 
 
@@ -238,7 +251,7 @@
     /* === Reset text styles for Desktop === */
     .name {
         font-size: clamp(2.5rem, 6vw, 4.5rem);
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.3rem; /* Reduced margin */
         letter-spacing: -1px;
         line-height: 1.15;
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
@@ -253,6 +266,14 @@
         margin-right: 0;
     }
 
+    /* Nickname Desktop */
+    .nickname {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        margin-bottom: 0.75rem; /* Space below nickname */
+        text-align: left; /* Align left on desktop */
+    }
+
+
     .adjectives {
         font-size: clamp(0.8rem, 1.8vw, 1rem);
         margin-bottom: 1rem;
@@ -262,6 +283,7 @@
         max-width: none;
         margin-left: 0;
         margin-right: 0;
+        text-align: left; /* Align left on desktop */
     }
 
     .tagline {
@@ -271,6 +293,7 @@
         margin-right: 0;
         max-width: none;
         line-height: 1.4;
+        text-align: left; /* Align left on desktop */
     }
     /* === End Reset text styles === */
 

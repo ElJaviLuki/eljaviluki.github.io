@@ -12,8 +12,9 @@ function About() {
     const { hookKey, detailsLink } = portfolioData.aboutMe.short;
 
     return (
-        <section className={styles.about} id="about-short">
-            <h2 className="sr-only">{t('srOnlyAboutHook')}</h2> {/* Translate screen reader text */}
+        <section className={styles.about} id="about-short" aria-labelledby="about-hook-heading">
+            {/* Use sr-only class for accessible heading */}
+            <h2 id="about-hook-heading" className="sr-only">{t('srOnlyAboutHook')}</h2>
             <blockquote className={styles.quote}>
                 {/* Translate hook, allow HTML */}
                 <span dangerouslySetInnerHTML={{ __html: t(hookKey) }} />

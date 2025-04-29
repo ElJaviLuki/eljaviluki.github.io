@@ -26,7 +26,8 @@
     "namePart1": "Javier",
     "namePart2": "López",
     "namePart3": "Cacenave",
-    "portraitAlt": "Retrato de {{name}}"
+    "portraitAlt": "Retrato de {{name}}",
+    "nickname": "@ElJaviLuki"
   },
   "aboutShort": {
     "adjectives": [
@@ -104,7 +105,13 @@
         "Resolución de Problemas",
         "Mentalidad de Automatización"
       ],
-      "mediaAlt1": "Representación visual del pipeline de datos o resultados de Royal TikTok"
+      "mediaAlt1": "Representación visual del pipeline de datos o resultados de Royal TikTok",
+      "metric1Value": "20-30%",
+      "metric1Label": "Incremento Ingresos",
+      "metric2Value": "5x",
+      "metric2Label": "Captación Más Rápida",
+      "metric3Value": "100+",
+      "metric3Label": "Talentos Monitorizados"
     },
     "ortoprodent": {
       "name": "ERP Ortoprodent",
@@ -126,7 +133,11 @@
         "Diseño de Soluciones",
         "Pragmatismo"
       ],
-      "mediaAlt1": "Captura de pantalla o maqueta de la interfaz del ERP Ortoprodent"
+      "mediaAlt1": "Captura de pantalla o maqueta de la interfaz del ERP Ortoprodent",
+      "metric1Value": "90%",
+      "metric1Label": "Reducción Tiempo Admin.",
+      "metric2Value": "100%",
+      "metric2Label": "Satisfacción Usuario"
     },
     "teldat": {
       "client": "Teldat",
@@ -164,7 +175,11 @@
         "Trabajo con Código Heredado",
         "Pensamiento a Nivel de Sistema",
         "Comunicación Técnica"
-      ]
+      ],
+      "metric1Value": "15%",
+      "metric1Label": "Reducción Deuda Téc.",
+      "metric2Value": "20+",
+      "metric2Label": "Endpoints API Creados"
     },
     "driveMeGroup": {
       "client": "Drive Me Group",
@@ -187,7 +202,11 @@
         "Visión de Negocio",
         "Narrativa de Datos"
       ],
-      "mediaAlt1": "Ejemplo de dashboard de Zoho Analytics o diagrama de flujo de datos para Drive Me Group"
+      "mediaAlt1": "Ejemplo de dashboard de Zoho Analytics o diagrama de flujo de datos para Drive Me Group",
+      "metric1Value": "4",
+      "metric1Label": "Fuentes de Datos Int.",
+      "metric2Value": "30%",
+      "metric2Label": "Proc. Leads Más Rápido"
     }
   },
   "projects": {
@@ -266,7 +285,7 @@
       "level": "Representante Español y Semifinalista",
       "date": "2019/05",
       "location": "Roma, Italia",
-      "summary": "Representé a España en la XXVII Competición Internacional celebrada en RIoma, alcanzando las semifinales tras la selección nacional.",
+      "summary": "Representé a España en la XXVII Competición Internacional celebrada en Roma, alcanzando las semifinales tras la selección nacional.",
       "skills": [
         "Pensamiento Crítico",
         "Razonamiento Abstracto",
@@ -313,7 +332,7 @@
   "education": {
     "sectionHeading": "Educación",
     "statusCompleted": "Completado",
-    "statusDiscontinued": "",
+    "statusDiscontinued": "Discontinuado",
     "keySkills": "Habilidades Clave:",
     "noteLabel": "Nota:",
     "hackaboss": {
