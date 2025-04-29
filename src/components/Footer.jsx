@@ -5,6 +5,7 @@ import React from 'react';
 // Remove RouterLink if not used for internal links here
 // import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'; // Import icons
 import { portfolioData } from '../data.js'; // Corrected import path
 import styles from './Footer.module.css';
 
@@ -41,18 +42,32 @@ function Footer() {
             {/* Translate CTA Heading */}
             <h2 className={styles.ctaHeading}>{t(ctaKey)}</h2>
             {emailLink && (
-                // Translate CTA Button text
+                // Translate CTA Button text - Keep the main button
                 <a href={emailLink.url} className={`button-link ${styles.ctaButton}`}>
                     {t('footer.ctaButton')}
                 </a>
             )}
 
             <div className={styles.socialLinks}>
-                {/* Render links dynamically using translated labels */}
-                {linkedInLink && <a href={linkedInLink.url} target="_blank" rel="noopener noreferrer">{t(linkedInLink.labelKey)}</a>}
-                {githubLink && <a href={githubLink.url} target="_blank" rel="noopener noreferrer">{t(githubLink.labelKey)}</a>}
+                {/* Render ICON links dynamically */}
+                {linkedInLink && (
+                    <a href={linkedInLink.url} target="_blank" rel="noopener noreferrer" aria-label={t(linkedInLink.labelKey)} className={styles.footerIconLink}>
+                        <FaLinkedin />
+                    </a>
+                )}
+                {githubLink && (
+                    <a href={githubLink.url} target="_blank" rel="noopener noreferrer" aria-label={t(githubLink.labelKey)} className={styles.footerIconLink}>
+                        <FaGithub />
+                    </a>
+                )}
+                {emailLink && (
+                    <a href={emailLink.url} aria-label={t(emailLink.labelKey)} className={styles.footerIconLink}>
+                        <FaEnvelope />
+                    </a>
+                )}
+                {/* Render any OTHER social links as text (if any exist) */}
                 {socialLinks.filter(link => !['Email', 'LinkedIn', 'GitHub'].includes(link.platform)).map(link => (
-                    <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer">
+                    <a key={link.platform} href={link.url} target="_blank" rel="noopener noreferrer" className={styles.otherSocialLink}>
                         {t(link.labelKey) || link.platform} {/* Fallback to platform name if key missing */}
                     </a>
                 ))}

@@ -137,13 +137,43 @@
 .tagline {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     font-weight: 600;
-    margin-bottom: 0;
+    margin-bottom: 1.5rem; /* MODIFIED: Add more space below tagline */
     color: var(--color-text-primary);
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     line-height: 1.3;
 }
+
+/* --- NEW: Social Icons Styles --- */
+.socialIcons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Space between icons */
+    margin-top: 1rem; /* Space above icons */
+}
+
+.heroIconLink {
+    color: var(--color-text-secondary);
+    font-size: 1.6rem; /* Size of icons */
+    transition: var(--transition-smooth);
+    display: inline-flex; /* Aligns icon correctly */
+    padding: 0.5rem; /* Add padding for larger hit area */
+    border-radius: 50%; /* Optional: make background circular */
+}
+
+.heroIconLink:hover,
+.heroIconLink:focus {
+    color: var(--color-accent-electric-blue); /* Brighten on hover */
+    transform: scale(1.15) translateY(-2px); /* Scale up */
+    background-color: rgba(255, 255, 255, 0.1); /* Optional: subtle bg on hover */
+}
+/* Remove default link underline effect */
+.heroIconLink::after {
+    display: none;
+}
+/* --- END: Social Icons Styles --- */
+
 
 /* Media Query para salto de línea en nombre */
 @media (max-width: 480px) {
@@ -236,12 +266,25 @@
 
     .tagline {
         font-size: clamp(1.3rem, 3vw, 1.8rem);
+        margin-bottom: 2rem; /* More space below tagline on desktop */
         margin-left: 0;
         margin-right: 0;
         max-width: none;
         line-height: 1.4;
     }
     /* === End Reset text styles === */
+
+    /* --- Desktop Social Icons Styles --- */
+    .socialIcons {
+        justify-content: flex-start; /* Align left */
+        gap: 1.8rem; /* Wider gap */
+        margin-top: 1.5rem; /* Adjust top margin */
+    }
+
+    .heroIconLink {
+        font-size: 1.8rem; /* Slightly larger icons on desktop */
+    }
+    /* --- END: Desktop Social Icons Styles --- */
 }
 
 /* Keyframes (sin cambios) */

@@ -3,14 +3,20 @@
 // src/components/Hero/Hero.js
 import React from 'react';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'; // Import icons
 import { portfolioData } from '../data.js'; // Corrected import path
 import styles from './Hero.module.css';
 
 function Hero() {
     const { t } = useTranslation(); // Use translation hook
-    const { name, longPortraitUrl } = portfolioData.personalInfo;
+    const { name, longPortraitUrl, socialLinks } = portfolioData.personalInfo;
     const adjectivesKey = portfolioData.aboutMe.short.adjectivesKey; // Get key for adjectives
     const adjectives = t(adjectivesKey, { returnObjects: true }) || []; // Get translated adjectives array
+
+    // Find specific social links
+    const linkedInLink = socialLinks.find(link => link.platform === 'LinkedIn');
+    const githubLink = socialLinks.find(link => link.platform === 'GitHub');
+    const emailLink = socialLinks.find(link => link.platform === 'Email');
 
     return (
         <header className={styles.hero} id="top">
@@ -34,6 +40,25 @@ function Hero() {
                     </p>
                 )}
                 <p className={styles.tagline}>{t('subtitle')}</p> {/* Translate tagline */}
+
+                {/* Social Icons */}
+                <div className={styles.socialIcons}>
+                    {linkedInLink && (
+                        <a href={linkedInLink.url} target="_blank" rel="noopener noreferrer" aria-label={t(linkedInLink.labelKey)} className={styles.heroIconLink}>
+                            <FaLinkedin />
+                        </a>
+                    )}
+                    {githubLink && (
+                        <a href={githubLink.url} target="_blank" rel="noopener noreferrer" aria-label={t(githubLink.labelKey)} className={styles.heroIconLink}>
+                            <FaGithub />
+                        </a>
+                    )}
+                    {emailLink && (
+                        <a href={emailLink.url} aria-label={t(emailLink.labelKey)} className={styles.heroIconLink}>
+                            <FaEnvelope />
+                        </a>
+                    )}
+                </div>
             </div>
         </header>
     );

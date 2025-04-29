@@ -29,11 +29,39 @@
     margin-bottom: 3rem; /* More space */
     display: flex;
     justify-content: center;
+    align-items: center; /* Vertically align items */
     gap: 2rem; /* Wider gap */
     flex-wrap: wrap;
 }
 
-.socialLinks a {
+/* --- NEW: Footer Icon Link Styles --- */
+.footerIconLink {
+    color: var(--color-text-secondary);
+    font-size: 1.8rem; /* Adjust icon size */
+    transition: var(--transition-smooth);
+    display: inline-flex; /* Align icon correctly */
+    padding: 0.6rem; /* Hit area */
+    border-radius: 50%; /* Optional: circular background */
+    text-decoration: none; /* Remove underline */
+    border: none; /* Remove border if any from base 'a' */
+    background: none; /* Ensure no background from base 'a' */
+}
+.footerIconLink:hover,
+.footerIconLink:focus {
+    color: var(--color-accent-electric-blue); /* Brighten on hover */
+    transform: scale(1.2) translateY(-3px); /* Scale up */
+    background-color: rgba(255, 255, 255, 0.1); /* Optional: subtle bg on hover */
+    outline: none;
+}
+/* Remove hover underline from base link style */
+.footerIconLink::after {
+    display: none;
+}
+/* --- END: Footer Icon Link Styles --- */
+
+
+/* Styles for any other TEXT social links (if they exist) */
+.otherSocialLink {
     text-decoration: none;
     font-weight: 600; /* Bolder links */
     color: var(--color-text-secondary); /* Muted color */
@@ -43,19 +71,17 @@
     position: relative;
 }
 /* Remove underline effect from base link style */
-.socialLinks a::after {
+.otherSocialLink::after {
     display: none;
 }
-
-.socialLinks a:hover,
-.socialLinks a:focus {
-    color: var(--color-accent-electric-blue); /* Brighten on hover */
+.otherSocialLink:hover,
+.otherSocialLink:focus {
+    color: var(--color-accent-teal); /* Different hover color */
     transform: scale(1.1);
     background-color: transparent;
     outline: none;
 }
 
-/* Removed languages section for brevity - can be added back if needed */
 
 .copyright {
     font-size: 0.85rem;
@@ -97,3 +123,4 @@
 .backToTop:hover::after {
     display: none;
 }
+/* --- END OF FILE src/components/Footer/Footer.module.css --- */
