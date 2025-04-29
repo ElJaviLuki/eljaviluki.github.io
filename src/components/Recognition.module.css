@@ -33,7 +33,7 @@
     margin-bottom: 0; /* Remove bottom margin if philosophy note is removed */
 }
 
-/* Glassmorphism Card */
+/* Glassmorphism Card - Applied to recognitionSummary */
 .recognitionSummary {
     background: var(--glass-bg-color);
     backdrop-filter: blur(var(--glass-blur));
@@ -83,6 +83,23 @@
 .recognitionSummary:hover::before {
     opacity: 1;
 }
+
+/* NEW: Styles to make the card behave like a link */
+.cardAsLink {
+    text-decoration: none;
+    color: inherit; /* Inherit text color */
+}
+/* Ensure hover effects apply correctly to the Link element */
+.cardAsLink:hover {
+    /* Styles are already defined in .recognitionSummary:hover */
+    text-decoration: none; /* Override default link hover */
+    color: inherit;
+}
+/* Remove base link underline on hover */
+.cardAsLink:hover::after {
+    width: 0;
+}
+
 
 .summaryHeader {
     display: flex;
@@ -174,24 +191,22 @@
     margin-left: 0.2rem;
 }
 
-
-.detailsLink { /* Style inherited from Experience.module.css */
+/* UPDATED: Style for the visual-only details link */
+.detailsLinkVisual {
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     display: inline-flex;
     align-items: center;
-    margin-top: auto;
-    align-self: flex-start;
+    margin-top: auto; /* Push to bottom */
+    align-self: flex-start; /* Align left */
     color: var(--color-text-primary);
-    background-color: transparent;
-    text-decoration: none;
     padding: 0.4rem 0;
-    border-bottom: none;
     position: relative;
+    transition: color 0.3s ease;
 }
-.detailsLink::after { /* Underline effect */
+.detailsLinkVisual::after { /* Underline effect */
     content: '';
     position: absolute;
     width: 0;
@@ -201,20 +216,24 @@
     background-color: var(--color-accent-electric-blue);
     transition: width 0.3s ease-out;
 }
-.detailsLink span {
+.detailsLinkVisual span {
     margin-left: 0.5rem;
     transition: transform 0.3s ease;
 }
-.detailsLink:hover {
+/* Apply hover effect when the PARENT card is hovered */
+.cardAsLink:hover .detailsLinkVisual {
     color: var(--color-accent-electric-blue);
-    background-color: transparent;
-    outline: none;
 }
-.detailsLink:hover::after { width: 100%; }
-.detailsLink:hover span { transform: translateX(4px); }
+.cardAsLink:hover .detailsLinkVisual::after {
+    width: 100%;
+}
+.cardAsLink:hover .detailsLinkVisual span {
+    transform: translateX(4px);
+}
 
 
 /* --- Detail Page Styles --- */
+/* ... (keep existing detail page styles) ... */
 .recognitionDetail { /* Uses .detailPage */ }
 
 .detailHeader { /* Reusing style */

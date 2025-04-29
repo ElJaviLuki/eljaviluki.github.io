@@ -20,7 +20,8 @@ const RecognitionSummaryItem = ({ recognition }) => {
     const displayDate = recognition.dateKey ? t(recognition.dateKey)?.split('/')[0] : ''; // Get year from translated date if applicable
 
     return (
-        <article className={styles.recognitionSummary}>
+        // Use Link as the root element for the card
+        <Link to={recognition.pagePath} className={`${styles.recognitionSummary} ${styles.cardAsLink}`}>
             <div className={styles.summaryHeader}>
                 <img src={logoSrc} alt={`${title} logo`} className={styles.logo} loading="lazy" />
                 <div className={styles.titleGroup}>
@@ -44,10 +45,11 @@ const RecognitionSummaryItem = ({ recognition }) => {
                 </div>
             )}
 
-            <Link to={recognition.pagePath} className={styles.detailsLink}>
+            {/* Keep the visual element, but it's not a Link itself anymore */}
+            <div className={styles.detailsLinkVisual}>
                 {t('viewDetailsSources')} <span aria-hidden="true">{t('forwardArrow')}</span> {/* Translate link */}
-            </Link>
-        </article>
+            </div>
+        </Link>
     );
 };
 

@@ -46,7 +46,7 @@
     gap: 2.5rem; /* Increased gap */
 }
 
-/* Glassmorphism Card */
+/* Glassmorphism Card - Applied to jobSummary */
 .jobSummary {
     background: var(--glass-bg-color);
     backdrop-filter: blur(var(--glass-blur));
@@ -97,6 +97,23 @@
 .jobSummary:hover::before {
     opacity: 1;
 }
+
+/* NEW: Styles to make the card behave like a link */
+.cardAsLink {
+    text-decoration: none;
+    color: inherit; /* Inherit text color */
+}
+/* Ensure hover effects apply correctly to the Link element */
+.cardAsLink:hover {
+    /* Styles are already defined in .jobSummary:hover */
+    text-decoration: none; /* Override default link hover */
+    color: inherit;
+}
+/* Remove base link underline on hover */
+.cardAsLink:hover::after {
+    width: 0;
+}
+
 
 .summaryHeader {
     display: flex;
@@ -191,23 +208,23 @@
     margin-left: 0.2rem;
 }
 
-.detailsLink {
+/* UPDATED: Style for the visual-only details link */
+.detailsLinkVisual {
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     display: inline-flex; /* Align icon */
     align-items: center;
-    margin-top: auto;
-    align-self: flex-start;
+    margin-top: auto; /* Push to bottom */
+    align-self: flex-start; /* Align left */
     color: var(--color-text-primary); /* Brighter link */
-    background-color: transparent;
-    text-decoration: none;
     padding: 0.4rem 0; /* Adjust padding */
-    border-bottom: none; /* Use pseudo element */
     position: relative; /* For pseudo element */
+    transition: color 0.3s ease; /* Transition color on card hover */
 }
-.detailsLink::after { /* Underline effect */
+/* Add underline effect via pseudo-element */
+.detailsLinkVisual::after {
     content: '';
     position: absolute;
     width: 0;
@@ -217,19 +234,23 @@
     background-color: var(--color-accent-electric-blue);
     transition: width 0.3s ease-out;
 }
-.detailsLink span { /* Arrow */
+.detailsLinkVisual span { /* Arrow */
     margin-left: 0.5rem;
     transition: transform 0.3s ease;
 }
-.detailsLink:hover {
+/* Apply hover effect when the PARENT card is hovered */
+.cardAsLink:hover .detailsLinkVisual {
     color: var(--color-accent-electric-blue);
-    background-color: transparent;
-    outline: none;
 }
-.detailsLink:hover::after { width: 100%; }
-.detailsLink:hover span { transform: translateX(4px); }
+.cardAsLink:hover .detailsLinkVisual::after {
+    width: 100%;
+}
+.cardAsLink:hover .detailsLinkVisual span {
+    transform: translateX(4px);
+}
 
 /* --- Detail Page Specific Styles --- */
+/* ... (keep existing detail page styles) ... */
 .jobDetail { /* Uses .detailPage */ }
 
 .detailHeader {

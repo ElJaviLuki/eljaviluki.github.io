@@ -13,7 +13,8 @@ const ProjectSummaryItem = ({ project }) => {
     const summary = t(project.summaryKey);
 
     return (
-        <article className={styles.projectSummary}>
+        // Use Link as the root element for the card
+        <Link to={project.pagePath} className={`${styles.projectSummary} ${styles.cardAsLink}`}>
             <div className={styles.summaryHeader}>
                 <img src={logoSrc} alt={`${title} logo`} className={styles.logo} loading="lazy" />
                 <div className={styles.titleGroup}>
@@ -29,10 +30,11 @@ const ProjectSummaryItem = ({ project }) => {
                     {project.technologies.length > 5 && <span className={styles.techMore}>...</span>}
                 </div>
             )}
-            <Link to={project.pagePath} className={styles.detailsLink}>
+            {/* Keep the visual element, but it's not a Link itself anymore */}
+            <div className={styles.detailsLinkVisual}>
                 {t('viewDetails')} <span aria-hidden="true">{t('forwardArrow')}</span>
-            </Link>
-        </article>
+            </div>
+        </Link>
     );
 };
 
