@@ -1,0 +1,29 @@
+# Allow all user agents to crawl the site
+User-agent: *
+Allow: /
+
+# Allow access to necessary resources for rendering
+Allow: /src/
+Allow: /fonts/
+Allow: /flags/
+Allow: /index.css
+Allow: /*.js
+Allow: /*.css
+Allow: /*.jsx
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.avif
+Allow: /*.woff
+Allow: /*.woff2
+Allow: /*.mp4
+Allow: /*.webm
+
+# Disallow specific paths if needed (e.g., admin areas)
+# Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://YOUR_DOMAIN.com/sitemap.xml # IMPORTANT: Replace with your actual domain
