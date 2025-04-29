@@ -167,14 +167,11 @@
 
 /* --- MODIFIED: Metrics Styles --- */
 .metricsContainer {
-    display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); */ /* REMOVED auto-fit */
-    grid-template-columns: repeat(3, 1fr); /* ALWAYS create 3 equal columns */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    /* Removed flex properties */
-    /* Ensure grid takes up space if needed, but flex-grow on card is handling height better */
-    /* min-height: 120px; */ /* Optional: Ensure minimum height for the grid area */
 }
 
 .metricCard {
@@ -182,9 +179,13 @@
     border: 1px solid rgba(0, 119, 255, 0.15);
     border-radius: 8px;
     padding: 1rem;
-    /* width: auto; */ /* Width is now controlled by grid column (1fr) */
-    /* min-width: 90px; */ /* Can be kept or removed, 1fr might suffice */
-    aspect-ratio: 1 / 1;
+    /* Set fixed height and width with 2:1 ratio */
+    height: 85px;  /* Adjust height */
+    width: 170px;   /* Width = 2 * height */
+    /* Remove min-height */
+    /* min-height: 100px; */
+    flex-grow: 0;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -192,8 +193,6 @@
     text-align: center;
     transition: var(--transition-smooth);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    /* Add min-height if aspect-ratio isn't enough */
-    /* min-height: 90px; */
 }
 .metricCard:hover {
     background: rgba(0, 119, 255, 0.15);
