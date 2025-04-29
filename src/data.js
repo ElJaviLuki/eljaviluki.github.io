@@ -42,18 +42,8 @@ export const portfolioData = {
                     "contentKey": "aboutLong.storyParagraph1"
                 },
                 {
-                    "type": "media",
-                    "src": "/placeholder-media-1.jpg",
-                    "altKey": "aboutLong.storyMediaAlt1"
-                },
-                {
                     "type": "paragraph",
                     "contentKey": "aboutLong.storyParagraph2"
-                },
-                {
-                    "type": "media",
-                    "src": "/placeholder-media-2.mp4",
-                    "altKey": "aboutLong.storyMediaAlt2"
                 },
                 {
                     "type": "paragraph",
@@ -66,11 +56,6 @@ export const portfolioData = {
                     {
                         "type": "paragraph",
                         "contentKey": "aboutLong.caseStudyParagraph1"
-                    },
-                    {
-                        "type": "media",
-                        "src": "/placeholder-media-3.jpg",
-                        "altKey": "aboutLong.caseStudyMediaAlt"
                     }
                 ]
             },
@@ -143,7 +128,7 @@ export const portfolioData = {
                 "softSkillsKeys": "experience.royalTikTok.softSkills", // Key to array
                 "pagePath": "/experience/royal-tiktok",
                 "media": [
-                    { "type": "image", "src": "/placeholder-experience-royal-tiktok-1.jpg", "altKey": "experience.royalTikTok.mediaAlt1" }
+
                 ]
             },
             {
@@ -162,7 +147,7 @@ export const portfolioData = {
                 "softSkillsKeys": "experience.ortoprodent.softSkills",
                 "pagePath": "/experience/ortoprodent-erp",
                 "media": [
-                    { "type": "image", "src": "/placeholder-experience-ortoprodent-1.png", "altKey": "experience.ortoprodent.mediaAlt1" }
+
                 ]
             }
         ],
@@ -213,7 +198,7 @@ export const portfolioData = {
                 "softSkillsKeys": "experience.driveMeGroup.softSkills",
                 "pagePath": "/experience/drive-me-group",
                 "media": [
-                    { "type": "image", "src": "/placeholder-experience-driveme-1.png", "altKey": "experience.driveMeGroup.mediaAlt1" }
+
                 ]
             }
         ]
@@ -234,7 +219,7 @@ export const portfolioData = {
                 ],
                 "pagePath": "/projects/grindr-plus",
                 "media": [
-                    { "type": "image", "src": "/placeholder-project-grindr-1.png", "altKey": "projects.grindrPlus.mediaAlt1" }
+
                 ]
             },
             {
@@ -251,7 +236,7 @@ export const portfolioData = {
                 ],
                 "pagePath": "/projects/csos-beacon",
                 "media": [
-                    { "type": "image", "src": "/placeholder-project-csos-beacon-1.png", "altKey": "projects.csosBeacon.mediaAlt1" }
+
                 ]
             },
             {
@@ -289,9 +274,7 @@ export const portfolioData = {
                 { "labelKey": "recognitions.ipo.sourceLabel4", "url": "https://olimpiadafilosofia.jimdofree.com/" }
             ],
             "pagePath": "/recognitions/ipo-2019",
-            "media": [
-                { "type": "image", "src": "/placeholder-recognition-ipo-1.jpg", "altKey": "recognitions.ipo.mediaAlt1" }
-            ]
+            "media": []
         },
         {
             "id": "oif-2019",
@@ -326,7 +309,7 @@ export const portfolioData = {
             ],
             "pagePath": "/recognitions/ncl-2021",
             "media": [
-                { "type": "image", "src": "/placeholder-recognition-ncl-1.jpg", "altKey": "recognitions.ncl.mediaAlt1" }
+
             ]
         }
     ],
