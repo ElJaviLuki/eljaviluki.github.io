@@ -147,7 +147,7 @@
       "summary": "Contribuí como Desarrollador Full-Stack a 'XDR/be.Analyzer', una compleja plataforma multi-tenant de monitorización y análisis de redes.",
       "projectContextName": "be.Analyzer (Plataforma de Monitorización y Análisis de Red)",
       "projectContextPurposeDesc": "Una plataforma completa y multi-tenant diseñada para la gestión de dispositivos de red, análisis de tráfico en tiempo real (manejando NetFlow, sFlow, etc.), visualización de telemetría mediante dashboards personalizables, gestión de activos de red y gestión jerárquica de usuarios/permisos. Las características incluían controles de licencias y potencial detección de anomalías impulsada por IA.",
-      "projectContextArchDesc": "Arquitectura multi-capa con un backend API REST Django/DRF, PostgreSQL para metadatos relacionales (usuarios, dispositivos, configs), Apache Druid para almacenamiento y consulta de datos de telemetría de series temporales, Redis para caché y como broker de mensajes de Celery, y Celery para ejecución de tareas asíncronas. Diseñada para despliegue en contenedores (Docker), probablemente orientada a entornos cloud (GCP).",
+      "projectContextArchDesc": "Arquitectura multi-capa con un backend API REST Django/DRF, PostgreSQL para metadatos relacionales (usuarios, dispositivos, configs), Apache Druid para almacenamiento y consulta de datos de telemetría de series temporales, Redis para caché y como broker de mensajes de Celery, y Celery para ejecución de tareas asíncronas. Diseñada para despliegue en contenedores (Docker), orientada a entornos cloud (GCP).",
       "projectContextModules": [
         "Gestión de Usuarios y Jerarquía (Multi-tenant, Roles, Permisos)",
         "Aprovisionamiento del Sistema (Gestión de Dispositivos, Licencias)",
