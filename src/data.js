@@ -90,7 +90,7 @@ export const portfolioData = {
             "profilePic": "/santi-pic.png",
             "associatedProjectId": "royal-tiktok",
             "authorLinks": {
-                "web": { "url": "https://agenciaprincipito.com/", "labelKey": "websiteLinkLabel" },
+                "web": { "url": "https://principito.eu/", "labelKey": "websiteLinkLabel" },
                 "tiktok": { "url": "https://www.tiktok.com/@agencia.principito", "labelKey": "tiktokLinkLabel" }
             }
         },
