@@ -102,62 +102,78 @@ export const portfolioData = {
             "profilePic": "/elena-pic.png",
             "associatedProjectId": "ortoprodent-erp",
             "authorLinks": {
-                "linkedin": { "url": "https://www.linkedin.com/in/ecacenave", "labelKey": "linkedInLinkLabel" }
+                "linkedin": { "url": "https://www.linkedin.com/in/ecacenave", "labelKey": "linkedInLinkLabel" },
+                "web": { "url": "https://elenacacenave.com", "labelKey": "websiteLinkLabel" }
             }
         }
     ],
     "experience": {
         "freelanceConsulting": [
             {
+                "id": "ortoprodent-web",
+                "nameKey": "experience.ortoprodentWeb.name",
+                "clientKey": "experience.ortoprodentWeb.client",
+                "clientLogo": "/ortoprodent.png", // This field is also checked by ExperienceSummaryItem
+                "web": "https://ortoprodent.com",
+                "roleKey": "experience.ortoprodentWeb.role",
+                "dateKey": "experience.ortoprodentWeb.date",
+                "locationMode": "Remote",
+                "locationKey": "experience.ortoprodentWeb.location",
+                "summaryKey": "experience.ortoprodentWeb.summary",
+                "detailsKeys": "experience.ortoprodentWeb.details",
+                "technologies": [
+                    "HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript", "React",
+                    "React Router DOM", "Framer Motion", "React Intersection Observer",
+                    "React Helmet Async", "Vite"
+                ],
+                "softSkillsKeys": "experience.ortoprodentWeb.softSkills",
+                "pagePath": "/experience/ortoprodent-web",
+                "isWebsiteProject": true
+            },
+            {
                 "id": "royal-tiktok",
                 "nameKey": "experience.royalTikTok.name",
                 "web": null,
-                "logo": "/tiktok.png",
+                "logo": "/tiktok.png", // This field is also checked by ExperienceSummaryItem
                 "clientKey": "experience.royalTikTok.client",
                 "roleKey": "experience.royalTikTok.role",
                 "dateKey": "experience.royalTikTok.date",
-                "locationMode": "Remote", // Keep mode as identifier
+                "locationMode": "Remote",
                 "locationKey": "experience.royalTikTok.location",
-                "summaryKey": "experience.royalTikTok.summary", // Still needed for detail page
-                "impactMetrics": [ // NEW FIELD
+                "summaryKey": "experience.royalTikTok.summary",
+                "impactMetrics": [
                     { "valueKey": "experience.royalTikTok.metric1Value", "labelKey": "experience.royalTikTok.metric1Label" },
                     { "valueKey": "experience.royalTikTok.metric2Value", "labelKey": "experience.royalTikTok.metric2Label" },
                     { "valueKey": "experience.royalTikTok.metric3Value", "labelKey": "experience.royalTikTok.metric3Label" }
                 ],
-                "detailsKeys": "experience.royalTikTok.details", // Key to array of detail keys
-                "technologies": [ // Technologies usually don't need translation
+                "detailsKeys": "experience.royalTikTok.details",
+                "technologies": [
                     "Python", "Pandas", "FastAPI", "APScheduler", "Playwright",
                     "BeautifulSoup", "Reverse Engineering", "Notion API", "PostgreSQL",
                     "REST APIs", "Docker"
                 ],
-                "softSkillsKeys": "experience.royalTikTok.softSkills", // Key to array
-                "pagePath": "/experience/royal-tiktok",
-                "media": [
-
-                ]
+                "softSkillsKeys": "experience.royalTikTok.softSkills",
+                "pagePath": "/experience/royal-tiktok"
             },
             {
                 "id": "ortoprodent-erp",
                 "nameKey": "experience.ortoprodent.name",
                 "web": null,
-                "logo": "/ortoprodent.png",
+                "logo": "/ortoprodent.png", // This field is also checked by ExperienceSummaryItem
                 "clientKey": "experience.ortoprodent.client",
                 "roleKey": "experience.ortoprodent.role",
                 "dateKey": "experience.ortoprodent.date",
                 "locationMode": "Remote",
                 "locationKey": "experience.ortoprodent.location",
-                "summaryKey": "experience.ortoprodent.summary", // Still needed for detail page
-                "impactMetrics": [ // NEW FIELD
+                "summaryKey": "experience.ortoprodent.summary",
+                "impactMetrics": [
                     { "valueKey": "experience.ortoprodent.metric1Value", "labelKey": "experience.ortoprodent.metric1Label" },
                     { "valueKey": "experience.ortoprodent.metric2Value", "labelKey": "experience.ortoprodent.metric2Label" }
                 ],
                 "detailsKeys": "experience.ortoprodent.details",
                 "technologies": [ "Java", "PostgreSQL", "Swing (UI)", "Software Design", "UX Design Principles" ],
                 "softSkillsKeys": "experience.ortoprodent.softSkills",
-                "pagePath": "/experience/ortoprodent-erp",
-                "media": [
-
-                ]
+                "pagePath": "/experience/ortoprodent-erp"
             }
         ],
         "corporate": [
@@ -170,8 +186,8 @@ export const portfolioData = {
                 "dateKey": "experience.teldat.date",
                 "locationMode": "Hybrid",
                 "locationKey": "experience.teldat.location",
-                "summaryKey": "experience.teldat.summary", // Still needed for detail page
-                "impactMetrics": [ // NEW FIELD
+                "summaryKey": "experience.teldat.summary",
+                "impactMetrics": [
                     { "valueKey": "experience.teldat.metric1Value", "labelKey": "experience.teldat.metric1Label" },
                     { "valueKey": "experience.teldat.metric2Value", "labelKey": "experience.teldat.metric2Label" },
                 ],
@@ -179,7 +195,7 @@ export const portfolioData = {
                     "projectNameKey": "experience.teldat.projectContextName",
                     "purposeKey": "experience.teldat.projectContextPurposeDesc",
                     "architectureKey": "experience.teldat.projectContextArchDesc",
-                    "keyModulesKeys": "experience.teldat.projectContextModules" // Key to array
+                    "keyModulesKeys": "experience.teldat.projectContextModules"
                 },
                 "detailsKeys": "experience.teldat.details",
                 "technologies": [
@@ -189,8 +205,7 @@ export const portfolioData = {
                     "Git", "RESTful APIs", "Frontend Maintenance", "Backend Development"
                 ],
                 "softSkillsKeys": "experience.teldat.softSkills",
-                "pagePath": "/experience/teldat",
-                "media": []
+                "pagePath": "/experience/teldat"
             },
             {
                 "id": "drive-me-group",
@@ -201,8 +216,8 @@ export const portfolioData = {
                 "dateKey": "experience.driveMeGroup.date",
                 "locationMode": "Remote",
                 "locationKey": "experience.driveMeGroup.location",
-                "summaryKey": "experience.driveMeGroup.summary", // Still needed for detail page
-                "impactMetrics": [ // NEW FIELD
+                "summaryKey": "experience.driveMeGroup.summary",
+                "impactMetrics": [
                     { "valueKey": "experience.driveMeGroup.metric1Value", "labelKey": "experience.driveMeGroup.metric1Label" },
                     { "valueKey": "experience.driveMeGroup.metric2Value", "labelKey": "experience.driveMeGroup.metric2Label" }
                 ],
@@ -213,10 +228,7 @@ export const portfolioData = {
                     "Business Logic Implementation", "ETL", "Twilio API"
                 ],
                 "softSkillsKeys": "experience.driveMeGroup.softSkills",
-                "pagePath": "/experience/drive-me-group",
-                "media": [
-
-                ]
+                "pagePath": "/experience/drive-me-group"
             }
         ]
     },
@@ -378,7 +390,7 @@ export const portfolioData = {
     "skills": { // Skills themselves are often technical terms, keep as is unless translation is desired
         "technical": [
             { "area": "Backend & Databases", "skills": [ "Python", "Django", "DRF", "FastAPI", "Java", "PostgreSQL", "MySQL", "Redis", "Celery", "Kafka", "Apache Druid" ] },
-            { "area": "Frontend", "skills": [ "React", "JavaScript", "HTML", "CSS", "Swing (UI)" ] },
+            { "area": "Frontend", "skills": [ "React", "JavaScript", "HTML", "CSS", "Swing (UI)", "TypeScript", "Framer Motion", "Vite" ] },
             { "area": "Data Science & AI", "skills": [ "Pandas", "NumPy", "SKLearn", "Matplotlib", "Seaborn", "Plotly", "Streamlit", "Keras Basics", "OpenCV Basics", "PySpark Basics", "ETL", "Zoho Dataprep", "Zoho Analytics" ] },
             { "area": "DevOps & Tools", "skills": [ "Docker", "Git", "Gunicorn", "APScheduler", "SwaggerUI / drf-yasg", "Honeybadger", "Pytest" ] },
             { "area": "Web Scraping & Automation", "skills": [ "Playwright", "BeautifulSoup", "Selenium", "API Integration", "Reverse Engineering" ] },
@@ -390,7 +402,8 @@ export const portfolioData = {
             "Requirements Gathering", "User Empathy", "Solution Design", "Pragmatism",
             "Teamwork", "Adaptability", "Working with Legacy Code", "System-Level Thinking",
             "Technical Communication", "Data Analysis", "Process Automation", "Business Acumen",
-            "Data Storytelling", "Critical Thinking", "Abstract Reasoning", "Argumentation"
+            "Data Storytelling", "Critical Thinking", "Abstract Reasoning", "Argumentation",
+            "UI/UX Design Principles", "Project Management"
         ]
         // languages are handled separately above
     },

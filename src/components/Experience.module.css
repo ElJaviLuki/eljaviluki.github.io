@@ -175,7 +175,501 @@
     overflow: hidden;
     text-overflow: ellipsis;
     min-height: calc(1.6em * 3); /* Approximate height for 3 lines */
+}/* --- START OF FILE src/components/Experience/Experience.module.css --- */
+
+.experience {
+    padding: 5rem 0;
 }
+
+.heading {
+    text-align: center;
+    margin-bottom: 4rem; /* More space */
+    padding-bottom: 1.5rem;
+    color: #fff;
+    position: relative;
+}
+/* Underline effect for heading */
+.heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent-electric-blue), var(--color-accent-teal));
+    border-radius: 2px;
+}
+
+
+.category {
+    margin-bottom: 4rem;
+}
+.category:last-of-type { margin-bottom: 0; }
+
+.subHeading {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    color: var(--color-text-primary);
+    border-left: 4px solid var(--color-accent-electric-blue);
+    padding-left: 1.5rem;
+}
+
+/* Summary Grid */
+.summaryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); /* Responsive grid */
+    gap: 2.5rem; /* Increased gap */
+}
+
+/* Glassmorphism Card - Applied to jobSummary */
+.jobSummary {
+    background: var(--glass-bg-color);
+    backdrop-filter: blur(var(--glass-blur));
+    border-radius: 12px; /* More rounded */
+    border: var(--border-standard);
+    padding: 2rem; /* More padding */
+    /* MODIFIED: Added subtle inset/outer shadow for embossing, combined with original glow */
+    box-shadow:
+            inset 1px 1px 2px rgba(255, 255, 255, 0.15), /* Subtle light inset top-left */
+            1px 1px 3px rgba(0, 0, 0, 0.3),             /* Subtle dark outer bottom-right */
+            var(--glass-shadow);                         /* Original diffuse glow */
+    display: flex;
+    flex-direction: column;
+    /* gap: 1.25rem; */ /* Let elements inside control gap */
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden; /* Clip hover effects */
+    z-index: 1;
+    min-height: 350px; /* Ensure minimum height for content */
+}
+/* Subtle gradient border effect on hover */
+.jobSummary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px; /* border width */
+    background: linear-gradient(135deg, var(--color-accent-electric-blue), var(--color-accent-teal));
+    -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+
+.jobSummary:hover {
+    transform: translateY(-8px) scale(1.01);
+    background: var(--glass-hover-bg); /* Use variable */
+    /* MODIFIED: Keep embossing shadows on hover, combined with hover glow */
+    box-shadow:
+            inset 1px 1px 2px rgba(255, 255, 255, 0.15), /* Kept */
+            1px 1px 3px rgba(0, 0, 0, 0.3),             /* Kept */
+            var(--glass-hover-shadow); /* Use variable for hover glow */
+}
+.jobSummary:hover::before {
+    opacity: 1;
+}
+
+/* NEW: Styles to make the card behave like a link */
+.cardAsLink {
+    text-decoration: none;
+    color: inherit; /* Inherit text color */
+}
+/* Ensure hover effects apply correctly to the Link element */
+.cardAsLink:hover {
+    /* Styles are already defined in .jobSummary:hover */
+    text-decoration: none; /* Override default link hover */
+    color: inherit;
+}
+/* Remove base link underline on hover */
+.cardAsLink:hover::after {
+    width: 0;
+}
+
+
+.summaryHeader {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    gap: 1.25rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem; /* Add space below header */
+    border-bottom: 1px solid var(--glass-border-color);
+}
+
+.logo {
+    width: 55px; /* Slightly larger */
+    height: 55px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 8px; /* Rounded logo bg */
+    padding: 0.4rem;
+    background-color: rgba(255, 255, 255, 0.8); /* White background for logo */
+    border: none; /* Remove inner border */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.titleGroup { flex-grow: 1; }
+
+.company {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #fff; /* White company name */
+}
+
+.role {
+    font-style: normal; /* Remove italic */
+    font-weight: 500; /* Medium weight */
+    margin-bottom: 0.5rem;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+}
+
+.dateLocation {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ADDED: .summaryText styles */
+.summaryText {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.75rem; /* MODIFIED: Reduced space before metrics */
+    /* Clamp text to a few lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Show max 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: calc(1.6em * 3); /* Approximate height for 3 lines */
+}
+
+/* --- MODIFIED: Metrics Styles --- */
+.metricsContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.metricCard {
+    background: rgba(0, 119, 255, 0.08);
+    border: 1px solid rgba(0, 119, 255, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    /* Set fixed height and width with 2:1 ratio */
+    height: 85px;  /* Adjust height */
+    width: 170px;   /* Width = 2 * height */
+    /* Remove min-height */
+    /* min-height: 100px; */
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.metricCard:hover {
+    background: rgba(0, 119, 255, 0.15);
+    border-color: var(--color-accent-electric-blue);
+    transform: scale(1.03);
+}
+
+.metricValue {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+}
+
+.metricLabel {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    line-height: 1.2;
+}
+/* --- END: Metrics Styles Modification --- */
+
+
+.techPreview {
+    margin-top: auto; /* Push tech preview down */
+    padding-top: 1rem; /* Add padding above tech */
+    display: flex; /* Use flexbox for tags */
+    flex-wrap: wrap;
+    gap: 0.6rem; /* Gap between tags */
+}
+
+/* Consistent Tag Style */
+.techTag {
+    font-family: var(--font-mono);
+    font-size: 0.8rem; /* Standardized size */
+    background-color: rgba(0, 119, 255, 0.1); /* Standardized blue bg */
+    color: var(--color-accent-electric-blue); /* Standardized blue text */
+    padding: 0.4rem 0.8rem; /* Standardized padding */
+    border: 1px solid rgba(0, 119, 255, 0.2); /* Standardized blue border */
+    border-radius: 4px;
+    /* white-space: nowrap; */ /* REMOVED */
+    display: inline-block;
+    line-height: 1.4;
+    transition: var(--transition-smooth);
+    margin: 0; /* Reset margin */
+}
+.techTag:hover {
+    background-color: rgba(0, 119, 255, 0.25); /* Standardized hover bg */
+    color: #fff; /* Standardized hover text */
+    border-color: var(--color-accent-electric-blue); /* Standardized hover border */
+    transform: scale(1.05); /* Standardized hover transform */
+    cursor: default;
+}
+
+
+.techMore {
+    font-family: var(--font-mono);
+    font-size: 0.8rem; /* Match tag size */
+    color: var(--color-text-secondary);
+    align-self: center; /* Align vertically */
+    margin-left: 0.2rem;
+}
+
+/* UPDATED: Style for the visual-only details link */
+.detailsLinkVisual {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex; /* Align icon */
+    align-items: center;
+    margin-top: 1rem; /* Ensure space from tech preview */
+    align-self: flex-start; /* Align left */
+    color: var(--color-text-primary); /* Brighter link */
+    padding: 0.4rem 0; /* Adjust padding */
+    position: relative; /* For pseudo element */
+    transition: color 0.3s ease; /* Transition color on card hover */
+}
+/* Add underline effect via pseudo-element */
+.detailsLinkVisual::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-accent-electric-blue);
+    transition: width 0.3s ease-out;
+}
+.detailsLinkVisual span { /* Arrow */
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+/* Apply hover effect when the PARENT card is hovered */
+.cardAsLink:hover .detailsLinkVisual {
+    color: var(--color-accent-electric-blue);
+}
+.cardAsLink:hover .detailsLinkVisual::after {
+    width: 100%;
+}
+.cardAsLink:hover .detailsLinkVisual span {
+    transform: translateX(4px);
+}
+
+/* NEW: Styles for the secondary external site link */
+.externalSiteLink {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.5rem; /* Space from detailsLinkVisual or other content */
+    align-self: flex-start; /* Align left, potentially below detailsLinkVisual */
+    color: var(--color-text-secondary); /* Default color to distinguish */
+    padding: 0.3rem 0;
+    text-decoration: none; /* Handled by global 'a' styles if needed, but can be explicit */
+    position: relative;
+    z-index: 2; /* Ensure clickable if card itself is a link */
+}
+
+.externalSiteLink span { /* Arrow styling */
+    margin-left: 0.4rem;
+    transition: transform 0.3s ease;
+    display: inline-block; /* Needed for transform */
+}
+
+/* Hover/focus for the externalSiteLink itself */
+.externalSiteLink:hover,
+.externalSiteLink:focus {
+    color: var(--color-accent-teal); /* Hover color, global 'a' uses teal for hover */
+}
+/* Underline effect comes from global 'a' styles (index.css) */
+/* Arrow animation on hover/focus */
+.externalSiteLink:hover span,
+.externalSiteLink:focus span {
+    transform: translateX(3px);
+}
+
+
+/* --- Detail Page Specific Styles --- */
+/* ... (keep existing detail page styles) ... */
+.jobDetail { /* Uses .detailPage */ }
+
+.detailHeader {
+    display: flex;
+    flex-direction: column; /* Stack on small screens */
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--glass-border-color);
+}
+@media (min-width: 576px) {
+    .detailHeader {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+
+.detailLogo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 10px;
+    padding: 0.6rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.detailTitleGroup h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 0.5rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    text-align: left;
+    line-height: 1.2;
+    color: #fff;
+}
+.detailTitleGroup p {
+    margin-bottom: 0.3rem;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+}
+.detailTitleGroup .role {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: 1.2rem; /* Larger role */
+}
+
+.detailSection { margin-bottom: 3rem; }
+
+.detailSection h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--glass-border-color);
+    padding-bottom: 0.8rem;
+    color: #fff;
+}
+
+.detailList {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0;
+    margin: 0;
+}
+
+.detailList li {
+    margin-bottom: 1rem;
+    line-height: 1.8; /* More line height */
+    padding-left: 1.8rem; /* Indent */
+    position: relative; /* For custom bullet */
+    color: var(--color-text-secondary);
+}
+.detailList li::before { /* Custom bullet */
+    content: '›';
+    position: absolute;
+    left: 0;
+    top: 0px;
+    color: var(--color-accent-electric-blue);
+    font-weight: 700;
+    font-size: 1.4em;
+}
+
+
+/* Context specific styles */
+.projectContext {
+    background: rgba(0, 119, 255, 0.05); /* Subtle blue bg */
+    border: 1px solid rgba(0, 119, 255, 0.1);
+    border-left: 4px solid var(--color-accent-electric-blue);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-radius: 8px;
+}
+.projectContext h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+    border-bottom: 1px dashed var(--glass-border-color);
+    padding-bottom: 0.75rem;
+}
+.projectContext h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-primary);
+}
+.projectContext p {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+.projectContext strong { font-weight: 600; color: var(--color-text-primary); }
+.projectContext ul {
+    list-style: none; /* Use custom bullets */
+    padding-left: 0;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+}
+.projectContext li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem; /* Indent */
+    position: relative;
+}
+.projectContext li::before { /* Custom bullet */
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: var(--color-accent-teal); /* Use purple */
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+
+/* Sidebar Section (already styled via .sidebar in Layout.module.css) */
+.sidebarSection { margin-bottom: 2rem; }
+.sidebarSection:last-child { margin-bottom: 0; }
+/* Styles for tags within sidebar are inherited from Layout.module.css .techList li */
+/* --- END OF FILE src/components/Experience/Experience.module.css --- */
 
 /* --- MODIFIED: Metrics Styles --- */
 .metricsContainer {

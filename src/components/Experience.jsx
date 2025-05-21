@@ -50,9 +50,35 @@ const ExperienceSummaryItem = ({ job }) => {
         label: t(metric.labelKey),
     })) || [];
 
+    // NEW LOGIC for links
+    const hasDetailPage = !!job.pagePath;
+    const hasExternalWebLink = !!job.web;
+
+    let RootComponent;
+    let rootLinkProps;
+    let cardAriaLabelText;
+    let visualLinkTextKey; // Key for the text in detailsLinkVisual
+
+    if (hasDetailPage) {
+        RootComponent = Link;
+        rootLinkProps = { to: job.pagePath };
+        cardAriaLabelText = t('experience.ariaViewInternal', { role: role, title: displayTitle });
+        visualLinkTextKey = 'viewDetails';
+    } else if (job.isWebsiteProject && hasExternalWebLink) { // No detail page, but is website project
+        RootComponent = 'a';
+        rootLinkProps = { href: job.web, target: "_blank", rel: "noopener noreferrer" };
+        cardAriaLabelText = t('experience.ariaVisitExternal', { title: displayTitle });
+        visualLinkTextKey = 'visitSiteLinkText';
+    } else { // Fallback or no link defined for card
+        RootComponent = 'div'; // Not a link
+        rootLinkProps = {};
+        cardAriaLabelText = displayTitle;
+        visualLinkTextKey = null;
+    }
+
+
     return (
-        // Use Link as the root element for the card
-        <Link to={job.pagePath} className={`${styles.jobSummary} ${styles.cardAsLink}`} aria-label={`View details for ${role} at ${displayTitle}`}>
+        <RootComponent {...rootLinkProps} className={`${styles.jobSummary} ${RootComponent !== 'div' ? styles.cardAsLink : ''}`} aria-label={cardAriaLabelText}>
             <div className={styles.summaryHeader}>
                 <img src={logoSrc} alt={`${displayTitle} logo`} className={styles.logo} loading="lazy" />
                 <div className={styles.titleGroup}>
@@ -64,10 +90,8 @@ const ExperienceSummaryItem = ({ job }) => {
                 </div>
             </div>
 
-            {/* Added summary text */}
             <p className={styles.summaryText}>{summary}</p>
 
-            {/* Impact Metrics Section */}
             {metrics.length > 0 && (
                 <div className={styles.metricsContainer} aria-label="Key Impact Metrics">
                     {metrics.map(metric => (
@@ -76,7 +100,6 @@ const ExperienceSummaryItem = ({ job }) => {
                 </div>
             )}
 
-            {/* Technologies Preview */}
             {job.technologies && job.technologies.length > 0 && (
                 <div className={styles.techPreview} aria-label="Technologies Used Preview">
                     {job.technologies.slice(0, 5).map(tech => (
@@ -85,11 +108,30 @@ const ExperienceSummaryItem = ({ job }) => {
                     {job.technologies.length > 5 && <span className={styles.techMore}>...</span>}
                 </div>
             )}
-            {/* Keep the visual element, but it's not a Link itself anymore */}
-            <div className={styles.detailsLinkVisual} aria-hidden="true"> {/* Hide from screen readers as card is link */}
-                {t('viewDetails')} <span aria-hidden="true">{t('forwardArrow')}</span>
-            </div>
-        </Link>
+
+            {/* Primary visual link text (if card is a link) */}
+            {visualLinkTextKey && (
+                <div className={styles.detailsLinkVisual} aria-hidden="true">
+                    {t(visualLinkTextKey)} <span aria-hidden="true">{t('forwardArrow')}</span>
+                </div>
+            )}
+
+            {/* Secondary "Visit Website" link */}
+            {RootComponent === Link && job.isWebsiteProject && hasExternalWebLink && (
+                <a
+                    href={job.web}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.externalSiteLink}
+                    onClick={(e) => {
+                        e.stopPropagation(); // Prevent card's Link navigation
+                    }}
+                    aria-label={t('experience.ariaVisitExternal', { title: displayTitle })}
+                >
+                    {t('visitSiteLinkText')} <span aria-hidden="true">{t('externalLinkArrow')}</span>
+                </a>
+            )}
+        </RootComponent>
     );
 };
 
@@ -101,7 +143,6 @@ function Experience() {
         <section className={styles.experience} id="experience" aria-labelledby="experience-heading">
             <h2 id="experience-heading" className={styles.heading}>{t('experience.sectionHeading')}</h2>
 
-            {/* Freelance Section */}
             {freelanceConsulting && freelanceConsulting.length > 0 && (
                 <div className={styles.category}>
                     <h3 className={styles.subHeading}>{t('experience.categoryFreelance')}</h3>
@@ -113,7 +154,6 @@ function Experience() {
                 </div>
             )}
 
-            {/* Corporate Section */}
             {corporate && corporate.length > 0 && (
                 <div className={styles.category}>
                     <h3 className={styles.subHeading}>{t('experience.categoryCorporate')}</h3>
