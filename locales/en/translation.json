@@ -18,6 +18,7 @@
   "githubLinkLabel": "GitHub",
   "emailLinkLabel": "Email",
   "tiktokLinkLabel": "TikTok",
+  "visitSiteLinkText": "Visit Website",
   "backArrow": "←",
   "forwardArrow": "→",
   "externalLinkArrow": "↗",
@@ -83,6 +84,25 @@
     "sidebarStack": "Tech Stack Involved",
     "sidebarSkills": "Key Skills",
     "sidebarClient": "Client",
+    "ariaVisitExternal": "Visit website for {{title}}",
+    "ariaViewInternal": "View details for {{role}} at {{title}}",
+    "ortoprodentWeb": {
+      "name": "Dental Lab Website",
+      "client": "Ortoprodent (Dental Lab)",
+      "role": "Web Front-End Developer",
+      "date": "2025",
+      "location": "",
+      "summary": "Corporate website for Ortoprodent, a dental laboratory. Aimed to modernize their online presence, facilitate contact for new clients, and showcase service quality. The project has been very well received, generating praise and new business interest.",
+      "details": [
+        "Full design and development of the responsive corporate website.",
+        "Implementation of smooth animations and transitions with Framer Motion for a modern user experience.",
+        "SEO and performance optimization using React Helmet Async and Vite.",
+        "Integration of contact form and interactive map."
+      ],
+      "softSkills": [
+        "Client Communication", "UI/UX Design", "Project Management"
+      ]
+    },
     "royalTikTok": {
       "name": "Royal TikTok",
       "client": "Agencia Principito",
@@ -114,7 +134,7 @@
       "metric3Label": "Talents Monitored"
     },
     "ortoprodent": {
-      "name": "Ortoprodent ERP",
+      "name": "Dental Lab ERP",
       "client": "Ortoprodent (Dental Lab)",
       "role": "Software Developer",
       "date": "Since 2025",
