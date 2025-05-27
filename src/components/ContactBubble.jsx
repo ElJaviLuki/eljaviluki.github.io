@@ -2,10 +2,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import { FaEnvelope, FaLinkedin, FaGithub, FaTimes } from 'react-icons/fa';
+import {FaEnvelope, FaLinkedin, FaGithub, FaTimes, FaPhoneAlt, FaPhone} from 'react-icons/fa';
 import { portfolioData } from '../data.js';
 import styles from './ContactBubble.module.css';
-import eventBus from '../utils/eventBus'; // Import the event bus
+import eventBus from '../utils/eventBus';
 
 function ContactBubble() {
     const { t } = useTranslation();
@@ -23,7 +23,7 @@ function ContactBubble() {
         setIsModalOpen(false);
         document.body.classList.remove('no-scroll');
         if (bubbleRef.current) {
-            bubbleRef.current.focus(); // Return focus to the bubble
+            bubbleRef.current.focus();
         }
     }, []);
 
@@ -73,7 +73,6 @@ function ContactBubble() {
         }
     }, [isModalOpen, closeModal]);
 
-    // Listen for the event to open the modal
     useEffect(() => {
         const handleOpenModalEvent = () => {
             openModal();
@@ -89,6 +88,7 @@ function ContactBubble() {
         LinkedIn: <FaLinkedin />,
         GitHub: <FaGithub />,
         Email: <FaEnvelope />,
+        Phone: <FaPhone />,
     };
 
     const contactBubbleUI = (
@@ -133,13 +133,15 @@ function ContactBubble() {
                                 <a
                                     key={link.platform}
                                     href={link.url}
-                                    target={link.platform === 'Email' ? '_self' : '_blank'}
+                                    // Ajustado target para que 'Phone' también sea _self
+                                    target={(link.platform === 'Email' || link.platform === 'Phone') ? '_self' : '_blank'}
                                     rel="noopener noreferrer"
                                     className={styles.modalLinkItem}
                                 >
                                     <span className={styles.modalIcon} aria-hidden="true">{socialIconMap[link.platform]}</span>
                                     <span className={styles.modalLabel}>{t(link.labelKey)}</span>
-                                    {link.platform !== 'Email' && <span className={styles.externalArrow} aria-hidden="true">{t('externalLinkArrow')}</span>}
+                                    {/* No mostrar flecha externa para Email o Phone */}
+                                    {(link.platform !== 'Email' && link.platform !== 'Phone') && <span className={styles.externalArrow} aria-hidden="true">{t('externalLinkArrow')}</span>}
                                 </a>
                             ))}
                         </div>

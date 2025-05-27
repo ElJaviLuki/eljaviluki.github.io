@@ -1,8 +1,8 @@
 // src/components/Footer/Footer.jsx
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaLinkedin, FaGithub, FaEnvelope, FaArrowUp } from 'react-icons/fa';
-import { portfolioData } from '../data'; // Assuming data.js is two levels up
+import {FaLinkedin, FaGithub, FaEnvelope, FaArrowUp, FaPhoneAlt, FaPhone} from 'react-icons/fa';
+import { portfolioData } from '../data';
 import eventBus from '../utils/eventBus';
 import styles from './Footer.module.css';
 
@@ -23,6 +23,7 @@ function Footer() {
         LinkedIn: <FaLinkedin />,
         GitHub: <FaGithub />,
         Email: <FaEnvelope />,
+        Phone: <FaPhone />,
     };
 
     return (
@@ -39,7 +40,8 @@ function Footer() {
                     <a
                         key={link.platform}
                         href={link.url}
-                        target={link.platform === 'Email' ? '_self' : '_blank'}
+                        // Ajustado target para que 'Phone' también sea _self
+                        target={(link.platform === 'Email' || link.platform === 'Phone') ? '_self' : '_blank'}
                         rel="noopener noreferrer"
                         className={styles.socialIconLink}
                         aria-label={t(link.labelKey, link.platform)}

@@ -23,6 +23,11 @@ export const portfolioData = {
                 "platform": "Email",
                 "url": "mailto:eljaviluki@gmail.com",
                 "labelKey": "emailLinkLabel" // Key for translation
+            },
+            {
+                "platform": "Phone",
+                "url": "tel:+34633439926",
+                "labelKey": "phoneLinkLabel" // Key for translation
             }
         ]
     },

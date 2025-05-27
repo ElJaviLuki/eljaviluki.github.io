@@ -3,7 +3,7 @@
 // src/components/Hero/Hero.js
 import React from 'react';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'; // Import icons
+import {FaLinkedin, FaGithub, FaEnvelope, FaPhone} from 'react-icons/fa';
 import { portfolioData } from '../data.js'; // Corrected import path
 import styles from './Hero.module.css';
 
@@ -17,6 +17,7 @@ function Hero() {
     const linkedInLink = socialLinks.find(link => link.platform === 'LinkedIn');
     const githubLink = socialLinks.find(link => link.platform === 'GitHub');
     const emailLink = socialLinks.find(link => link.platform === 'Email');
+    const phoneLink = socialLinks.find(link => link.platform === 'Phone');
 
     return (
         <header className={styles.hero} id="top">
@@ -58,6 +59,11 @@ function Hero() {
                     {emailLink && (
                         <a href={emailLink.url} aria-label={t(emailLink.labelKey)} className={styles.heroIconLink}>
                             <FaEnvelope />
+                        </a>
+                    )}
+                    {phoneLink && (
+                        <a href={phoneLink.url} aria-label={t(phoneLink.labelKey)} className={styles.heroIconLink}>
+                            <FaPhone />
                         </a>
                     )}
                 </div>
