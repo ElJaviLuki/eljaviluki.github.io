@@ -3,223 +3,56 @@
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-accent-electric-blue), var(--color-accent-teal));
-    color: white;
+    width: 60px; /* Button size */
+    height: 60px; /* Button size */
     border: none;
+    background: none; /* Remove button default background */
+    padding: 0; /* Remove button default padding */
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Apply shadow to the button */
+    transition: var(--transition-smooth);
+    z-index: 1000;
+    outline: none;
+    /* Use flexbox to center the wrapper div inside the button */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem; /* Icon size */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: var(--transition-smooth);
-    z-index: 1000; /* Ensure it's above most content */
-    outline: none; /* Base outline, focus-visible will override */
+    border-radius: 100%; /* Ensure the button is circular */
 }
 
 .contactBubble:hover,
-.contactBubble:focus-visible { /* Combined hover and focus-visible for consistency */
+.contactBubble:focus-visible {
     transform: scale(1.1) translateY(-3px);
     box-shadow: 0 8px 20px var(--color-accent-glow);
-    background: linear-gradient(135deg, var(--color-accent-teal), var(--color-accent-electric-blue)); /* Flip gradient on hover */
+    border-radius: 100%; /* Ensure the button is circular */
+    /* Background transition is now on the wrapper */
 }
-/* Global focus-visible will apply, or you can add specific here if needed */
-/* .contactBubble:focus-visible {
-    outline: 3px solid var(--color-accent-teal);
-    outline-offset: 2px;
-} */
 
-
-.modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+/* Style the wrapper div to be the visible circular element */
+.bubbleIconWrapper {
+    width: 100%; /* Make wrapper fill the button */
+    height: 100%; /* Make wrapper fill the button */
+    border-radius: 100%; /* Ensure the button is circular */
+    background: linear-gradient(135deg, var(--color-accent-electric-blue), var(--color-accent-teal)); /* Apply gradient here */
+    color: white; /* Icon color */
+    /* Use flexbox to center the SVG icon inside the wrapper */
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1050; /* Above bubble and other content */
-    backdrop-filter: blur(8px); /* More blur */
-    animation: fadeInOverlay 0.3s ease-out forwards;
-    padding: 1rem; /* Padding for small screens */
+    /* Inherit transition from button for transform/shadow */
+    transition: background 0.3s ease; /* Add background transition */
 }
 
-.modalContent {
-    background: var(--glass-bg-color);
-    backdrop-filter: blur(var(--glass-blur));
-    padding: 2.5rem;
-    border-radius: 12px;
-    border: var(--border-standard);
-    box-shadow: var(--glass-shadow), 0 10px 30px rgba(0,0,0,0.3);
-    max-width: 680px; /* Increased max-width for two-column layout */
-    width: 95%; /* Ensure it fits on small screens */
-    position: relative;
-    animation: scaleUpModal 0.3s ease-out 0.1s forwards; /* Slight delay */
-    transform-origin: center;
-    color: var(--color-text-primary);
-    opacity: 0; /* Start hidden for animation */
-}
-
-.modalTitle {
-    font-size: clamp(1.6rem, 4vw, 2rem);
-    color: #fff;
-    text-align: center;
-    margin-bottom: 1.5rem; /* Adjusted margin */
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--glass-border-color);
-}
-
-.closeButton {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    border: none;
-    color: var(--color-text-secondary);
-    font-size: 1.6rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    line-height: 1;
-    transition: var(--transition-smooth);
-    border-radius: 50%;
-}
-
-.closeButton:hover,
-.closeButton:focus-visible {
-    color: var(--color-accent-electric-blue);
-    transform: scale(1.2) rotate(90deg);
-    background-color: rgba(255, 255, 255, 0.1);
-}
-.closeButton:focus-visible {
-    outline: 2px solid var(--color-accent-electric-blue);
-    outline-offset: 1px;
-}
-
-.modalMainArea {
-    display: flex;
-    gap: 2rem; /* Space between QR and links list */
-    align-items: center; /* Align items vertically center */
-}
-
-.qrCodeContainer {
-    flex-basis: 200px; /* Base width for QR container */
-    flex-shrink: 0;    /* Prevent shrinking */
-    border: 2px solid var(--color-accent-electric-blue); /* Blue border as in design */
-    border-radius: 12px; /* Rounded corners for the border */
-    padding: 4px;      /* Space between blue border and white QR background */
-    background-color: transparent; /* Or match modal background if needed */
-}
-
-.qrCodeImage {
-    width: 100%;
-    height: auto;
-    display: block;
-    background-color: #fff; /* White background for the QR code itself */
-    padding: 12px;         /* Padding around the QR pattern, creating a white margin */
-    border-radius: 8px;    /* Rounded corners for the white background of the QR */
-    box-sizing: border-box;
-}
-
-.modalLinksContainer { /* Replaces .modalLinks for holding link items */
-    flex: 1; /* Takes remaining space */
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* Gap between link items */
-}
-
-.modalLinkItem { /* Styles for individual link items */
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--color-text-primary);
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border-color);
-    transition: var(--transition-smooth);
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.modalLinkItem:hover,
-.modalLinkItem:focus-visible {
-    background-color: rgba(0, 119, 255, 0.15);
-    border-color: var(--color-accent-electric-blue);
-    color: #fff;
-    transform: translateX(5px);
-    outline: none;
-}
-.modalLinkItem::after {
-    display: none;
+.contactBubble:hover .bubbleIconWrapper,
+.contactBubble:focus-visible .bubbleIconWrapper {
+    background: linear-gradient(135deg, var(--color-accent-teal), var(--color-accent-electric-blue)); /* Flip gradient on hover */
 }
 
 
-.modalIcon {
-    font-size: 1.5rem;
-    color: var(--color-accent-electric-blue);
-    flex-shrink: 0;
-    transition: color 0.3s ease;
-}
-.modalLinkItem:hover .modalIcon,
-.modalLinkItem:focus-visible .modalIcon {
-    color: var(--color-accent-teal);
-}
-
-.modalLabel {
-    flex-grow: 1;
-    line-height: 1.4;
-}
-
-.externalArrow {
-    font-size: 0.9rem;
-    margin-left: auto;
-    color: var(--color-text-secondary);
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-.modalLinkItem:hover .externalArrow,
-.modalLinkItem:focus-visible .externalArrow {
-    color: var(--color-accent-teal);
-    transform: translateX(2px) translateY(-2px);
-}
-
-
-/* Animations */
-@keyframes fadeInOverlay {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes scaleUpModal {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    .modalContent {
-        max-width: 95%;
-        padding: 1.5rem;
-    }
-
-    .modalMainArea {
-        flex-direction: column;
-        align-items: center; /* This will center items horizontally when stacked */
-        gap: 1.5rem;
-    }
-
-    .qrCodeContainer {
-        flex-basis: auto;
-        width: 100%;
-        max-width: 220px; /* Max QR size on mobile */
-    }
-
-    .modalLinksContainer {
-        width: 100%;
-    }
+/* Ensure the SVG icon fills its wrapper */
+.bubbleIconWrapper svg {
+    width: 60%; /* Set SVG size relative to wrapper (adjust as needed) */
+    height: 60%; /* Set SVG size relative to wrapper (adjust as needed) */
+    display: block; /* Remove potential inline spacing issues */
+    /* color is inherited from .bubbleIconWrapper */
 }

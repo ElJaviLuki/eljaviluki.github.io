@@ -1,5 +1,3 @@
-// --- START OF FILE src/components/Layout/Layout.jsx ---
-
 // src/components/Layout/Layout.jsx
 import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -9,6 +7,7 @@ import Footer from './Footer.jsx'; // Corrected import path
 import Hero from './Hero.jsx'; // Corrected import path
 import LanguageSwitcher from './LanguageSwitcher.jsx'; // Import LanguageSwitcher
 import ContactBubble from './ContactBubble.jsx'; // Import ContactBubble
+import ContactModal from './ContactModal.jsx'; // Import ContactModal
 import styles from './Layout.module.css';
 import { portfolioData } from '../data.js'; // Corrected import path for data
 
@@ -84,10 +83,9 @@ function Layout() {
             </main>
             <Footer />
             <ContactBubble />
+            <ContactModal /> {/* Add ContactModal here */}
         </div>
     );
 }
 
 export default Layout;
-
-// --- END OF FILE src/components/Layout/Layout.jsx ---
