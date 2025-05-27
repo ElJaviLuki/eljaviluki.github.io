@@ -8,6 +8,7 @@ import ReactGA from 'react-ga4'; // Import react-ga4
 import Footer from './Footer.jsx'; // Corrected import path
 import Hero from './Hero.jsx'; // Corrected import path
 import LanguageSwitcher from './LanguageSwitcher.jsx'; // Import LanguageSwitcher
+import ContactBubble from './ContactBubble.jsx'; // Import ContactBubble
 import styles from './Layout.module.css';
 import { portfolioData } from '../data.js'; // Corrected import path for data
 
@@ -82,6 +83,7 @@ function Layout() {
                 <Outlet key={outletKey}/>
             </main>
             <Footer />
+            <ContactBubble />
         </div>
     );
 }

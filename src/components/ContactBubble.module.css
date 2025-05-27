@@ -1,0 +1,175 @@
+/* src/components/ContactBubble/ContactBubble.module.css */
+.contactBubble {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent-electric-blue), var(--color-accent-teal));
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem; /* Icon size */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    z-index: 1000; /* Ensure it's above most content */
+    outline: none; /* Base outline, focus-visible will override */
+}
+
+.contactBubble:hover,
+.contactBubble:focus-visible { /* Combined hover and focus-visible for consistency */
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 8px 20px var(--color-accent-glow);
+    background: linear-gradient(135deg, var(--color-accent-teal), var(--color-accent-electric-blue)); /* Flip gradient on hover */
+}
+/* Global focus-visible will apply, or you can add specific here if needed */
+/* .contactBubble:focus-visible {
+    outline: 3px solid var(--color-accent-teal);
+    outline-offset: 2px;
+} */
+
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050; /* Above bubble and other content */
+    backdrop-filter: blur(8px); /* More blur */
+    animation: fadeInOverlay 0.3s ease-out forwards;
+    padding: 1rem; /* Padding for small screens */
+}
+
+.modalContent {
+    background: var(--glass-bg-color);
+    backdrop-filter: blur(var(--glass-blur));
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    border: var(--border-standard);
+    box-shadow: var(--glass-shadow), 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 450px;
+    width: 95%; /* Ensure it fits on small screens */
+    position: relative;
+    animation: scaleUpModal 0.3s ease-out 0.1s forwards; /* Slight delay */
+    transform-origin: center;
+    color: var(--color-text-primary);
+    opacity: 0; /* Start hidden for animation */
+}
+
+.modalTitle {
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--glass-border-color);
+}
+
+.closeButton {
+    position: absolute;
+    top: 0.8rem; /* Adjust position */
+    right: 0.8rem;
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 1.6rem; /* Slightly larger */
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    transition: var(--transition-smooth);
+    border-radius: 50%; /* Make it round for better hit area on hover */
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+    color: var(--color-accent-electric-blue);
+    transform: scale(1.2) rotate(90deg); /* Rotate on hover for effect */
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.closeButton:focus-visible { /* Consistent focus style */
+    outline: 2px solid var(--color-accent-electric-blue);
+    outline-offset: 1px;
+}
+
+.modalLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* Slightly less gap */
+}
+
+.modalLinkItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.2rem; /* More horizontal padding */
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-text-primary);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border-color);
+    transition: var(--transition-smooth);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.modalLinkItem:hover,
+.modalLinkItem:focus-visible {
+    background-color: rgba(0, 119, 255, 0.15);
+    border-color: var(--color-accent-electric-blue);
+    color: #fff;
+    transform: translateX(5px);
+    outline: none; /* Rely on global focus-visible if this causes issues */
+}
+/* Remove global link hover effect for modal items */
+.modalLinkItem::after {
+    display: none;
+}
+
+
+.modalIcon {
+    font-size: 1.5rem; /* Icon size in link */
+    color: var(--color-accent-electric-blue);
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+}
+.modalLinkItem:hover .modalIcon,
+.modalLinkItem:focus-visible .modalIcon {
+    color: var(--color-accent-teal);
+}
+
+.modalLabel {
+    flex-grow: 1;
+}
+
+.externalArrow {
+    font-size: 0.9rem;
+    margin-left: auto;
+    color: var(--color-text-secondary);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.modalLinkItem:hover .externalArrow,
+.modalLinkItem:focus-visible .externalArrow {
+    color: var(--color-accent-teal);
+    transform: translateX(2px) translateY(-2px);
+}
+
+
+/* Animations */
+@keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUpModal {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}

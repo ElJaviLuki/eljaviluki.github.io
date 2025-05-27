@@ -92,8 +92,9 @@ font-display: swap;
   --glass-blur: 12px;
   --glass-border-color: rgba(224, 224, 255, 0.2); /* Subtle light border */
   --glass-shadow: 0 8px 32px 0 rgba(0, 119, 255, 0.1); /* Subtle blue glow shadow */
-  --glass-hover-bg: rgba(10, 67, 50, 0.3); /* Darker hover bg */
-  --glass-hover-border: rgba(10, 67, 50, 0.1); /* Lighter hover border */
+  --glass-hover-bg: rgba(30, 30, 60, 0.7); /* Slightly lighter/more saturated hover for glass */
+  --glass-hover-shadow: 0 10px 35px 0 rgba(0, 119, 255, 0.2); /* Enhanced glow on hover */
+
 
   /* Fonts - UPDATED */
   /* Using 'GT America Extended' as primary, fallback to 'Work Sans' */
@@ -150,6 +151,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden; /* Prevent horizontal scroll caused by animations */
+}
+
+/* Class to prevent body scroll when modal is open */
+body.no-scroll {
+  overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -215,7 +221,7 @@ button, .button-link {
   padding: 0.8rem 2rem;
   border: none;
   border-radius: 8px; /* Slightly rounded for glass */
-  background: linear-gradient(135deg, rgba(0, 119, 255, 0.6), rgba(138, 43, 226, 0.6)); /* Gradient */
+  background: linear-gradient(135deg, rgba(0, 119, 255, 0.6), rgba(32, 201, 151, 0.6)); /* Gradient from blue to teal */
   color: #ffffff;
   transition: var(--transition-smooth);
   position: relative;

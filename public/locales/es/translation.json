@@ -1,3 +1,4 @@
+
 {
   "appName": "Portfolio Javier López Cacenave",
   "name": "Javier López Cacenave",
@@ -392,5 +393,10 @@
   "homePage": {
     "title": "{{name}} | {{subtitle}}",
     "description": "Bienvenido al portfolio de {{name}}, un {{subtitle}}. Descubre soluciones de software full-stack pragmáticas y visionarias. {{headline}}"
+  },
+  "contactBubble": {
+    "open": "Contáctame",
+    "title": "Ponte en Contacto",
+    "close": "Cerrar modal de contacto"
   }
 }
