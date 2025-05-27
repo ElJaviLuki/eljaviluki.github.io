@@ -1,10 +1,11 @@
 // src/components/ContactBubble/ContactBubble.jsx
-import React, { useState, useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom'; // Import ReactDOM for createPortal
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import ReactDOM from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { FaEnvelope, FaLinkedin, FaGithub, FaTimes } from 'react-icons/fa';
 import { portfolioData } from '../data.js';
 import styles from './ContactBubble.module.css';
+import eventBus from '../utils/eventBus'; // Import the event bus
 
 function ContactBubble() {
     const { t } = useTranslation();
@@ -13,16 +14,18 @@ function ContactBubble() {
     const bubbleRef = useRef(null);
     const modalRef = useRef(null);
 
-    const openModal = () => {
+    const openModal = useCallback(() => {
         setIsModalOpen(true);
         document.body.classList.add('no-scroll');
-    };
+    }, []);
 
-    const closeModal = () => {
+    const closeModal = useCallback(() => {
         setIsModalOpen(false);
         document.body.classList.remove('no-scroll');
-        bubbleRef.current?.focus(); // Return focus to the bubble
-    };
+        if (bubbleRef.current) {
+            bubbleRef.current.focus(); // Return focus to the bubble
+        }
+    }, []);
 
     useEffect(() => {
         const handleEscKey = (event) => {
@@ -34,7 +37,6 @@ function ContactBubble() {
         if (isModalOpen) {
             document.addEventListener('keydown', handleEscKey);
 
-            // Focus trap logic
             const focusableElements = modalRef.current?.querySelectorAll(
                 'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
             );
@@ -45,12 +47,12 @@ function ContactBubble() {
 
             const trapFocus = (e) => {
                 if (e.key === 'Tab') {
-                    if (e.shiftKey) { // Shift + Tab
+                    if (e.shiftKey) {
                         if (document.activeElement === firstElement) {
                             lastElement?.focus();
                             e.preventDefault();
                         }
-                    } else { // Tab
+                    } else {
                         if (document.activeElement === lastElement) {
                             firstElement?.focus();
                             e.preventDefault();
@@ -62,14 +64,25 @@ function ContactBubble() {
             return () => {
                 document.removeEventListener('keydown', handleEscKey);
                 document.removeEventListener('keydown', trapFocus);
-                document.body.classList.remove('no-scroll'); // Ensure scroll is restored
+                document.body.classList.remove('no-scroll');
             };
         }
         return () => {
             document.removeEventListener('keydown', handleEscKey);
-            document.body.classList.remove('no-scroll'); // Ensure scroll is restored
+            document.body.classList.remove('no-scroll');
         }
-    }, [isModalOpen]);
+    }, [isModalOpen, closeModal]);
+
+    // Listen for the event to open the modal
+    useEffect(() => {
+        const handleOpenModalEvent = () => {
+            openModal();
+        };
+        eventBus.on('openContactModalEvent', handleOpenModalEvent);
+        return () => {
+            eventBus.remove('openContactModalEvent', handleOpenModalEvent);
+        };
+    }, [openModal]);
 
 
     const socialIconMap = {
@@ -95,12 +108,12 @@ function ContactBubble() {
                 <div
                     className={styles.modalOverlay}
                     onClick={closeModal}
-                    role="presentation" // Makes the overlay click-through for accessibility if needed, but here it closes.
+                    role="presentation"
                 >
                     <div
                         ref={modalRef}
                         className={styles.modalContent}
-                        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
+                        onClick={(e) => e.stopPropagation()}
                         role="dialog"
                         aria-modal="true"
                         aria-labelledby="contact-modal-title"
@@ -121,9 +134,8 @@ function ContactBubble() {
                                     key={link.platform}
                                     href={link.url}
                                     target={link.platform === 'Email' ? '_self' : '_blank'}
-                                    rel="noopener noreferrer" // Good practice for target="_blank"
+                                    rel="noopener noreferrer"
                                     className={styles.modalLinkItem}
-                                    // aria-label={t(link.labelKey)} // Labelled by text content
                                 >
                                     <span className={styles.modalIcon} aria-hidden="true">{socialIconMap[link.platform]}</span>
                                     <span className={styles.modalLabel}>{t(link.labelKey)}</span>
@@ -137,11 +149,10 @@ function ContactBubble() {
         </>
     );
 
-    // Ensure document.body is available before creating portal (for SSR or early script execution scenarios)
     if (typeof window !== 'undefined' && document.body) {
         return ReactDOM.createPortal(contactBubbleUI, document.body);
     }
-    return null; // Or some fallback if document.body is not yet available
+    return null;
 }
 
 export default ContactBubble;
