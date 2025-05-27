@@ -1,7 +1,7 @@
 // src/components/Footer/Footer.jsx
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import {FaLinkedin, FaGithub, FaEnvelope, FaArrowUp, FaPhoneAlt, FaPhone} from 'react-icons/fa';
+import {FaLinkedin, FaGithub, FaEnvelope, FaArrowUp, FaPhone} from 'react-icons/fa'; // Removed FaPhoneAlt
 import { portfolioData } from '../data';
 import eventBus from '../utils/eventBus';
 import styles from './Footer.module.css';

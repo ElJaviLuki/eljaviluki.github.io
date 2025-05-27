@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import {FaEnvelope, FaLinkedin, FaGithub, FaTimes, FaPhoneAlt, FaPhone} from 'react-icons/fa';
+import {FaEnvelope, FaLinkedin, FaGithub, FaTimes, FaPhone} from 'react-icons/fa'; // Removed FaPhoneAlt
 import { portfolioData } from '../data.js';
 import styles from './ContactBubble.module.css';
 import eventBus from '../utils/eventBus';
@@ -128,22 +128,29 @@ function ContactBubble() {
                         <h2 id="contact-modal-title" className={styles.modalTitle}>
                             {t('contactBubble.title')}
                         </h2>
-                        <div className={styles.modalLinks}>
-                            {socialLinks.map(link => (
-                                <a
-                                    key={link.platform}
-                                    href={link.url}
-                                    // Ajustado target para que 'Phone' también sea _self
-                                    target={(link.platform === 'Email' || link.platform === 'Phone') ? '_self' : '_blank'}
-                                    rel="noopener noreferrer"
-                                    className={styles.modalLinkItem}
-                                >
-                                    <span className={styles.modalIcon} aria-hidden="true">{socialIconMap[link.platform]}</span>
-                                    <span className={styles.modalLabel}>{t(link.labelKey)}</span>
-                                    {/* No mostrar flecha externa para Email o Phone */}
-                                    {(link.platform !== 'Email' && link.platform !== 'Phone') && <span className={styles.externalArrow} aria-hidden="true">{t('externalLinkArrow')}</span>}
-                                </a>
-                            ))}
+                        <div className={styles.modalMainArea}>
+                            <div className={styles.qrCodeContainer}>
+                                <img
+                                    src="/qr-vcard.svg"
+                                    alt={t('contactBubble.qrAlt', 'Scan for vCard')}
+                                    className={styles.qrCodeImage}
+                                />
+                            </div>
+                            <div className={styles.modalLinksContainer}>
+                                {socialLinks.map(link => (
+                                    <a
+                                        key={link.platform}
+                                        href={link.url}
+                                        target={(link.platform === 'Email' || link.platform === 'Phone') ? '_self' : '_blank'}
+                                        rel="noopener noreferrer"
+                                        className={styles.modalLinkItem}
+                                    >
+                                        <span className={styles.modalIcon} aria-hidden="true">{socialIconMap[link.platform]}</span>
+                                        <span className={styles.modalLabel}>{t(link.labelKey)}</span>
+                                        {(link.platform !== 'Email' && link.platform !== 'Phone') && <span className={styles.externalArrow} aria-hidden="true">{t('externalLinkArrow')}</span>}
+                                    </a>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

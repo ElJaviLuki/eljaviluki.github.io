@@ -52,11 +52,11 @@
 .modalContent {
     background: var(--glass-bg-color);
     backdrop-filter: blur(var(--glass-blur));
-    padding: 2.5rem 2.5rem; /* Increased horizontal padding */
+    padding: 2.5rem;
     border-radius: 12px;
     border: var(--border-standard);
     box-shadow: var(--glass-shadow), 0 10px 30px rgba(0,0,0,0.3);
-    max-width: 480px; /* Slightly wider modal */
+    max-width: 680px; /* Increased max-width for two-column layout */
     width: 95%; /* Ensure it fits on small screens */
     position: relative;
     animation: scaleUpModal 0.3s ease-out 0.1s forwards; /* Slight delay */
@@ -69,48 +69,74 @@
     font-size: clamp(1.6rem, 4vw, 2rem);
     color: #fff;
     text-align: center;
-    margin-bottom: 2.5rem; /* Increased margin */
-    padding-bottom: 1.25rem; /* Increased padding */
+    margin-bottom: 1.5rem; /* Adjusted margin */
+    padding-bottom: 1.25rem;
     border-bottom: 1px solid var(--glass-border-color);
 }
 
 .closeButton {
     position: absolute;
-    top: 1rem; /* Adjust position slightly */
-    right: 1rem; /* Adjust position slightly */
+    top: 1rem;
+    right: 1rem;
     background: transparent;
     border: none;
     color: var(--color-text-secondary);
-    font-size: 1.6rem; /* Slightly larger */
+    font-size: 1.6rem;
     cursor: pointer;
     padding: 0.5rem;
     line-height: 1;
     transition: var(--transition-smooth);
-    border-radius: 50%; /* Make it round for better hit area on hover */
+    border-radius: 50%;
 }
 
 .closeButton:hover,
 .closeButton:focus-visible {
     color: var(--color-accent-electric-blue);
-    transform: scale(1.2) rotate(90deg); /* Rotate on hover for effect */
+    transform: scale(1.2) rotate(90deg);
     background-color: rgba(255, 255, 255, 0.1);
 }
-.closeButton:focus-visible { /* Consistent focus style */
+.closeButton:focus-visible {
     outline: 2px solid var(--color-accent-electric-blue);
     outline-offset: 1px;
 }
 
-.modalLinks {
+.modalMainArea {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem; /* Increased gap */
+    gap: 2rem; /* Space between QR and links list */
+    align-items: center; /* Align items vertically center */
 }
 
-.modalLinkItem {
+.qrCodeContainer {
+    flex-basis: 200px; /* Base width for QR container */
+    flex-shrink: 0;    /* Prevent shrinking */
+    border: 2px solid var(--color-accent-electric-blue); /* Blue border as in design */
+    border-radius: 12px; /* Rounded corners for the border */
+    padding: 4px;      /* Space between blue border and white QR background */
+    background-color: transparent; /* Or match modal background if needed */
+}
+
+.qrCodeImage {
+    width: 100%;
+    height: auto;
+    display: block;
+    background-color: #fff; /* White background for the QR code itself */
+    padding: 12px;         /* Padding around the QR pattern, creating a white margin */
+    border-radius: 8px;    /* Rounded corners for the white background of the QR */
+    box-sizing: border-box;
+}
+
+.modalLinksContainer { /* Replaces .modalLinks for holding link items */
+    flex: 1; /* Takes remaining space */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Gap between link items */
+}
+
+.modalLinkItem { /* Styles for individual link items */
     display: flex;
     align-items: center;
-    gap: 1.25rem; /* Increased gap for icon and label */
-    padding: 1rem 1.5rem; /* Increased padding */
+    gap: 1.25rem;
+    padding: 1rem 1.5rem;
     border-radius: 8px;
     text-decoration: none;
     color: var(--color-text-primary);
@@ -127,16 +153,15 @@
     border-color: var(--color-accent-electric-blue);
     color: #fff;
     transform: translateX(5px);
-    outline: none; /* Rely on global focus-visible if this causes issues */
+    outline: none;
 }
-/* Remove global link hover effect for modal items */
 .modalLinkItem::after {
     display: none;
 }
 
 
 .modalIcon {
-    font-size: 1.5rem; /* Icon size in link */
+    font-size: 1.5rem;
     color: var(--color-accent-electric-blue);
     flex-shrink: 0;
     transition: color 0.3s ease;
@@ -148,7 +173,7 @@
 
 .modalLabel {
     flex-grow: 1;
-    line-height: 1.4; /* Added line-height for better text flow */
+    line-height: 1.4;
 }
 
 .externalArrow {
@@ -173,4 +198,28 @@
 @keyframes scaleUpModal {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .modalContent {
+        max-width: 95%;
+        padding: 1.5rem;
+    }
+
+    .modalMainArea {
+        flex-direction: column;
+        align-items: center; /* This will center items horizontally when stacked */
+        gap: 1.5rem;
+    }
+
+    .qrCodeContainer {
+        flex-basis: auto;
+        width: 100%;
+        max-width: 220px; /* Max QR size on mobile */
+    }
+
+    .modalLinksContainer {
+        width: 100%;
+    }
 }
