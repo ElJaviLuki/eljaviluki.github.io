@@ -1,8 +1,9 @@
 // src/components/ContactBubble/ContactBubble.jsx
 import React, { useState, useEffect, useRef } from 'react';
+import ReactDOM from 'react-dom'; // Import ReactDOM for createPortal
 import { useTranslation } from 'react-i18next';
 import { FaEnvelope, FaLinkedin, FaGithub, FaTimes } from 'react-icons/fa';
-import { portfolioData } from '../data.js'
+import { portfolioData } from '../data.js';
 import styles from './ContactBubble.module.css';
 
 function ContactBubble() {
@@ -77,7 +78,7 @@ function ContactBubble() {
         Email: <FaEnvelope />,
     };
 
-    return (
+    const contactBubbleUI = (
         <>
             <button
                 ref={bubbleRef}
@@ -135,6 +136,12 @@ function ContactBubble() {
             )}
         </>
     );
+
+    // Ensure document.body is available before creating portal (for SSR or early script execution scenarios)
+    if (typeof window !== 'undefined' && document.body) {
+        return ReactDOM.createPortal(contactBubbleUI, document.body);
+    }
+    return null; // Or some fallback if document.body is not yet available
 }
 
 export default ContactBubble;
