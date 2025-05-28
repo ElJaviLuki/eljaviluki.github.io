@@ -26,7 +26,7 @@ export const portfolioData = {
             },
             {
                 "platform": "Phone",
-                "url": "tel:+34633439926",
+                "url": "tel:+34602085010",
                 "labelKey": "phoneLinkLabel" // Key for translation
             }
         ]
