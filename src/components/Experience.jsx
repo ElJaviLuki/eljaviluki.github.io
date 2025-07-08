@@ -102,7 +102,7 @@ const ExperienceSummaryItem = ({ job }) => {
                 </div>
             )}
 
-            {job.technologies && job.technologies.length > 0 && (
+            {portfolioData.config.experienceDetailsEnabled && job.technologies && job.technologies.length > 0 && (
                 <div className={styles.techPreview} aria-label="Technologies Used Preview">
                     {job.technologies.slice(0, 5).map(tech => (
                         <span key={tech} className={styles.techTag}>{tech}</span>
