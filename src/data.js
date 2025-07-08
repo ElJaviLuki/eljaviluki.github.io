@@ -4,7 +4,7 @@
 
 export const portfolioData = {
     "config": {
-        "experienceDetailsEnabled": true
+        "experienceDetailsEnabled": false
     },
     "personalInfo": {
         "name": "Javier López Cacenave", // Keep name for internal reference/interpolation
