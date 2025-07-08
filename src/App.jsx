@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import ReactGA from "react-ga4"; // Import react-ga4
 import Layout from './components/Layout.jsx';
 import HomePage from './pages/HomePage.jsx';
+import { portfolioData } from './data.js'; // Import portfolioData to access config
 // Removed direct imports of page components that will be lazy-loaded
 
 // Lazy load page components
@@ -51,14 +52,17 @@ function App() {
                         </Suspense>
                     }
                 />
-                <Route
-                    path="experience/:id"
-                    element={
-                        <Suspense fallback={<LoadingFallback />}>
-                            <ExperienceDetailPage />
-                        </Suspense>
-                    }
-                />
+                {/* Conditionally render the experience detail route based on the flag */}
+                {portfolioData.config.experienceDetailsEnabled && (
+                    <Route
+                        path="experience/:id"
+                        element={
+                            <Suspense fallback={<LoadingFallback />}>
+                                <ExperienceDetailPage />
+                            </Suspense>
+                        }
+                    />
+                )}
                 <Route
                     path="projects/:id"
                     element={

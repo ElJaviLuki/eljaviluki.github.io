@@ -3,6 +3,9 @@
 // The actual text is in public/locales/[lang]/translation.json
 
 export const portfolioData = {
+    "config": {
+        "experienceDetailsEnabled": true
+    },
     "personalInfo": {
         "name": "Javier López Cacenave", // Keep name for internal reference/interpolation
         "handle": "ElJaviLuki", // Non-translatable handle

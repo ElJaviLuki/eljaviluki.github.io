@@ -34,6 +34,7 @@ const renderAuthorLinks = (links, authorName, t) => {
 
 const TestimonialCard = ({ testimonial }) => {
     const { t } = useTranslation(); // Use translation hook
+    const { experienceDetailsEnabled } = portfolioData.config; // Get the feature flag
 
     const quote = t(testimonial.quoteKey);
     const authorName = t(testimonial.authorNameKey);
@@ -58,7 +59,7 @@ const TestimonialCard = ({ testimonial }) => {
                     <span>{authorTitle}</span> {/* Use translated title */}
                 </div>
                 <div className={styles.links}>
-                    {testimonial.associatedProjectId && (
+                    {experienceDetailsEnabled && testimonial.associatedProjectId && (
                         <Link to={`/experience/${testimonial.associatedProjectId}`} className={styles.projectLink} aria-label={`View project related to ${authorName}'s testimonial`}>
                             {t('viewProject')} <span aria-hidden="true">{t('forwardArrow')}</span> {/* Translate link */}
                         </Link>

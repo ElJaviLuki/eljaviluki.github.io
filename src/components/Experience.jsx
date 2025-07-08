@@ -18,6 +18,7 @@ const ImpactMetric = ({ value, label }) => {
 
 const ExperienceSummaryItem = ({ job }) => {
     const { t } = useTranslation(); // Use translation hook
+    const { experienceDetailsEnabled } = portfolioData.config; // Get the feature flag
 
     // Get translated title/client name
     const displayTitle = t(job.nameKey || job.clientKey || 'Experience Item');
@@ -53,13 +54,14 @@ const ExperienceSummaryItem = ({ job }) => {
     // NEW LOGIC for links
     const hasDetailPage = !!job.pagePath;
     const hasExternalWebLink = !!job.web;
+    const canNavigateToDetail = hasDetailPage && experienceDetailsEnabled;
 
     let RootComponent;
     let rootLinkProps;
     let cardAriaLabelText;
     let visualLinkTextKey; // Key for the text in detailsLinkVisual
 
-    if (hasDetailPage) {
+    if (canNavigateToDetail) {
         RootComponent = Link;
         rootLinkProps = { to: job.pagePath };
         cardAriaLabelText = t('experience.ariaViewInternal', { role: role, title: displayTitle });
