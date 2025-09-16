@@ -1,15 +1,38 @@
 // src/components/Footer/Footer.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import {FaLinkedin, FaGithub, FaEnvelope, FaArrowUp, FaPhone} from 'react-icons/fa'; // Removed FaPhoneAlt
 import { portfolioData } from '../data';
 import eventBus from '../utils/eventBus';
 import styles from './Footer.module.css';
+import { resolveRegionalUrlByIp } from '../utils/urlResolver.js';
 
 function Footer() {
     const { t } = useTranslation();
     const { name, socialLinks } = portfolioData.personalInfo;
     const currentYear = new Date().getFullYear();
+
+    // Initialize state with default URLs for immediate rendering
+    const [resolvedSocialLinks, setResolvedSocialLinks] = useState(
+        socialLinks.map(link => ({
+            ...link,
+            resolvedUrl: typeof link.url === 'string' ? link.url : link.url.default
+        }))
+    );
+
+    useEffect(() => {
+        const resolveUrls = async () => {
+            const resolved = await Promise.all(
+                socialLinks.map(async (link) => {
+                    const resolvedUrl = await resolveRegionalUrlByIp(link.url);
+                    return { ...link, resolvedUrl };
+                })
+            );
+            setResolvedSocialLinks(resolved);
+        };
+
+        resolveUrls();
+    }, [socialLinks]);
 
     const handleLetsDoItClick = () => {
         eventBus.dispatch('openContactModalEvent');
@@ -36,10 +59,10 @@ function Footer() {
             </div>
 
             <div className={styles.socialIconsContainer}>
-                {socialLinks.map(link => (
+                {resolvedSocialLinks.map(link => (
                     <a
                         key={link.platform}
-                        href={link.url}
+                        href={link.resolvedUrl}
                         // Ajustado target para que 'Phone' también sea _self
                         target={(link.platform === 'Email' || link.platform === 'Phone') ? '_self' : '_blank'}
                         rel="noopener noreferrer"

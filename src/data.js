@@ -14,7 +14,12 @@ export const portfolioData = {
         "socialLinks": [
             {
                 "platform": "LinkedIn",
-                "url": "https://linkedin.com/in/eljaviluki",
+                "url": {
+                    "default": "https://linkedin.com/in/eljaviluki",
+                    "regional": {
+                        "CH": "https://linkedin.com/in/eljavilukich"
+                    }
+                },
                 "labelKey": "linkedInLinkLabel" // Key for translation
             },
             {

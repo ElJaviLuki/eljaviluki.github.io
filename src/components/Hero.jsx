@@ -1,11 +1,12 @@
 // --- START OF FILE src/components/Hero/Hero.jsx ---
 
 // src/components/Hero/Hero.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
 import {FaLinkedin, FaGithub, FaEnvelope, FaPhone} from 'react-icons/fa';
 import { portfolioData } from '../data.js'; // Corrected import path
 import styles from './Hero.module.css';
+import { resolveRegionalUrlByIp } from '../utils/urlResolver.js';
 
 function Hero() {
     const { t } = useTranslation(); // Use translation hook
@@ -14,10 +15,20 @@ function Hero() {
     const adjectives = t(adjectivesKey, { returnObjects: true }) || []; // Get translated adjectives array
 
     // Find specific social links
-    const linkedInLink = socialLinks.find(link => link.platform === 'LinkedIn');
+    const linkedInLinkData = socialLinks.find(link => link.platform === 'LinkedIn');
     const githubLink = socialLinks.find(link => link.platform === 'GitHub');
     const emailLink = socialLinks.find(link => link.platform === 'Email');
     const phoneLink = socialLinks.find(link => link.platform === 'Phone');
+
+    const [linkedInUrl, setLinkedInUrl] = useState(linkedInLinkData?.url?.default || '#');
+
+    useEffect(() => {
+        if (linkedInLinkData) {
+            resolveRegionalUrlByIp(linkedInLinkData.url).then(url => {
+                setLinkedInUrl(url);
+            });
+        }
+    }, [linkedInLinkData]);
 
     return (
         <header className={styles.hero} id="top">
@@ -46,8 +57,8 @@ function Hero() {
 
                 {/* Social Icons */}
                 <div className={styles.socialIcons}>
-                    {linkedInLink && (
-                        <a href={linkedInLink.url} target="_blank" rel="noopener noreferrer" aria-label={t(linkedInLink.labelKey)} className={styles.heroIconLink}>
+                    {linkedInLinkData && (
+                        <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" aria-label={t(linkedInLinkData.labelKey)} className={styles.heroIconLink}>
                             <FaLinkedin />
                         </a>
                     )}

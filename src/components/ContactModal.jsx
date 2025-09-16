@@ -6,6 +6,7 @@ import { FaEnvelope, FaLinkedin, FaGithub, FaTimes, FaPhone } from 'react-icons/
 import { portfolioData } from '../data.js';
 import styles from './ContactModal.module.css';
 import eventBus from '../utils/eventBus';
+import { resolveRegionalUrlByIp } from '../utils/urlResolver.js';
 
 const ANIMATION_DURATION = 300; // ms, keep in sync with CSS
 
@@ -15,6 +16,30 @@ function ContactModal() {
     const [isClosing, setIsClosing] = useState(false); // State to manage closing animation
     const { socialLinks, handle } = portfolioData.personalInfo;
     const modalRef = useRef(null);
+
+    // Initialize state with default URLs
+    const [resolvedSocialLinks, setResolvedSocialLinks] = useState(
+        socialLinks.map(link => ({
+            ...link,
+            resolvedUrl: typeof link.url === 'string' ? link.url : link.url.default
+        }))
+    );
+
+    // Resolve URLs when the modal is opened to avoid unnecessary API calls
+    useEffect(() => {
+        if (isModalOpen) {
+            const resolveUrls = async () => {
+                const resolved = await Promise.all(
+                    socialLinks.map(async (link) => {
+                        const resolvedUrl = await resolveRegionalUrlByIp(link.url);
+                        return { ...link, resolvedUrl };
+                    })
+                );
+                setResolvedSocialLinks(resolved);
+            };
+            resolveUrls();
+        }
+    }, [isModalOpen, socialLinks]);
 
     const openModal = useCallback(() => {
         setIsModalOpen(true);
@@ -137,7 +162,7 @@ function ContactModal() {
                         />
                     </div>
                     <div className={styles.modalLinksContainer}>
-                        {socialLinks.map(link => {
+                        {resolvedSocialLinks.map(link => {
                             const platformName = t(link.labelKey);
                             let value = '';
 
@@ -159,7 +184,7 @@ function ContactModal() {
                             return (
                                 <a
                                     key={link.platform}
-                                    href={link.url}
+                                    href={link.resolvedUrl}
                                     target={(link.platform === 'Email' || link.platform === 'Phone') ? '_self' : '_blank'}
                                     rel="noopener noreferrer"
                                     className={styles.modalLinkItem}
