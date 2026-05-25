@@ -194,7 +194,7 @@ export const portfolioData = {
                 "id": "galileo-studio",
                 "clientKey": "experience.galileo.client",
                 "clientLogo": "/galileo-studio.svg",
-                "web": "https://galileostudio.com",
+                "web": "https://www.galileostudio.ai",
                 "roleKey": "experience.galileo.role",
                 "dateKey": "experience.galileo.date",
                 "locationMode": "Remote",
@@ -207,7 +207,8 @@ export const portfolioData = {
                     "projectNameKey": "experience.galileo.projectContextName",
                     "purposeKey": "experience.galileo.projectContextPurposeDesc",
                     "architectureKey": "experience.galileo.projectContextArchDesc",
-                    "keyModulesKeys": "experience.galileo.projectContextModules"
+                    "keyModulesKeys": "experience.galileo.projectContextModules",
+                    "web": "https://www.kuracompliance.com/"
                 },
                 "detailsKeys": "experience.galileo.details",
                 "technologies": [

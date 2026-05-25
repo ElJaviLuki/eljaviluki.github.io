@@ -123,6 +123,13 @@ function ExperienceDetailPage() {
                     {experienceItem.projectContext && (
                         <section className={`${styles.detailSection} ${styles.projectContext}`} aria-labelledby="project-context-heading">
                             <h2 id="project-context-heading">{t('experience.projectContextHeading', { projectName: projectContextName })}</h2>
+                            {experienceItem.projectContext.web && (
+                                <p>
+                                    <a href={experienceItem.projectContext.web} target="_blank" rel="noopener noreferrer">
+                                        {t('experience.projectContextWebsite')} <span aria-hidden="true">{t('externalLinkArrow')}</span>
+                                    </a>
+                                </p>
+                            )}
                             <p><strong>{t('experience.projectContextPurpose')}</strong> {projectContextPurpose}</p>
                             <p><strong>{t('experience.projectContextArchitecture')}</strong> {projectContextArchitecture}</p>
                             {projectContextModules && projectContextModules.length > 0 && (

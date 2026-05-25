@@ -121,7 +121,7 @@ const ExperienceSummaryItem = ({ job }) => {
             )}
 
             {/* Secondary "Visit Website" link */}
-            {RootComponent === Link && job.isWebsiteProject && hasExternalWebLink && (
+            {RootComponent === Link && hasExternalWebLink && (
                 <a
                     href={job.web}
                     target="_blank"
