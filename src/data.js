@@ -208,7 +208,8 @@ export const portfolioData = {
                     "purposeKey": "experience.galileo.projectContextPurposeDesc",
                     "architectureKey": "experience.galileo.projectContextArchDesc",
                     "keyModulesKeys": "experience.galileo.projectContextModules",
-                    "web": "https://www.kuracompliance.com/"
+                    "web": "https://www.kuracompliance.com/",
+                    "websiteLabelKey": "experience.galileo.projectWebsiteLabel"
                 },
                 "detailsKeys": "experience.galileo.details",
                 "technologies": [

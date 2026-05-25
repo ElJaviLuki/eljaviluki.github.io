@@ -80,7 +80,6 @@
     "projectContextPurpose": "Propósito:",
     "projectContextArchitecture": "Arquitectura:",
     "projectContextKeyModules": "Módulos Clave:",
-    "projectContextWebsite": "Web del producto KURA",
     "detailsHeading": "Ver Detalles y Logros Clave",
     "summaryHeading": "En pocas palabras",
     "mediaHeading": "Multimedia",
@@ -169,6 +168,7 @@
       "location": "Remoto",
       "summary": "Lideré la estrategia de producto y la arquitectura full-stack de KURA, un SaaS B2B de Compliance y Gestión de Riesgos, actuando como Product Owner y Lead Engineer.",
       "projectContextName": "KURA (SaaS de Compliance y Gestión de Riesgos)",
+      "projectWebsiteLabel": "Web del producto KURA",
       "projectContextPurposeDesc": "Una plataforma B2B multi-tenant integral diseñada para gestionar el cumplimiento corporativo, jerarquías organizacionales, matrices de riesgos, evaluaciones de controles y planes de acción.",
       "projectContextArchDesc": "Arquitectura moderna desacoplada con un frontend en Next.js (React) y un backend en Python/FastAPI. Asegurada mediante PostgreSQL Row-Level Security (RLS) y Clerk (OIDC/JWT) para un multi-tenancy estricto. Infraestructura desplegada en AWS usando Terraform y Docker.",
       "projectContextModules": [

@@ -126,7 +126,7 @@ function ExperienceDetailPage() {
                             {experienceItem.projectContext.web && (
                                 <p>
                                     <a href={experienceItem.projectContext.web} target="_blank" rel="noopener noreferrer">
-                                        {t('experience.projectContextWebsite')} <span aria-hidden="true">{t('externalLinkArrow')}</span>
+                                        {t(experienceItem.projectContext.websiteLabelKey || 'websiteLink')} <span aria-hidden="true">{t('externalLinkArrow')}</span>
                                     </a>
                                 </p>
                             )}
