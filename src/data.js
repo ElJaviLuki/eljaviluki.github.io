@@ -191,6 +191,34 @@ export const portfolioData = {
         ],
         "corporate": [
             {
+                "id": "galileo-studio",
+                "clientKey": "experience.galileo.client",
+                "clientLogo": "/galileo-studio.svg",
+                "web": "https://galileostudio.com",
+                "roleKey": "experience.galileo.role",
+                "dateKey": "experience.galileo.date",
+                "locationMode": "Remote",
+                "locationKey": "experience.galileo.location",
+                "summaryKey": "experience.galileo.summary",
+                "impactMetrics": [
+                    { "valueKey": "experience.galileo.metric3Value", "labelKey": "experience.galileo.metric3Label" }
+                ],
+                "projectContext": {
+                    "projectNameKey": "experience.galileo.projectContextName",
+                    "purposeKey": "experience.galileo.projectContextPurposeDesc",
+                    "architectureKey": "experience.galileo.projectContextArchDesc",
+                    "keyModulesKeys": "experience.galileo.projectContextModules"
+                },
+                "detailsKeys": "experience.galileo.details",
+                "technologies": [
+                    "Next.js", "React", "TypeScript", "Tailwind CSS", "Python", "FastAPI",
+                    "PostgreSQL", "SQLAlchemy", "Alembic", "Celery", "LLMs (OpenAI/Anthropic)",
+                    "AWS", "Terraform", "Docker", "Clerk (Auth)", "Playwright"
+                ],
+                "softSkillsKeys": "experience.galileo.softSkills",
+                "pagePath": "/experience/galileo-studio"
+            },
+            {
                 "id": "teldat",
                 "clientKey": "experience.teldat.client",
                 "clientLogo": "/teldat.png",

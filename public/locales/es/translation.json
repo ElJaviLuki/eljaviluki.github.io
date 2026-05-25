@@ -161,6 +161,40 @@
       "metric2Value": "100%",
       "metric2Label": "Satisfacción Usuario"
     },
+    "galileo": {
+      "client": "Galileo Studio",
+      "role": "Technical Product Owner & Lead Full-Stack Architect",
+      "date": "2025/12 - Actualidad",
+      "location": "Remoto",
+      "summary": "Lideré la estrategia de producto y la arquitectura full-stack de KURA, un SaaS B2B de Compliance y Gestión de Riesgos, actuando como Product Owner y Lead Engineer.",
+      "projectContextName": "KURA (SaaS de Compliance y Gestión de Riesgos)",
+      "projectContextPurposeDesc": "Una plataforma B2B multi-tenant integral diseñada para gestionar el cumplimiento corporativo, jerarquías organizacionales, matrices de riesgos, evaluaciones de controles y planes de acción.",
+      "projectContextArchDesc": "Arquitectura moderna desacoplada con un frontend en Next.js (React) y un backend en Python/FastAPI. Asegurada mediante PostgreSQL Row-Level Security (RLS) y Clerk (OIDC/JWT) para un multi-tenancy estricto. Infraestructura desplegada en AWS usando Terraform y Docker.",
+      "projectContextModules": [
+        "Jerarquía Organizacional y Árboles de Procesos",
+        "Evaluación de Riesgos con IA y Matrices Cartesianas",
+        "Procesamiento Documental Multi-Agente (RAG y OCR)",
+        "Trazabilidad y Audit Logging",
+        "Generación Automática de Actas de Reuniones"
+      ],
+      "details": [
+        "Definí la lógica central del dominio de negocio, traduciendo necesidades complejas de compliance en modelos de software escalables (Brechas, Controles, Planes de Acción).",
+        "Arquitecté e implementé un backend multi-tenant seguro utilizando PostgreSQL Row-Level Security (RLS) y el patrón Unit of Work.",
+        "Diseñé e integré un motor de evaluación de riesgos con IA capaz de generar propuestas de mitigación y justificaciones estructuradas.",
+        "Construí un sistema multi-agente para la ingesta de documentos, OCR y embeddings para apoyar el análisis de cumplimiento.",
+        "Desarrollé componentes frontend complejos y altamente interactivos en Next.js, incluyendo tablas con scroll infinito, organigramas y matrices de riesgos.",
+        "Gestioné la infraestructura como código (IaC) en AWS usando Terraform y orquesté pipelines de CI/CD con GitHub Actions."
+      ],
+      "softSkills": [
+        "Product Ownership",
+        "Arquitectura de Sistemas",
+        "Modelado de Dominio de Negocio",
+        "Visión UX/UI",
+        "Liderazgo Técnico"
+      ],
+      "metric3Value": "E2E",
+      "metric3Label": "Ciclo de Vida Producto"
+    },
     "teldat": {
       "client": "Teldat",
       "role": "Desarrollador Full-Stack",

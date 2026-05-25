@@ -5,6 +5,7 @@ import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
 import { portfolioData } from '../data.js'; // Corrected path
+import { formatExperienceLocation } from '../utils/formatExperienceLocation.js';
 import layoutStyles from '../components/Layout.module.css'; // Corrected path
 import styles from '../components/Experience.module.css'; // Corrected path
 
@@ -40,6 +41,8 @@ function ExperienceDetailPage() {
         case 'onsite': locationModeTranslated = t('experience.locationModeOnsite'); break;
         default: locationModeTranslated = experienceItem.locationMode || '';
     }
+
+    const locationLine = formatExperienceLocation(locationModeTranslated, location);
 
     // Translate Project Context if it exists
     const projectContextName = experienceItem.projectContext ? t(experienceItem.projectContext.projectNameKey) : '';
@@ -113,7 +116,7 @@ function ExperienceDetailPage() {
                         <div className={styles.detailTitleGroup}>
                             <h1>{displayTitle}</h1>
                             {role && <p className={styles.role}>{role}</p>}
-                            <p>{date} {location && `${t('experience.dateLocationSeparator')} ${locationModeTranslated} - ${location}`}</p>
+                            <p>{date}{locationLine && ` ${t('experience.dateLocationSeparator')} ${locationLine}`}</p>
                         </div>
                     </header>
 

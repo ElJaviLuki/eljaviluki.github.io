@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
 import { portfolioData } from '../data.js'; // Corrected import path
+import { formatExperienceLocation } from '../utils/formatExperienceLocation.js';
 import styles from './Experience.module.css';
 
 const ImpactMetric = ({ value, label }) => {
@@ -78,6 +79,7 @@ const ExperienceSummaryItem = ({ job }) => {
         visualLinkTextKey = null;
     }
 
+    const locationLine = formatExperienceLocation(locationModeTranslated, location);
 
     return (
         <RootComponent {...rootLinkProps} className={`${styles.jobSummary} ${RootComponent !== 'div' ? styles.cardAsLink : ''}`} aria-label={cardAriaLabelText}>
@@ -87,7 +89,7 @@ const ExperienceSummaryItem = ({ job }) => {
                     <h4 className={styles.company}>{displayTitle}</h4>
                     {role && <p className={styles.role}>{role}</p>}
                     <p className={styles.dateLocation}>
-                        {date} {location && `${t('experience.dateLocationSeparator')} ${locationModeTranslated} - ${location}`}
+                        {date}{locationLine && ` ${t('experience.dateLocationSeparator')} ${locationLine}`}
                     </p>
                 </div>
             </div>
