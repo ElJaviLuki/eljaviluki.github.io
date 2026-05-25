@@ -216,7 +216,8 @@ export const portfolioData = {
                     "AWS", "Terraform", "Docker", "Clerk (Auth)", "Playwright"
                 ],
                 "softSkillsKeys": "experience.galileo.softSkills",
-                "pagePath": "/experience/galileo-studio"
+                "pagePath": "/experience/galileo-studio",
+                "detailPageEnabled": true
             },
             {
                 "id": "teldat",
@@ -453,5 +454,20 @@ export const portfolioData = {
         "copyrightKey": "footer.copyright"
     }
 };
+
+export function isExperienceDetailEnabled(job) {
+    return Boolean(job?.detailPageEnabled || portfolioData.config.experienceDetailsEnabled);
+}
+
+export function isAnyExperienceDetailRouteActive() {
+    if (portfolioData.config.experienceDetailsEnabled) {
+        return true;
+    }
+    const jobs = [
+        ...portfolioData.experience.freelanceConsulting,
+        ...portfolioData.experience.corporate,
+    ];
+    return jobs.some(job => job.detailPageEnabled && job.pagePath);
+}
 
 // --- END OF FILE src/data.js ---

@@ -3,7 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'; // Import useTranslation
-import { portfolioData } from '../data.js'; // Corrected import path
+import { portfolioData, isExperienceDetailEnabled } from '../data.js'; // Corrected import path
 import { formatExperienceLocation } from '../utils/formatExperienceLocation.js';
 import styles from './Experience.module.css';
 
@@ -19,7 +19,7 @@ const ImpactMetric = ({ value, label }) => {
 
 const ExperienceSummaryItem = ({ job }) => {
     const { t } = useTranslation(); // Use translation hook
-    const { experienceDetailsEnabled } = portfolioData.config; // Get the feature flag
+    const detailsEnabled = isExperienceDetailEnabled(job);
 
     // Get translated title/client name
     const displayTitle = t(job.nameKey || job.clientKey || 'Experience Item');
@@ -55,7 +55,7 @@ const ExperienceSummaryItem = ({ job }) => {
     // NEW LOGIC for links
     const hasDetailPage = !!job.pagePath;
     const hasExternalWebLink = !!job.web;
-    const canNavigateToDetail = hasDetailPage && experienceDetailsEnabled;
+    const canNavigateToDetail = hasDetailPage && detailsEnabled;
 
     let RootComponent;
     let rootLinkProps;
@@ -104,7 +104,7 @@ const ExperienceSummaryItem = ({ job }) => {
                 </div>
             )}
 
-            {portfolioData.config.experienceDetailsEnabled && job.technologies && job.technologies.length > 0 && (
+            {detailsEnabled && job.technologies && job.technologies.length > 0 && (
                 <div className={styles.techPreview} aria-label="Technologies Used Preview">
                     {job.technologies.slice(0, 5).map(tech => (
                         <span key={tech} className={styles.techTag}>{tech}</span>
