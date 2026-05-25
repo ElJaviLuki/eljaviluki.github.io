@@ -96,6 +96,17 @@ export const portfolioData = {
     },
     "testimonials": [
         {
+            "id": "testimonial-rodrigo",
+            "quoteKey": "testimonials.rodrigo.quote",
+            "authorNameKey": "testimonials.rodrigo.authorName",
+            "authorTitleKey": "testimonials.rodrigo.authorTitle",
+            "profilePic": "/rodrigo-pic.png",
+            "associatedProjectId": "royal-tiktok",
+            "authorLinks": {
+                "linkedin": { "url": "https://www.linkedin.com/in/rodrigo-requena-l%C3%B3pez-354535188", "labelKey": "linkedInLinkLabel" }
+            }
+        },
+        {
             "id": "testimonial-santiago",
             "quoteKey": "testimonials.santiago.quote",
             "authorNameKey": "testimonials.santiago.authorName",

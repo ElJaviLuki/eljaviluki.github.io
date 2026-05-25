@@ -314,6 +314,11 @@
   },
   "testimonials": {
     "sectionHeading": "Lo que dicen",
+    "rodrigo": {
+      "quote": "Tuve el placer de trabajar con Javier mientras él desarrollaba nuestra infraestructura de automatización, que fue esencial para la gestión de creadores de contenido de TikTok. Como Full Stack Developer, Javier demostró una sólida experiencia técnica. Su trabajo no solo garantizó una base de datos limpia y confiable, sino que también fue la base técnica que permitió a nuestro equipo tomar decisiones estratégicas e impulsar la eficiencia en la captación de creadores, lo cual fue clave para el crecimiento del ROI. Recomiendo a Javier enfáticamente por su habilidad para entregar soluciones robustas y escalables.",
+      "authorName": "Rodrigo Requena López",
+      "authorTitle": "Gestión de Creadores TikTok"
+    },
     "santiago": {
       "quote": "Trabajar con Javier fue un antes y un después para nuestra agencia. Desde el primer día entendió nuestras necesidades y transformó por completo nuestro sistema de reclutamiento en TikTok LIVE, automatizando procesos manuales y mejorando significativamente nuestra eficiencia. En pocos meses, logramos un aumento del 20-30% en la facturación mensual gracias a una captación de talento más rápida y precisa.",
       "authorName": "Santiago",
