@@ -161,6 +161,41 @@
       "metric2Value": "100%",
       "metric2Label": "Satisfacción Usuario"
     },
+    "galileo": {
+      "client": "Galileo Studio",
+      "role": "Technical Product Owner & Lead Full-Stack Architect",
+      "date": "2025/12 - Actualidad",
+      "location": "Remoto",
+      "summary": "Lideré la estrategia de producto y la arquitectura full-stack de KURA, un SaaS B2B de Compliance y Gestión de Riesgos, actuando como Product Owner y Lead Engineer.",
+      "projectContextName": "KURA (SaaS de Compliance y Gestión de Riesgos)",
+      "projectWebsiteLabel": "Web del producto KURA",
+      "projectContextPurposeDesc": "Una plataforma B2B multi-tenant integral diseñada para gestionar el cumplimiento corporativo, jerarquías organizacionales, matrices de riesgos, evaluaciones de controles y planes de acción.",
+      "projectContextArchDesc": "Arquitectura moderna desacoplada con un frontend en Next.js (React) y un backend en Python/FastAPI. Asegurada mediante PostgreSQL Row-Level Security (RLS) y Clerk (OIDC/JWT) para un multi-tenancy estricto. Infraestructura desplegada en AWS usando Terraform y Docker.",
+      "projectContextModules": [
+        "Jerarquía Organizacional y Árboles de Procesos",
+        "Evaluación de Riesgos con IA y Matrices Cartesianas",
+        "Procesamiento Documental Multi-Agente (RAG y OCR)",
+        "Trazabilidad y Audit Logging",
+        "Generación Automática de Actas de Reuniones"
+      ],
+      "details": [
+        "Definí la lógica central del dominio de negocio, traduciendo necesidades complejas de compliance en modelos de software escalables (Brechas, Controles, Planes de Acción).",
+        "Arquitecté e implementé un backend multi-tenant seguro utilizando PostgreSQL Row-Level Security (RLS) y el patrón Unit of Work.",
+        "Diseñé e integré un motor de evaluación de riesgos con IA capaz de generar propuestas de mitigación y justificaciones estructuradas.",
+        "Construí un sistema multi-agente para la ingesta de documentos, OCR y embeddings para apoyar el análisis de cumplimiento.",
+        "Desarrollé componentes frontend complejos y altamente interactivos en Next.js, incluyendo tablas con scroll infinito, organigramas y matrices de riesgos.",
+        "Gestioné la infraestructura como código (IaC) en AWS usando Terraform y orquesté pipelines de CI/CD con GitHub Actions."
+      ],
+      "softSkills": [
+        "Product Ownership",
+        "Arquitectura de Sistemas",
+        "Modelado de Dominio de Negocio",
+        "Visión UX/UI",
+        "Liderazgo Técnico"
+      ],
+      "metric3Value": "E2E",
+      "metric3Label": "Ciclo de Vida Producto"
+    },
     "teldat": {
       "client": "Teldat",
       "role": "Desarrollador Full-Stack",
@@ -279,6 +314,11 @@
   },
   "testimonials": {
     "sectionHeading": "Lo que dicen",
+    "rodrigo": {
+      "quote": "Tuve el placer de trabajar con Javier mientras él desarrollaba nuestra infraestructura de automatización, que fue esencial para la gestión de creadores de contenido de TikTok. Como Full Stack Developer, Javier demostró una sólida experiencia técnica. Su trabajo no solo garantizó una base de datos limpia y confiable, sino que también fue la base técnica que permitió a nuestro equipo tomar decisiones estratégicas e impulsar la eficiencia en la captación de creadores, lo cual fue clave para el crecimiento del ROI. Recomiendo a Javier enfáticamente por su habilidad para entregar soluciones robustas y escalables.",
+      "authorName": "Rodrigo Requena López",
+      "authorTitle": "Gestión de Creadores TikTok"
+    },
     "santiago": {
       "quote": "Trabajar con Javier fue un antes y un después para nuestra agencia. Desde el primer día entendió nuestras necesidades y transformó por completo nuestro sistema de reclutamiento en TikTok LIVE, automatizando procesos manuales y mejorando significativamente nuestra eficiencia. En pocos meses, logramos un aumento del 20-30% en la facturación mensual gracias a una captación de talento más rápida y precisa.",
       "authorName": "Santiago",
