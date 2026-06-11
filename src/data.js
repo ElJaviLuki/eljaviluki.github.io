@@ -436,10 +436,9 @@ export const portfolioData = {
             "logo": "/unex.png",
             "degreeKey": "education.unex.degree",
             "dateKey": "education.unex.date",
-            "status": "Discontinued", // Keep status as identifier
+            "status": "Completed", // Keep status as identifier
             "locationKey": "education.unex.location",
-            "summaryKey": "education.unex.summary",
-            "notesKey": "education.unex.notes"
+            "summaryKey": "education.unex.summary"
         }
     ],
     "skills": { // Skills themselves are often technical terms, keep as is unless translation is desired

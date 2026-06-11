@@ -14,16 +14,12 @@ const EducationItem = ({ item }) => {
     const location = t(item.locationKey);
     const summary = t(item.summaryKey);
     const description = t(item.descriptionKey);
-    const notes = t(item.notesKey);
 
     // Translate status
     let statusTranslated = '';
     switch (item.status?.toLowerCase()) {
         case 'completed':
             statusTranslated = t('education.statusCompleted');
-            break;
-        case 'discontinued':
-            statusTranslated = t('education.statusDiscontinued');
             break;
         default:
             statusTranslated = item.status || '';
@@ -45,7 +41,6 @@ const EducationItem = ({ item }) => {
             <div className={styles.itemBody}>
                 {summary && <p className={styles.summary}>{summary}</p>}
                 {description && <p>{description}</p>}
-                {notes && <p className={styles.notes}><em>{t('education.noteLabel')}</em>{notes}</p>}
                 {item.skillsLearned && item.skillsLearned.length > 0 && (
                     <div className={styles.skillsSection}>
                         {/* Translate skills heading */}

@@ -394,9 +394,7 @@
   "education": {
     "sectionHeading": "Educación",
     "statusCompleted": "Completado",
-    "statusDiscontinued": "Discontinuado",
     "keySkills": "Habilidades Clave:",
-    "noteLabel": "Nota:",
     "hackaboss": {
       "institution": "HACK A BOSS",
       "degree": "Bootcamp Data Science & IA",

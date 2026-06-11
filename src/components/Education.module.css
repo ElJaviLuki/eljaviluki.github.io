@@ -167,23 +167,6 @@
     color: var(--color-text-primary); /* Brighter summary */
 }
 
-.notes {
-    font-style: normal; /* Remove italic */
-    background-color: rgba(0, 119, 255, 0.05); /* Subtle blue bg */
-    padding: 1rem 1.25rem;
-    border-left: 3px solid var(--color-accent-electric-blue);
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    margin-top: 1.5rem;
-    border-radius: 0 5px 5px 0; /* Rounded corners */
-}
-.notes em { /* The "Nota:" part */
-    font-weight: 700;
-    font-style: normal;
-    color: var(--color-accent-electric-blue); /* Blue label */
-    margin-right: 0.5rem;
-}
-
 .skillsSection {
     margin-top: 2rem;
     padding-top: 1.5rem;
