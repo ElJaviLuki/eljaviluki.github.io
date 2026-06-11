@@ -2,7 +2,7 @@
 {
   "appName": "Portfolio Javier López Cacenave",
   "name": "Javier López Cacenave",
-  "subtitle": "Full-Stack Developer",
+  "subtitle": "Founding Product Engineer",
   "backToMain": "Back to Main Page",
   "backToTop": "↑ Back To Top",
   "loading": "Loading...",
@@ -162,7 +162,7 @@
     },
     "galileo": {
       "client": "Galileo Studio",
-      "role": "Technical Product Owner & Lead Full-Stack Architect",
+      "role": "Founding Product Engineer",
       "date": "2025/12 - Present",
       "location": "Remote",
       "summary": "Led the product strategy and full-stack architecture of KURA, a B2B SaaS for Compliance and Risk Management, acting as both Product Owner and Lead Engineer.",
