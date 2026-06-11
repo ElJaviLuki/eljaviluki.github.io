@@ -2,7 +2,7 @@
 {
   "appName": "Portfolio Javier López Cacenave",
   "name": "Javier López Cacenave",
-  "subtitle": "Full-Stack Developer",
+  "subtitle": "Founding Product Engineer",
   "backToMain": "Back to Main Page",
   "backToTop": "↑ Back To Top",
   "loading": "Loading...",
@@ -162,13 +162,13 @@
     },
     "galileo": {
       "client": "Galileo Studio",
-      "role": "Technical Product Owner & Lead Full-Stack Architect",
+      "role": "Founding Product Engineer",
       "date": "2025/12 - Present",
       "location": "Remote",
-      "summary": "Led the product strategy and full-stack architecture of KURA, a B2B SaaS for Compliance and Risk Management, acting as both Product Owner and Lead Engineer.",
+      "summary": "Led the product strategy and full-stack architecture of KURA, a B2B SaaS for Compliance and Risk Management. As the founding engineer, I owned the end-to-end product lifecycle, translating complex regulatory frameworks into scalable, AI-native software models.",
       "projectContextName": "KURA (Compliance & Risk Management SaaS)",
       "projectWebsiteLabel": "KURA product website",
-      "projectContextPurposeDesc": "A comprehensive B2B multi-tenant platform designed to manage corporate compliance, organizational hierarchies, risk matrices, control evaluations, and action plans.",
+      "projectContextPurposeDesc": "A comprehensive B2B multi-tenant platform designed to automate corporate compliance, risk matrices, control evaluations, and action plans.",
       "projectContextArchDesc": "Modern decoupled architecture featuring a Next.js (React) frontend and a Python/FastAPI backend. Secured via PostgreSQL Row-Level Security (RLS) and Clerk (OIDC/JWT) for strict multi-tenancy. Infrastructure deployed on AWS using Terraform and Docker.",
       "projectContextModules": [
         "Organizational Hierarchy & Process Trees",
@@ -320,12 +320,12 @@
     },
     "santiago": {
       "quote": "Working with Javier was a game-changer for our agency. From day one, he understood our needs and completely transformed our TikTok LIVE recruitment system, automating manual processes and significantly improving our efficiency. Within a few months, we achieved a 20-30% increase in monthly revenue thanks to faster and more accurate talent acquisition.",
-      "authorName": "Santiago",
+      "authorName": "Santiago Gallego Massioutin",
       "authorTitle": "Royal TikTok"
     },
     "elena": {
       "quote": "I'm super organized since they set up this program for me, it's super easy and super convenient, I have everything I need. And on top of that, they told me that anything I think of, they'll put it in the program. I'm super happy, I recommend it 100%.",
-      "authorName": "Elena",
+      "authorName": "Elena C. Bohórquez",
       "authorTitle": "Ortoprodent (Dental Lab)"
     }
   },
@@ -393,9 +393,7 @@
   "education": {
     "sectionHeading": "Education",
     "statusCompleted": "Completed",
-    "statusDiscontinued": "Discontinued",
     "keySkills": "Key Skills Learned:",
-    "noteLabel": "Note:",
     "hackaboss": {
       "institution": "HACK A BOSS",
       "degree": "Data Science & AI Bootcamp",
