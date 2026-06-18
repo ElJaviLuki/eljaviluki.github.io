@@ -393,6 +393,7 @@
   "education": {
     "sectionHeading": "Education",
     "statusCompleted": "Completed",
+    "statusDropout": "Dropout",
     "keySkills": "Key Skills Learned:",
     "hackaboss": {
       "institution": "HACK A BOSS",
@@ -405,9 +406,9 @@
     "unex": {
       "institution": "University of Extremadura",
       "degree": "Bachelor's Degree in Software Engineering",
-      "date": "2020 - 2024",
+      "date": "2020 - 2022",
       "location": "Cáceres, Spain",
-      "summary": "Completed a Bachelor's Degree in Software Engineering."
+      "summary": "Attended a Bachelor's Degree in Software Engineering (did not complete)."
     }
   },
   "skills": {
