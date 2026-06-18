@@ -21,6 +21,9 @@ const EducationItem = ({ item }) => {
         case 'completed':
             statusTranslated = t('education.statusCompleted');
             break;
+        case 'dropout':
+            statusTranslated = t('education.statusDropout');
+            break;
         default:
             statusTranslated = item.status || '';
     }

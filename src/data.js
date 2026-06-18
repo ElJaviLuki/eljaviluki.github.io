@@ -436,7 +436,7 @@ export const portfolioData = {
             "logo": "/unex.png",
             "degreeKey": "education.unex.degree",
             "dateKey": "education.unex.date",
-            "status": "Completed", // Keep status as identifier
+            "status": "Dropout",
             "locationKey": "education.unex.location",
             "summaryKey": "education.unex.summary"
         }
