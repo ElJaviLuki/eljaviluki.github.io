@@ -438,7 +438,8 @@ export const portfolioData = {
             "dateKey": "education.unex.date",
             "status": "Dropout",
             "locationKey": "education.unex.location",
-            "summaryKey": "education.unex.summary"
+            "summaryKey": "education.unex.summary",
+            "descriptionKey": "education.unex.description"
         }
     ],
     "skills": { // Skills themselves are often technical terms, keep as is unless translation is desired
